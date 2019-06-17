@@ -11,6 +11,5 @@ os:
 r:
   - release
   - devel
-  - 3.2
   - 3.3
   - 3.4
