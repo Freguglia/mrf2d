@@ -6,6 +6,38 @@
 
 using namespace Rcpp;
 
+// conditional_probabilities_multinomial
+NumericVector conditional_probabilities_multinomial(const IntegerMatrix& Z, IntegerVector position, IntegerMatrix R, const arma::fcube& theta, int N, int M, int n_R, int C);
+RcppExport SEXP _mrf2d_conditional_probabilities_multinomial(SEXP ZSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type position(positionSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type n_R(n_RSEXP);
+    Rcpp::traits::input_parameter< int >::type C(CSEXP);
+    rcpp_result_gen = Rcpp::wrap(conditional_probabilities_multinomial(Z, position, R, theta, N, M, n_R, C));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gibbs_sampler_mrf
+IntegerMatrix gibbs_sampler_mrf(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, int n_steps);
+RcppExport SEXP _mrf2d_gibbs_sampler_mrf(SEXP init_ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP n_stepsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerMatrix >::type init_Z(init_ZSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< int >::type n_steps(n_stepsSEXP);
+    rcpp_result_gen = Rcpp::wrap(gibbs_sampler_mrf(init_Z, R, theta, n_steps));
+    return rcpp_result_gen;
+END_RCPP
+}
 // table_relative
 arma::dmat table_relative(const IntegerMatrix& Z, IntegerVector r, int C, bool prop);
 RcppExport SEXP _mrf2d_table_relative(SEXP ZSEXP, SEXP rSEXP, SEXP CSEXP, SEXP propSEXP) {
@@ -36,6 +68,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_mrf2d_conditional_probabilities_multinomial", (DL_FUNC) &_mrf2d_conditional_probabilities_multinomial, 8},
+    {"_mrf2d_gibbs_sampler_mrf", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf, 4},
     {"_mrf2d_table_relative", (DL_FUNC) &_mrf2d_table_relative, 4},
     {"_mrf2d_table_relative_3d", (DL_FUNC) &_mrf2d_table_relative_3d, 4},
     {NULL, NULL, 0}

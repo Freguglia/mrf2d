@@ -56,6 +56,12 @@ documentation is written. For any requests, e.g., implementation of a
 particular model or method, feel free to file an issue and I can check
 if it can be implemented within the current framework.
 
+An immediate to-do list:
+
+  - Write an R function wrapper for the `cpp` function
+    `gibbs_sampler_mrf()` and stop exporting the `cpp` function itself.
+  - Document the Gibbs Sampler function properly and write some tests.
+
 ## Contributing and Bug Reports
 
 If you’re interested in contributing or found a bug or error, please
