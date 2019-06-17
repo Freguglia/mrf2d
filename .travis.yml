@@ -5,6 +5,7 @@ sudo: false
 dist: trusty
 cache: packages
 latex: false
+warnings_are_errors: false
 os:
   - osx
   - linux
@@ -13,3 +14,10 @@ r:
   - devel
   - 3.3
   - 3.4
+
+matrix:
+  exclude:
+  - os: osx
+    r: devel
+
+
