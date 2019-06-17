@@ -12,7 +12,7 @@ of random variables with a local dependence property (the Markov
 property) defined on a neighborhood system. Particularly on the context
 of image processing, pixels can be seen as vertices of a graph defined
 on a finite 2-dimensional lattice, and a neighborhood system can be
-defined based on their relative positions construct a MRF.
+defined based on their relative positions to construct a MRF.
 
 ![Ising Figure](man/Figures/README-/animation_ising.gif)
 
