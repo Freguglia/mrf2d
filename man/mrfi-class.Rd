@@ -3,15 +3,15 @@
 \docType{class}
 \name{mrfi-class}
 \alias{mrfi-class}
-\title{The mrfi class}
+\title{The \code{mrfi} class}
 \description{
-A representation for the interaction structure of a spatially-stationary
+A representation of the interaction structure for a spatially-stationary
 Markov Random Field.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{Rmat}}{A 3-column matrix where each row represents a relative position of
+\item{\code{Rmat}}{A 3-column \code{matrix} where each row represents a relative position of
 interaction. First and second columns represent the position and third column
 the interaction type.}
 

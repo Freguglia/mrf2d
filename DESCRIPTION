@@ -14,7 +14,8 @@ Imports: Rcpp (>= 1.0.1),
          RcppArmadillo,
          dplyr(>= 0.8.1),
          reshape2,
-         methods
+         methods,
+         ggplot2
 Depends: R (>= 3.3.0)
 LinkingTo: Rcpp, 
            RcppArmadillo
