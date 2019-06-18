@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  echo = FALSE
 )
 ```
 # mrf2d
@@ -20,9 +20,25 @@ knitr::opts_chunk$set(
 
 Markov Random Fields are probabilistic models capable of describing sets of random variables with a local dependence property (the Markov property) defined on a neighborhood system. Particularly on the context of image processing, pixels can be seen as vertices of a graph defined on a finite 2-dimensional lattice, and a neighborhood system can be defined based on their relative positions to construct a MRF.
 
-![Ising Figure](man/Figures/README-/animation_ising.gif)
+<p align="center">
+<img src="man/Figures/README-/animation_ising.gif" alt="drawing" width="300" />
+<p>
 
-The goal of `mrf2d` is to provide simple functions for sampling and analysis of Markov Random Fields on 2-dimensional lattices, including Hidden Markov Random Fields.
+The goal of `mrf2d` is to provide simple functions for sampling and analysis of Markov Random Fields on 2-dimensional lattices, including Hidden Markov Random Fields. It introduces the S4 class `mrfi` to describe interaction structures in a very general way, being able to adapt from very simple cases like the Ising Model to complex anisotropic models with different types of interaction.
+<center>
+```{r, fig.show="hold", warning = FALSE, message = FALSE, fig.width=3, fig.height=3}
+library(mrf2d)
+a <- new("mrfi")
+a@Rmat <- cbind(diag(2), c(1,1)); a@n_neis <- 2; a@n_types <- 1
+
+b <- new("mrfi")
+b@Rmat <- matrix(c(1,0,0,1,4,4,1,1,1,-1,2,0,0,2), byrow = TRUE, ncol = 2)
+b@Rmat <- cbind(b@Rmat, c(1,1,4,2,2,3,3)); a@n_neis <- 5; a@n_types <- 3
+
+plot(a, no_axis = TRUE, no_text = TRUE)
+plot(b, no_axis = TRUE)
+```
+</center>
 
 ## Installation
 <!--

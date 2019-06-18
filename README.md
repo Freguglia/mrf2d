@@ -14,13 +14,28 @@ of random variables with a local dependence property (the Markov
 property) defined on a neighborhood system. Particularly on the context
 of image processing, pixels can be seen as vertices of a graph defined
 on a finite 2-dimensional lattice, and a neighborhood system can be
-defined based on their relative positions to construct a MRF.
+defined based on their relative positions to construct a
+MRF.
 
-![Ising Figure](man/Figures/README-/animation_ising.gif)
+<p align="center">
+
+<img src="man/Figures/README-/animation_ising.gif" alt="drawing" width="300" />
+
+<p>
 
 The goal of `mrf2d` is to provide simple functions for sampling and
 analysis of Markov Random Fields on 2-dimensional lattices, including
-Hidden Markov Random Fields.
+Hidden Markov Random Fields. It introduces the S4 class `mrfi` to
+describe interaction structures in a very general way, being able to
+adapt from very simple cases like the Ising Model to complex anisotropic
+models with different types of
+interaction.
+
+<center>
+
+![](man/figures/README-unnamed-chunk-2-1.png)![](man/figures/README-unnamed-chunk-2-2.png)
+
+</center>
 
 ## Installation
 
