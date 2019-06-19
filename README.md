@@ -65,11 +65,12 @@ Write something about Markov Random Fields
 
 ## Next Steps
 
-I currently have most of the functions implemented already but proper
-documentation is lacking, features will be added as soon as the
-documentation is written. For any requests, e.g., implementation of a
-particular model or method, feel free to file an issue and I can check
-if it can be implemented within the current framework.
+I currently have most of the functions implemented on another private
+repository already but proper documentation is lacking, features will be
+added as soon as the documentation is written. For any requests, e.g.,
+implementation of a particular model or method, feel free to file an
+issue and I can check if it can be implemented within the current
+framework.
 
 An immediate to-do list:
 

@@ -14,12 +14,12 @@ setClass("mrfi",
 setMethod("show", "mrfi",
           function(object){
             cat(object@n_neis, "interacting positions.\n")
-            cat(" rx  | ry  \n")
+            cat("  rx     ry")
             for(i in seq_len(min(5,object@n_neis))){
-              cat(" ",object@Rmat[i,1],"  | ", object@Rmat[i,2], "\n")
+              cat( "\n"," ",object@Rmat[i,1],"    ", object@Rmat[i,2])
             }
             if(object@n_neis > 5) {
-              cat("... and", (object@n_neis-5), "more.")
+              cat("  ... and", (object@n_neis-5), "more.")
             }
           })
 
