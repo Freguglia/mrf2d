@@ -5,7 +5,6 @@ using namespace Rcpp;
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
-//' @export
 // [[Rcpp::export]]
 IntegerMatrix gibbs_sampler_mrf(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, int n_steps){
   int N = init_Z.nrow(); const int M = init_Z.ncol();

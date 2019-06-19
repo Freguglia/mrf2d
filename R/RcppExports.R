@@ -5,7 +5,6 @@ conditional_probabilities_multinomial <- function(Z, position, R, theta, N, M, n
     .Call('_mrf2d_conditional_probabilities_multinomial', PACKAGE = 'mrf2d', Z, position, R, theta, N, M, n_R, C)
 }
 
-#' @export
 gibbs_sampler_mrf <- function(init_Z, R, theta, n_steps) {
     .Call('_mrf2d_gibbs_sampler_mrf', PACKAGE = 'mrf2d', init_Z, R, theta, n_steps)
 }
