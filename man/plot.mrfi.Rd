@@ -6,15 +6,16 @@
 \alias{mrfi-plot}
 \title{Plotting of \code{mrfi} objects.}
 \usage{
-\S4method{plot}{mrfi,missing}(x, no_axis = FALSE, no_text = FALSE)
+\S4method{plot}{mrfi,missing}(x, no_axis = FALSE)
 }
 \arguments{
 \item{x}{A \code{\link[=mrfi-class]{mrfi}} object.}
 
 \item{no_axis}{\code{logical} value indicating whether the axis and grid lines are present.}
-
-\item{no_text}{\code{logical} value indicating whether interaction types should be included.}
 }
 \description{
-Plotting of \code{mrfi} objects.
+Plots a visual description of the interaction structure
+described in a \code{mrfi} object. The black tile represents a reference pixel
+and gray tiles are shown in relative positions where pixels are
+conditionally dependent.
 }

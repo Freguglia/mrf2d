@@ -11,12 +11,9 @@ Markov Random Field.
 \section{Slots}{
 
 \describe{
-\item{\code{Rmat}}{A 3-column \code{matrix} where each row represents a relative position of
-interaction. First and second columns represent the position and third column
-the interaction type.}
+\item{\code{Rmat}}{A 2-column \code{matrix} where each row represents a relative position of
+interaction.}
 
 \item{\code{n_neis}}{The number of intracting positions.}
-
-\item{\code{n_types}}{The number of types of interaction.}
 }}
 

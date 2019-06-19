@@ -31,11 +31,11 @@ adapt from very simple cases like the Ising Model to complex anisotropic
 models with different types of
 interaction.
 
-<center>
+<p align="center">
 
 ![](man/figures/README-unnamed-chunk-2-1.png)![](man/figures/README-unnamed-chunk-2-2.png)
 
-</center>
+</p>
 
 ## Installation
 
