@@ -22,7 +22,7 @@ rmrf <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
   # Check validity of the input
   if(!is.matrix(init_Z)) {
     if(is.numeric(init_Z) & is.vector(init_Z)) {
-      if(length(init_Z) == 2) {
+      if(length(init_Z) == 2 & min(init_Z) > 0) {
         .space <- 0:(dim(theta)[1] - 1)
         init_Z <- matrix(sample(.space, prod(init_Z),replace = TRUE),
                          nrow = init_Z[1], ncol = init_Z[2])
