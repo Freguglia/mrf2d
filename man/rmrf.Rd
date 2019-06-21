@@ -7,8 +7,9 @@
 rmrf(init_Z, mrfi, theta, steps = 10, method = "gibbs")
 }
 \arguments{
-\item{init_Z}{A \code{matrix} object with the initial field configuration. Its values
-must be integers in 0,...,C.}
+\item{init_Z}{A \code{matrix} object with the initial field configuration. Its
+valuesmust be integers in 0,...,C. A length 2 \code{numeric} vector with lattice
+dimensions can be used to start from a random configuration.}
 
 \item{mrfi}{A \code{\link[=mrfi-class]{mrfi}} object representing the
 interaction structure.}
