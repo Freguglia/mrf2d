@@ -72,11 +72,11 @@ implementation of a particular model or method, feel free to file an
 issue and I can check if it can be implemented within the current
 framework.
 
-An immediate to-do list:
+Things to work in immediately:
 
-  - Write an R function wrapper for the `cpp` function
-    `gibbs_sampler_mrf()` and stop exporting the `cpp` function itself.
-  - Document the Gibbs Sampler function properly and write some tests.
+  - Write the stochastic approximation algorithm with options to include
+    simpler models as well as the most general with all different
+    interaction types.
 
 ## Contributing and Bug Reports
 
