@@ -16,7 +16,7 @@ arma::dmat table_relative(const IntegerMatrix &Z,
   const int M = Z.ncol();
   const int dx = r[0];
   const int dy = r[1];
-  int a,b, idx;
+  int a,b;
   arma::mat res = arma::zeros<arma::mat>(C+1,C+1);
 
   for(int i = std::max(0, -dx); i < std::min(N, N - dx); i++){
