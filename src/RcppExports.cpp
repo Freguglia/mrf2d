@@ -24,9 +24,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// gibbs_sampler_mrf
-IntegerMatrix gibbs_sampler_mrf(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, int n_steps);
-RcppExport SEXP _mrf2d_gibbs_sampler_mrf(SEXP init_ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP n_stepsSEXP) {
+// gibbs_sampler_mrf2d
+IntegerMatrix gibbs_sampler_mrf2d(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, int n_steps);
+RcppExport SEXP _mrf2d_gibbs_sampler_mrf2d(SEXP init_ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP n_stepsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -34,7 +34,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
     Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
     Rcpp::traits::input_parameter< int >::type n_steps(n_stepsSEXP);
-    rcpp_result_gen = Rcpp::wrap(gibbs_sampler_mrf(init_Z, R, theta, n_steps));
+    rcpp_result_gen = Rcpp::wrap(gibbs_sampler_mrf2d(init_Z, R, theta, n_steps));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -69,7 +69,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_mrf2d_conditional_probabilities_multinomial", (DL_FUNC) &_mrf2d_conditional_probabilities_multinomial, 8},
-    {"_mrf2d_gibbs_sampler_mrf", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf, 4},
+    {"_mrf2d_gibbs_sampler_mrf2d", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf2d, 4},
     {"_mrf2d_table_relative", (DL_FUNC) &_mrf2d_table_relative, 4},
     {"_mrf2d_table_relative_3d", (DL_FUNC) &_mrf2d_table_relative_3d, 4},
     {NULL, NULL, 0}

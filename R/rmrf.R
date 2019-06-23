@@ -1,5 +1,5 @@
-#' @name rmrf
-#' @title Sampling of Markov Random Fields
+#' @name rmrf2d
+#' @title Sampling of Markov Random Fields on 2d lattices
 #'
 #' @description Performs pixel-wise updates based on conditional distributions
 #'  to sample from a Markov random field. The order pixels are updated is
@@ -18,7 +18,7 @@
 #' @param method Method used to perform pixel-wise updates.
 #'  * `'gibbs'`: Gibbs Sampler method. Samples from conditional distribution.
 #' @export
-rmrf <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
+rmrf2d <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
   # Check validity of the input
   if(!is.matrix(init_Z)) {
     if(is.numeric(init_Z) & is.vector(init_Z)) {
@@ -37,7 +37,7 @@ rmrf <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
   R <- mrfi@Rmat
 
   if(method == "gibbs"){
-    return(gibbs_sampler_mrf(init_Z, R, theta, steps))
+    return(gibbs_sampler_mrf2d(init_Z, R, theta, steps))
   } else {
     valid_methods <- c("'gibbs'")
     stop("Invalid 'method' argument. Current support methods are: ",
