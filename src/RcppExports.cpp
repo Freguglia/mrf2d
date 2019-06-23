@@ -66,12 +66,26 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// log_pl_mrf
+double log_pl_mrf(IntegerMatrix Z, IntegerMatrix R, const arma::fcube theta);
+RcppExport SEXP _mrf2d_log_pl_mrf(SEXP ZSEXP, SEXP RSEXP, SEXP thetaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerMatrix >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
+    rcpp_result_gen = Rcpp::wrap(log_pl_mrf(Z, R, theta));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_mrf2d_conditional_probabilities_mrf", (DL_FUNC) &_mrf2d_conditional_probabilities_mrf, 8},
     {"_mrf2d_gibbs_sampler_mrf2d", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf2d, 4},
     {"_mrf2d_table_relative", (DL_FUNC) &_mrf2d_table_relative, 4},
     {"_mrf2d_table_relative_3d", (DL_FUNC) &_mrf2d_table_relative_3d, 4},
+    {"_mrf2d_log_pl_mrf", (DL_FUNC) &_mrf2d_log_pl_mrf, 3},
     {NULL, NULL, 0}
 };
 

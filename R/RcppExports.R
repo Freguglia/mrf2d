@@ -17,3 +17,7 @@ table_relative_3d <- function(Z, R, C, prop) {
     .Call('_mrf2d_table_relative_3d', PACKAGE = 'mrf2d', Z, R, C, prop)
 }
 
+log_pl_mrf <- function(Z, R, theta) {
+    .Call('_mrf2d_log_pl_mrf', PACKAGE = 'mrf2d', Z, R, theta)
+}
+
