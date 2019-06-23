@@ -6,9 +6,9 @@
 
 using namespace Rcpp;
 
-// conditional_probabilities_multinomial
-NumericVector conditional_probabilities_multinomial(const IntegerMatrix& Z, IntegerVector position, IntegerMatrix R, const arma::fcube& theta, int N, int M, int n_R, int C);
-RcppExport SEXP _mrf2d_conditional_probabilities_multinomial(SEXP ZSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP) {
+// conditional_probabilities_mrf
+NumericVector conditional_probabilities_mrf(const IntegerMatrix& Z, IntegerVector position, IntegerMatrix R, const arma::fcube& theta, int N, int M, int n_R, int C);
+RcppExport SEXP _mrf2d_conditional_probabilities_mrf(SEXP ZSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -20,7 +20,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type M(MSEXP);
     Rcpp::traits::input_parameter< int >::type n_R(n_RSEXP);
     Rcpp::traits::input_parameter< int >::type C(CSEXP);
-    rcpp_result_gen = Rcpp::wrap(conditional_probabilities_multinomial(Z, position, R, theta, N, M, n_R, C));
+    rcpp_result_gen = Rcpp::wrap(conditional_probabilities_mrf(Z, position, R, theta, N, M, n_R, C));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -68,7 +68,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_mrf2d_conditional_probabilities_multinomial", (DL_FUNC) &_mrf2d_conditional_probabilities_multinomial, 8},
+    {"_mrf2d_conditional_probabilities_mrf", (DL_FUNC) &_mrf2d_conditional_probabilities_mrf, 8},
     {"_mrf2d_gibbs_sampler_mrf2d", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf2d, 4},
     {"_mrf2d_table_relative", (DL_FUNC) &_mrf2d_table_relative, 4},
     {"_mrf2d_table_relative_3d", (DL_FUNC) &_mrf2d_table_relative_3d, 4},

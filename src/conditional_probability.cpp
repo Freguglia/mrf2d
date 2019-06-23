@@ -8,12 +8,12 @@ using namespace Rcpp;
 // and MRF parameters.
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-NumericVector conditional_probabilities_multinomial(const IntegerMatrix &Z,
-                                                    IntegerVector position,
-                                                    IntegerMatrix R,
-                                                    const arma::fcube &theta,
-                                                    int N, int M,
-                                                    int n_R, int C){
+NumericVector conditional_probabilities_mrf(const IntegerMatrix &Z,
+                                            IntegerVector position,
+                                            IntegerMatrix R,
+                                            const arma::fcube &theta,
+                                            int N, int M,
+                                            int n_R, int C){
 
   IntegerVector this_pos(2);
   NumericVector probs(C+1);

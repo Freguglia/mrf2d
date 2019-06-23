@@ -23,7 +23,7 @@ IntegerMatrix gibbs_sampler_mrf2d(IntegerMatrix init_Z, IntegerMatrix R, const a
     for(int i = 0; i < num; i++){
       x = (order[i] / M) + 1; y = (order[i] % M) + 1;
       position[0] = x; position[1] = y;
-      cprobs = conditional_probabilities_multinomial(Z, position, R, theta, N, M, n_R, C);
+      cprobs = conditional_probabilities_mrf(Z, position, R, theta, N, M, n_R, C);
       Z(x-1, y-1) = sample(values, 1, false, cprobs)[0];
     }
   }
