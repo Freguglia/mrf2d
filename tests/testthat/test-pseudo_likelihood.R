@@ -5,4 +5,10 @@ test_that("Pseudo-likelihood computing is correct", {
   Z <- rmrf2d(c(30,30), potts, theta)
   expect_equal(pl_mrf2d(matrix(c(0,0,2,2), nrow = 2), potts, theta), log(exp(0)/(exp(0)+exp(0)+exp(-1.4)))*4, tolerance = 10^-6)
   expect_equal(pl_mrf2d(Z, potts, theta*0), -log(3)*30*30, tolerance = 10^-6)
+
+  # One Parameter pseudo likelihood computing
+  onepar <- mrf2d:::fitpl_onepar_mrf2d(Z, potts)
+  expect_setequal(names(onepar), c("theta", "value"))
+  onepar <- mrf2d:::fitpl_onepar_mrf2d(Z, potts, optim_args = list(method = "CG"))
+  expect_setequal(names(onepar), c("theta", "value"))
 })
