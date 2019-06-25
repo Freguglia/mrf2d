@@ -33,6 +33,7 @@ rmrf2d <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
       stop("Argument 'init_Z' must be either a matrix or a length 2 numeric vector with lattice dimensions.")
     }
   }
+  theta <- sanitize_theta(theta)
 
   R <- mrfi@Rmat
 
