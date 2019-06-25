@@ -9,6 +9,6 @@ test_that("Pseudo-likelihood computing is correct", {
   # One Parameter pseudo likelihood computing
   onepar <- fit_pl(Z, potts, family = "onepar")
   expect_setequal(names(onepar), c("theta", "value"))
-  onepar <- fit_pl(Z, potts, optim_args = list(method = "CG"))
-  expect_setequal(names(onepar), c("theta", "value"))
+  onepar <- fit_pl(Z, potts, optim_args = list(method = "CG"), return_optim = TRUE)
+  expect_true(all(c("theta", "value", "opt.convergence") %in% names(onepar)))
 })
