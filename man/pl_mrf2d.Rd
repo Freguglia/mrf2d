@@ -17,7 +17,7 @@ interacting positions, rows represent pixel values and columns represent
 neighbor values. As an example: \code{theta[1,3,2]} has the potential pairs of
 values 0,2 in the second relative position of \code{mrfi}.}
 
-\item{log_scale}{A \code{logical} value indicating whether the returned value
+\item{log_scale}{A \code{logical} value indicatin g whether the returned value
 should be in logarithmic scale.}
 }
 \value{

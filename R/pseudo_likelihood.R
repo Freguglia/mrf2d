@@ -14,7 +14,7 @@
 #'  interacting positions, rows represent pixel values and columns represent
 #'  neighbor values. As an example: `theta[1,3,2]` has the potential pairs of
 #'  values 0,2 in the second relative position of `mrfi`.
-#' @param log_scale A `logical` value indicating whether the returned value
+#' @param log_scale A `logical` value indicatin g whether the returned value
 #'  should be in logarithmic scale.
 #'
 #' @return A `numeric` with the pseudo-likelihood value.
@@ -29,17 +29,63 @@ pl_mrf2d <- function(Z, mrfi, theta, log_scale = TRUE){
   }
 }
 
-fitpl_onepar_mrf2d <- function(Z, mrfi, init = 0, return_optim = FALSE,
-                               optim_args = list(method = "BFGS")){
+
+#' @name fit_pl
+#' @author Victor Freguglia
+#' @title Maximum Pseudo-likelihood fitting of MRFs on 2d lattices.
+#'
+#' @description Parameter estimation for Markov random fields via
+#' Pseudo-Likelihood function optimization. See
+#' \code{\link[=pl_mrf2d]{pl_mrf2d}} for more information on the
+#' Pseudo-Likelihood function.
+#'
+#' @param Z A `matrix` object containing the observed MRF.
+#' @param mrfi A \code{\link[=mrfi-class]{mrfi}} object representing the
+#'  interaction structure.
+#' @param family The family of restrictions to potentials. It can be:
+#'  * `"onepar"`: Models with a single parameter. It is a single value for any
+#'  equal valued pairs and the same value with opposite signal for different
+#'  valued pairs.
+#' @param init The initial value to be used in the optimization. It can be:
+#'  * An `array` with vaid potential values according to `family`.
+#'  * A `numeric` of length 1 if `family` is `onepar`.
+#'  * `0`. If set to `0` an array with `0`` in all entries is created.
+#' @param optim_args Additional parameters passed in `optim()` function call.
+#' @param return_optim `logical` indicating whether information from the
+#' `optim()` call are returned.
+#' @return A `list` object with elements:
+#'  * `theta`: The array of estimated potential values.
+#'  * `value`: The optimal pseudo-likelihood value.
+#'  * `opt.xxx`(if `return_optim` is `TRUE`): Information returned by the
+#'   `optim()` function used for the optimization.
+#' @export
+fit_pl <- function(Z, mrfi, family = "onepar", init = 0,
+                   optim_args = list(method = "BFGS"),
+                   return_optim = FALSE){
+
+  if(!family %in% c("onepar")){
+    stop("'", family, "' is not an implemented family.")
+  }
   if(!length(init) == 1 | !is.numeric(init)) {
     stop("Argument 'init' must be a length 1 numeric.")
   }
   C <- length(unique(as.vector(Z))) - 1
   R <- mrfi@Rmat
   n_R <- nrow(R)
+
+  if(is.vector(init) & length(init) == 1) {
+    if(init == 0){
+      init <- array(0, dim = c(C+1, C+1, n_R))
+    } else {
+      init <- vec_to_array(init, family, C, n_R)
+    }
+  } else if(!is_valid_array(init, family)) {
+    stop("'init' array is incompatible with family '", family,"'")
+  }
+  init <- array_to_vec(init, family)
   pl_value <- function(par){
     # Create theta array based on one parameter
-    theta <- array(diag(C+1)*par*2 - par, dim = c(C+1,C+1,n_R))
+    theta <- vec_to_array(par, family, C, n_R)
     # Compute the pseudo-likelihood value
     return(pl_mrf2d(Z, mrfi, theta))
   }
@@ -47,8 +93,8 @@ fitpl_onepar_mrf2d <- function(Z, mrfi, init = 0, return_optim = FALSE,
                              fn = pl_value,
                              control = list(fnscale = -1)),
                         optim_args))
-  out <- list(theta = array(diag(C+1)*o$par*2 - o$par, dim = c(C+1,C+1,n_R)),
+  out <- list(theta = vec_to_array(o$par, family, C, n_R),
               value = o$value)
-  if(return_optim) {out <- c(out, o)}
+  if(return_optim) {out <- c(out, opt = o)}
   return(out)
 }

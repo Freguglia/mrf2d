@@ -7,8 +7,8 @@ test_that("Pseudo-likelihood computing is correct", {
   expect_equal(pl_mrf2d(Z, potts, theta*0), -log(3)*30*30, tolerance = 10^-6)
 
   # One Parameter pseudo likelihood computing
-  onepar <- mrf2d:::fitpl_onepar_mrf2d(Z, potts)
+  onepar <- fit_pl(Z, potts, family = "onepar")
   expect_setequal(names(onepar), c("theta", "value"))
-  onepar <- mrf2d:::fitpl_onepar_mrf2d(Z, potts, optim_args = list(method = "CG"))
+  onepar <- fit_pl(Z, potts, optim_args = list(method = "CG"))
   expect_setequal(names(onepar), c("theta", "value"))
 })

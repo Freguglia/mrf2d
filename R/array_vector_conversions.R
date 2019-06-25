@@ -43,3 +43,13 @@ sanitize_theta <- function(theta) {
   return(theta)
 }
 
+# Creates a vector (with correct length) representing the independent field
+zero_vec <- function(mrfi, family){
+  n_R <- mrfi@n_neis
+  if(family == "onepar") {
+    return(0)
+  } else {
+    stop("'", family, "' is not an implemented family.")
+  }
+}
+
