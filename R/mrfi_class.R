@@ -34,7 +34,6 @@ setMethod("show", "mrfi",
 #'
 #' @param x A \code{\link[=mrfi-class]{mrfi}} object.
 #' @param no_axis `logical` value indicating whether the axis and grid lines are present.
-#' @importFrom ggplot2 ggplot aes_string geom_tile theme_minimal theme_void lims
 #' @exportMethod plot
 setMethod("plot", signature(x = "mrfi", y = "missing"),
           definition = function(x, no_axis = FALSE){
