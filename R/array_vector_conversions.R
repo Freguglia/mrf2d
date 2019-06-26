@@ -10,17 +10,19 @@ is_valid_array <- function(arr, family){
     diags_ok <- all(apply(arr, MARGIN = 3, function(m) all(diag(m) == b)))
     rest_ok <- all(apply(arr, MARGIN = 3, function(m) all(m[row(m)!=col(m)] == -b)))
     return(diags_ok & rest_ok)
+
   } else if(family == "dif") {
     all(apply(arr, MARGIN = 3, function(m){
       #Check if matrix is valid:
       # Are potentials equal for each difference?
       one_by_dif <- sapply(-C:C, function(v){
-        length(unique(m[row(m)-col(m)==v])) == 1
+        length(unique(m[col(m)-row(m)==v])) == 1
       })
       # Do values sum zero?
       zero_sum <- abs(sum(m[ ,1]) + sum(m[1, 2:(C+1)])) < 10^-6
       return(all(one_by_dif) & zero_sum)
     }))
+
   } else {
     stop("'", family, "' is not an implemented family.")
   }
@@ -28,12 +30,26 @@ is_valid_array <- function(arr, family){
 
 # Converts vector to appropriate array of potentials.
 vec_to_array <- function(vec, family, C, n_R){
+
   if(family == "onepar") {
     if(length(vec) != 1) { stop("'vec' must have length 1 for family 'onepar'.") }
     return(array(diag(C+1)*2 - 1, dim = c(C+1, C+1, n_R))*vec)
+
   } else if(family == "dif") {
+    # Potential associated with zero difference (diagonal) is the sum of others.
+    # The order is from -C to -1 then 1 to C.
     if(length(vec) != n_R*2*C) {
       stop("'vec' must have length n_R*2*C for family 'dif'.")}
+    simplify2array(lapply(1:n_R, function(i){
+      v <- vec[(1+(2*C*(i-1))):(2*C*i)]
+      m <- -diag(C+1)*sum(v)
+      k <- 1
+      for(j in c(-C:-1,1:C)){
+        m[col(m) - row(m) == j] <- v[k]
+        k <- k + 1
+      }
+      return(m)
+    }))
 
   } else {
     stop("'", family, "' is not an implemented family.")
@@ -42,9 +58,20 @@ vec_to_array <- function(vec, family, C, n_R){
 
 # Converts array of potentials to a vector
 array_to_vec <- function(arr, family){
+  stopifnot(is_valid_array(arr, family))
+  n_R <- dim(arr)[3]
+  C <- dim(arr)[1] - 1
+
   if(family == "onepar") {
-    stopifnot(is_valid_array(arr, family))
     return(arr[1,1,1])
+
+  } else if(family == "dif") {
+    as.vector(apply(arr, MARGIN = 3, function(m) {
+      sapply(c(-C:-1,1:C), function(v) {
+        m[col(m) - row(m) == v][1]
+      })
+    }))
+
   } else {
     stop("'", family, "' is not an implemented family.")
   }
