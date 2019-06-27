@@ -30,10 +30,9 @@ is_valid_array <- function(arr, family){
 
 # Converts vector to appropriate array of potentials.
 vec_to_array <- function(vec, family, C, n_R){
-
   if(family == "onepar") {
     if(length(vec) != 1) { stop("'vec' must have length 1 for family 'onepar'.") }
-    return(array(diag(C+1)*2 - 1, dim = c(C+1, C+1, n_R))*vec)
+    sanitize_theta(array(diag(C+1)*2 - 1, dim = c(C+1, C+1, n_R))*vec)
 
   } else if(family == "dif") {
     # Potential associated with zero difference (diagonal) is the sum of others.
@@ -81,7 +80,8 @@ array_to_vec <- function(arr, family){
 # a matrix by accident)
 matrix_to_array <- function(m) { return(array(m, dim = c(dim(m),1))) }
 sanitize_theta <- function(theta) {
-  if(is.matrix(theta)) {return(matrix_to_array(theta))}
+  if(is.matrix(theta)) {theta <- matrix_to_array(theta)}
+  rownames(theta) <- colnames(theta) <- 0:(dim(theta)[1]-1)
   return(theta)
 }
 
