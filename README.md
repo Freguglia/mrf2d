@@ -7,6 +7,8 @@
 
 [![Travis build
 status](https://travis-ci.org/Freguglia/mrf2d.svg?branch=master)](https://travis-ci.org/Freguglia/mrf2d)
+[![Codecov test
+coverage](https://codecov.io/gh/Freguglia/mrf2d/branch/master/graph/badge.svg)](https://codecov.io/gh/Freguglia/mrf2d?branch=master)
 <!-- badges: end -->
 
 Markov Random Fields are probabilistic models capable of describing sets
