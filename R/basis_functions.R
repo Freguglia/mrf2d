@@ -73,7 +73,7 @@ polynomial_2d <- function(poly_deg, lattice_dim){
 basis_function_df <- function(fn_list, N, M, standardize = TRUE){
   df <- reshape2::melt(matrix(0, N, M), varnames = c("x","y"))[ ,1:2]
   for(i in seq_along(fn_list)){
-    df <- dplyr::mutate_(df, paste0("fn_list[[",i,"]](x, y, N, M)"))
+    df <- dplyr::mutate(df, fn_list[[i]](x, y, N, M))
     colnames(df)[i+2] <- paste0("f",i)
   }
 
