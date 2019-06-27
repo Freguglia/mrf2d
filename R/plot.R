@@ -3,7 +3,7 @@
 #' @author Victor Freguglia
 #' @title Elegant image plots based on matrices
 #'
-#' @description An alternative to base R's `image` function using `ggplot2`.
+#' @description An alternative to base R's `image()` function using `ggplot2`.
 #' Use `dplot` for discrete valued matrices and `cplot` for continuous value.
 #'
 #' @param Z A `matrix` object with integers only.

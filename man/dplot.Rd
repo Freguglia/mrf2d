@@ -18,7 +18,7 @@ cplot(Y, legend = TRUE)
 a \code{ggplot} object.
 }
 \description{
-An alternative to base R's \code{image} function using \code{ggplot2}.
+An alternative to base R's \code{image()} function using \code{ggplot2}.
 Use \code{dplot} for discrete valued matrices and \code{cplot} for continuous value.
 }
 \author{
