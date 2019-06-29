@@ -4,12 +4,21 @@ is_valid_array <- function(arr, family){
   C <- dim(arr)[1] - 1
   if(dim(arr)[2] != (C+1)) {
     stop("Invalid array: number of rows and columns differ")}
+  if(C < 1) stop("At least two different possible values are required.")
 
   if(family == "onepar"){
     b <- arr[2,1,1]
     diags_ok <- all(apply(arr, MARGIN = 3, function(m) all(diag(m) == 0)))
     rest_ok <- all(apply(arr, MARGIN = 3, function(m) all(m[row(m)!=col(m)] == b)))
     return(diags_ok & rest_ok)
+
+  } else if(family == "oneeach") {
+    all(apply(arr, MARGIN = 3, function(m) {
+      b <- m[1,2]
+      diags_ok <- all(diag(m) == 0)
+      rest_ok <- all(m[row(m)!=col(m)] == b)
+      return(diags_ok & rest_ok)
+    }))
 
   } else if(family == "dif") {
     all(apply(arr, MARGIN = 3, function(m){
@@ -33,6 +42,8 @@ vec_to_array <- function(vec, family, C, n_R){
   if(family == "onepar") {
     if(length(vec) != 1) { stop("'vec' must have length 1 for family 'onepar'.") }
     sanitize_theta(array(1 - diag(C+1), dim = c(C+1, C+1, n_R))*vec)
+
+#  } else if(family == "oneeach"){
 
   } else if(family == "dif") {
     # Potential associated with zero difference (diagonal) is the sum of others.
