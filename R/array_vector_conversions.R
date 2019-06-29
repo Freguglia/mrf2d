@@ -85,16 +85,3 @@ sanitize_theta <- function(theta) {
   rownames(theta) <- colnames(theta) <- 0:(dim(theta)[1]-1)
   return(theta)
 }
-
-# Creates a vector (with correct length) representing the independent field
-zero_vec <- function(mrfi, family, C, n_R){
-  n_R <- mrfi@n_neis
-  if(family == "onepar") {
-    return(0)
-  } else if(family == "dif"){
-    return(rep(0, 2*C*n_R))
-  } else {
-    stop("'", family, "' is not an implemented family.")
-  }
-}
-
