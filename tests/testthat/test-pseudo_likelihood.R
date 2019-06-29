@@ -1,5 +1,5 @@
 test_that("Pseudo-likelihood computing is correct", {
-  expect_equal(pl_mrf2d(matrix(c(0,0,2,2), nrow = 2), ipotts, theta_potts), log(exp(0)/(exp(0)+exp(0)+exp(-1.4)))*4, tolerance = 10^-6)
+  expect_equal(pl_mrf2d(matrix(c(0,0,2,2), nrow = 2), ipotts, theta_potts), log(exp(0)/(exp(0)+exp(0)+exp(-1)))*4, tolerance = 10^-6)
   expect_equal(pl_mrf2d(Z_potts, ipotts, theta_potts*0),
                -log(3)*prod(dim(Z_potts)), tolerance = 10^-6)
 

@@ -6,9 +6,9 @@ is_valid_array <- function(arr, family){
     stop("Invalid array: number of rows and columns differ")}
 
   if(family == "onepar"){
-    b <- arr[1,1,1]
-    diags_ok <- all(apply(arr, MARGIN = 3, function(m) all(diag(m) == b)))
-    rest_ok <- all(apply(arr, MARGIN = 3, function(m) all(m[row(m)!=col(m)] == -b)))
+    b <- arr[2,1,1]
+    diags_ok <- all(apply(arr, MARGIN = 3, function(m) all(diag(m) == 0)))
+    rest_ok <- all(apply(arr, MARGIN = 3, function(m) all(m[row(m)!=col(m)] == b)))
     return(diags_ok & rest_ok)
 
   } else if(family == "dif") {
@@ -18,9 +18,9 @@ is_valid_array <- function(arr, family){
       one_by_dif <- sapply(-C:C, function(v){
         length(unique(m[col(m)-row(m)==v])) == 1
       })
-      # Do values sum zero?
-      zero_sum <- abs(sum(m[ ,1]) + sum(m[1, 2:(C+1)])) < 10^-6
-      return(all(one_by_dif) & zero_sum)
+      # are diagonals zero?
+      zero_diags <- all(apply(arr, MARGIN = 3, function(m) all(diag(m) < 10^-6)))
+      return(all(one_by_dif) & zero_diags)
     }))
 
   } else {
@@ -32,7 +32,7 @@ is_valid_array <- function(arr, family){
 vec_to_array <- function(vec, family, C, n_R){
   if(family == "onepar") {
     if(length(vec) != 1) { stop("'vec' must have length 1 for family 'onepar'.") }
-    sanitize_theta(array(diag(C+1)*2 - 1, dim = c(C+1, C+1, n_R))*vec)
+    sanitize_theta(array(1 - diag(C+1), dim = c(C+1, C+1, n_R))*vec)
 
   } else if(family == "dif") {
     # Potential associated with zero difference (diagonal) is the sum of others.
@@ -41,7 +41,7 @@ vec_to_array <- function(vec, family, C, n_R){
       stop("'vec' must have length n_R*2*C for family 'dif'.")}
     simplify2array(lapply(1:n_R, function(i){
       v <- vec[(1+(2*C*(i-1))):(2*C*i)]
-      m <- -diag(C+1)*sum(v)
+      m <- diag(C+1)*0
       k <- 1
       for(j in c(-C:-1,1:C)){
         m[col(m) - row(m) == j] <- v[k]
@@ -60,9 +60,10 @@ array_to_vec <- function(arr, family){
   stopifnot(is_valid_array(arr, family))
   n_R <- dim(arr)[3]
   C <- dim(arr)[1] - 1
+  if(C == 0) stop("Each slice needs at least two rows/columns.")
 
   if(family == "onepar") {
-    return(arr[1,1,1])
+    return(arr[2,1,1])
 
   } else if(family == "dif") {
     as.vector(apply(arr, MARGIN = 3, function(m) {
@@ -86,10 +87,12 @@ sanitize_theta <- function(theta) {
 }
 
 # Creates a vector (with correct length) representing the independent field
-zero_vec <- function(mrfi, family){
+zero_vec <- function(mrfi, family, C, n_R){
   n_R <- mrfi@n_neis
   if(family == "onepar") {
     return(0)
+  } else if(family == "dif"){
+    return(rep(0, 2*C*n_R))
   } else {
     stop("'", family, "' is not an implemented family.")
   }
