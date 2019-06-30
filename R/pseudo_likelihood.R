@@ -63,7 +63,7 @@ fit_pl <- function(Z, mrfi, family = "onepar", init = 0,
                    optim_args = list(method = "BFGS"),
                    return_optim = FALSE){
 
-  if(!family %in% c("onepar", "dif")){
+  if(!family %in% mrf2d_families){
     stop("'", family, "' is not an implemented family.")
   }
   if(!length(init) == 1 | !is.numeric(init)) {
