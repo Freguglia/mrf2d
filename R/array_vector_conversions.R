@@ -1,3 +1,6 @@
+## These functions convert arrays of potentials to vector of free parameters.
+## Used in maximum pseudo-likelihood estimation, where optim() requires a vector.
+
 # Checks if an array is a valid potential definition.
 is_valid_array <- function(arr, family){
   n_r <- dim(arr)[3]
@@ -25,7 +28,7 @@ is_valid_array <- function(arr, family){
       one_by_dif <- sapply(0:C, function(v){
         length(unique(m[abs(col(m)-row(m))==v])) == 1
       })
-      zero_diags <- all(apply(arr, MARGIN = 3, function(m) all(diag(m) < 10^-6)))
+      zero_diags <- all(apply(arr, MARGIN = 3, function(m) all(diag(m) == 0)))
       return(all(one_by_dif) & zero_diags)
     }))
 
@@ -37,8 +40,13 @@ is_valid_array <- function(arr, family){
         length(unique(m[col(m)-row(m)==v])) == 1
       })
       # are diagonals zero?
-      zero_diags <- all(apply(arr, MARGIN = 3, function(m) all(diag(m) < 10^-6)))
+      zero_diags <- all(apply(arr, MARGIN = 3, function(m) all(diag(m) == 0)))
       return(all(one_by_dif) & zero_diags)
+    }))
+
+  } else if(family == "free") {
+    all(apply(arr, MARGIN = 3, function(m) {
+      all(diag(m) == 0)
     }))
 
   } else {
@@ -58,20 +66,20 @@ vec_to_array <- function(vec, family, C, n_R){
 
   } else if(family == "absdif") {
     if(length(vec) != n_R*C) { stop("'vec' must have length n_R*C for family 'absdif'.")}
-    simplify2array(lapply(1:n_R, function(i){
+    sanitize_theta(simplify2array(lapply(1:n_R, function(i){
       v <- vec[(1+(C*(i-1))):(C*i)]
       m <- diag(C+1)*0
       for(j in 1:C){
         m[abs(col(m) - row(m)) == j] <- v[j]
       }
       return(m)
-    }))
+    })))
 
   } else if(family == "dif") {
     # Potential associated with zero difference (diagonal) is the sum of others.
     # The order is from -C to -1 then 1 to C.
     if(length(vec) != n_R*2*C) { stop("'vec' must have length n_R*2*C for family 'dif'.")}
-    simplify2array(lapply(1:n_R, function(i){
+    sanitize_theta(simplify2array(lapply(1:n_R, function(i){
       v <- vec[(1+(2*C*(i-1))):(2*C*i)]
       m <- diag(C+1)*0
       k <- 1
@@ -80,7 +88,15 @@ vec_to_array <- function(vec, family, C, n_R){
         k <- k+1
       }
       return(m)
-    }))
+    })))
+
+  } else if(family == "free") {
+    if(length(vec) != (n_R*((C+1)^2 - 1))) { stop("'vec' must have length n_R*((C+1)^2 - 1) for family 'free'.")}
+    # Parameters are filled by Columns.
+    sanitize_theta(simplify2array(lapply(1:n_R, function(i) {
+      matrix(c(0, vec[(1 + (i-1)*((C+1)^2)-1) : (i*((C+1)^2) - i)]),
+             nrow = C+1)
+    })))
 
   } else {
     stop("'", family, "' is not an implemented family.")
@@ -114,6 +130,11 @@ array_to_vec <- function(arr, family){
       sapply(c(-C:-1,1:C), function(v) {
         m[col(m) - row(m) == v][1]
       })
+    }))
+
+  } else if(family == "free") {
+    as.vector(apply(arr, MARGIN = 3, function(m){
+      return(as.vector(m)[-1])
     }))
 
   } else {

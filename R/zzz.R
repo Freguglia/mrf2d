@@ -3,4 +3,4 @@
 #' @importFrom methods setClass setMethod
 NULL
 
-mrf2d_families <- c("onepar", "oneeach", "absdif", "dif")
+mrf2d_families <- c("onepar", "oneeach", "absdif", "dif", "free")
