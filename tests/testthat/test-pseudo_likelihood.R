@@ -9,6 +9,9 @@ test_that("Pseudo-likelihood computing is correct", {
   onepar <- fit_pl(Z_potts[1:30, 1:30], ipotts, optim_args = list(method = "CG"), return_optim = TRUE)
   expect_true(all(c("theta", "value", "opt.convergence") %in% names(onepar)))
 
+  # 'oneeach' maximum pseudo-likelihood fitting
+  expect_is(fit_pl(Z_potts[1:30, 1:30], ipotts, family = "oneeach"), "list")
+
   # 'dif' maximum pseudo-likelihood fitting
   dif <- fit_pl(Z_potts[1:30, 1:30], ipotts, family = "dif")
   expect_setequal(names(dif), c("theta", "value"))

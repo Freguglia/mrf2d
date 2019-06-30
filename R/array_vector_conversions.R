@@ -41,9 +41,11 @@ is_valid_array <- function(arr, family){
 vec_to_array <- function(vec, family, C, n_R){
   if(family == "onepar") {
     if(length(vec) != 1) { stop("'vec' must have length 1 for family 'onepar'.") }
-    sanitize_theta(array(1 - diag(C+1), dim = c(C+1, C+1, n_R))*vec)
+    sanitize_theta(array(1 - diag(C+1), dim = c(C+1, C+1, n_R)) * vec)
 
-#  } else if(family == "oneeach"){
+  } else if(family == "oneeach"){
+    if(length(vec) != n_R) { stop("'vec' must have length equal to 'n_R' for family 'oneeach'.") }
+    sanitize_theta(array(1 - diag(C+1), dim = c(C+1, C+1, n_R)) * rep(vec, each = (C+1)^2))
 
   } else if(family == "dif") {
     # Potential associated with zero difference (diagonal) is the sum of others.
@@ -68,13 +70,18 @@ vec_to_array <- function(vec, family, C, n_R){
 
 # Converts array of potentials to a vector
 array_to_vec <- function(arr, family){
-  stopifnot(is_valid_array(arr, family))
+  if(!is_valid_array(arr, family)){ stop("Object 'arr' is not a valid array for 'family'")}
   n_R <- dim(arr)[3]
   C <- dim(arr)[1] - 1
   if(C == 0) stop("Each slice needs at least two rows/columns.")
 
   if(family == "onepar") {
     return(arr[2,1,1])
+
+  } else if(family == "oneeach") {
+    return(apply(arr, MARGIN = 3, function(m) {
+      m[1,2]
+    }))
 
   } else if(family == "dif") {
     as.vector(apply(arr, MARGIN = 3, function(m) {
