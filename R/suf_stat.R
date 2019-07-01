@@ -31,5 +31,8 @@ suf_stat <- function(arr, family){
     as.vector(apply(arr, MARGIN = 3, function(m){
       return(as.vector(m)[-1])
     }))
+
+  } else {
+    stop("'", family, "' is not an implemented family.")
   }
 }
