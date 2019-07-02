@@ -23,6 +23,58 @@ setMethod("show", "mrfi",
             }
           })
 
+
+#' @name mrfi
+#' @title Creation of \code{\link[=mrfi-class]{mrfi}} objects.
+#' @param max_norm a `numeric` value. All points with norm \eqn{\le} `max_dist` are included.
+#' @param norm_type a `character` indicating the norm type used. Possible values are "m", "1", "2", etc. See \code{\link[=norm]{norm}} for details.
+#' @param positions a `list` of `numeric` vectors of length 2. Each vector corresponds to a relative position included.
+#' @return A \code{\link[=mrfi-class]{mrfi}} object.
+#' @importFrom methods new
+#' @export
+mrfi <- function(max_norm = 1, positions = NULL, norm_type = "1"){
+  if(max_norm < 0){stop("'max_norm' must be greater than or equal 0.")}
+  if(max_norm > 0){
+    df <- expand.grid(x = -max_norm:max_norm, y = 0:max_norm)
+    df <- df[apply(df, MARGIN = 1,
+                   function(m) norm(matrix(m), type = norm_type)) <= max_norm,]
+  } else {
+    df <- data.frame(x = c(0,0), y = c(0,0))
+  }
+
+  if(!is.null(positions)){
+    if(!is.list(positions)){
+      stop("'positions' must be a list of relative positions.")
+    } else if(any(!unlist(lapply(positions, is.numeric)))) {
+      stop("'positions' must be a list of relative positions (numeric).")
+    } else {
+      df <- rbind(as.matrix(df), do.call(rbind, positions))
+    }
+  }
+
+  df_minus <- -df
+  str_vec_df <- apply(df, MARGIN = 1, paste0, collapse = "__")
+  str_vec_minus <- apply(df_minus, MARGIN = 1, paste0, collapse = "__")
+  to_remove <- which(str_vec_df %in% str_vec_minus)
+
+
+  while(length(to_remove) > 0){
+    if(length(to_remove) > 1) {
+      df <- df[-to_remove[1], ]
+      df_minus <- -df
+      str_vec_df <- apply(df, MARGIN = 1, paste0, collapse = "__")
+      str_vec_minus <- apply(df_minus, MARGIN = 1, paste0, collapse = "__")
+    } else {
+      df <- df[-to_remove,]
+      break
+    }
+    to_remove <- which(str_vec_df %in% str_vec_minus)
+  }
+  df <- matrix(unlist(df), ncol = 2)
+  new("mrfi", Rmat = df, n_neis = nrow(df))
+}
+
+
 #' @rdname plot.mrfi
 #' @aliases mrfi-plot
 #' @title Plotting of `mrfi` objects.
@@ -46,12 +98,12 @@ setMethod("plot", signature(x = "mrfi", y = "missing"),
 
             df_center <- data.frame(rx = 0, ry = 0)
 
-            max_dist <- max(5, max(df$rx), max(df$ry)) + 0.5
+            max_norm <- max(5, max(df$rx), max(df$ry)) + 0.5
             p <- ggplot(df, aes_string(x = "rx", y = "ry")) +
               geom_tile(fill = "gray", color = "black") +
               geom_tile(data = df_center, fill = "black") +
               theme_minimal() +
-              lims(x = c(-max_dist, max_dist), y = c(-max_dist, max_dist))
+              lims(x = c(-max_norm, max_norm), y = c(-max_norm, max_norm))
             if(no_axis) {p <- p + theme_void()}
             p
           })
