@@ -23,7 +23,7 @@ setMethod("show", "mrfi",
             }
           })
 
-#' @name plot.mrfi
+#' @rdname plot.mrfi
 #' @aliases mrfi-plot
 #' @title Plotting of `mrfi` objects.
 #'
