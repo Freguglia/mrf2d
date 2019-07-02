@@ -67,13 +67,15 @@ polynomial_2d <- function(poly_deg, lattice_dim){
   return(l_poly)
 }
 
+globalVariables(c(".x_basis", ".y_basis"))
+
 # Creates a data frame based on a list of basis functions.
 # Simplifies the use in other functions.
 #' @importFrom stats sd
 basis_function_df <- function(fn_list, N, M, standardize = TRUE){
-  df <- reshape2::melt(matrix(0, N, M), varnames = c("x","y"))[ ,1:2]
+  df <- reshape2::melt(matrix(0, N, M), varnames = c(".x_basis",".y_basis"))[ ,1:2]
   for(i in seq_along(fn_list)){
-    df <- dplyr::mutate(df, fn_list[[i]](x, y, N, M))
+    df <- dplyr::mutate(df, fn_list[[i]](.x_basis, .y_basis, N, M))
     colnames(df)[i+2] <- paste0("f",i)
   }
 

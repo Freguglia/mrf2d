@@ -19,6 +19,7 @@
 #'
 #' @return A `numeric` with the pseudo-likelihood value.
 #'
+#'
 #' @export
 pl_mrf2d <- function(Z, mrfi, theta, log_scale = TRUE){
   R <- mrfi@Rmat
@@ -58,6 +59,8 @@ pl_mrf2d <- function(Z, mrfi, theta, log_scale = TRUE){
 #'  * `value`: The optimal pseudo-likelihood value.
 #'  * `opt.xxx`(if `return_optim` is `TRUE`): Information returned by the
 #'   `optim()` function used for the optimization.
+#'
+#' @importFrom stats optim
 #' @export
 fit_pl <- function(Z, mrfi, family = "onepar", init = 0,
                    optim_args = list(method = "BFGS"),
