@@ -7,6 +7,7 @@
 #' Use `dplot` for discrete valued matrices and `cplot` for continuous value.
 #'
 #' @param Z A `matrix` object with integers only.
+#' @param legend `logical` indicating whether a legend should be included or not.
 #' @return a `ggplot` object.
 #' @import ggplot2
 #' @export
@@ -14,7 +15,7 @@ dplot <- function(Z, legend = FALSE){
   df <- data.frame(x = as.vector(row(Z)),
                    y = as.vector(col(Z)),
                    value = as.vector(Z))
-  ggplot(df, aes_string(x = "x", y = "y", fill = "factor(value)")) +
+  p <- ggplot(df, aes_string(x = "x", y = "y", fill = "factor(value)")) +
     geom_raster() +
     scale_x_continuous(expand = c(0, 0)) +
     scale_y_continuous(expand = c(0, 0)) +
@@ -23,6 +24,8 @@ dplot <- function(Z, legend = FALSE){
           axis.title.y = element_blank(),
           legend.title = element_blank(),
           legend.text = element_text(margin = margin(l=5)))
+  if(!legend) { p <- p + theme(legend.position = "none")}
+  return(p)
 }
 
 #' @rdname dplot
@@ -33,7 +36,7 @@ cplot <- function(Y, legend = TRUE){
   df <- data.frame(x = as.vector(row(Y)),
                    y = as.vector(col(Y)),
                    value = as.vector(Y))
-  ggplot(df, aes_string(x = "x", y = "y", fill = "value")) +
+  p <- ggplot(df, aes_string(x = "x", y = "y", fill = "value")) +
     geom_raster() +
     scale_x_continuous(expand = c(0, 0)) +
     scale_y_continuous(expand = c(0, 0)) +
@@ -42,4 +45,6 @@ cplot <- function(Y, legend = TRUE){
           axis.title.y = element_blank(),
           legend.title = element_blank(),
           legend.text = element_text(margin = margin(l=5)))
+  if(!legend) { p <- p + theme(legend.position = "none")}
+  return(p)
 }

@@ -12,6 +12,8 @@ cplot(Y, legend = TRUE)
 \arguments{
 \item{Z}{A \code{matrix} object with integers only.}
 
+\item{legend}{\code{logical} indicating whether a legend should be included or not.}
+
 \item{Y}{A \code{matrix} object with continuous values.}
 }
 \value{
