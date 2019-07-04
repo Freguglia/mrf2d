@@ -3,6 +3,7 @@
 export(cplot)
 export(dplot)
 export(fit_pl)
+export(fit_sa)
 export(fourier_2d)
 export(mrfi)
 export(pl_mrf2d)
