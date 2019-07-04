@@ -69,8 +69,8 @@ fit_pl <- function(Z, mrfi, family = "onepar", init = 0,
   if(!family %in% mrf2d_families){
     stop("'", family, "' is not an implemented family.")
   }
-  if(!length(init) == 1 | !is.numeric(init)) {
-    stop("Argument 'init' must be a length 1 numeric.")
+  if(!is.numeric(init)) {
+    stop("Argument 'init' must be numeric.")
   }
   C <- length(unique(as.vector(Z))) - 1
   R <- mrfi@Rmat
