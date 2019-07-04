@@ -9,6 +9,8 @@
 status](https://travis-ci.org/Freguglia/mrf2d.svg?branch=master)](https://travis-ci.org/Freguglia/mrf2d)
 [![Codecov test
 coverage](https://codecov.io/gh/Freguglia/mrf2d/branch/master/graph/badge.svg)](https://codecov.io/gh/Freguglia/mrf2d?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/mrf2d)](https://cran.r-project.org/package=mrf2d)
 <!-- badges: end -->
 
 Markov Random Fields are probabilistic models capable of describing sets
@@ -35,7 +37,7 @@ interaction.
 
 <p align="center">
 
-![](man/figures/README-unnamed-chunk-2-1.png)![](man/figures/README-unnamed-chunk-2-2.png)
+![](man/figures/README-example_interacions-1.png)![](man/figures/README-example_interacions-2.png)![](man/figures/README-example_interacions-3.png)
 
 </p>
 
