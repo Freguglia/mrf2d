@@ -76,8 +76,8 @@ fit_pl <- function(Z, mrfi, family = "onepar", init = 0,
   R <- mrfi@Rmat
   n_R <- nrow(R)
 
-  if(is.vector(init) & length(init) == 1) {
-    if(init == 0){
+  if(is.vector(init)) {
+    if(identical(init, 0)){
       init <- array(0, dim = c(C+1, C+1, n_R))
     } else {
       init <- vec_to_array(init, family, C, n_R)
