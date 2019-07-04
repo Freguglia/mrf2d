@@ -2,6 +2,7 @@ test_that("mrf Gibbs Sampler", {
   expect_error(rmrf2d("string", mrfi(), theta_potts))
   expect_error(rmrf2d(c(20,20,20), mrfi(), theta_potts))
   expect_error(rmrf2d(c(-30,30), mrfi(), theta_potts))
+  expect_error(rmrf2d(c(10,10), mrfi(), theta_potts, method = "notgibbs"))
 
   set.seed(1)
   Z <- rmrf2d(c(30,30), mrfi(), theta_potts)
