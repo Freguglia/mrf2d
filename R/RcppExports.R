@@ -5,6 +5,10 @@ conditional_probabilities_mrf <- function(Z, position, R, theta, N, M, n_R, C) {
     .Call('_mrf2d_conditional_probabilities_mrf', PACKAGE = 'mrf2d', Z, position, R, theta, N, M, n_R, C)
 }
 
+icm_restoration_cpp <- function(init_Z, R, theta, corr_prob, cycles) {
+    .Call('_mrf2d_icm_restoration_cpp', PACKAGE = 'mrf2d', init_Z, R, theta, corr_prob, cycles)
+}
+
 gibbs_sampler_mrf2d <- function(init_Z, R, theta, n_steps) {
     .Call('_mrf2d_gibbs_sampler_mrf2d', PACKAGE = 'mrf2d', init_Z, R, theta, n_steps)
 }

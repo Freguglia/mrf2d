@@ -24,6 +24,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// icm_restoration_cpp
+IntegerMatrix icm_restoration_cpp(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, double corr_prob, int cycles);
+RcppExport SEXP _mrf2d_icm_restoration_cpp(SEXP init_ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP corr_probSEXP, SEXP cyclesSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerMatrix >::type init_Z(init_ZSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< double >::type corr_prob(corr_probSEXP);
+    Rcpp::traits::input_parameter< int >::type cycles(cyclesSEXP);
+    rcpp_result_gen = Rcpp::wrap(icm_restoration_cpp(init_Z, R, theta, corr_prob, cycles));
+    return rcpp_result_gen;
+END_RCPP
+}
 // gibbs_sampler_mrf2d
 IntegerMatrix gibbs_sampler_mrf2d(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, int n_steps);
 RcppExport SEXP _mrf2d_gibbs_sampler_mrf2d(SEXP init_ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP n_stepsSEXP) {
@@ -82,6 +97,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_mrf2d_conditional_probabilities_mrf", (DL_FUNC) &_mrf2d_conditional_probabilities_mrf, 8},
+    {"_mrf2d_icm_restoration_cpp", (DL_FUNC) &_mrf2d_icm_restoration_cpp, 5},
     {"_mrf2d_gibbs_sampler_mrf2d", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf2d, 4},
     {"_mrf2d_table_relative", (DL_FUNC) &_mrf2d_table_relative, 4},
     {"_mrf2d_table_relative_3d", (DL_FUNC) &_mrf2d_table_relative_3d, 4},
