@@ -2,6 +2,7 @@
 
 export(cplot)
 export(dplot)
+export(fit_ghm)
 export(fit_icm)
 export(fit_pl)
 export(fit_sa)

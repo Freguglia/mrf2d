@@ -2,9 +2,9 @@
 % Please edit documentation in R/fit_icm.R
 \name{fit_icm}
 \alias{fit_icm}
-\title{Iterated Conditional Modes algorithm}
+\title{Iterated Conditional Modes algorithm for image restoration}
 \usage{
-fit_icm(init_Z, mrfi, theta, steps = 10)
+fit_icm(init_Z, mrfi, theta, error_prob, cycles = 10)
 }
 \arguments{
 \item{mrfi}{A \code{\link[=mrfi-class]{mrfi}} object representing the
@@ -15,14 +15,16 @@ interacting positions, rows represent pixel values and columns represent
 neighbor values. As an example: \code{theta[1,3,2]} has the potential pairs of
 values 0,2 in the second relative position of \code{mrfi}.}
 
-\item{steps}{The number of times each pixel is updated.}
+\item{error_prob}{The probability a pixel's value is corrupted.}
+
+\item{n_cycles}{The number of times each pixel is updated.}
 }
 \value{
 A \code{matrix} with the resulting configuration.
 }
 \description{
 Computes maximum probability configuration for a Markov random
-field.
+with corrupted pixel values.
 }
 \author{
 Victor Freguglia

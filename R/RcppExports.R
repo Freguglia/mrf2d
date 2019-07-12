@@ -9,6 +9,18 @@ icm_restoration_cpp <- function(init_Z, R, theta, corr_prob, cycles) {
     .Call('_mrf2d_icm_restoration_cpp', PACKAGE = 'mrf2d', init_Z, R, theta, corr_prob, cycles)
 }
 
+cprob_ghm_one <- function(Z, position, R, theta, N, M, n_R, C, mus, sigmas, Y) {
+    .Call('_mrf2d_cprob_ghm_one', PACKAGE = 'mrf2d', Z, position, R, theta, N, M, n_R, C, mus, sigmas, Y)
+}
+
+cprob_ghm_all <- function(Z, R, theta, mus, sigmas, Y) {
+    .Call('_mrf2d_cprob_ghm_all', PACKAGE = 'mrf2d', Z, R, theta, mus, sigmas, Y)
+}
+
+icm_gaussian_cpp <- function(Y, R, init_Z, theta, mus, sigmas, cycles) {
+    .Call('_mrf2d_icm_gaussian_cpp', PACKAGE = 'mrf2d', Y, R, init_Z, theta, mus, sigmas, cycles)
+}
+
 gibbs_sampler_mrf2d <- function(init_Z, R, theta, n_steps) {
     .Call('_mrf2d_gibbs_sampler_mrf2d', PACKAGE = 'mrf2d', init_Z, R, theta, n_steps)
 }
