@@ -1,0 +1,49 @@
+---
+title: "A guide to mrf2d"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A guide to mrf2d}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(mrf2d)
+```
+
+## Markov Random Fields on 2-dimensional lattices
+
+## The `mrfi` class and parameter arrays
+
+### Creating `mrfi` objects
+
+### Parameter restriction families
+
+#### family `'onepar'`
+
+#### family `'oneeach'`
+
+#### family `'absdif'`
+
+#### family `'dif'`
+
+#### family `'free'`
+
+## Parameter estimation on Markov Random Fields
+
+### Pseudo-Likelihood
+
+### Stochastic Approximation
+
+## Hidden Markov Random Fields
+
+### Corrupted discrete image model
+
+### Gaussian Mixtures
