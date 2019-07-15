@@ -16,7 +16,7 @@
 #' @param icm_cycles Number of steps used in the Iterated Conditional Modes
 #'  algorithm executed in each interaction. Defaults to 6.
 #'
-#' @return A list containing some stuff.
+#' @return A list containing some stuff to be documented.
 #' @export
 fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
                     equal_vars = TRUE, init_mus = NULL,
@@ -49,8 +49,8 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
                        init_mus = seq(min(e), max(e), length.out = C+1),
                        init_sigmas = rep(diff(range(e))/(2*C), C+1),
                        maxiter, max_dist, icm_cycles, verbose = FALSE)
-    mus_old <- ind_fit$mus
-    sigmas_old <- ind_fit$sigmas
+    mus_old <- ind_fit$par$mu
+    sigmas_old <- ind_fit$par$sigma
   } else {
     mus_old <- init_mus
     sigmas_old <- init_sigmas
@@ -91,14 +91,19 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
                   abs(sigmas_old - sigmas_new)))
 
     iter <- iter + 1
-    if(verbose) {cat("\r", iter)}
+    if(verbose) {cat("\r EM iteration:", iter)}
     mus_old <- mus_new
     sigmas_old <- sigmas_new
   }
 
-  return(list(mus = mus_old,
-              sigmas = sigmas_old,
-              S = S,
+  if(verbose) {cat("\r Finished with ",iter, "iterations. \n")}
+
+  df_par <- data.frame(mu = mus_old, sigma = sigmas_old)
+  rownames(df_par) = 0:C
+
+  return(list(par = df_par,
+              fixed = S,
               Z_pred = Z,
-              predicted = apply(Z, c(1,2), function(z) mus_old[z+1]) + S))
+              predicted = apply(Z, c(1,2), function(z) mus_old[z+1]) + S,
+              iterations = iter))
 }
