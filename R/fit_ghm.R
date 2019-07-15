@@ -1,6 +1,6 @@
 #' @name fit_ghm
 #' @author Victor Freguglia
-#' @title EM for Hidden Markov Gaussian field
+#' @title EM for Gaussian Hidden Markov field
 #'
 #' @description Em algorithm fitting of Gaussian mixture driven by a hidden
 #'  Markov random field with known parameters.
