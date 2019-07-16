@@ -1,6 +1,8 @@
 ---
 title: "A guide to mrf2d"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    number_sections: true
 vignette: >
   %\VignetteIndexEntry{A guide to mrf2d}
   %\VignetteEngine{knitr::rmarkdown}
@@ -18,32 +20,42 @@ knitr::opts_chunk$set(
 library(mrf2d)
 ```
 
-## Markov Random Fields on 2-dimensional lattices
+# Introduction
 
-## The `mrfi` class and parameter arrays
+## A quick introduction to Markov Random Fields
 
-### Creating `mrfi` objects
+ Markov Random Fields are probabilistic models used for modeling processes with local dependence. This dependence can be described by a graph $\mathcal{G} = (\mathcal{V}, \mathcal{N})$, where $\mathcal{V}$ is a set of vertices and $\mathcal{N}$ a neighborhood system.
 
-### Parameter restriction families
+$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{q \in Q} g_q(\mathbf z_q, \theta) \right) $$
 
-#### family `'onepar'`
+## A spatially stationary MRF model for 2-dimensional lattices
 
-#### family `'oneeach'`
+## The `mrf2d` package
 
-#### family `'absdif'`
+# The `mrfi` class and parameter arrays
 
-#### family `'dif'`
+## Creating `mrfi` objects
 
-#### family `'free'`
+## Parameter restriction families
 
-## Parameter estimation on Markov Random Fields
+### family `'onepar'`
 
-### Pseudo-Likelihood
+### family `'oneeach'`
 
-### Stochastic Approximation
+### family `'absdif'`
 
-## Hidden Markov Random Fields
+### family `'dif'`
 
-### Corrupted discrete image model
+### family `'free'`
 
-### Gaussian Mixtures
+# Parameter estimation on Markov Random Fields
+
+## Pseudo-Likelihood
+
+## Stochastic Approximation
+
+# Hidden Markov Random Fields
+
+## Corrupted discrete image model
+
+## Gaussian Mixtures
