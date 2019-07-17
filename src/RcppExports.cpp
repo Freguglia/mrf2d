@@ -107,6 +107,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// pgibbs_sampler_mrf2d
+IntegerMatrix pgibbs_sampler_mrf2d(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, int n_steps, IntegerVector order);
+RcppExport SEXP _mrf2d_pgibbs_sampler_mrf2d(SEXP init_ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP n_stepsSEXP, SEXP orderSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< IntegerMatrix >::type init_Z(init_ZSEXP);
+    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< int >::type n_steps(n_stepsSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type order(orderSEXP);
+    rcpp_result_gen = Rcpp::wrap(pgibbs_sampler_mrf2d(init_Z, R, theta, n_steps, order));
+    return rcpp_result_gen;
+END_RCPP
+}
 // table_relative
 arma::dmat table_relative(const IntegerMatrix& Z, IntegerVector r, int C, bool prop);
 RcppExport SEXP _mrf2d_table_relative(SEXP ZSEXP, SEXP rSEXP, SEXP CSEXP, SEXP propSEXP) {
@@ -156,6 +171,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_mrf2d_cprob_ghm_all", (DL_FUNC) &_mrf2d_cprob_ghm_all, 6},
     {"_mrf2d_icm_gaussian_cpp", (DL_FUNC) &_mrf2d_icm_gaussian_cpp, 7},
     {"_mrf2d_gibbs_sampler_mrf2d", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf2d, 4},
+    {"_mrf2d_pgibbs_sampler_mrf2d", (DL_FUNC) &_mrf2d_pgibbs_sampler_mrf2d, 5},
     {"_mrf2d_table_relative", (DL_FUNC) &_mrf2d_table_relative, 4},
     {"_mrf2d_table_relative_3d", (DL_FUNC) &_mrf2d_table_relative_3d, 4},
     {"_mrf2d_log_pl_mrf", (DL_FUNC) &_mrf2d_log_pl_mrf, 3},

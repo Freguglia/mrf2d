@@ -46,3 +46,48 @@ rmrf2d <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
   }
 
 }
+
+#' @export
+prmrf2d <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
+  # Check validity of the input
+  if(!is.matrix(init_Z)) {
+    if(is.numeric(init_Z) & is.vector(init_Z)) {
+      if(length(init_Z) == 2 & min(init_Z) > 0) {
+        .space <- 0:(dim(theta)[1] - 1)
+        init_Z <- matrix(sample(.space, prod(init_Z),replace = TRUE),
+                         nrow = init_Z[1], ncol = init_Z[2])
+      } else {
+        stop("Argument 'init_Z' must be either a matrix or a length 2 numeric vector with lattice dimensions.")
+      }
+    } else {
+      stop("Argument 'init_Z' must be either a matrix or a length 2 numeric vector with lattice dimensions.")
+    }
+  }
+  theta <- sanitize_theta(theta)
+
+  R <- mrfi@Rmat
+  Z <- init_Z
+
+  len <- length(Z)
+
+  if(nrow(Z) > ncol(Z)) {Z <- t(Z)}
+
+  if(method == "gibbs"){
+    for(i in seq_len(steps)){
+      order <- sample(0:(len-1), len, replace = FALSE)
+      Z <- pgibbs_sampler_mrf2d(Z, R, theta, 1, order)
+    }
+    if(nrow(Z) < ncol(Z)) { Z <- t(Z) }
+    return(Z)
+
+  } else {
+    valid_methods <- c("'gibbs'")
+    stop("Invalid 'method' argument. Current support methods are: ",
+         paste(valid_methods, collapse = " "))
+  }
+
+}
+
+# benchmark(sample_in = rmrf2d(c(100,100), mrfi(), theta_potts, steps = 6),
+#           sample_out = prmrf2d(c(100,100), mrfi(), theta_potts, steps = 6),
+#           replications = 10)
