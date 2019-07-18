@@ -108,8 +108,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // pgibbs_sampler_mrf2d
-IntegerMatrix pgibbs_sampler_mrf2d(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, int n_steps, IntegerVector order);
-RcppExport SEXP _mrf2d_pgibbs_sampler_mrf2d(SEXP init_ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP n_stepsSEXP, SEXP orderSEXP) {
+IntegerMatrix pgibbs_sampler_mrf2d(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, int n_steps, IntegerVector subset);
+RcppExport SEXP _mrf2d_pgibbs_sampler_mrf2d(SEXP init_ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP n_stepsSEXP, SEXP subsetSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -117,8 +117,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
     Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
     Rcpp::traits::input_parameter< int >::type n_steps(n_stepsSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type order(orderSEXP);
-    rcpp_result_gen = Rcpp::wrap(pgibbs_sampler_mrf2d(init_Z, R, theta, n_steps, order));
+    Rcpp::traits::input_parameter< IntegerVector >::type subset(subsetSEXP);
+    rcpp_result_gen = Rcpp::wrap(pgibbs_sampler_mrf2d(init_Z, R, theta, n_steps, subset));
     return rcpp_result_gen;
 END_RCPP
 }

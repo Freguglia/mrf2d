@@ -48,7 +48,7 @@ rmrf2d <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
 }
 
 #' @export
-prmrf2d <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
+prmrf2d <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs", nblocks = 2){
   # Check validity of the input
   if(!is.matrix(init_Z)) {
     if(is.numeric(init_Z) & is.vector(init_Z)) {
@@ -70,14 +70,24 @@ prmrf2d <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
 
   len <- length(Z)
 
-  if(nrow(Z) > ncol(Z)) {Z <- t(Z)}
+  blocks <- sort(rep_len(1:(2*nblocks), len))
+  bl_lis <- split(1:len, blocks)
+  blmat <- matrix(blocks, nrow(Z), ncol(Z))
+  odd_bl <- seq(1, 2*nblocks-1, 2)
+  even_bl <- seq(2, 2*nblocks, 2)
 
   if(method == "gibbs"){
     for(i in seq_len(steps)){
-      order <- sample(0:(len-1), len, replace = FALSE)
-      Z <- pgibbs_sampler_mrf2d(Z, R, theta, 1, order)
+      #Process odd blocks
+      for(bl in odd_bl){
+        Z <- pgibbs_sampler_mrf2d(Z, R, theta, 1, subset = bl_lis[[bl]])
+      }
+
+      # Even blocks
+      for(bl in even_bl){
+        Z <- pgibbs_sampler_mrf2d(Z, R, theta, 1, subset = bl_lis[[bl]])
+      }
     }
-    if(nrow(Z) < ncol(Z)) { Z <- t(Z) }
     return(Z)
 
   } else {
