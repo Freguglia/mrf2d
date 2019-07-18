@@ -71,22 +71,35 @@ prmrf2d <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs", nblocks =
   len <- length(Z)
 
   blocks <- sort(rep_len(1:(2*nblocks), len))
-  bl_lis <- split(1:len, blocks)
-  blmat <- matrix(blocks, nrow(Z), ncol(Z))
+  bl_lis <- split((1:len) -1, blocks)
+  blmat <- matrix(blocks, nrow(Z), ncol(Z), byrow = T)
   odd_bl <- seq(1, 2*nblocks-1, 2)
   even_bl <- seq(2, 2*nblocks, 2)
 
   if(method == "gibbs"){
     for(i in seq_len(steps)){
       #Process odd blocks
-      for(bl in odd_bl){
-        Z <- pgibbs_sampler_mrf2d(Z, R, theta, 1, subset = bl_lis[[bl]])
+      odd_res <- foreach(bl = odd_bl) %dopar% {
+        pgibbs_sampler_mrf2d(Z, R, theta, 1, subset = bl_lis[[bl]])
       }
 
-      # Even blocks
-      for(bl in even_bl){
-        Z <- pgibbs_sampler_mrf2d(Z, R, theta, 1, subset = bl_lis[[bl]])
+      # Update Z with the new odd blocks
+      for(j in seq_along(odd_bl)){
+        idx <- blmat == odd_bl[j]
+        Z[idx] <- odd_res[[j]][idx]
       }
+
+      #Process even blocks
+      odd_res <- foreach(bl = even_bl) %dopar% {
+        pgibbs_sampler_mrf2d(Z, R, theta, 1, subset = bl_lis[[bl]])
+      }
+
+      # Update Z with the new odd blocks
+      for(j in seq_along(even_bl)){
+        idx <- blmat == even_bl[j]
+        Z[idx] <- odd_res[[j]][idx]
+      }
+
     }
     return(Z)
 
