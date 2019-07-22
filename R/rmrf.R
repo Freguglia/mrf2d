@@ -1,24 +1,51 @@
 #' @name rmrf2d
+#' @author Victor Freguglia
 #' @title Sampling of Markov Random Fields on 2d lattices
 #'
-#' @description Performs pixel-wise updates based on conditional distributions
-#'  to sample from a Markov random field. The order pixels are updated is
-#'  randomized in each step.
+#' @description Performs pixelwise updates based on conditional distributions
+#'  to sample from a Markov random field.
 #'
-#' @param init_Z A `matrix` object with the initial field configuration. Its
-#'  valuesmust be integers in 0,...,C. A length 2 `numeric` vector with lattice
-#'  dimensions can be used to start from a random configuration.
-#' @param mrfi A \code{\link[=mrfi-class]{mrfi}} object representing the
-#'  interaction structure.
-#' @param theta A 3-dimensional array describing potentials. Slices represent
-#'  interacting positions, rows represent pixel values and columns represent
-#'  neighbor values. As an example: `theta[1,3,2]` has the potential pairs of
-#'  values 0,2 in the second relative position of `mrfi`.
-#' @param steps The number of complete (all pixels) updates to be done.
+#' @inheritParams pl_mrf2d
+#' @param init_Z One of two options:
+#'  * A `matrix` object with the initial field configuration. Its
+#'  valuesmust be integers in `0,...,C`.
+#'  * A length 2 `numeric` vector with the lattice dimensions.
+#' @param cycles The number of complete (all pixels) updates to be done.
 #' @param method Method used to perform pixel-wise updates.
 #'  * `'gibbs'`: Gibbs Sampler method. Samples from conditional distribution.
+#'
+#' @return A `matrix` with the sampled field.
+#'
+#' @details This function implements a Gibbs Sampling scheme to sample from
+#' a Markov random field by iteratively sampling pixel values from the
+#' conditional distribution
+#'  \deqn{P(Z_i | Z_{{N}_i}).}
+#'
+#'  A cycle means exactly one update to each pixel. The order pixels are
+#'  sampled is randomized within each cycle.
+#'
+#'  If `init_Z` is passed as a length 2 vector with lattice dimensions, the
+#'  initial field is sampled from independent discrete uniform distributions in
+#'  `0,...,C`. The value of C is obtained from the number of rows/columns of
+#'  `theta`.
+#'
+#' @note As in any Gibbs Sampling scheme, a large number of cycles may be
+#'  required to achieve the target distribution, specially for strong
+#'  interaction systems.
+#'
+#' @examples
+#' # Sample using specified lattice dimension
+#' Z <- rmrf2d(c(150,150), mrfi(1), theta_potts)
+#'
+#' #Sample using itial configuration
+#' Z2 <- rmrf2d(Z, mrfi(1), theta_potts)
+#'
+#' # View results
+#' dplot(Z)
+#' dplot(Z2)
+#'
 #' @export
-rmrf2d <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
+rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, method = "gibbs"){
   # Check validity of the input
   if(!is.matrix(init_Z)) {
     if(is.numeric(init_Z) & is.vector(init_Z)) {
@@ -38,7 +65,7 @@ rmrf2d <- function(init_Z, mrfi, theta, steps = 10, method = "gibbs"){
   R <- mrfi@Rmat
 
   if(method == "gibbs"){
-    return(gibbs_sampler_mrf2d(init_Z, R, theta, steps))
+    return(gibbs_sampler_mrf2d(init_Z, R, theta, cycles))
   } else {
     valid_methods <- c("'gibbs'")
     stop("Invalid 'method' argument. Current support methods are: ",
