@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# mrf2d
+# mrf2d <a href='https://github.com/Freguglia/mrf2d'><img src='man/figures/mrf2d_logo.png' align="right" height="200" /></a>
 
 <!-- badges: start -->
 
@@ -18,12 +18,11 @@ of random variables with a local dependence property (the Markov
 property) defined on a neighborhood system. Particularly on the context
 of image processing, pixels can be seen as vertices of a graph defined
 on a finite 2-dimensional lattice, and a neighborhood system can be
-defined based on their relative positions to construct a
-MRF.
+defined based on their relative positions to construct a MRF.
 
 <p align="center">
 
-<img src="man/Figures/README-/animation_ising.gif" alt="drawing" width="300" />
+<img src="man/figures/animation_ising.gif" alt="drawing" width="300" />
 
 <p>
 

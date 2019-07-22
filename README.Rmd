@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   echo = FALSE
 )
 ```
-# mrf2d
+# mrf2d <a href='https://github.com/Freguglia/mrf2d'><img src='man/figures/mrf2d_logo.png' align="right" height="200" /></a>
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/Freguglia/mrf2d.svg?branch=master)](https://travis-ci.org/Freguglia/mrf2d)
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 Markov Random Fields are probabilistic models capable of describing sets of random variables with a local dependence property (the Markov property) defined on a neighborhood system. Particularly on the context of image processing, pixels can be seen as vertices of a graph defined on a finite 2-dimensional lattice, and a neighborhood system can be defined based on their relative positions to construct a MRF.
 
 <p align="center">
-<img src="man/Figures/README-/animation_ising.gif" alt="drawing" width="300" />
+<img src="man/figures/animation_ising.gif" alt="drawing" width="300" />
 <p>
 
 The goal of `mrf2d` is to provide simple functions for sampling and analysis of Markov Random Fields on 2-dimensional lattices, including Hidden Markov Random Fields. It introduces the S4 class `mrfi` to describe interaction structures in a very general way, being able to adapt from very simple cases like the Ising Model to complex anisotropic models with different types of interaction.
