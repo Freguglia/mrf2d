@@ -20,7 +20,7 @@
 #' @param method Method used to perform pixel-wise updates.
 #'  * `'gibbs'`: Gibbs Sampler method. Samples from conditional distribution.
 #'
-#' @return
+#' @return A `matrix` with the sampled field.
 #'
 #' @details This function implements a Gibbs Sampling scheme to sample from
 #' a Markov random field by iteratively sampling pixel values from the
@@ -34,8 +34,24 @@
 #'  initial field is sampled from independent discrete uniform distributions in
 #'  `0,...,C`. The value of C is obtained from the number of rows/columns of
 #'  `theta`.
+#'
+#' @note As in any Gibbs Sampling scheme, a large number of cycles may be
+#'  required to achieve the target distribution, specially for strong
+#'  interaction systems.
+#'
+#' @examples
+#' # Sample using specified lattice dimension
+#' Z <- rmrf2d(c(150,150), mrfi(1), theta_potts)
+#'
+#' #Sample using itial configuration
+#' Z2 <- rmrf2d(Z, mrfi(1), theta_potts)
+#'
+#' # View results
+#' dplot(Z)
+#' dplot(Z2)
+#'
 #' @export
-rmrf2d <- function(init_Z, mrfi, theta, cycles = 10, method = "gibbs"){
+rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, method = "gibbs"){
   # Check validity of the input
   if(!is.matrix(init_Z)) {
     if(is.numeric(init_Z) & is.vector(init_Z)) {

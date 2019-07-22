@@ -4,7 +4,7 @@
 \alias{rmrf2d}
 \title{Sampling of Markov Random Fields on 2d lattices}
 \usage{
-rmrf2d(init_Z, mrfi, theta, cycles = 10, method = "gibbs")
+rmrf2d(init_Z, mrfi, theta, cycles = 60, method = "gibbs")
 }
 \arguments{
 \item{init_Z}{One of two options:
@@ -29,6 +29,9 @@ values 0,2 in the second relative position of \code{mrfi}.}
 \item \code{'gibbs'}: Gibbs Sampler method. Samples from conditional distribution.
 }}
 }
+\value{
+A \code{matrix} with the sampled field.
+}
 \description{
 Performs pixelwise updates based on conditional distributions
 to sample from a Markov random field.
@@ -46,6 +49,23 @@ If \code{init_Z} is passed as a length 2 vector with lattice dimensions, the
 initial field is sampled from independent discrete uniform distributions in
 \code{0,...,C}. The value of C is obtained from the number of rows/columns of
 \code{theta}.
+}
+\note{
+As in any Gibbs Sampling scheme, a large number of cycles may be
+required to achieve the target distribution, specially for strong
+interaction systems.
+}
+\examples{
+# Sample using specified lattice dimension
+Z <- rmrf2d(c(150,150), mrfi(1), theta_potts)
+
+#Sample using itial configuration
+Z2 <- rmrf2d(Z, mrfi(1), theta_potts)
+
+# View results
+dplot(Z)
+dplot(Z2)
+
 }
 \author{
 Victor Freguglia
