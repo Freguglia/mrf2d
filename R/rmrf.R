@@ -5,17 +5,11 @@
 #' @description Performs pixelwise updates based on conditional distributions
 #'  to sample from a Markov random field.
 #'
-#'
+#' @inheritParams pl_mrf2d
 #' @param init_Z One of two options:
 #'  * A `matrix` object with the initial field configuration. Its
 #'  valuesmust be integers in `0,...,C`.
 #'  * A length 2 `numeric` vector with the lattice dimensions.
-#' @param mrfi A \code{\link[=mrfi-class]{mrfi}} object representing the
-#'  interaction structure.
-#' @param theta A 3-dimensional array describing potentials. Slices represent
-#'  interacting positions, rows represent pixel values and columns represent
-#'  neighbor values. As an example: `theta[1,3,2]` has the potential pairs of
-#'  values 0,2 in the second relative position of `mrfi`.
 #' @param cycles The number of complete (all pixels) updates to be done.
 #' @param method Method used to perform pixel-wise updates.
 #'  * `'gibbs'`: Gibbs Sampler method. Samples from conditional distribution.
