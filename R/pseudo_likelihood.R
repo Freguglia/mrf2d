@@ -5,8 +5,6 @@
 #' @description Computes the pseudo-likelihood function of a Markov Random Field
 #'  on a 2-dimensional lattice.
 #'
-#' @details Add description of Pseudo-Likelihood. Product of conditionals.
-#'
 #' @param Z A `matrix` with integers in {0,...,C}.
 #' @param mrfi A \code{\link[=mrfi-class]{mrfi}} object representing the
 #'  interaction structure.
@@ -19,6 +17,10 @@
 #'
 #' @return A `numeric` with the pseudo-likelihood value.
 #'
+#' @details The pseudo-likelihood function is defined as the product of
+#' conditional distributions:
+#'
+#' \deqn{\prod_i P(Z_i | Z_{{N}_i}).}
 #'
 #' @export
 pl_mrf2d <- function(Z, mrfi, theta, log_scale = TRUE){
