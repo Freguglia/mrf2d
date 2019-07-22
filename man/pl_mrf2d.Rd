@@ -28,7 +28,10 @@ Computes the pseudo-likelihood function of a Markov Random Field
 on a 2-dimensional lattice.
 }
 \details{
-Add description of Pseudo-Likelihood. Product of conditionals.
+The pseudo-likelihood function is defined as the product of
+conditional distributions:
+
+\deqn{\prod_i P(Z_i | Z_{{N}_i}).}
 }
 \author{
 Victor Freguglia
