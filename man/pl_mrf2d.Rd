@@ -36,6 +36,10 @@ conditional distributions:
 For more details see the guide vignette:
 \code{vignette("guide", package = "mrf2d")}
 }
+\examples{
+pl_mrf2d(Z_potts, mrfi(1), theta_potts)
+
+}
 \author{
 Victor Freguglia
 }
