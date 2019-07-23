@@ -15,12 +15,12 @@ interaction structure.}
 
 \item{family}{The family of parameter restrictions to potentials. Families
 are:
-\code{'onepar'}, \code{'oneeach'}, \code{'absdif'}, \code{'dif'} or \code{'free'}.}
+\code{'onepar'}, \code{'oneeach'}, \code{'absdif'}, \code{'dif'} or \code{'free'}.
+See \code{\link[=mrf2d-family]{mrf2d-familiy}}.}
 
 \item{init}{The initial value to be used in the optimization. It can be:
 \itemize{
 \item A valid \code{array} of parameter values according to \code{family}.
-\item A \code{numeric} of length 1 if \code{family} is \code{onepar}.
 \item \code{0}. If set to \code{0} an array with `0`` in all entries is created.
 }}
 
@@ -43,6 +43,12 @@ Parameter estimation for Markov random fields via
 Pseudo-Likelihood function optimization. See
 \code{\link[=pl_mrf2d]{pl_mrf2d}} for information on the
 Pseudo-Likelihood function.
+}
+\examples{
+fit_pl(Z_potts, mrfi(1), family = "onepar")
+fit_pl(Z_potts, mrfi(1), family = "oneeach")
+fit_pl(Z_potts, mrfi(2), family = "onepar")
+
 }
 \author{
 Victor Freguglia

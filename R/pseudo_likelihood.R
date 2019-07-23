@@ -53,9 +53,9 @@ pl_mrf2d <- function(Z, mrfi, theta, log_scale = TRUE){
 #' @param family The family of parameter restrictions to potentials. Families
 #' are:
 #'   `'onepar'`, `'oneeach'`, `'absdif'`, `'dif'` or `'free'`.
+#' See \code{\link[=mrf2d-family]{mrf2d-familiy}}.
 #' @param init The initial value to be used in the optimization. It can be:
 #'  * A valid `array` of parameter values according to `family`.
-#'  * A `numeric` of length 1 if `family` is `onepar`.
 #'  * `0`. If set to `0` an array with `0`` in all entries is created.
 #' @param optim_args Additional parameters passed to `optim()`.
 #' @param return_optim `logical` indicating whether information from the
@@ -66,6 +66,12 @@ pl_mrf2d <- function(Z, mrfi, theta, log_scale = TRUE){
 #'  * `value`: The optimal pseudo-likelihood value.
 #'  * `opt.xxx`(if `return_optim` is `TRUE`): Information returned by the
 #'   `optim()` function used for the optimization.
+#'
+#'
+#' @examples
+#' fit_pl(Z_potts, mrfi(1), family = "onepar")
+#' fit_pl(Z_potts, mrfi(1), family = "oneeach")
+#' fit_pl(Z_potts, mrfi(2), family = "onepar")
 #'
 #' @importFrom stats optim
 #' @export
