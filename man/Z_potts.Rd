@@ -3,7 +3,6 @@
 \docType{data}
 \name{Z_potts}
 \alias{Z_potts}
-\alias{ipotts}
 \alias{theta_potts}
 \title{Example objects from \code{mrf2d}}
 \description{

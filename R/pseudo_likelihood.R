@@ -20,7 +20,13 @@
 #' @details The pseudo-likelihood function is defined as the product of
 #' conditional distributions:
 #'
-#' \deqn{\prod_i P(Z_i | Z_{{N}_i}).}
+#' \deqn{\prod_i P(Z_i | Z_{{N}_i}, \theta).}
+#'
+#' For more details see the guide vignette:
+#' \code{vignette("guide", package = "mrf2d")}
+#'
+#' @examples
+#' pl_mrf2d(Z_potts, mrfi(1), theta_potts)
 #'
 #' @export
 pl_mrf2d <- function(Z, mrfi, theta, log_scale = TRUE){
@@ -39,28 +45,33 @@ pl_mrf2d <- function(Z, mrfi, theta, log_scale = TRUE){
 #'
 #' @description Parameter estimation for Markov random fields via
 #' Pseudo-Likelihood function optimization. See
-#' \code{\link[=pl_mrf2d]{pl_mrf2d}} for more information on the
+#' \code{\link[=pl_mrf2d]{pl_mrf2d}} for information on the
 #' Pseudo-Likelihood function.
 #'
+#' @inheritParams pl_mrf2d
 #' @param Z A `matrix` object containing the observed MRF.
-#' @param mrfi A \code{\link[=mrfi-class]{mrfi}} object representing the
-#'  interaction structure.
-#' @param family The family of restrictions to potentials. It can be:
-#'  * `"onepar"`: Models with a single parameter. It is a single value for any
-#'  equal valued pairs and the same value with opposite signal for different
-#'  valued pairs.
+#' @param family The family of parameter restrictions to potentials. Families
+#' are:
+#'   `'onepar'`, `'oneeach'`, `'absdif'`, `'dif'` or `'free'`.
+#' See \code{\link[=mrf2d-family]{mrf2d-familiy}}.
 #' @param init The initial value to be used in the optimization. It can be:
-#'  * An `array` with vaid potential values according to `family`.
-#'  * A `numeric` of length 1 if `family` is `onepar`.
+#'  * A valid `array` of parameter values according to `family`.
 #'  * `0`. If set to `0` an array with `0`` in all entries is created.
-#' @param optim_args Additional parameters passed in `optim()` function call.
+#' @param optim_args Additional parameters passed to `optim()`.
 #' @param return_optim `logical` indicating whether information from the
 #' `optim()` call are returned.
+#'
 #' @return A `list` object with elements:
-#'  * `theta`: The array of estimated potential values.
+#'  * `theta`: The estimated array of potential values.
 #'  * `value`: The optimal pseudo-likelihood value.
 #'  * `opt.xxx`(if `return_optim` is `TRUE`): Information returned by the
 #'   `optim()` function used for the optimization.
+#'
+#'
+#' @examples
+#' fit_pl(Z_potts, mrfi(1), family = "onepar")
+#' fit_pl(Z_potts, mrfi(1), family = "oneeach")
+#' fit_pl(Z_potts, mrfi(2), family = "onepar")
 #'
 #' @importFrom stats optim
 #' @export

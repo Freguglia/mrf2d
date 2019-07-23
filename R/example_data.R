@@ -4,10 +4,6 @@
 #' @author Victor Freguglia
 NULL
 
-#' @name ipotts
-#' @rdname Z_potts
-NULL
-
 #' @name theta_potts
 #' @rdname Z_potts
 NULL

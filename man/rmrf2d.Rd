@@ -40,7 +40,7 @@ to sample from a Markov random field.
 This function implements a Gibbs Sampling scheme to sample from
 a Markov random field by iteratively sampling pixel values from the
 conditional distribution
-\deqn{P(Z_i | Z_{{N}_i}).}
+\deqn{P(Z_i | Z_{{N}_i}, \theta).}
 
 A cycle means exactly one update to each pixel. The order pixels are
 sampled is randomized within each cycle.

@@ -12,19 +12,16 @@ fit_sa(Z, mrfi, family = "onepar", gamma_seq, init = 0, steps = 5)
 \item{mrfi}{A \code{\link[=mrfi-class]{mrfi}} object representing the
 interaction structure.}
 
-\item{family}{The family of restrictions to potentials. It can be:
-\itemize{
-\item \code{"onepar"}: Models with a single parameter. It is a single value for any
-equal valued pairs and the same value with opposite signal for different
-valued pairs.
-}}
+\item{family}{The family of parameter restrictions to potentials. Families
+are:
+\code{'onepar'}, \code{'oneeach'}, \code{'absdif'}, \code{'dif'} or \code{'free'}.
+See \code{\link[=mrf2d-family]{mrf2d-familiy}}.}
 
 \item{gamma_seq}{A \code{numeric} vector with the sequence of constants \eqn{\gamma_t}}
 
 \item{init}{The initial value to be used in the optimization. It can be:
 \itemize{
-\item An \code{array} with vaid potential values according to \code{family}.
-\item A \code{numeric} of length 1 if \code{family} is \code{onepar}.
+\item A valid \code{array} of parameter values according to \code{family}.
 \item \code{0}. If set to \code{0} an array with `0`` in all entries is created.
 }}
 

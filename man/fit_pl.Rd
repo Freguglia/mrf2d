@@ -13,21 +13,18 @@ fit_pl(Z, mrfi, family = "onepar", init = 0, optim_args = list(method
 \item{mrfi}{A \code{\link[=mrfi-class]{mrfi}} object representing the
 interaction structure.}
 
-\item{family}{The family of restrictions to potentials. It can be:
-\itemize{
-\item \code{"onepar"}: Models with a single parameter. It is a single value for any
-equal valued pairs and the same value with opposite signal for different
-valued pairs.
-}}
+\item{family}{The family of parameter restrictions to potentials. Families
+are:
+\code{'onepar'}, \code{'oneeach'}, \code{'absdif'}, \code{'dif'} or \code{'free'}.
+See \code{\link[=mrf2d-family]{mrf2d-familiy}}.}
 
 \item{init}{The initial value to be used in the optimization. It can be:
 \itemize{
-\item An \code{array} with vaid potential values according to \code{family}.
-\item A \code{numeric} of length 1 if \code{family} is \code{onepar}.
+\item A valid \code{array} of parameter values according to \code{family}.
 \item \code{0}. If set to \code{0} an array with `0`` in all entries is created.
 }}
 
-\item{optim_args}{Additional parameters passed in \code{optim()} function call.}
+\item{optim_args}{Additional parameters passed to \code{optim()}.}
 
 \item{return_optim}{\code{logical} indicating whether information from the
 \code{optim()} call are returned.}
@@ -35,7 +32,7 @@ valued pairs.
 \value{
 A \code{list} object with elements:
 \itemize{
-\item \code{theta}: The array of estimated potential values.
+\item \code{theta}: The estimated array of potential values.
 \item \code{value}: The optimal pseudo-likelihood value.
 \item \code{opt.xxx}(if \code{return_optim} is \code{TRUE}): Information returned by the
 \code{optim()} function used for the optimization.
@@ -44,8 +41,14 @@ A \code{list} object with elements:
 \description{
 Parameter estimation for Markov random fields via
 Pseudo-Likelihood function optimization. See
-\code{\link[=pl_mrf2d]{pl_mrf2d}} for more information on the
+\code{\link[=pl_mrf2d]{pl_mrf2d}} for information on the
 Pseudo-Likelihood function.
+}
+\examples{
+fit_pl(Z_potts, mrfi(1), family = "onepar")
+fit_pl(Z_potts, mrfi(1), family = "oneeach")
+fit_pl(Z_potts, mrfi(2), family = "onepar")
+
 }
 \author{
 Victor Freguglia
