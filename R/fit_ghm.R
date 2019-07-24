@@ -17,6 +17,8 @@
 #'  algorithm executed in each interaction. Defaults to 6.
 #'
 #' @return A list containing some stuff to be documented.
+#'
+#' @importFrom stats lm predict
 #' @export
 fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
                     equal_vars = TRUE, init_mus = NULL,
