@@ -3,7 +3,7 @@
 \name{dplot}
 \alias{dplot}
 \alias{cplot}
-\title{Elegant image plots based on matrices}
+\title{Plotting functions for lattice data}
 \usage{
 dplot(Z, legend = FALSE)
 
@@ -20,8 +20,34 @@ cplot(Y, legend = TRUE)
 a \code{ggplot} object.
 }
 \description{
-An alternative to base R's \code{image()} function using \code{ggplot2}.
-Use \code{dplot} for discrete valued matrices and \code{cplot} for continuous value.
+\code{dplot()} and \code{cplot()} are functions for plotting lattice data.
+They are an alternative to base R's \code{image()} function using \code{ggplot2}
+instead.
+\code{dplot} is used for discrete data and \code{cplot} for continuous data, they only
+differ in the fact that pixel values are treated as a factor in \code{dplot},
+therefore, a discrete scale is used.
+}
+\details{
+Since returns a \code{ggplot} object, other layers can be added to it
+using the usual \code{ggplot2} syntax in order to modify any aspect of the plot.
+
+The data frame used to create the object has columns named \code{x}, \code{y} and
+\code{value}, which are mapped to \code{x}, \code{y} and \code{fill}, respectively, used
+with \code{geom_tile()}.
+}
+\examples{
+# Plotting discrete data
+dplot(Z_potts)
+
+#Making it continuous
+cplot(Z_potts + rnorm(length(Z_potts)))
+
+#Adding extra ggplot layers
+library(ggplot2)
+dplot(Z_potts) + ggtitle("This is a title")
+dplot(Z_potts, legend = TRUE) + scale_fill_brewer(palette = "Set1")
+
+
 }
 \author{
 Victor Freguglia
