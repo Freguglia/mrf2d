@@ -6,7 +6,19 @@
 \alias{theta_potts}
 \title{Example objects from \code{mrf2d}}
 \description{
-Example objects from \code{mrf2d}
+\code{Z_potts} and \code{theta_potts} are example objects for \code{mrf2d}.
+
+\code{Z_potts} is a \code{matrix} object containing an observed lattice of a 3 color
+(C = 2) Potts model.
+
+\code{theta_potts} is the parameter array used to sample it,
+it consists of a configuration with one parameter (-1.0) and two relative
+positions (to be used with a nearest-neighbor structure).
+}
+\examples{
+theta_potts
+dplot(Z_potts)
+
 }
 \author{
 Victor Freguglia

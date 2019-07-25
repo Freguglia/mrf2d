@@ -2,14 +2,14 @@
 % Please edit documentation in R/fit_ghm.R
 \name{fit_ghm}
 \alias{fit_ghm}
-\title{EM for Gaussian Hidden Markov field}
+\title{EM estimation for Gaussian Hidden Markov field}
 \usage{
 fit_ghm(Y, mrfi, theta, fixed_fn = list(), equal_vars = TRUE,
   init_mus = NULL, init_sigmas = NULL, maxiter = 100,
   max_dist = 10^-3, icm_cycles = 6, verbose = TRUE)
 }
 \arguments{
-\item{Y}{A matrix of observed pixel values.}
+\item{Y}{A matrix of observed (continuous) pixel values.}
 
 \item{mrfi}{A \code{\link[=mrfi-class]{mrfi}} object representing the
 interaction structure.}
@@ -19,25 +19,87 @@ interacting positions, rows represent pixel values and columns represent
 neighbor values. As an example: \code{theta[1,3,2]} has the potential pairs of
 values 0,2 in the second relative position of \code{mrfi}.}
 
-\item{fixed_fn}{A list of functions \code{fn(x,y)} to be considered as a fixed effect.}
+\item{fixed_fn}{A list of functions \code{fn(x,y)} to be considered as a fixed
+effect. See \code{\link[=basis_functions]{basis_functions}}.}
 
 \item{equal_vars}{\code{logical} indicating if the mixture model has the same
-variances in all components}
+variances in all mixture components.}
+
+\item{init_mus}{Optional. A \code{numeric} with length (C+1) with the initial mean
+estimate for each component.}
+
+\item{init_sigmas}{Otional. A \code{numeric} with length (C+1) with initial sample
+deviation estimate for each component.}
 
 \item{maxiter}{The maximum number of iterations allowed. Defaults to 100.}
 
+\item{max_dist}{Defines a stopping condition. The algorithm stops if the
+maximum absolute difference between parameters of two consecutive iterations
+is less than \code{max_dist}.}
+
 \item{icm_cycles}{Number of steps used in the Iterated Conditional Modes
 algorithm executed in each interaction. Defaults to 6.}
+
+\item{verbose}{\code{logical} indicating wheter to print the progress or not.}
 }
 \value{
-A list containing some stuff to be documented.
+A \code{list} containing:
+\itemize{
+\item \code{par}: A \code{data.frame} with \eqn{\mu} and \eqn{\sigma} estimates for each
+component.
+\item \code{fixed}: A \code{matrix} with the estimated fixed effect in each pixel.
+\item \code{Z_pred}: A \code{matrix} with the predicted component (highest probability) in
+each pixel.
+\item \code{predicted}: A \code{matrix} with the fixed effect + the \eqn{\mu} value for
+the predicted component in each pixel.
+\item \code{iterations}: Number of EM iterations done.
+}
 }
 \description{
-Em algorithm fitting of Gaussian mixture driven by a hidden
-Markov random field with known parameters.
+\code{fit_ghm} fits a Gaussian Mixture model with hidden components
+driven by a Markov random field with known parameters. The inclusion of a
+linear combination of basis functions as a fixed effect is also possible.
+
+The algorithm is an implementation of
+\insertCite{zhang2001segmentation}{mrf2d}.
 }
 \details{
-Add details about the estimation procedure.
+If either \code{init_mus} or \code{init_sigmas} is \code{NULL} an EM algorithm
+considering an independent uniform distriburion for the hidden component is
+fitted first and its estimated means and sample deviations are used as
+initial values. This is necessary because the algorithm may not converge if
+the initial parameter configuration is too far from the maximum likelihood
+estimators.
+
+\code{max_dist} defines a stopping condition. The algorithm will stop if the
+maximum absolute difference between (\eqn{\mu} and \eqn{\sigma})  parameters
+in consecutive iterations is less than \code{max_dist}.
+
+\deqn{max{max | \mu_{t+1} - \mu_t |, | \sigma{t+1} - \sigma_t|} <= max_dist}
+
+Note that if the maximum probability configuration for \code{Z} is unchanged
+between two iterations, then the parameter estimates will also be unchanged,
+this makes possible to set \code{max_dist = 0} and hit the stopping condition.
+
+For more details see the guide vignette:
+\code{vignette("guide", package = "mrf2d")}
+}
+\examples{
+# Sample a Gaussian mixture with components given by Z_potts
+# mean values are 0, 1 and 2 and a linear effect on the x-axis.
+set.seed(2)
+Y <- Z_potts + rnorm(length(Z_potts), sd = 0.4) + row(Z_potts)*0.01
+# Check what the data looks like
+cplot(Y)
+
+fixed <- polynomial_2d(c(1,1), dim(Y))
+fit <- fit_ghm(Y, mrfi = mrfi(1), theta = theta_potts, fixed_fn = fixed)
+fit$par
+cplot(fit$fixed)
+
+}
+\references{
+\insertAllCited{}
 }
 \author{
 Victor Freguglia

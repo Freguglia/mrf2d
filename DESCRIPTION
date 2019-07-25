@@ -15,11 +15,13 @@ Imports: Rcpp (>= 1.0.1),
          dplyr(>= 0.8.1),
          reshape2,
          methods,
-         ggplot2
+         ggplot2,
+         Rdpack
 Depends: R (>= 3.3.0)
 LinkingTo: Rcpp, 
            RcppArmadillo
 Roxygen: list(markdown = TRUE)
+RdMacros: Rdpack
 RoxygenNote: 6.1.1
 Suggests: 
     testthat (>= 2.1.0),

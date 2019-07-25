@@ -1,5 +1,5 @@
 #' @title Creation of basis functions
-#' @name basis_functions_creation
+#' @name basis_functions
 #'
 #' @param lattice_dim A length 2 numeric vector with lattice dimensions (N,M)
 #'  to be used.
@@ -9,7 +9,7 @@
 #'  polynomial to be considered.
 NULL
 
-#' @rdname basis_functions_creation
+#' @rdname basis_functions
 #' @author Victor Freguglia
 #' @export
 fourier_2d <- function(max_freqs, lattice_dim){
@@ -44,7 +44,7 @@ fourier_2d <- function(max_freqs, lattice_dim){
   return(c(l_sin_sin, l_cos_cos, l_cos_sin, l_sin_cos))
 }
 
-#' @rdname basis_functions_creation
+#' @rdname basis_functions
 #' @export
 polynomial_2d <- function(poly_deg, lattice_dim){
   if(any(poly_deg < 0) || length(poly_deg) != 2)  {

@@ -1,27 +1,84 @@
 #' @name fit_ghm
 #' @author Victor Freguglia
-#' @title EM for Gaussian Hidden Markov field
+#' @title EM estimation for Gaussian Hidden Markov field
 #'
-#' @description Em algorithm fitting of Gaussian mixture driven by a hidden
-#'  Markov random field with known parameters.
+#' @description `fit_ghm` fits a Gaussian Mixture model with hidden components
+#' driven by a Markov random field with known parameters. The inclusion of a
+#' linear combination of basis functions as a fixed effect is also possible.
 #'
-#' @details Add details about the estimation procedure.
+#' The algorithm is an implementation of
+#' \insertCite{zhang2001segmentation}{mrf2d}.
 #'
-#' @param Y A matrix of observed pixel values.
+#'
+#' @param Y A matrix of observed (continuous) pixel values.
 #' @inheritParams pl_mrf2d
-#' @param fixed_fn A list of functions `fn(x,y)` to be considered as a fixed effect.
-#' @param maxiter The maximum number of iterations allowed. Defaults to 100.
+#' @param fixed_fn A list of functions `fn(x,y)` to be considered as a fixed
+#'  effect. See \code{\link[=basis_functions]{basis_functions}}.
 #' @param equal_vars `logical` indicating if the mixture model has the same
-#'  variances in all components
+#'  variances in all mixture components.
+#' @param init_mus Optional. A `numeric` with length (C+1) with the initial mean
+#' estimate for each component.
+#' @param init_sigmas Otional. A `numeric` with length (C+1) with initial sample
+#' deviation estimate for each component.
+#' @param maxiter The maximum number of iterations allowed. Defaults to 100.
+#' @param max_dist Defines a stopping condition. The algorithm stops if the
+#'  maximum absolute difference between parameters of two consecutive iterations
+#'  is less than `max_dist`.
 #' @param icm_cycles Number of steps used in the Iterated Conditional Modes
 #'  algorithm executed in each interaction. Defaults to 6.
+#' @param verbose `logical` indicating wheter to print the progress or not.
 #'
-#' @return A list containing some stuff to be documented.
+#' @return A `list` containing:
+#'  * `par`: A `data.frame` with \eqn{\mu} and \eqn{\sigma} estimates for each
+#' component.
+#'  * `fixed`: A `matrix` with the estimated fixed effect in each pixel.
+#'  * `Z_pred`: A `matrix` with the predicted component (highest probability) in
+#'  each pixel.
+#'  * `predicted`: A `matrix` with the fixed effect + the \eqn{\mu} value for
+#'  the predicted component in each pixel.
+#'  * `iterations`: Number of EM iterations done.
+#'
+#' @details If either `init_mus` or `init_sigmas` is `NULL` an EM algorithm
+#'  considering an independent uniform distriburion for the hidden component is
+#'  fitted first and its estimated means and sample deviations are used as
+#'  initial values. This is necessary because the algorithm may not converge if
+#'  the initial parameter configuration is too far from the maximum likelihood
+#'  estimators.
+#'
+#'  `max_dist` defines a stopping condition. The algorithm will stop if the
+#'  maximum absolute difference between (\eqn{\mu} and \eqn{\sigma})  parameters
+#'  in consecutive iterations is less than `max_dist`.
+#'
+#'  \deqn{max{max | \mu_{t+1} - \mu_t |, | \sigma{t+1} - \sigma_t|} <= max_dist}
+#'
+#'  Note that if the maximum probability configuration for `Z` is unchanged
+#'  between two iterations, then the parameter estimates will also be unchanged,
+#'  this makes possible to set `max_dist = 0` and hit the stopping condition.
+#'
+#'  For more details see the guide vignette:
+#'  \code{vignette("guide", package = "mrf2d")}
+#'
+#' @references
+#' \insertAllCited{}
+#'
+#' @examples
+#' # Sample a Gaussian mixture with components given by Z_potts
+#' # mean values are 0, 1 and 2 and a linear effect on the x-axis.
+#' set.seed(2)
+#' Y <- Z_potts + rnorm(length(Z_potts), sd = 0.4) + row(Z_potts)*0.01
+#' # Check what the data looks like
+#' cplot(Y)
+#'
+#' fixed <- polynomial_2d(c(1,1), dim(Y))
+#' fit <- fit_ghm(Y, mrfi = mrfi(1), theta = theta_potts, fixed_fn = fixed)
+#' fit$par
+#' cplot(fit$fixed)
 #'
 #' @importFrom stats lm predict
 #' @export
 fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
-                    equal_vars = TRUE, init_mus = NULL,
+                    equal_vars = TRUE,
+                    init_mus = NULL,
                     init_sigmas = NULL,
                     maxiter = 100, max_dist = 10^-3,
                     icm_cycles = 6, verbose = TRUE){
