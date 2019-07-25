@@ -8,11 +8,9 @@
 #' @inheritParams pl_mrf2d
 #' @param init_Z One of two options:
 #'  * A `matrix` object with the initial field configuration. Its
-#'  valuesmust be integers in `0,...,C`.
+#'  valuesmust be integers in `{0,...,C}`.
 #'  * A length 2 `numeric` vector with the lattice dimensions.
-#' @param cycles The number of complete (all pixels) updates to be done.
-#' @param method Method used to perform pixel-wise updates.
-#'  * `'gibbs'`: Gibbs Sampler method. Samples from conditional distribution.
+#' @param cycles The number of updates to be done (for each each pixel).
 #'
 #' @return A `matrix` with the sampled field.
 #'
@@ -26,7 +24,7 @@
 #'
 #'  If `init_Z` is passed as a length 2 vector with lattice dimensions, the
 #'  initial field is sampled from independent discrete uniform distributions in
-#'  `0,...,C`. The value of C is obtained from the number of rows/columns of
+#'  `{0,...,C}`. The value of C is obtained from the number of rows/columns of
 #'  `theta`.
 #'
 #' @note As in any Gibbs Sampling scheme, a large number of cycles may be
@@ -45,7 +43,7 @@
 #' dplot(Z2)
 #'
 #' @export
-rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, method = "gibbs"){
+rmrf2d <- function(init_Z, mrfi, theta, cycles = 60){
   # Check validity of the input
   if(!is.matrix(init_Z)) {
     if(is.numeric(init_Z) & is.vector(init_Z)) {
@@ -64,12 +62,7 @@ rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, method = "gibbs"){
 
   R <- mrfi@Rmat
 
-  if(method == "gibbs"){
-    return(gibbs_sampler_mrf2d(init_Z, R, theta, cycles))
-  } else {
-    valid_methods <- c("'gibbs'")
-    stop("Invalid 'method' argument. Current support methods are: ",
-         paste(valid_methods, collapse = " "))
-  }
+  return(gibbs_sampler_mrf2d(init_Z, R, theta, cycles))
+
 
 }

@@ -4,13 +4,13 @@
 \alias{rmrf2d}
 \title{Sampling of Markov Random Fields on 2d lattices}
 \usage{
-rmrf2d(init_Z, mrfi, theta, cycles = 60, method = "gibbs")
+rmrf2d(init_Z, mrfi, theta, cycles = 60)
 }
 \arguments{
 \item{init_Z}{One of two options:
 \itemize{
 \item A \code{matrix} object with the initial field configuration. Its
-valuesmust be integers in \code{0,...,C}.
+valuesmust be integers in \code{{0,...,C}}.
 \item A length 2 \code{numeric} vector with the lattice dimensions.
 }}
 
@@ -22,12 +22,7 @@ interacting positions, rows represent pixel values and columns represent
 neighbor values. As an example: \code{theta[1,3,2]} has the potential pairs of
 values 0,2 in the second relative position of \code{mrfi}.}
 
-\item{cycles}{The number of complete (all pixels) updates to be done.}
-
-\item{method}{Method used to perform pixel-wise updates.
-\itemize{
-\item \code{'gibbs'}: Gibbs Sampler method. Samples from conditional distribution.
-}}
+\item{cycles}{The number of updates to be done (for each each pixel).}
 }
 \value{
 A \code{matrix} with the sampled field.
@@ -47,7 +42,7 @@ sampled is randomized within each cycle.
 
 If \code{init_Z} is passed as a length 2 vector with lattice dimensions, the
 initial field is sampled from independent discrete uniform distributions in
-\code{0,...,C}. The value of C is obtained from the number of rows/columns of
+\code{{0,...,C}}. The value of C is obtained from the number of rows/columns of
 \code{theta}.
 }
 \note{
