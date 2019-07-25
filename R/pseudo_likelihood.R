@@ -1,11 +1,11 @@
 #' @name pl_mrf2d
 #' @author Victor Freguglia
-#' @title Pseudo-likelihood function for MRFs on 2d lattices.
+#' @title Pseudo-likelihood function for MRFs on 2d lattices
 #'
 #' @description Computes the pseudo-likelihood function of a Markov Random Field
 #'  on a 2-dimensional lattice.
 #'
-#' @param Z A `matrix` with integers in {0,...,C}.
+#' @param Z A `matrix` with integers in `{0,...,C}`.
 #' @param mrfi A \code{\link[=mrfi-class]{mrfi}} object representing the
 #'  interaction structure.
 #' @param theta A 3-dimensional array describing potentials. Slices represent

@@ -2,12 +2,12 @@
 % Please edit documentation in R/pseudo_likelihood.R
 \name{pl_mrf2d}
 \alias{pl_mrf2d}
-\title{Pseudo-likelihood function for MRFs on 2d lattices.}
+\title{Pseudo-likelihood function for MRFs on 2d lattices}
 \usage{
 pl_mrf2d(Z, mrfi, theta, log_scale = TRUE)
 }
 \arguments{
-\item{Z}{A \code{matrix} with integers in {0,...,C}.}
+\item{Z}{A \code{matrix} with integers in \code{{0,...,C}}.}
 
 \item{mrfi}{A \code{\link[=mrfi-class]{mrfi}} object representing the
 interaction structure.}
