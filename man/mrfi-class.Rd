@@ -3,17 +3,52 @@
 \docType{class}
 \name{mrfi-class}
 \alias{mrfi-class}
-\title{The \code{mrfi} class}
+\title{An S4 class to represent interactions for MRFs in 2d lattices}
 \description{
-A representation of the interaction structure for a spatially-stationary
-Markov Random Field.
+The \code{mrfi} S4 class is a representation of the interaction
+structure for a spatially-stationary Markov Random Field.
+
+The function \code{\link[=mrfi]{mrfi()}} provides an interface for creation
+\code{mrfi} objects. A \code{plot} method is also available for visualization.
+}
+\details{
+The interaction structure is defined by the list of relative
+positions in it. For a specific pixel, conditional to the values of pixels in
+these relative positions from it, its value is independent of any other pixel
+in the image.
+
+The relative positions are indentified by two integers \code{rx} and \code{ry}
+representing the "shift" in the \code{x}-axis and \code{y}-axis respectively. As an
+example: The relative position \code{(1,0)} representes the pixel in the immediate
+right position, while \code{(-1,0)} the left one.
+
+Note that the inclusion of a relative position to the dependence also implies
+its opposite direction is not conditionally independent (commutativeness of
+dependence), but only one is actually included to the \code{mrfi} object.
+
+To illustrate that, a nearest neighbor dependence structure can be specified
+by:
+
+\code{mrfi(1)}
+
+Note that it only includes the positions \code{(1,0)} and \code{(0,1)}, but when
+visualizing it, for example, \code{mrf2d} understands the opposite directions
+are also conditionally dependent, as in
+
+\code{plot(mrfi(1))}.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{Rmat}}{A 2-column \code{matrix} where each row represents a relative position of
-interaction.}
+\item{\code{Rmat}}{A 2-column \code{matrix} where each row represents a relative position
+of interaction.}
 
 \item{\code{n_neis}}{The number of intracting positions.}
 }}
 
+\examples{
+plot(mrfi(max_norm = 2, norm_type = "1"))
+plot(mrfi(max_norm = 2, norm_type = "m"))
+plot(mrfi(max_norm = 2, norm_type = "1", positions = list(c(4,4))))
+
+}

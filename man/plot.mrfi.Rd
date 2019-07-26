@@ -11,11 +11,35 @@
 \arguments{
 \item{x}{A \code{\link[=mrfi-class]{mrfi}} object.}
 
-\item{no_axis}{\code{logical} value indicating whether the axis and grid lines are present.}
+\item{no_axis}{\code{logical} value indicating whether the axis and grid lines
+are used. If \code{TRUE} it simply adds \code{theme_void()} to the \code{ggplot} object.}
+}
+\value{
+A \code{ggplot} object using \code{geom_tile()} to represent interacting
+relative positions.
 }
 \description{
-Plots a visual description of the interaction structure
+Plots a visual representation of the interaction structure
 described in a \code{mrfi} object. The black tile represents a reference pixel
-and gray tiles are shown in relative positions where pixels are
-conditionally dependent.
+and gray tiles are shown in relative positions with dependent pixels.
+
+A \code{ggplot} object is used, therefore, the user can load the \code{ggplot2}
+package and add more \code{ggplot} layers to freely customize the \code{plot}.
+}
+\details{
+The \code{data.frame} used for the \code{ggplot} call has columns names \code{rx}
+and \code{ry} repŕesenting the relative positions.
+}
+\examples{
+plot(mrfi(1))
+
+library(ggplot2)
+plot(mrfi(1)) + geom_tile(fill = "red")
+plot(mrfi(1)) + geom_tile(fill = "blue") + theme_void()
+
+plot(mrfi(1)) + geom_text(aes(label = paste0("(",rx,",",ry,")")))
+
+}
+\author{
+Victor Freguglia
 }
