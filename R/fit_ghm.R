@@ -64,6 +64,7 @@
 #' @examples
 #' # Sample a Gaussian mixture with components given by Z_potts
 #' # mean values are 0, 1 and 2 and a linear effect on the x-axis.
+#' \dontrun{
 #' set.seed(2)
 #' Y <- Z_potts + rnorm(length(Z_potts), sd = 0.4) + row(Z_potts)*0.01
 #' # Check what the data looks like
@@ -73,6 +74,7 @@
 #' fit <- fit_ghm(Y, mrfi = mrfi(1), theta = theta_potts, fixed_fn = fixed)
 #' fit$par
 #' cplot(fit$fixed)
+#' }
 #'
 #' @importFrom stats lm predict
 #' @export
