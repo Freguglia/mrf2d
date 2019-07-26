@@ -18,13 +18,10 @@ of random variables with a local dependence property (the Markov
 property) defined on a neighborhood system. Particularly on the context
 of image processing, pixels can be seen as vertices of a graph defined
 on a finite 2-dimensional lattice, and a neighborhood system can be
-defined based on their relative positions to construct a MRF.
+defined based on their relative positions to construct a
+MRF.
 
-<p align="center">
-
-<img src="man/figures/animation_ising.gif" alt="drawing" width="300" />
-
-<p>
+<img src="man/figures/animation_ising.gif" alt="drawing" width="300" align="left" />
 
 The goal of `mrf2d` is to provide simple functions for sampling and
 analysis of Markov Random Fields on 2-dimensional lattices, including
@@ -60,26 +57,105 @@ devtools::install_github("Freguglia/mrf2d")
 The package will be available on CRAN as soon as a reasonable number of
 features are added and well documented.
 
-## Examples
+## Example
 
-<!--
-Write something about Markov Random Fields 
--->
+This is an example of what type of analysis you can do with `mrf2d`.
+More features are also present, including estimation of parameter in
+Markov Random Fields, families of parameter restrictions and more. Read
+the package’s vignette for more information and detailed description of
+the functions used: `browseVignettes("mrf2d")`.
+
+We can define an interaction structure with the `mrfi()` function:
+
+``` r
+# We'll include dependence in nearest-neighbors only
+int <- mrfi(max_norm = 1)
+int
+#> 2 interacting positions.
+#>   rx     ry
+#>    1      0
+#>    0      1
+plot(int)
+```
+
+![](man/figures/README-unnamed-chunk-3-1.png)<!-- -->
+
+We can define a parameter array to sample from a MRF
+model:
+
+``` r
+# We have 2 interacting positions and we'll use a 3 color model, therefore,
+# an array with dimensions (3,3,3) is used.
+theta <- mrf2d:::vec_to_array(-1, family = "onepar", C = 2, n_R = 2)
+theta
+#> , , 1
+#> 
+#>    0  1  2
+#> 0  0 -1 -1
+#> 1 -1  0 -1
+#> 2 -1 -1  0
+#> 
+#> , , 2
+#> 
+#>    0  1  2
+#> 0  0 -1 -1
+#> 1 -1  0 -1
+#> 2 -1 -1  0
+```
+
+In short, the negative values out of diagonal means different “colors”
+are less likely in that relative position. We can sample from this model
+with:
+
+``` r
+set.seed(1)
+img_dim <- c(200,200)
+Z <- rmrf2d(img_dim, mrfi = int, theta = theta, cycles = 60)
+dplot(Z, legend = TRUE)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+
+We now add a Gaussian error and a linear effect to the image (to create
+a hidden Markov Random Field):
+
+``` r
+set.seed(1)
+Y <- Z + 4 + 0.02*row(Z) + rnorm(length(Z), sd = 0.4)
+cplot(Y)
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+
+We fit a Gaussian hidden Markov random field to recover the components:
+
+``` r
+set.seed(3)
+fit <- fit_ghm(Y, mrfi = int, theta = theta, 
+               fixed_fn = polynomial_2d(c(1,1), dim(Y)), verbose = FALSE)
+```
+
+Check the results:
+
+``` r
+fit$par
+#>         mu    sigma
+#> 0 6.010691 0.400807
+#> 1 7.011794 0.400807
+#> 2 8.013461 0.400807
+
+library(ggplot2)
+cplot(fit$fixed) + ggtitle("Linear Effect")
+dplot(fit$Z_pred, legend = TRUE) + ggtitle("Predicted Z")
+cplot(fit$predicted) + ggtitle("Predicted Value")
+```
+
+![](man/figures/README-unnamed-chunk-8-1.png)![](man/figures/README-unnamed-chunk-8-2.png)![](man/figures/README-unnamed-chunk-8-3.png)
 
 ## Next Steps
 
-I currently have most of the functions implemented on another private
-repository already but proper documentation is lacking, features will be
-added as soon as the documentation is written. For any requests, e.g.,
-implementation of a particular model or method, feel free to file an
-issue and I can check if it can be implemented within the current
-framework.
-
-Things to work in immediately:
-
-  - Write the stochastic approximation algorithm with options to include
-    simpler models as well as the most general with all different
-    interaction types.
+Most of basic functionalities are already implemented, but the
+documentation is still being written.
 
 ## Contributing and Bug Reports
 
