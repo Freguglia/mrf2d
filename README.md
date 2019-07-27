@@ -37,6 +37,8 @@ interaction.
 
 </p>
 
+-----
+
 ## Installation
 
 <!--
@@ -56,6 +58,8 @@ devtools::install_github("Freguglia/mrf2d")
 
 The package will be available on CRAN as soon as a reasonable number of
 features are added and well documented.
+
+-----
 
 ## Example
 
@@ -152,10 +156,14 @@ cplot(fit$predicted) + ggtitle("Predicted Value")
 
 ![](man/figures/README-unnamed-chunk-8-1.png)![](man/figures/README-unnamed-chunk-8-2.png)![](man/figures/README-unnamed-chunk-8-3.png)
 
+-----
+
 ## Next Steps
 
 Most of basic functionalities are already implemented, but the
 documentation is still being written.
+
+-----
 
 ## Contributing and Bug Reports
 
