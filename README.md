@@ -66,8 +66,10 @@ features are added and well documented.
 This is an example of what type of analysis you can do with `mrf2d`.
 More features are also present, including estimation of parameter in
 Markov Random Fields, families of parameter restrictions and more. Read
-the package’s vignette for more information and detailed description of
-the functions used: `browseVignettes("mrf2d")`.
+the package’s
+[vignette](https://freguglia.github.io/mrf2d/articles/guide.html) for
+more information and detailed description of the functions used:
+`browseVignettes("mrf2d")`.
 
 We can define an interaction structure with the `mrfi()` function:
 
