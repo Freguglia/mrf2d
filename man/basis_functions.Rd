@@ -20,8 +20,19 @@ to be used.}
 \item{poly_deg}{A length 2 numeric vector with degrees of the bivariate
 polynomial to be considered.}
 }
+\value{
+A \code{list} of functions.
+}
 \description{
-Creation of basis functions
+\code{fourier_2d()} and \code{polynomial_2d()} creates a \code{list} of basis
+functions to be used as the fixed effect in \code{\link[=fit_ghm]{fit_ghm}}.
+}
+\details{
+\code{fourier_2d()} is for 2-dimensional Fourier transform.
+}
+\examples{
+fourier_2d(c(10,10), dim(Z_potts))
+polynomial_2d(c(3,3), dim(Z_potts))
 }
 \author{
 Victor Freguglia

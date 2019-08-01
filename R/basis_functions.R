@@ -1,5 +1,9 @@
-#' @title Creation of basis functions
 #' @name basis_functions
+#' @author Victor Freguglia
+#' @title Creation of basis functions
+#'
+#' @description `fourier_2d()` and `polynomial_2d()` creates a `list` of basis
+#' functions to be used as the fixed effect in \code{\link[=fit_ghm]{fit_ghm}}.
 #'
 #' @param lattice_dim A length 2 numeric vector with lattice dimensions (N,M)
 #'  to be used.
@@ -7,10 +11,17 @@
 #' (x-axis and y-axis direction, respectively).
 #' @param poly_deg A length 2 numeric vector with degrees of the bivariate
 #'  polynomial to be considered.
+#'
+#' @return A `list` of functions.
+#'
+#' @details `fourier_2d()` is for 2-dimensional Fourier transform.
+#'
+#' @examples
+#' fourier_2d(c(10,10), dim(Z_potts))
+#' polynomial_2d(c(3,3), dim(Z_potts))
 NULL
 
 #' @rdname basis_functions
-#' @author Victor Freguglia
 #' @export
 fourier_2d <- function(max_freqs, lattice_dim){
 
