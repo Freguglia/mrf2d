@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   echo = FALSE
 )
 ```
-# mrf2d <a href='https://github.com/Freguglia/mrf2d'><img src='man/figures/mrf2d_logo.png' align="right" height="200" /></a>
+# mrf2d <a href='https://github.com/Freguglia/mrf2d'><img src='man/figures/logo.png' align="right" height="200" /></a>
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/Freguglia/mrf2d.svg?branch=master)](https://travis-ci.org/Freguglia/mrf2d)
