@@ -75,7 +75,9 @@ estimators.
 maximum absolute difference between (\eqn{\mu} and \eqn{\sigma})  parameters
 in consecutive iterations is less than \code{max_dist}.
 
-\deqn{max{max | \mu_{t+1} - \mu_t |, | \sigma{t+1} - \sigma_t|} <= max_dist}
+\deqn{\max (| \mu_{t+1} - \mu_t |, | \sigma_{t+1} - \sigma_t|) \leq
+ \text{max_dist}}{max (| \mu_{t+1} - \mu_t |, | \sigma_{t+1} - \sigma_t|)<=
+ max_dist}
 
 Note that if the maximum probability configuration for \code{Z} is unchanged
 between two iterations, then the parameter estimates will also be unchanged,
