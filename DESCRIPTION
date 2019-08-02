@@ -29,3 +29,5 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/Freguglia/mrf2d
+BugReports: https://github.com/Freguglia/mrf2d/issues
