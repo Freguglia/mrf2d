@@ -1,1 +1,6 @@
+url: https://freguglia.github.io/mrf2d/
+
 destination: docs
+template:
+  params:
+    bootswatch: united
