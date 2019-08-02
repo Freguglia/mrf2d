@@ -31,8 +31,10 @@ functions to be used as the fixed effect in \code{\link[=fit_ghm]{fit_ghm}}.
 \code{fourier_2d()} is for 2-dimensional Fourier transform.
 }
 \examples{
+\dontrun{
 fourier_2d(c(10,10), dim(Z_potts))
 polynomial_2d(c(3,3), dim(Z_potts))
+}
 }
 \author{
 Victor Freguglia
