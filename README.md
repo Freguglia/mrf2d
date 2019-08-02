@@ -160,15 +160,9 @@ cplot(fit$predicted) + ggtitle("Predicted Value")
 
 -----
 
-## Next Steps
-
-Most of basic functionalities are already implemented, but the
-documentation is still being written.
-
------
-
 ## Contributing and Bug Reports
 
 If you’re interested in contributing or found a bug or error, please
-file an issue. Contributions can be done in form of code optimization,
-new ideas, discussing new structures, etc.
+file an [issue](https://github.com/Freguglia/mrf2d/issues).
+Contributions can be done in form of code optimization, new ideas,
+discussing new structures, etc.
