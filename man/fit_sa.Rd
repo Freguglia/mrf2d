@@ -4,7 +4,8 @@
 \alias{fit_sa}
 \title{Stochastic Approximation algorithm for MRFs on 2d lattices}
 \usage{
-fit_sa(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5)
+fit_sa(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
+  refresh_each = 25, refresh_cycles = 60)
 }
 \arguments{
 \item{Z}{A \code{matrix} object containing the observed MRF.}
@@ -25,6 +26,10 @@ used in each step \eqn{\gamma_t}.}
 \item A valid \code{array} of parameter values according to \code{family}.
 \item \code{0}. If set to \code{0} an array with `0`` in all entries is created.
 }}
+
+\item{refresh_each}{Aaaa}
+
+\item{refresh_cycles}{Bbbb}
 }
 \value{
 A \code{list} object with the following elements:

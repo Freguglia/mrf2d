@@ -20,6 +20,8 @@
 #' @inheritParams fit_pl
 #' @param gamma_seq A `numeric` vector with the sequence of constants
 #' used in each step \eqn{\gamma_t}.
+#' @param refresh_each Aaaa
+#' @param refresh_cycles Bbbb
 #'
 #' @return A `list` object with the following elements:
 #'  * `theta`: The estimated `array` of potentials.
@@ -41,7 +43,8 @@
 #' }
 #'
 #' @export
-fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5){
+fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
+                   refresh_each = 25, refresh_cycles = 60){
 
   if(!family %in% mrf2d_families){
     stop("'", family, "' is not an implemented family.")
@@ -76,7 +79,12 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5){
     arr_Z_t <- table_relative_3d(Z_t, mrfi@Rmat, C, FALSE)
     S_t <- suf_stat(arr_Z_t, family)
     theta_t <- theta_t - gamma_seq[t]*(S_t - S)
-    Z_t <- rmrf2d(Z_t, mrfi, vec_to_array(theta_t, family, C, n_R), cycles)
+    if(t%%refresh_each == 0){
+      Z_t <- rmrf2d(dim(Z), mrfi, vec_to_array(theta_t, family, C, n_R),
+                    refresh_cycles)
+    } else {
+      Z_t <- rmrf2d(Z_t, mrfi, vec_to_array(theta_t, family, C, n_R), cycles)
+    }
     d[t] <- sqrt(sum((S_t - S)^2))
   }
   return(list(theta = vec_to_array(theta_t, family, C, n_R),
