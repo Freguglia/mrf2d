@@ -6,31 +6,38 @@
 #'  the a parameter and updating it by comparing the sufficient statistics
 #'  of the sampled field and the reference field.
 #'
-#' @details
-#'
-#' An example where Stochastic Approximation is used with MRFs is
-#' \insertCite{gimel_sa}{mrf2d}.
-#'
-#' \deqn{\theta_{t+1} = \theta_t - \gamma_t(T(Z_t) - T(Z)),}
-#' where \eqn{T(Z)} is the sufficient statistics for the reference field,
-#' \eqn{T(Z_t)} is the sufficient statistics for a field sampled from
-#' \eqn{\theta_t}.
+#'  This method aims to find the parameter value where the gradient of the
+#'  likelihood function is equal to zero.
 #'
 #'
 #' @inheritParams fit_pl
 #' @param gamma_seq A `numeric` vector with the sequence of constants
 #' used in each step \eqn{\gamma_t}.
-#' @param refresh_each Aaaa
-#' @param refresh_cycles Bbbb
+#' @param refresh_each An integer with the number of iterations taken before a
+#' complete refresh (restart from a random state). This prevents the sample from
+#' being stuck in a mode for too long. Defaults to `length(gamma_seq) + 1` (no
+#' refresh happens).
+#' @param refresh_cycles An iteger indicating how many Gibbs Sampler cycles are
+#' performed when a refresh happens. Larger is usually better, but slower.
 #'
 #' @return A `list` object with the following elements:
 #'  * `theta`: The estimated `array` of potentials.
 #'  * `metrics`: A `data.frame` containing the the euclidean distance between
 #'  the sufficient statics computed for `Z` and the current sample.
 #'
+#' @details
+#'
+#' \deqn{\theta_{t+1} = \theta_t - \gamma_t(T(Z_t) - T(Z)),}
+#' where \eqn{T(Z)} is the sufficient statistics for the reference field,
+#' \eqn{T(Z_t)} is the sufficient statistics for a field sampled from
+#' \eqn{\theta_t}.
+#'
 #' @note
 #'   Stochastic Approximation is called "Controllable Simulated Annealing" in
 #' some references.
+#'
+#' Examples where Stochastic Approximation is used with MRFs are
+#' \insertCite{gimel_sa}{mrf2d}, \insertCite{CR}{mrf2d}.
 #'
 #' @references
 #' \insertRef{wiki_sa}{mrf2d}
@@ -44,7 +51,7 @@
 #'
 #' @export
 fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
-                   refresh_each = 25, refresh_cycles = 60){
+                   refresh_each = length(gamma_seq)+1, refresh_cycles = 60){
 
   if(!family %in% mrf2d_families){
     stop("'", family, "' is not an implemented family.")

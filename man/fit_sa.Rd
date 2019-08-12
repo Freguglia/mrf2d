@@ -5,7 +5,7 @@
 \title{Stochastic Approximation algorithm for MRFs on 2d lattices}
 \usage{
 fit_sa(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
-  refresh_each = 25, refresh_cycles = 60)
+  refresh_each = length(gamma_seq) + 1, refresh_cycles = 60)
 }
 \arguments{
 \item{Z}{A \code{matrix} object containing the observed MRF.}
@@ -27,9 +27,13 @@ used in each step \eqn{\gamma_t}.}
 \item \code{0}. If set to \code{0} an array with `0`` in all entries is created.
 }}
 
-\item{refresh_each}{Aaaa}
+\item{refresh_each}{An integer with the number of iterations taken before a
+complete refresh (restart from a random state). This prevents the sample from
+being stuck in a mode for too long. Defaults to \code{length(gamma_seq) + 1} (no
+refresh happens).}
 
-\item{refresh_cycles}{Bbbb}
+\item{refresh_cycles}{An iteger indicating how many Gibbs Sampler cycles are
+performed when a refresh happens. Larger is usually better, but slower.}
 }
 \value{
 A \code{list} object with the following elements:
@@ -45,8 +49,8 @@ the a parameter and updating it by comparing the sufficient statistics
 of the sampled field and the reference field.
 }
 \details{
-An example where Stochastic Approximation is used with MRFs is
-\insertCite{gimel_sa}{mrf2d}.
+Examples where Stochastic Approximation is used with MRFs are
+\insertCite{gimel_sa}{mrf2d}, \insertCite{CR}{mrf2d}.
 
 \deqn{\theta_{t+1} = \theta_t - \gamma_t(T(Z_t) - T(Z)),}
 where \eqn{T(Z)} is the sufficient statistics for the reference field,
