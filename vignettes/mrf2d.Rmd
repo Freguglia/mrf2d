@@ -32,9 +32,25 @@ $$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{
 
 ## The `mrf2d` package
 
+`mrf2d` has the goal to provide tools for analysis of Markov Random Fields on two-dimensional lattices, mainly, by defining a well-designed representation of the interaction structure, as well as parameters sets with different types of restrictions. It also exports efficient implementations of the most commom estimation methods and a sampling function, making it easy to implement new or specific algorithms with little effort taking advantage of the the package's API.
+
+Computational efficiency is also a feature of the package, having most of the high-cost core functions written with `Rcpp` backend and representations that were designed to have higher performance.
+
 # The `mrfi` class and parameter arrays
 
+The stationary Markov Random Fields described are completely specified by the set of relative positions where interactions exists $\mathcal{R}$ and the interaction parameters $\theta_{a,b,r}$, $(a,b) \in \{0,\dots,C \}^2, r \in \mathcal{R}$.
+
+In `mrf2d`, interaction structures $\mathcal{R}$ are represented by objects of the S4 class `mrfi`, while interaction parameters are reprensted by simple 3-dimensional arrays, where `theta[a,b,k]` contains the value of $\theta_{a,b,r}$ for the $k$-th relative position. As an example, in a nearest-neighbor structure ($|\mathcal{R}| = 2$) with $C = 1$, where the interaction for equal values ($a=b$) is `0` and `-0.99` for different values, the corresponding array would be
+
+```{r}
+mrf2d:::vec_to_array(-0.99, "onepar", 1, 2)
+```
+
+Note how rows represents values $a$, columns are values of $b$ and slices are the relative positions in $\mathcal{R}$.
+
 ## Creating `mrfi` objects
+
+`mrfi` objects can be created with the `mrfi()` function.
 
 ## Parameter restriction families
 

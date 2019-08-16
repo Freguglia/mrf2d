@@ -105,14 +105,32 @@
 <div id="the-mrf2d-package" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-mrf2d-package" class="anchor"></a>The <code>mrf2d</code> package</h2>
+<p><code>mrf2d</code> has the goal to provide tools for analysis of Markov Random Fields on two-dimensional lattices, mainly, by defining a well-designed representation of the interaction structure, as well as parameters sets with different types of restrictions. It also exports efficient implementations of the most commom estimation methods and a sampling function, making it easy to implement new or specific algorithms with little effort taking advantage of the the package’s API.</p>
+<p>Computational efficiency is also a feature of the package, having most of the high-cost core functions written with <code>Rcpp</code> backend and representations that were designed to have higher performance.</p>
 </div>
 </div>
 <div id="the-mrfi-class-and-parameter-arrays" class="section level1">
 <h1 class="hasAnchor">
 <a href="#the-mrfi-class-and-parameter-arrays" class="anchor"></a>The <code>mrfi</code> class and parameter arrays</h1>
+<p>The stationary Markov Random Fields described are completely specified by the set of relative positions where interactions exists <span class="math inline">\(\mathcal{R}\)</span> and the interaction parameters <span class="math inline">\(\theta_{a,b,r}\)</span>, <span class="math inline">\((a,b) \in \{0,\dots,C \}^2, r \in \mathcal{R}\)</span>.</p>
+<p>In <code>mrf2d</code>, interaction structures <span class="math inline">\(\mathcal{R}\)</span> are represented by objects of the S4 class <code>mrfi</code>, while interaction parameters are reprensted by simple 3-dimensional arrays, where <code>theta[a,b,k]</code> contains the value of <span class="math inline">\(\theta_{a,b,r}\)</span> for the <span class="math inline">\(k\)</span>-th relative position. As an example, in a nearest-neighbor structure (<span class="math inline">\(|\mathcal{R}| = 2\)</span>) with <span class="math inline">\(C = 1\)</span>, where the interaction for equal values (<span class="math inline">\(a=b\)</span>) is <code>0</code> and <code>-0.99</code> for different values, the corresponding array would be</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">mrf2d<span class="op">:::</span><span class="kw">vec_to_array</span>(<span class="op">-</span><span class="fl">0.99</span>, <span class="st">"onepar"</span>, <span class="dv">1</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; , , 1</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;       0     1</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; 0  0.00 -0.99</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; 1 -0.99  0.00</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; , , 2</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;       0     1</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 0  0.00 -0.99</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; 1 -0.99  0.00</span></a></code></pre></div>
+<p>Note how rows represents values <span class="math inline">\(a\)</span>, columns are values of <span class="math inline">\(b\)</span> and slices are the relative positions in <span class="math inline">\(\mathcal{R}\)</span>.</p>
 <div id="creating-mrfi-objects" class="section level2">
 <h2 class="hasAnchor">
 <a href="#creating-mrfi-objects" class="anchor"></a>Creating <code>mrfi</code> objects</h2>
+<p><code>mrfi</code> objects can be created with the <code><a href="../reference/mrfi.html">mrfi()</a></code> function.</p>
 </div>
 <div id="parameter-restriction-families" class="section level2">
 <h2 class="hasAnchor">

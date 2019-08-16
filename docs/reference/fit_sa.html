@@ -129,7 +129,8 @@ of the sampled field and the reference field.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fit_sa</span>(<span class='no'>Z</span>, <span class='no'>mrfi</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"onepar"</span>, <span class='no'>gamma_seq</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>cycles</span> <span class='kw'>=</span> <span class='fl'>5</span>)</pre>
+    <pre class="usage"><span class='fu'>fit_sa</span>(<span class='no'>Z</span>, <span class='no'>mrfi</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"onepar"</span>, <span class='no'>gamma_seq</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>cycles</span> <span class='kw'>=</span> <span class='fl'>5</span>,
+  <span class='kw'>refresh_each</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>gamma_seq</span>) + <span class='fl'>1</span>, <span class='kw'>refresh_cycles</span> <span class='kw'>=</span> <span class='fl'>60</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,6 +163,18 @@ used in each step \(\gamma_t\).</p></td>
 <li><p><code>0</code>. If set to <code>0</code> an array with `0`` in all entries is created.</p></li>
 </ul></td>
     </tr>
+    <tr>
+      <th>refresh_each</th>
+      <td><p>An integer with the number of iterations taken before a
+complete refresh (restart from a random state). This prevents the sample from
+being stuck in a mode for too long. Defaults to <code>length(gamma_seq) + 1</code> (no
+refresh happens).</p></td>
+    </tr>
+    <tr>
+      <th>refresh_cycles</th>
+      <td><p>An iteger indicating how many Gibbs Sampler cycles are
+performed when a refresh happens. Larger is usually better, but slower.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -175,8 +188,9 @@ the sufficient statics computed for <code>Z</code> and the current sample.</p></
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>An example where Stochastic Approximation is used with MRFs is
+    <p>Examples where Stochastic Approximation is used with MRFs are
 (Gimel'farb 1996)
+, (Atchadé et al. 2013)
 .</p>
 <p>$$\theta_{t+1} = \theta_t - \gamma_t(T(Z_t) - T(Z)),$$
 where \(T(Z)\) is the sufficient statistics for the reference field,
@@ -193,7 +207,9 @@ some references.</p>
     <p>Wikipedia (2019).
 &#8220;Stochastic approximation.&#8221;
 <a href='https://en.wikipedia.org/wiki/Stochastic_approximation'>https://en.wikipedia.org/wiki/Stochastic_approximation</a>.</p>
-<p>Gimel'farb GL (1996).
+<p>Atchadé YF, Lartillot N, Robert C, others (2013).
+&#8220;Bayesian computation for statistical models with intractable normalizing constants.&#8221;
+<em>Brazilian Journal of Probability and Statistics</em>, <b>27</b>(4), 416--436.<br /><br /> Gimel'farb GL (1996).
 &#8220;Texture modeling by multiple pairwise pixel interactions.&#8221;
 <em>IEEE Transactions on pattern analysis and machine intelligence</em>, <b>18</b>(11), 1110--1114.</p>
     

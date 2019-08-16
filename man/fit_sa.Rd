@@ -47,11 +47,11 @@ the sufficient statics computed for \code{Z} and the current sample.
 Estimates the parameters of a MRF by successively sampling from
 the a parameter and updating it by comparing the sufficient statistics
 of the sampled field and the reference field.
+
+This method aims to find the parameter value where the gradient of the
+likelihood function is equal to zero.
 }
 \details{
-Examples where Stochastic Approximation is used with MRFs are
-\insertCite{gimel_sa}{mrf2d}, \insertCite{CR}{mrf2d}.
-
 \deqn{\theta_{t+1} = \theta_t - \gamma_t(T(Z_t) - T(Z)),}
 where \eqn{T(Z)} is the sufficient statistics for the reference field,
 \eqn{T(Z_t)} is the sufficient statistics for a field sampled from
@@ -60,6 +60,9 @@ where \eqn{T(Z)} is the sufficient statistics for the reference field,
 \note{
 Stochastic Approximation is called "Controllable Simulated Annealing" in
 some references.
+
+Examples where Stochastic Approximation is used with MRFs are
+\insertCite{gimel_sa}{mrf2d}, \insertCite{CR}{mrf2d}.
 }
 \examples{
 \dontrun{
