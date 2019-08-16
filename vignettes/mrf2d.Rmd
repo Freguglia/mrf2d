@@ -7,6 +7,9 @@ vignette: >
   %\VignetteIndexEntry{A guide to mrf2d}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography: ../inst/REFERENCES.bib
+nocite: |
+  @wiki_sa, @wiki_pl
 ---
 
 ```{r, include = FALSE}
@@ -56,17 +59,46 @@ Note how rows represents values $a$, columns are values of $b$ and slices are th
 
 ### family `'onepar'`
 
+The interaction depends only if the pair of values is equal or different and not on their values or relative position. Since we set $\theta_{0,0,r} = 0$, this simplifies as:
+
+$$ \theta_{a,b,r} = \theta \mathbb{1}_{[a \neq b]} $$
+
+An example of valid array for `'onepar'` family is:
+
+```{r, echo = FALSE}
+mrf2d:::vec_to_array(-0.11, family = "onepar", C = 2, 2)
+```
+
+
 ### family `'oneeach'`
+
+```{r, echo = FALSE}
+mrf2d:::vec_to_array(c(-0.01, -0.02), family = "oneeach", C = 2, 2)
+```
 
 ### family `'absdif'`
 
+```{r, echo = FALSE}
+mrf2d:::vec_to_array(c(-0.01, -0.02, -0.03, -0.04), family = "absdif", C = 2, 2)
+```
+
 ### family `'dif'`
 
+```{r, echo = FALSE}
+mrf2d:::vec_to_array(c(-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08), family = "dif", C = 2, 2)
+```
+
 ### family `'free'`
+
+```{r, echo = FALSE}
+mrf2d:::vec_to_array(seq(-0.01, -0.16, by = -0.01), family = "free", C = 2, 2)
+```
 
 # Parameter estimation on Markov Random Fields
 
 ## Pseudo-Likelihood
+
+$$ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} P(Z_i = z_i | \mathbf{Z}_{\mathcal{N}_i} = \mathbf{z}_{\mathcal{N}_i}) $$
 
 ## Stochastic Approximation
 
@@ -75,3 +107,9 @@ Note how rows represents values $a$, columns are values of $b$ and slices are th
 ## Corrupted discrete image model
 
 ## Gaussian Mixtures
+
+@zhang2001segmentation
+
+$$ f(\mathbf{y}|\mathbf{Z} = \mathbf{z}) = \prod_{i \in \mathcal{L}} \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( - \frac{(y_i - \mu_{Z_i})^2}{2\sigma^2} \right) $$
+
+# Bibliography
