@@ -27,6 +27,8 @@ used in each step \eqn{\gamma_t}.}
 \item \code{0}. If set to \code{0} an array with `0`` in all entries is created.
 }}
 
+\item{cycles}{The number of updates to be done (for each each pixel).}
+
 \item{refresh_each}{An integer with the number of iterations taken before a
 complete refresh (restart from a random state). This prevents the sample from
 being stuck in a mode for too long. Defaults to \code{length(gamma_seq) + 1} (no

@@ -11,6 +11,7 @@
 #'
 #'
 #' @inheritParams fit_pl
+#' @inheritParams rmrf2d
 #' @param gamma_seq A `numeric` vector with the sequence of constants
 #' used in each step \eqn{\gamma_t}.
 #' @param refresh_each An integer with the number of iterations taken before a
