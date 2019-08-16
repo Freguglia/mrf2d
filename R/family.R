@@ -5,7 +5,8 @@
 #' @description A set of restrictions can be included in estimation processes
 #' to assure `mrf2d` can be sucessfully a wider range of models available in
 #' the literature. For a more complete description of which restrictions are
-#' used to characterize some of the most commom models read the guide vignette
+#' used to characterize some of the most commom models read the section
+#' `Parameter restriction families` guide vignette
 #'
 #' \code{vignette("guide", package = "mrf2d")}.
 #'
