@@ -41,7 +41,9 @@
 
 <meta property="og:description" content="Estimates the parameters of a MRF by successively sampling from
 the a parameter and updating it by comparing the sufficient statistics
-of the sampled field and the reference field." />
+of the sampled field and the reference field.
+This method aims to find the parameter value where the gradient of the
+likelihood function is equal to zero." />
 
 <meta property="og:image" content="https://freguglia.github.io/mrf2d/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -126,6 +128,8 @@ of the sampled field and the reference field." />
     <p>Estimates the parameters of a MRF by successively sampling from
 the a parameter and updating it by comparing the sufficient statistics
 of the sampled field and the reference field.</p>
+<p>This method aims to find the parameter value where the gradient of the
+likelihood function is equal to zero.</p>
     
     </div>
 
@@ -188,11 +192,7 @@ the sufficient statics computed for <code>Z</code> and the current sample.</p></
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Examples where Stochastic Approximation is used with MRFs are
-(Gimel'farb 1996)
-, (Atchadé et al. 2013)
-.</p>
-<p>$$\theta_{t+1} = \theta_t - \gamma_t(T(Z_t) - T(Z)),$$
+    <p>$$\theta_{t+1} = \theta_t - \gamma_t(T(Z_t) - T(Z)),$$
 where \(T(Z)\) is the sufficient statistics for the reference field,
 \(T(Z_t)\) is the sufficient statistics for a field sampled from
 \(\theta_t\).</p>
@@ -201,6 +201,10 @@ where \(T(Z)\) is the sufficient statistics for the reference field,
 
     <p>Stochastic Approximation is called "Controllable Simulated Annealing" in
 some references.</p>
+<p>Examples where Stochastic Approximation is used with MRFs are
+(Gimel'farb 1996)
+, (Atchadé et al. 2013)
+.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 

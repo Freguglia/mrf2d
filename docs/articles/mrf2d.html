@@ -139,26 +139,94 @@
 <h3 class="hasAnchor">
 <a href="#family-onepar" class="anchor"></a>family <code>'onepar'</code>
 </h3>
+<p>The interaction depends only if the pair of values is equal or different and not on their values or relative position. Since we set <span class="math inline">\(\theta_{0,0,r} = 0\)</span>, this simplifies as:</p>
+<p><span class="math display">\[ \theta_{a,b,r} = \theta \mathbb{1}_{[a \neq b]} \]</span></p>
+<p>An example of valid array for <code>'onepar'</code> family is:</p>
+<pre><code>#&gt; , , 1
+#&gt; 
+#&gt;       0     1     2
+#&gt; 0  0.00 -0.11 -0.11
+#&gt; 1 -0.11  0.00 -0.11
+#&gt; 2 -0.11 -0.11  0.00
+#&gt; 
+#&gt; , , 2
+#&gt; 
+#&gt;       0     1     2
+#&gt; 0  0.00 -0.11 -0.11
+#&gt; 1 -0.11  0.00 -0.11
+#&gt; 2 -0.11 -0.11  0.00</code></pre>
 </div>
 <div id="family-oneeach" class="section level3">
 <h3 class="hasAnchor">
 <a href="#family-oneeach" class="anchor"></a>family <code>'oneeach'</code>
 </h3>
+<pre><code>#&gt; , , 1
+#&gt; 
+#&gt;       0     1     2
+#&gt; 0  0.00 -0.01 -0.01
+#&gt; 1 -0.01  0.00 -0.01
+#&gt; 2 -0.01 -0.01  0.00
+#&gt; 
+#&gt; , , 2
+#&gt; 
+#&gt;       0     1     2
+#&gt; 0  0.00 -0.02 -0.02
+#&gt; 1 -0.02  0.00 -0.02
+#&gt; 2 -0.02 -0.02  0.00</code></pre>
 </div>
 <div id="family-absdif" class="section level3">
 <h3 class="hasAnchor">
 <a href="#family-absdif" class="anchor"></a>family <code>'absdif'</code>
 </h3>
+<pre><code>#&gt; , , 1
+#&gt; 
+#&gt;       0     1     2
+#&gt; 0  0.00 -0.01 -0.02
+#&gt; 1 -0.01  0.00 -0.01
+#&gt; 2 -0.02 -0.01  0.00
+#&gt; 
+#&gt; , , 2
+#&gt; 
+#&gt;       0     1     2
+#&gt; 0  0.00 -0.03 -0.04
+#&gt; 1 -0.03  0.00 -0.03
+#&gt; 2 -0.04 -0.03  0.00</code></pre>
 </div>
 <div id="family-dif" class="section level3">
 <h3 class="hasAnchor">
 <a href="#family-dif" class="anchor"></a>family <code>'dif'</code>
 </h3>
+<pre><code>#&gt; , , 1
+#&gt; 
+#&gt;       0     1     2
+#&gt; 0  0.00 -0.03 -0.04
+#&gt; 1 -0.02  0.00 -0.03
+#&gt; 2 -0.01 -0.02  0.00
+#&gt; 
+#&gt; , , 2
+#&gt; 
+#&gt;       0     1     2
+#&gt; 0  0.00 -0.07 -0.08
+#&gt; 1 -0.06  0.00 -0.07
+#&gt; 2 -0.05 -0.06  0.00</code></pre>
 </div>
 <div id="family-free" class="section level3">
 <h3 class="hasAnchor">
 <a href="#family-free" class="anchor"></a>family <code>'free'</code>
 </h3>
+<pre><code>#&gt; , , 1
+#&gt; 
+#&gt;       0     1     2
+#&gt; 0  0.00 -0.03 -0.06
+#&gt; 1 -0.01 -0.04 -0.07
+#&gt; 2 -0.02 -0.05 -0.08
+#&gt; 
+#&gt; , , 2
+#&gt; 
+#&gt;       0     1     2
+#&gt; 0  0.00 -0.11 -0.14
+#&gt; 1 -0.09 -0.12 -0.15
+#&gt; 2 -0.10 -0.13 -0.16</code></pre>
 </div>
 </div>
 </div>
@@ -168,6 +236,7 @@
 <div id="pseudo-likelihood" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pseudo-likelihood" class="anchor"></a>Pseudo-Likelihood</h2>
+<p><span class="math display">\[ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} P(Z_i = z_i | \mathbf{Z}_{\mathcal{N}_i} = \mathbf{z}_{\mathcal{N}_i}) \]</span></p>
 </div>
 <div id="stochastic-approximation" class="section level2">
 <h2 class="hasAnchor">
@@ -184,6 +253,23 @@
 <div id="gaussian-mixtures" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gaussian-mixtures" class="anchor"></a>Gaussian Mixtures</h2>
+<p><span class="citation">Zhang, Brady, and Smith (2001)</span></p>
+<p><span class="math display">\[ f(\mathbf{y}|\mathbf{Z} = \mathbf{z}) = \prod_{i \in \mathcal{L}} \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( - \frac{(y_i - \mu_{Z_i})^2}{2\sigma^2} \right) \]</span></p>
+</div>
+</div>
+<div id="bibliography" class="section level1 unnumbered">
+<h1 class="hasAnchor">
+<a href="#bibliography" class="anchor"></a>Bibliography</h1>
+<div id="refs" class="references">
+<div id="ref-wiki_pl">
+<p>Wikipedia. 2019a. “Pseudolikelihood.” <a href="https://en.wikipedia.org/wiki/Pseudolikelihood">https://en.wikipedia.org/wiki/Pseudolikelihood</a>.</p>
+</div>
+<div id="ref-wiki_sa">
+<p>———. 2019b. “Stochastic Approximation.” <a href="https://en.wikipedia.org/wiki/Stochastic_approximation">https://en.wikipedia.org/wiki/Stochastic_approximation</a>.</p>
+</div>
+<div id="ref-zhang2001segmentation">
+<p>Zhang, Yongyue, Michael Brady, and Stephen Smith. 2001. “Segmentation of Brain Mr Images Through a Hidden Markov Random Field Model and the Expectation-Maximization Algorithm.” <em>IEEE Transactions on Medical Imaging</em> 20 (1). Ieee: 45–57.</p>
+</div>
 </div>
 </div>
   </div>
@@ -218,6 +304,7 @@
       <li><a href="#gaussian-mixtures">Gaussian Mixtures</a></li>
       </ul>
 </li>
+      <li><a href="#bibliography">Bibliography</a></li>
       </ul>
 </div>
       </div>
