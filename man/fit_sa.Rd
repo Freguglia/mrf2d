@@ -47,17 +47,34 @@ the sufficient statics computed for \code{Z} and the current sample.
 }
 \description{
 Estimates the parameters of a MRF by successively sampling from
-the a parameter and updating it by comparing the sufficient statistics
-of the sampled field and the reference field.
+a parameter configuration and updating it by comparing the sufficient statistics
+of the sampled field and the observed field.
 
 This method aims to find the parameter value where the gradient of the
 likelihood function is equal to zero.
 }
 \details{
+The stochastic approximation method consists of, given an observed field \code{Z},
+and a starting parameters configuration \eqn{\theta_0}, successively sample
+a field \eqn{Z_t} from the current parameter configuration and estimate the
+direction of the  gradient of the likelihood function by comparing the
+sufficient statistics in the current sample and the observed field.
+
+The solution is updated by moving in the estimated direction with a predefined
+step size \eqn{\gamma_t}, a new field \eqn{Z_{t+1}} is sampled using the new
+parameter configuration and \eqn{Z_t} as an initial value, and the process is
+repeated.
+
 \deqn{\theta_{t+1} = \theta_t - \gamma_t(T(Z_t) - T(Z)),}
 where \eqn{T(Z)} is the sufficient statistics for the reference field,
 \eqn{T(Z_t)} is the sufficient statistics for a field sampled from
 \eqn{\theta_t}.
+
+\code{gamma_seq} is normalized internally by diving values by \code{length(Z)}, so the
+choice of the sequence is invariant to the lattice dimensions. Typically, a
+sequence like \code{seq(from = 1, to = 0, length.out = 1000)} should be used for
+defining a sequence with \code{1000} steps. Some tuning of this sequence is
+required.
 }
 \note{
 Stochastic Approximation is called "Controllable Simulated Annealing" in
@@ -69,6 +86,13 @@ Examples where Stochastic Approximation is used with MRFs are
 \examples{
 \dontrun{
 set.seed(2)
+fit1 <- fit_sa(Z_potts, mrfi(1), family = "onepar", gamma_seq = seq(1, 0, length.out = 50))
+# Estimated parameters
+fit1$theta
+# A visualization of estimated gradient norm over iterations.
+plot(fit1$metrics)
+
+fit_sa(Z_potts, mrfi(1), family = "oneeach", gamma_seq = seq(1, 0, length.out = 50))
 }
 
 }
