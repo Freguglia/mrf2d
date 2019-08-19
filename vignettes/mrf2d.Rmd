@@ -39,6 +39,22 @@ $$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{
 
 Computational efficiency is also a feature of the package, having most of the high-cost core functions written with `Rcpp` backend and representations that were designed to have higher performance.
 
+The package also provides [plotting](https://freguglia.github.io/mrf2d/reference/dplot.html) functions `dplot()` and `cplot()` that automatically convert `matrix` objects to appropriate `data.frame` structures and creates `ggplot` objects from it. These functions aim to provide easy to use methods of visualization but also take advantage of [`ggplot2`](https://ggplot2.tidyverse.org/)'s grammar to modify aesthetics and create elegant and customizable visualizations of lattice data. `dplot()` should be used for **d**iscrete data while `cplot()` is suitable for **c**ontinuous data.
+
+```{r, fig.width = 4, warning=FALSE}
+class(Z_potts)
+unique(as.vector(Z_potts))
+
+dplot(Z_potts, legend = TRUE)
+cplot(Z_potts + rnorm(length(Z_potts)))
+
+library(ggplot2)
+dplot(Z_potts) + ggtitle("Title added with ggplot2")
+dplot(Z_potts) + scale_fill_brewer(type = "qual") + 
+  ggtitle("Title added with ggplot2")
+```
+
+
 # The `mrfi` class and parameter arrays
 
 The stationary Markov Random Fields described are completely specified by the set of relative positions where interactions exists $\mathcal{R}$ and the interaction parameters $\theta_{a,b,r}$, $(a,b) \in \{0,\dots,C \}^2, r \in \mathcal{R}$.
@@ -53,7 +69,14 @@ Note how rows represents values $a$, columns are values of $b$ and slices are th
 
 ## Creating `mrfi` objects
 
-`mrfi` objects can be created with the `mrfi()` function.
+`mrfi` objects can be created with the `mrfi()` function. It takes three parameters: `max_norm`, `norm_type` and `positions`. `max_norm` and `norm_type` combined define a region where interactions are included. As example, if `max_norm` is `3` and `norm_type` is `"1"`, the interaction structure will include relative positions $r$ where $|r_x| + |r_y| \leq 3$.
+
+Note that opposite positions, e.g., $(1,0)$ and $(-1,0)$ are not both included, as the second one is always redundant for the model. A `plot()` function is available to visualize
+
+```{r}
+mrfi(max_norm = 3, norm_type = "1")
+```
+
 
 ## Parameter restriction families
 
@@ -63,14 +86,20 @@ The interaction depends only if the pair of values is equal or different and not
 
 $$ \theta_{a,b,r} = \theta \mathbb{1}_{[a \neq b]} $$
 
-An example of valid array for `'onepar'` family is:
+Example of valid array for `'onepar'`:
 
 ```{r, echo = FALSE}
-mrf2d:::vec_to_array(-0.11, family = "onepar", C = 2, 2)
+mrf2d:::vec_to_array(-0.01, family = "onepar", C = 2, 2)
 ```
 
 
 ### family `'oneeach'`
+
+The same as `'onepar'`, but allowing different values for different relative positions $r$:
+
+$$ \theta_{a,b,r} = \theta_r \mathbb{1}_{[a \neq b]} $$
+
+Example of valid array for `'oneeach'`:
 
 ```{r, echo = FALSE}
 mrf2d:::vec_to_array(c(-0.01, -0.02), family = "oneeach", C = 2, 2)
