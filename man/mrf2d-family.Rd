@@ -4,13 +4,11 @@
 \alias{mrf2d-family}
 \title{Parameter restriction families}
 \description{
-A set of restrictions can be included in estimation processes
-to assure \code{mrf2d} can be sucessfully a wider range of models available in
-the literature. For a more complete description of which restrictions are
-used to characterize some of the most commom models read the section
-\code{Parameter restriction families} guide vignette
-
-\code{vignette("guide", package = "mrf2d")}.
+Different parameter restrictions can be included in estimation processes
+to make sure \code{mrf2d} can sucessfully include a wide range of models available in
+its inference functions. For a more complete description of which restrictions are
+used to characterize some of the most commom models read the
+\href{https://freguglia.github.io/mrf2d/articles/mrf2d.html#parameter-restriction-families}{corresponding section of the package's vignette}
 
 For model identifiability, at least one linear restriction is necessary.
 \code{mrf2d} always assume \eqn{\theta_{0,0,r} = 0} for all relative positions

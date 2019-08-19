@@ -2,13 +2,12 @@
 #' @author Victor Freguglia
 #' @title Parameter restriction families
 #'
-#' @description A set of restrictions can be included in estimation processes
-#' to assure `mrf2d` can be sucessfully a wider range of models available in
-#' the literature. For a more complete description of which restrictions are
-#' used to characterize some of the most commom models read the section
-#' `Parameter restriction families` guide vignette
+#' @description Different parameter restrictions can be included in estimation processes
+#' to make sure `mrf2d` can sucessfully include a wide range of models available in
+#' its inference functions. For a more complete description of which restrictions are
+#' used to characterize some of the most commom models read the
+#' [corresponding section of the package's vignette](https://freguglia.github.io/mrf2d/articles/mrf2d.html#parameter-restriction-families)
 #'
-#' \code{vignette("guide", package = "mrf2d")}.
 #'
 #' For model identifiability, at least one linear restriction is necessary.
 #' `mrf2d` always assume \eqn{\theta_{0,0,r} = 0} for all relative positions
