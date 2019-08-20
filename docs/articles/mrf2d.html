@@ -92,15 +92,25 @@
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<div id="a-quick-introduction-to-markov-random-fields" class="section level2">
+<div id="a-general-introduction-to-markov-random-fields" class="section level2">
 <h2 class="hasAnchor">
-<a href="#a-quick-introduction-to-markov-random-fields" class="anchor"></a>A quick introduction to Markov Random Fields</h2>
-<p>Markov Random Fields are probabilistic models used for modeling processes with local dependence. This dependence can be described by a graph <span class="math inline">\(\mathcal{G} = (\mathcal{V}, \mathcal{N})\)</span>, where <span class="math inline">\(\mathcal{V}\)</span> is a set of vertices and <span class="math inline">\(\mathcal{N}\)</span> a neighborhood system.</p>
-<p><span class="math display">\[ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{q \in Q} g_q(\mathbf z_q, \theta) \right) \]</span></p>
+<a href="#a-general-introduction-to-markov-random-fields" class="anchor"></a>A general introduction to Markov Random Fields</h2>
+<p>Markov Random Fields are probabilistic models used for modeling processes with local dependence. This dependence can be described by a graph <span class="math inline">\(\mathcal{G} = (\mathcal{V}, \mathcal{N})\)</span>, where <span class="math inline">\(\mathcal{V}\)</span> is a set of vertices and <span class="math inline">\(\mathcal{N}\)</span> a neighborhood system. A set of random variables <span class="math inline">\(\mathbf{Z} = \{Z_i, i \in \mathcal{V} \}\)</span> is called a Markov Random Field with respect to the neighborhood system <span class="math inline">\(\mathcal{N}\)</span> if</p>
+<p><span class="math display">\[ P(Z_i = z_i | \{ Z_j, j \neq i \}) = P(Z_i| \{ Z_j, j \in \mathcal{N}_i \}), \]</span> where <span class="math inline">\(\mathcal{N}_i\)</span> denotes the neighbors of <span class="math inline">\(i\)</span> according to <span class="math inline">\(\mathcal{N}\)</span>.</p>
+<p>If and only if the above equality holds for each <span class="math inline">\(i \in \mathcal{V}\)</span>, under some additional technical conditions, the joint distribution of <span class="math inline">\(\mathbf{Z}\)</span> is given by a Gibbs distribution of the form <span class="math display">\[ P(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta} \exp \left( \sum_{q \in Q(\mathcal{N})} g_q(\mathbf z_q) \right),\]</span> where <span class="math inline">\(\mathcal{Q}(\mathcal{N})\)</span> denotes the set of cliques (fully connected subsets) of <span class="math inline">\(\mathcal{N}\)</span> and <span class="math inline">\(g_q\)</span> are arbitrary functions and <span class="math inline">\(\zeta\)</span> is a normalization constant (often called “partition function”).</p>
+<p>While having a general form of probability measure for local dependent processes is a good start, specific cases with different choices of <span class="math inline">\(g_q\)</span>’s, <span class="math inline">\(\mathcal{V}\)</span> and <span class="math inline">\(\mathcal{N}\)</span> may lead to completely different models which statistical analysis should be carried differently. <code>mrf2d</code> provides tools for a specific, yet large, class models usually present in an image processing context: Two-dimensional lattices.</p>
 </div>
 <div id="a-spatially-stationary-mrf-model-for-2-dimensional-lattices" class="section level2">
 <h2 class="hasAnchor">
 <a href="#a-spatially-stationary-mrf-model-for-2-dimensional-lattices" class="anchor"></a>A spatially stationary MRF model for 2-dimensional lattices</h2>
+<p>The model adopted in <code>mrf2d</code> has the following assumptions:</p>
+<ul>
+<li><p><span class="math inline">\(\mathcal{V} = \mathcal{L} = \{ i = (i_x, i_j): 1 \leq i_x \leq N; 1 \leq i_y \leq M \}\)</span>: The data points (called pixels) are indexed by a retangular lattice <span class="math inline">\(\mathcal{L}\)</span> of dimension <span class="math inline">\(N \times M\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathcal{N}\)</span> is determined by a set of relative positions <span class="math inline">\(\mathcal{R}\)</span>: There is an edge connecting two pixels <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> if and only if their relative position <span class="math inline">\((i_x, i_y) - (j_x, j_y)\)</span> is in <span class="math inline">\(\mathcal{R}\)</span>. As an example, if <span class="math inline">\(\mathcal{R} = \{ (1,0), (0,1) \}\)</span>, pixels are connected to their nearest neighbors horizontally and vertically, which can be represented by the structure below. Note the opposite directions have edges but they are not included in <span class="math inline">\(\mathcal{R}\)</span> to avoid redundancy.</p></li>
+</ul>
+<p><img src="mrf2d_files/figure-html/ex_mrfi-1.png" width="30%" style="display: block; margin: auto;"></p>
+<p><span class="math display">\[ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{i \in \mathcal{L}} \sum_{j = i + r}^{r \in \mathcal{R}} \theta_{z_i, z_j, r} \right) \]</span></p>
+<p><span class="math display">\[ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{r \in \mathcal{R}} \sum_{a,b = 0}^C \theta_{a,b,r} n_r(a,b) \right) \]</span> <span class="math inline">\(n_r(a,b) = \sum_{i \in \mathcal{L}} \mathbb{1}(z_i = a, z_{i+r} = b)\)</span></p>
 </div>
 <div id="the-mrf2d-package" class="section level2">
 <h2 class="hasAnchor">
@@ -114,18 +124,16 @@
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; [1] 0 1 2</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="kw"><a href="../reference/dplot.html">dplot</a></span>(Z_potts, <span class="dt">legend =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p><img src="mrf2d_files/figure-html/plots_examples-1.png" width="384"></p>
+<p><img src="mrf2d_files/figure-html/plots_examples-1.png" width="50%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/dplot.html">cplot</a></span>(Z_potts <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(Z_potts)))</a></code></pre></div>
-<p><img src="mrf2d_files/figure-html/plots_examples-2.png" width="384"></p>
+<p><img src="mrf2d_files/figure-html/plots_examples-2.png" width="50%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="../reference/dplot.html">dplot</a></span>(Z_potts) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Title added with ggplot2"</span>)</a></code></pre></div>
-<p><img src="mrf2d_files/figure-html/plots_examples-3.png" width="384"></p>
+<p><img src="mrf2d_files/figure-html/plots_examples-3.png" width="50%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/dplot.html">dplot</a></span>(Z_potts) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span>(<span class="dt">type =</span> <span class="st">"qual"</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Title added with ggplot2"</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; Scale for 'fill' is already present. Adding another scale for 'fill',</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; which will replace the existing scale.</span></a></code></pre></div>
-<p><img src="mrf2d_files/figure-html/plots_examples-4.png" width="384"></p>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Title added with ggplot2"</span>)</a></code></pre></div>
+<p><img src="mrf2d_files/figure-html/plots_examples-4.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 <div id="the-mrfi-class-and-parameter-arrays" class="section level1">
@@ -276,6 +284,7 @@
 <div id="pseudo-likelihood" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pseudo-likelihood" class="anchor"></a>Pseudo-Likelihood</h2>
+<p><span class="citation">Besag (1975)</span></p>
 <p><span class="math display">\[ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} P(Z_i = z_i | \mathbf{Z}_{\mathcal{N}_i} = \mathbf{z}_{\mathcal{N}_i}) \]</span></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/fit_pl.html">fit_pl</a></span>(Z_potts, <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">family =</span> <span class="st">"onepar"</span>)</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt; $theta</span></a>
@@ -367,7 +376,7 @@
 <a class="sourceLine" id="cb14-33" data-line-number="33"><span class="co">#&gt; 1 -1.012101  0.000000 -1.012101</span></a>
 <a class="sourceLine" id="cb14-34" data-line-number="34"><span class="co">#&gt; 2 -1.012101 -1.012101  0.000000</span></a>
 <a class="sourceLine" id="cb14-35" data-line-number="35"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(sa_oneeach<span class="op">$</span>metrics[<span class="dv">2</span><span class="op">:</span><span class="dv">200</span>,])</a></code></pre></div>
-<p><img src="mrf2d_files/figure-html/fit_sa_examples-1.png" width="576"></p>
+<p><img src="mrf2d_files/figure-html/fit_sa_examples-1.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 <div id="hidden-markov-random-fields" class="section level1">
@@ -384,6 +393,9 @@
 <h1 class="hasAnchor">
 <a href="#bibliography" class="anchor"></a>Bibliography</h1>
 <div id="refs" class="references">
+<div id="ref-besag1975statistical">
+<p>Besag, Julian. 1975. “Statistical Analysis of Non-Lattice Data.” <em>Journal of the Royal Statistical Society: Series D (the Statistician)</em> 24 (3). Wiley Online Library: 179–95.</p>
+</div>
 <div id="ref-gimel1996texture">
 <p>Gimel’farb, Georgy L. 1996. “Texture Modeling by Multiple Pairwise Pixel Interactions.” <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em> 18 (11). IEEE: 1110–4.</p>
 </div>
@@ -407,7 +419,7 @@
       <ul class="nav nav-pills nav-stacked">
 <li>
 <a href="#introduction">Introduction</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#a-quick-introduction-to-markov-random-fields">A quick introduction to Markov Random Fields</a></li>
+<li><a href="#a-general-introduction-to-markov-random-fields">A general introduction to Markov Random Fields</a></li>
       <li><a href="#a-spatially-stationary-mrf-model-for-2-dimensional-lattices">A spatially stationary MRF model for 2-dimensional lattices</a></li>
       <li><a href="#the-mrf2d-package">The <code>mrf2d</code> package</a></li>
       </ul>

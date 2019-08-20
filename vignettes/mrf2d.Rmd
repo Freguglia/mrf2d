@@ -15,8 +15,13 @@ nocite: |
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  fig.align = "center"
 )
+library(ggplot2)
+library(glue)
 ```
 
 ```{r load_mrf2d}
@@ -25,13 +30,36 @@ library(mrf2d)
 
 # Introduction
 
-## A quick introduction to Markov Random Fields
+## A general introduction to Markov Random Fields
 
- Markov Random Fields are probabilistic models used for modeling processes with local dependence. This dependence can be described by a graph $\mathcal{G} = (\mathcal{V}, \mathcal{N})$, where $\mathcal{V}$ is a set of vertices and $\mathcal{N}$ a neighborhood system.
+ Markov Random Fields are probabilistic models used for modeling processes with local dependence. This dependence can be described by a graph $\mathcal{G} = (\mathcal{V}, \mathcal{N})$, where $\mathcal{V}$ is a set of vertices and $\mathcal{N}$ a neighborhood system. A set of random variables $\mathbf{Z} = \{Z_i, i \in \mathcal{V} \}$ is called a Markov Random Field with respect to the neighborhood system $\mathcal{N}$ if 
+ 
+$$ P(Z_i = z_i | \{ Z_j, j \neq i \}) = P(Z_i| \{ Z_j, j \in \mathcal{N}_i \}), $$
+where $\mathcal{N}_i$ denotes the neighbors of $i$ according to $\mathcal{N}$. 
 
-$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{q \in Q} g_q(\mathbf z_q, \theta) \right) $$
+If and only if the above equality holds for each $i \in \mathcal{V}$, under some additional technical conditions, the joint distribution of $\mathbf{Z}$ is given by a Gibbs distribution of the form
+$$ P(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta} \exp \left( \sum_{q \in Q(\mathcal{N})} g_q(\mathbf z_q) \right),$$
+where $\mathcal{Q}(\mathcal{N})$ denotes the set of cliques (fully connected subsets) of $\mathcal{N}$ and $g_q$ are arbitrary functions and $\zeta$ is a normalization constant (often called "partition function").
+
+While having a general form of probability measure for local dependent processes is a good start, specific cases with different choices of $g_q$'s, $\mathcal{V}$ and $\mathcal{N}$ may lead to completely different models which statistical analysis should be carried differently. `mrf2d` provides tools for a specific, yet large, class models usually present in an image processing context: Two-dimensional lattices.
 
 ## A spatially stationary MRF model for 2-dimensional lattices
+
+The model adopted in `mrf2d` has the following assumptions:
+ 
+  * $\mathcal{V} = \mathcal{L} = \{ i =  (i_x, i_j): 1 \leq i_x \leq N; 1 \leq i_y \leq M \}$: The data points (called pixels) are indexed by a retangular lattice $\mathcal{L}$ of dimension $N \times M$.
+  
+  * $\mathcal{N}$ is determined by a set of relative positions $\mathcal{R}$: There is an edge connecting two pixels $i$ and $j$ if and only if their relative position $(i_x, i_y) - (j_x, j_y)$ is in $\mathcal{R}$. As an example, if $\mathcal{R} = \{ (1,0), (0,1) \}$, pixels are connected to their nearest neighbors horizontally and vertically, which can be represented by the structure below. Note the opposite directions have edges but they are not included in $\mathcal{R}$ to avoid redundancy.
+  
+```{r ex_mrfi, echo = FALSE, out.width="30%"}
+plot(mrfi(1), no_axis = TRUE) +  geom_text(aes(label = glue("({rx},{ry})")), size = 6) + xlim(-2,2) + ylim(-2,2)
+```
+
+
+$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{i \in \mathcal{L}} \sum_{j = i + r}^{r \in \mathcal{R}} \theta_{z_i, z_j, r} \right) $$
+
+$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{r \in \mathcal{R}} \sum_{a,b = 0}^C \theta_{a,b,r} n_r(a,b) \right) $$
+$n_r(a,b) = \sum_{i \in \mathcal{L}} \mathbb{1}(z_i = a, z_{i+r} = b)$
 
 ## The `mrf2d` package
 
@@ -41,7 +69,7 @@ Computational efficiency is also a feature of the package, having most of the hi
 
 The package also provides [plotting](https://freguglia.github.io/mrf2d/reference/dplot.html) functions `dplot()` and `cplot()` that automatically convert `matrix` objects to appropriate `data.frame` structures and creates `ggplot` objects from it. These functions aim to provide easy to use methods of visualization but also take advantage of [`ggplot2`](https://ggplot2.tidyverse.org/)'s grammar to modify aesthetics and create elegant and customizable visualizations of lattice data. `dplot()` should be used for **d**iscrete data while `cplot()` is suitable for **c**ontinuous data.
 
-```{r plots_examples, fig.width = 4, warning=FALSE}
+```{r plots_examples, out.width = "50%", warning=FALSE}
 class(Z_potts)
 unique(as.vector(Z_potts))
 
@@ -145,6 +173,8 @@ mrf2d:::vec_to_array(seq(-0.01, -0.16, by = -0.01), family = "free", C = 2, 2)
 
 ## Pseudo-Likelihood
 
+@besag1975statistical
+
 $$ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} P(Z_i = z_i | \mathbf{Z}_{\mathcal{N}_i} = \mathbf{z}_{\mathcal{N}_i}) $$
 
 ```{r}
@@ -176,7 +206,7 @@ Some notes and details about `mrf2d`'s implementation of the Stochastic Approxim
   * The sequence $\gamma^{(t)}$ is specified by the parameter `gamma_seq`, but the values are divided by `length(Z)`. This standardizes the notion of what is a "small" or "large" value for the step size regardless of the lattice dimensions.
   * A `data.frame` containing the distances $|| \mathbf{z}^0 - \mathbf{z}^{(t)} ||^2_2$ is returned in the `metrics` field. It can be used to monitor the convergence of the algorithm.
   
-```{r fit_sa_examples, cache = TRUE, fig.width=6}
+```{r fit_sa_examples, cache = TRUE, out.width = "50%"}
 set.seed(1234)
 sa_onepar <- fit_sa(Z_potts, mrfi(1), family = "onepar", 
                     gamma_seq = seq(3, 0, length.out = 200))
