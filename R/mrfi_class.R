@@ -89,7 +89,7 @@ setMethod("show", "mrfi",
 #' mrfi(2, norm_type = "m")
 #' mrfi(1, positions = list(c(4,4), c(-4,4)))
 #'
-#' #Repeated positions
+#' #Repeated positions are handled automatically
 #' mrfi(1, positions = list(c(1,0), c(2,0)))
 #'
 #' @importFrom methods new
@@ -133,6 +133,7 @@ mrfi <- function(max_norm = 1, norm_type = "1", positions = NULL){
     to_remove <- which(str_vec_df %in% str_vec_minus)
   }
   df <- matrix(unlist(df), ncol = 2)
+  df <- unique(df)
   new("mrfi", Rmat = df, n_neis = nrow(df))
 }
 
