@@ -11,6 +11,8 @@ status](https://travis-ci.org/Freguglia/mrf2d.svg?branch=master)](https://travis
 coverage](https://codecov.io/gh/Freguglia/mrf2d/branch/master/graph/badge.svg)](https://codecov.io/gh/Freguglia/mrf2d?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/mrf2d)](https://cran.r-project.org/package=mrf2d)
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
 Markov Random Fields are probabilistic models capable of describing sets
