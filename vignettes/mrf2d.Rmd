@@ -95,7 +95,7 @@ mrf2d:::vec_to_array(-0.01, family = "onepar", C = 2, 2)
 
 ### family `'oneeach'`
 
-The same as `'onepar'`, but allowing different values for different relative positions $r$, leading to a total of $|\mathcal{R}|$ free parameters:
+The same as `'onepar'`, but allowing different values for different relative positions $r$, resulting a total of $|\mathcal{R}|$ free parameters:
 
 $$ \theta_{a,b,r} = \theta_r \mathbb{1}_{[a \neq b]} $$
 
@@ -107,7 +107,9 @@ mrf2d:::vec_to_array(c(-0.01, -0.02), family = "oneeach", C = 2, 2)
 
 ### family `'absdif'`
 
-$$ \theta_{a,b,r} = \theta_{|b-a|,r}$$
+The values with equal absolute differences ($|b-a|$) are kept constant within each relative position, resulting a total of $|\mathcal{R}| \cdot C$ free parameters. Note that the restriction $\theta_{0,0,r} = 0$ implies all pairs with absolute difference equals $0$ will also be null. 
+
+$$ \theta_{a,b,r} = \theta_{|b-a|,r} $$
 
 Example of valid array for `'absdif'`:
 
@@ -116,6 +118,10 @@ mrf2d:::vec_to_array(c(-0.01, -0.02, -0.03, -0.04), family = "absdif", C = 2, 2)
 ```
 
 ### family `'dif'`
+
+The same as `'absdif'`, but allowing different values for positive and negative differences, i.e., $\theta_{a,b,r} \neq \theta_{b,a,r}$ for $a \neq b$. This restriction allows different effects on opposing directions to exist.
+
+Note that `'dif'` and `'absdif'` are typically used when the observed values actually have a quantitative meaning (as the gray levels of images), but not in tasks like image segmentation, where the value describes a class where, usually, the order and therefore differences have no meaning.
 
 $$ \theta_{a,b,r} = \theta_{b-a,r}$$
 
@@ -162,9 +168,9 @@ $$\frac{\partial}{\partial \theta} l(\theta;\mathbf{z}^0) = S(\mathbf{z}^0) - \m
 Starting from an arbitrary configuration $\theta^{(1)}$, which is considered the null vector by default in `mrf2d`, the algorithm iteratively samples a field $\mathbf{z}^{(t)}$ from the current parameter configuration $\theta^{(t)}$ and then updates $\theta^{(t+1)}$ according to an estimated gradient direction in the following recursion
 $$ \theta^{(t+1)} = \theta^{(t)} + \gamma^{(t)} \left( S(\mathbf{z}^0) - S(\mathbf{z}^{(t)}) \right).$$
 
-Some notes and details about `mrf2d`'s implementation of the Stochastic Approximation algorithm:
+Some notes and details about `mrf2d`'s implementation of the Stochastic Approximation algorithm (function `fit_sa()`):
 
-  * Exact sampling from a MRF either has a high computational cost or is an intractable problem, therefore, iterative methods (here, the Gibbs Sampler) are used. Since these methods may take a large number of cycles to reach the equilibrium distribution, we cache the last sampled field and use it as an initial value for the next sample, with a smaller number of cycles between interactions. This was used for example in @gimel1996texture.
+  * Exact sampling from a MRF either has a high computational cost or is an intractable problem, therefore, iterative methods (here, the Gibbs Sampler) are used. Since these methods may take a large number of cycles to reach the equilibrium distribution, the last sampled field is cached and used as an initial value for the next sample, with a smaller number of cycles between interactions. This was used for example in @gimel1996texture.
   * Two additional parameters are used in our implementation: `refresh_each` and `refresh_cycles`. If specified, the sampled field $\mathbf{z}^t$ will be completely reset each `refresh_each` iterations. Whenever the field is reset, a new one will be sampled from a random initial configuration and a number of cycles equals to `refresh_cycles`, which should typically be a large value. Extreme cases are `refresh_each = 1`, where a completely new field is generated in each iteration (very slow) and `refresh_each` larger than the number of iterations (function's defaults), which means no refresh will ever happen. 
   * The algorithm requires the theoretical restrictions $\sum_t \gamma^{(t)} = +\infty$ and $\sum_t \left(\gamma^{(t)}\right)^2 < +\infty$. Since in practice only a finite number of iterations is executed, the choice of the $\gamma^{(t)}$ sequence requires some tuning to improve the results obtained.
   * The sequence $\gamma^{(t)}$ is specified by the parameter `gamma_seq`, but the values are divided by `length(Z)`. This standardizes the notion of what is a "small" or "large" value for the step size regardless of the lattice dimensions.
@@ -184,8 +190,6 @@ plot(sa_oneeach$metrics[2:200,])
 
 
 # Hidden Markov Random Fields
-
-## Corrupted discrete image model
 
 ## Gaussian Mixtures
 
