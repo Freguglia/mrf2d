@@ -188,7 +188,7 @@
 <h3 class="hasAnchor">
 <a href="#family-oneeach" class="anchor"></a>family <code>'oneeach'</code>
 </h3>
-<p>The same as <code>'onepar'</code>, but allowing different values for different relative positions <span class="math inline">\(r\)</span>, leading to a total of <span class="math inline">\(|\mathcal{R}|\)</span> free parameters:</p>
+<p>The same as <code>'onepar'</code>, but allowing different values for different relative positions <span class="math inline">\(r\)</span>, resulting a total of <span class="math inline">\(|\mathcal{R}|\)</span> free parameters:</p>
 <p><span class="math display">\[ \theta_{a,b,r} = \theta_r \mathbb{1}_{[a \neq b]} \]</span></p>
 <p>Example of valid array for <code>'oneeach'</code>:</p>
 <pre><code>#&gt; , , 1
@@ -209,7 +209,8 @@
 <h3 class="hasAnchor">
 <a href="#family-absdif" class="anchor"></a>family <code>'absdif'</code>
 </h3>
-<p><span class="math display">\[ \theta_{a,b,r} = \theta_{|b-a|,r}\]</span></p>
+<p>The values with equal absolute differences (<span class="math inline">\(|b-a|\)</span>) are kept constant within each relative position, resulting a total of <span class="math inline">\(|\mathcal{R}| \cdot C\)</span> free parameters. Note that the restriction <span class="math inline">\(\theta_{0,0,r} = 0\)</span> implies all pairs with absolute difference equals <span class="math inline">\(0\)</span> will also be null.</p>
+<p><span class="math display">\[ \theta_{a,b,r} = \theta_{|b-a|,r} \]</span></p>
 <p>Example of valid array for <code>'absdif'</code>:</p>
 <pre><code>#&gt; , , 1
 #&gt; 
@@ -229,6 +230,8 @@
 <h3 class="hasAnchor">
 <a href="#family-dif" class="anchor"></a>family <code>'dif'</code>
 </h3>
+<p>The same as <code>'absdif'</code>, but allowing different values for positive and negative differences, i.e., <span class="math inline">\(\theta_{a,b,r} \neq \theta_{b,a,r}\)</span> for <span class="math inline">\(a \neq b\)</span>. This restriction allows different effects on opposing directions to exist.</p>
+<p>Note that <code>'dif'</code> and <code>'absdif'</code> are typically used when the observed values actually have a quantitative meaning (as the gray levels of images), but not in tasks like image segmentation, where the value describes a class where, usually, the order and therefore differences have no meaning.</p>
 <p><span class="math display">\[ \theta_{a,b,r} = \theta_{b-a,r}\]</span></p>
 <p>Example of valid array for <code>'dif'</code>:</p>
 <pre><code>#&gt; , , 1
@@ -321,9 +324,9 @@
 <p>The likelihood function of the MRF defined above belongs to the exponential family and can be written as</p>
 <p><span class="math display">\[ l(\theta;\mathbf{z}^0) = (S(\mathbf{z}^0) \bullet \theta) -  \log(\zeta_\theta),\]</span> where <span class="math inline">\(\bullet\)</span> denotes the dot product and <span class="math inline">\(S(\mathbf{z})\)</span> is the vector sufficient statistics. Therefore, the global maximum is the point where the gradient <span class="math inline">\(\frac{\partial}{\partial \theta} l(\theta;\mathbf{z}^0)\)</span> is equal to zero, and the gradient is given by <span class="math display">\[\frac{\partial}{\partial \theta} l(\theta;\mathbf{z}^0) = S(\mathbf{z}^0) - \mathbb{E}_\theta(S(\mathbf{Z})).\]</span></p>
 <p>Starting from an arbitrary configuration <span class="math inline">\(\theta^{(1)}\)</span>, which is considered the null vector by default in <code>mrf2d</code>, the algorithm iteratively samples a field <span class="math inline">\(\mathbf{z}^{(t)}\)</span> from the current parameter configuration <span class="math inline">\(\theta^{(t)}\)</span> and then updates <span class="math inline">\(\theta^{(t+1)}\)</span> according to an estimated gradient direction in the following recursion <span class="math display">\[ \theta^{(t+1)} = \theta^{(t)} + \gamma^{(t)} \left( S(\mathbf{z}^0) - S(\mathbf{z}^{(t)}) \right).\]</span></p>
-<p>Some notes and details about <code>mrf2d</code>’s implementation of the Stochastic Approximation algorithm:</p>
+<p>Some notes and details about <code>mrf2d</code>’s implementation of the Stochastic Approximation algorithm (function <code><a href="../reference/fit_sa.html">fit_sa()</a></code>):</p>
 <ul>
-<li>Exact sampling from a MRF either has a high computational cost or is an intractable problem, therefore, iterative methods (here, the Gibbs Sampler) are used. Since these methods may take a large number of cycles to reach the equilibrium distribution, we cache the last sampled field and use it as an initial value for the next sample, with a smaller number of cycles between interactions. This was used for example in <span class="citation">Gimel’farb (1996)</span>.</li>
+<li>Exact sampling from a MRF either has a high computational cost or is an intractable problem, therefore, iterative methods (here, the Gibbs Sampler) are used. Since these methods may take a large number of cycles to reach the equilibrium distribution, the last sampled field is cached and used as an initial value for the next sample, with a smaller number of cycles between interactions. This was used for example in <span class="citation">Gimel’farb (1996)</span>.</li>
 <li>Two additional parameters are used in our implementation: <code>refresh_each</code> and <code>refresh_cycles</code>. If specified, the sampled field <span class="math inline">\(\mathbf{z}^t\)</span> will be completely reset each <code>refresh_each</code> iterations. Whenever the field is reset, a new one will be sampled from a random initial configuration and a number of cycles equals to <code>refresh_cycles</code>, which should typically be a large value. Extreme cases are <code>refresh_each = 1</code>, where a completely new field is generated in each iteration (very slow) and <code>refresh_each</code> larger than the number of iterations (function’s defaults), which means no refresh will ever happen.</li>
 <li>The algorithm requires the theoretical restrictions <span class="math inline">\(\sum_t \gamma^{(t)} = +\infty\)</span> and <span class="math inline">\(\sum_t \left(\gamma^{(t)}\right)^2 &lt; +\infty\)</span>. Since in practice only a finite number of iterations is executed, the choice of the <span class="math inline">\(\gamma^{(t)}\)</span> sequence requires some tuning to improve the results obtained.</li>
 <li>The sequence <span class="math inline">\(\gamma^{(t)}\)</span> is specified by the parameter <code>gamma_seq</code>, but the values are divided by <code><a href="https://www.rdocumentation.org/packages/base/topics/length">length(Z)</a></code>. This standardizes the notion of what is a “small” or “large” value for the step size regardless of the lattice dimensions.</li>
@@ -370,10 +373,6 @@
 <div id="hidden-markov-random-fields" class="section level1">
 <h1 class="hasAnchor">
 <a href="#hidden-markov-random-fields" class="anchor"></a>Hidden Markov Random Fields</h1>
-<div id="corrupted-discrete-image-model" class="section level2">
-<h2 class="hasAnchor">
-<a href="#corrupted-discrete-image-model" class="anchor"></a>Corrupted discrete image model</h2>
-</div>
 <div id="gaussian-mixtures" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gaussian-mixtures" class="anchor"></a>Gaussian Mixtures</h2>
@@ -427,8 +426,7 @@
 </li>
       <li>
 <a href="#hidden-markov-random-fields">Hidden Markov Random Fields</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#corrupted-discrete-image-model">Corrupted discrete image model</a></li>
-      <li><a href="#gaussian-mixtures">Gaussian Mixtures</a></li>
+<li><a href="#gaussian-mixtures">Gaussian Mixtures</a></li>
       </ul>
 </li>
       <li><a href="#bibliography">Bibliography</a></li>
