@@ -62,6 +62,10 @@ rmrf2d <- function(init_Z, mrfi, theta, cycles = 60){
 
   R <- mrfi@Rmat
 
+  null_interactions <- apply(theta, MARGIN = 3, function(m) all(m == 0))
+  theta <- theta[,,!null_interactions]
+  R <- R[!null_interactions,]
+
   return(gibbs_sampler_mrf2d(init_Z, R, theta, cycles))
 
 
