@@ -238,7 +238,7 @@
 <h3 class="hasAnchor">
 <a href="#family-dif" class="anchor"></a>family <code>'dif'</code>
 </h3>
-<p>The same as <code>'absdif'</code>, but allowing different values for positive and negative differences, i.e., <span class="math inline">\(\theta_{a,b,r} \neq \theta_{b,a,r}\)</span> for <span class="math inline">\(a \neq b\)</span>. This restriction allows different effects on opposing directions to exist.</p>
+<p>The same as <code>'absdif'</code>, but allowing different values for positive and negative differences, i.e., <span class="math inline">\(\theta_{a,b,r} \neq \theta_{b,a,r}\)</span> for <span class="math inline">\(a \neq b\)</span>. This restriction allows different effects on opposing directions to exist and there are <span class="math inline">\(|\mathcal{R}| \cdot 2C\)</span></p>
 <p>Note that <code>'dif'</code> and <code>'absdif'</code> are typically used when the observed values actually have a quantitative meaning (as the gray levels of images), but not in tasks like image segmentation, where the value describes a class where, usually, the order and therefore differences have no meaning.</p>
 <p><span class="math display">\[ \theta_{a,b,r} = \theta_{b-a,r}\]</span></p>
 <p>Example of valid array for <code>'dif'</code>:</p>
@@ -260,7 +260,7 @@
 <h3 class="hasAnchor">
 <a href="#family-free" class="anchor"></a>family <code>'free'</code>
 </h3>
-<p>No additional restriction. The identifiability constraint <span class="math inline">\(\theta_{0,0,r} = 0\)</span> is still necessary.</p>
+<p>No additional restriction but the identifiability constraint <span class="math inline">\(\theta_{0,0,r} = 0\)</span> is still necessary. <span class="math inline">\(|\mathcal{R}| \cdot \left( C^2 + 2C \right)\)</span> free parameters.</p>
 <p>Example of valid array for <code>'free'</code>:</p>
 <pre><code>#&gt; , , 1
 #&gt; 
@@ -281,50 +281,60 @@
 <div id="parameter-estimation-on-markov-random-fields" class="section level1">
 <h1 class="hasAnchor">
 <a href="#parameter-estimation-on-markov-random-fields" class="anchor"></a>Parameter estimation on Markov Random Fields</h1>
-<div id="pseudo-likelihood" class="section level2">
+<div id="pseudolikelihood" class="section level2">
 <h2 class="hasAnchor">
-<a href="#pseudo-likelihood" class="anchor"></a>Pseudo-Likelihood</h2>
-<p><span class="citation">Besag (1975)</span></p>
-<p><span class="math display">\[ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} P(Z_i = z_i | \mathbf{Z}_{\mathcal{N}_i} = \mathbf{z}_{\mathcal{N}_i}) \]</span></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/fit_pl.html">fit_pl</a></span>(Z_potts, <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">family =</span> <span class="st">"onepar"</span>)</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt; $theta</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt; , , 1</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt;            0          1          2</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; 0  0.0000000 -0.9906675 -0.9906675</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt; 1 -0.9906675  0.0000000 -0.9906675</span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; 2 -0.9906675 -0.9906675  0.0000000</span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt; , , 2</span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="co">#&gt;            0          1          2</span></a>
-<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="co">#&gt; 0  0.0000000 -0.9906675 -0.9906675</span></a>
-<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="co">#&gt; 1 -0.9906675  0.0000000 -0.9906675</span></a>
-<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="co">#&gt; 2 -0.9906675 -0.9906675  0.0000000</span></a>
-<a class="sourceLine" id="cb13-16" data-line-number="16"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-17" data-line-number="17"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-18" data-line-number="18"><span class="co">#&gt; $value</span></a>
-<a class="sourceLine" id="cb13-19" data-line-number="19"><span class="co">#&gt; [1] -10707.56</span></a>
-<a class="sourceLine" id="cb13-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb13-21" data-line-number="21"><span class="kw"><a href="../reference/fit_pl.html">fit_pl</a></span>(Z_potts, <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">family =</span> <span class="st">"oneeach"</span>)</a>
-<a class="sourceLine" id="cb13-22" data-line-number="22"><span class="co">#&gt; $theta</span></a>
-<a class="sourceLine" id="cb13-23" data-line-number="23"><span class="co">#&gt; , , 1</span></a>
-<a class="sourceLine" id="cb13-24" data-line-number="24"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-25" data-line-number="25"><span class="co">#&gt;            0          1          2</span></a>
-<a class="sourceLine" id="cb13-26" data-line-number="26"><span class="co">#&gt; 0  0.0000000 -0.9635956 -0.9635956</span></a>
-<a class="sourceLine" id="cb13-27" data-line-number="27"><span class="co">#&gt; 1 -0.9635956  0.0000000 -0.9635956</span></a>
-<a class="sourceLine" id="cb13-28" data-line-number="28"><span class="co">#&gt; 2 -0.9635956 -0.9635956  0.0000000</span></a>
-<a class="sourceLine" id="cb13-29" data-line-number="29"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-30" data-line-number="30"><span class="co">#&gt; , , 2</span></a>
-<a class="sourceLine" id="cb13-31" data-line-number="31"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-32" data-line-number="32"><span class="co">#&gt;           0         1         2</span></a>
-<a class="sourceLine" id="cb13-33" data-line-number="33"><span class="co">#&gt; 0  0.000000 -1.017917 -1.017917</span></a>
-<a class="sourceLine" id="cb13-34" data-line-number="34"><span class="co">#&gt; 1 -1.017917  0.000000 -1.017917</span></a>
-<a class="sourceLine" id="cb13-35" data-line-number="35"><span class="co">#&gt; 2 -1.017917 -1.017917  0.000000</span></a>
-<a class="sourceLine" id="cb13-36" data-line-number="36"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-37" data-line-number="37"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb13-38" data-line-number="38"><span class="co">#&gt; $value</span></a>
-<a class="sourceLine" id="cb13-39" data-line-number="39"><span class="co">#&gt; [1] -10705.05</span></a></code></pre></div>
+<a href="#pseudolikelihood" class="anchor"></a>Pseudolikelihood</h2>
+<p>The concept of pseudolikelihood was introduced in <span class="citation">Besag (1975)</span> and consists of using the product of conditional probabilities instead of the joint probability. The pseudolikelihood function <span class="math inline">\(PL()\)</span> is defined as</p>
+<p><span class="math display">\[ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} P(Z_i = z_i | \mathbf{Z}_{\mathcal{N}_i} = \mathbf{z}_{\mathcal{N}_i}).\]</span></p>
+<p>In the lattice model defined, this is described by</p>
+<p><span class="math display">\[ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} \frac{\exp{\left( \sum_{r \in \mathcal{R}} \theta_{z_i, z_{i+r},r} + \theta_{z_{i-r}, z_i,r}  \right)}}{\sum_{a = 0}^C\exp{\left( \sum_{r \in \mathcal{R}} \theta_{a, z_{i+r},r} + \theta_{z_{i-r}, a,r}  \right)}},\]</span> with <span class="math inline">\(\theta_{z_i,z_j,a} = 0\)</span> if either <span class="math inline">\(i\)</span> or <span class="math inline">\(j\)</span> is out of bounds (i.e. when <span class="math inline">\(i+c \not \in \mathcal{L}\)</span>). This restriction keeps the expression above well-defined for pixels on the borders of <span class="math inline">\(\mathcal{L}\)</span>.</p>
+<p><code>mrf2d</code>’d function <code><a href="../reference/pl_mrf2d.html">pl_mrf2d()</a></code> computes the (log-scale) pseudolikelihood function for a given observed lattice <span class="math inline">\(\mathbf{z}\)</span>, <span class="math inline">\(\theta\)</span> and interaction structure.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/pl_mrf2d.html">pl_mrf2d</a></span>(<span class="dt">Z =</span> Z_potts, <span class="dt">mrfi =</span> <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">theta =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/array">array</a></span>(<span class="dv">0</span>, <span class="dt">dim =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt; [1] -24718.78</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="kw"><a href="../reference/pl_mrf2d.html">pl_mrf2d</a></span>(<span class="dt">Z =</span> Z_potts, <span class="dt">mrfi =</span> <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">theta =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/array">array</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">3</span>) <span class="dv">-1</span>, <span class="dt">dim =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; [1] -10708.08</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="kw"><a href="../reference/pl_mrf2d.html">pl_mrf2d</a></span>(<span class="dt">Z =</span> Z_potts, <span class="dt">mrfi =</span> <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">theta =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/array">array</a></span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="dv">3</span>), <span class="dt">dim =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; [1] -75849.79</span></a></code></pre></div>
+<p>Parameter estimation can be performed, therefore, by maximizing the pseudolikelihood function. Maximum Pseudolikelihood Estimators (MPLEs) are comparable to Maximum Likelihood Estimators (MLEs) when the dependence is not too strong and can be computed in <code>mrf2d</code> with the function <code><a href="../reference/fit_pl.html">fit_pl()</a></code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="../reference/fit_pl.html">fit_pl</a></span>(Z_potts, <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">family =</span> <span class="st">"onepar"</span>)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co">#&gt; $theta</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#&gt; , , 1</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt;            0          1          2</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; 0  0.0000000 -0.9906675 -0.9906675</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#&gt; 1 -0.9906675  0.0000000 -0.9906675</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co">#&gt; 2 -0.9906675 -0.9906675  0.0000000</span></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co">#&gt; , , 2</span></a>
+<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="co">#&gt;            0          1          2</span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="co">#&gt; 0  0.0000000 -0.9906675 -0.9906675</span></a>
+<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co">#&gt; 1 -0.9906675  0.0000000 -0.9906675</span></a>
+<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="co">#&gt; 2 -0.9906675 -0.9906675  0.0000000</span></a>
+<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-18" data-line-number="18"><span class="co">#&gt; $value</span></a>
+<a class="sourceLine" id="cb14-19" data-line-number="19"><span class="co">#&gt; [1] -10707.56</span></a>
+<a class="sourceLine" id="cb14-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb14-21" data-line-number="21"><span class="kw"><a href="../reference/fit_pl.html">fit_pl</a></span>(Z_potts, <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">family =</span> <span class="st">"oneeach"</span>)</a>
+<a class="sourceLine" id="cb14-22" data-line-number="22"><span class="co">#&gt; $theta</span></a>
+<a class="sourceLine" id="cb14-23" data-line-number="23"><span class="co">#&gt; , , 1</span></a>
+<a class="sourceLine" id="cb14-24" data-line-number="24"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-25" data-line-number="25"><span class="co">#&gt;            0          1          2</span></a>
+<a class="sourceLine" id="cb14-26" data-line-number="26"><span class="co">#&gt; 0  0.0000000 -0.9635956 -0.9635956</span></a>
+<a class="sourceLine" id="cb14-27" data-line-number="27"><span class="co">#&gt; 1 -0.9635956  0.0000000 -0.9635956</span></a>
+<a class="sourceLine" id="cb14-28" data-line-number="28"><span class="co">#&gt; 2 -0.9635956 -0.9635956  0.0000000</span></a>
+<a class="sourceLine" id="cb14-29" data-line-number="29"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-30" data-line-number="30"><span class="co">#&gt; , , 2</span></a>
+<a class="sourceLine" id="cb14-31" data-line-number="31"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-32" data-line-number="32"><span class="co">#&gt;           0         1         2</span></a>
+<a class="sourceLine" id="cb14-33" data-line-number="33"><span class="co">#&gt; 0  0.000000 -1.017917 -1.017917</span></a>
+<a class="sourceLine" id="cb14-34" data-line-number="34"><span class="co">#&gt; 1 -1.017917  0.000000 -1.017917</span></a>
+<a class="sourceLine" id="cb14-35" data-line-number="35"><span class="co">#&gt; 2 -1.017917 -1.017917  0.000000</span></a>
+<a class="sourceLine" id="cb14-36" data-line-number="36"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-37" data-line-number="37"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb14-38" data-line-number="38"><span class="co">#&gt; $value</span></a>
+<a class="sourceLine" id="cb14-39" data-line-number="39"><span class="co">#&gt; [1] -10705.05</span></a></code></pre></div>
 </div>
 <div id="stochastic-approximation" class="section level2">
 <h2 class="hasAnchor">
@@ -341,41 +351,41 @@
 <li>The sequence <span class="math inline">\(\gamma^{(t)}\)</span> is specified by the parameter <code>gamma_seq</code>, but the values are divided by <code><a href="https://www.rdocumentation.org/packages/base/topics/length">length(Z)</a></code>. This standardizes the notion of what is a “small” or “large” value for the step size regardless of the lattice dimensions.</li>
 <li>A <code>data.frame</code> containing the distances <span class="math inline">\(|| \mathbf{z}^0 - \mathbf{z}^{(t)} ||^2_2\)</span> is returned in the <code>metrics</code> field. It can be used to monitor the convergence of the algorithm.</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">1234</span>)</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">sa_onepar &lt;-<span class="st"> </span><span class="kw"><a href="../reference/fit_sa.html">fit_sa</a></span>(Z_potts, <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">family =</span> <span class="st">"onepar"</span>, </a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">                    <span class="dt">gamma_seq =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dt">length.out =</span> <span class="dv">200</span>))</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">sa_onepar<span class="op">$</span>theta</a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt; , , 1</span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#&gt;            0          1          2</span></a>
-<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co">#&gt; 0  0.0000000 -0.9909923 -0.9909923</span></a>
-<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#&gt; 1 -0.9909923  0.0000000 -0.9909923</span></a>
-<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co">#&gt; 2 -0.9909923 -0.9909923  0.0000000</span></a>
-<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="co">#&gt; , , 2</span></a>
-<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co">#&gt;            0          1          2</span></a>
-<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="co">#&gt; 0  0.0000000 -0.9909923 -0.9909923</span></a>
-<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="co">#&gt; 1 -0.9909923  0.0000000 -0.9909923</span></a>
-<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="co">#&gt; 2 -0.9909923 -0.9909923  0.0000000</span></a>
-<a class="sourceLine" id="cb14-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb14-19" data-line-number="19">sa_oneeach &lt;-<span class="st"> </span><span class="kw"><a href="../reference/fit_sa.html">fit_sa</a></span>(Z_potts, <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">family =</span> <span class="st">"oneeach"</span>, </a>
-<a class="sourceLine" id="cb14-20" data-line-number="20">                    <span class="dt">gamma_seq =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dt">length.out =</span> <span class="dv">200</span>))</a>
-<a class="sourceLine" id="cb14-21" data-line-number="21">sa_oneeach<span class="op">$</span>theta</a>
-<a class="sourceLine" id="cb14-22" data-line-number="22"><span class="co">#&gt; , , 1</span></a>
-<a class="sourceLine" id="cb14-23" data-line-number="23"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-24" data-line-number="24"><span class="co">#&gt;            0          1          2</span></a>
-<a class="sourceLine" id="cb14-25" data-line-number="25"><span class="co">#&gt; 0  0.0000000 -0.9649173 -0.9649173</span></a>
-<a class="sourceLine" id="cb14-26" data-line-number="26"><span class="co">#&gt; 1 -0.9649173  0.0000000 -0.9649173</span></a>
-<a class="sourceLine" id="cb14-27" data-line-number="27"><span class="co">#&gt; 2 -0.9649173 -0.9649173  0.0000000</span></a>
-<a class="sourceLine" id="cb14-28" data-line-number="28"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-29" data-line-number="29"><span class="co">#&gt; , , 2</span></a>
-<a class="sourceLine" id="cb14-30" data-line-number="30"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb14-31" data-line-number="31"><span class="co">#&gt;           0         1         2</span></a>
-<a class="sourceLine" id="cb14-32" data-line-number="32"><span class="co">#&gt; 0  0.000000 -1.012101 -1.012101</span></a>
-<a class="sourceLine" id="cb14-33" data-line-number="33"><span class="co">#&gt; 1 -1.012101  0.000000 -1.012101</span></a>
-<a class="sourceLine" id="cb14-34" data-line-number="34"><span class="co">#&gt; 2 -1.012101 -1.012101  0.000000</span></a>
-<a class="sourceLine" id="cb14-35" data-line-number="35"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(sa_oneeach<span class="op">$</span>metrics[<span class="dv">2</span><span class="op">:</span><span class="dv">200</span>,])</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">sa_onepar &lt;-<span class="st"> </span><span class="kw"><a href="../reference/fit_sa.html">fit_sa</a></span>(Z_potts, <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">family =</span> <span class="st">"onepar"</span>, </a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">                    <span class="dt">gamma_seq =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dt">length.out =</span> <span class="dv">200</span>))</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">sa_onepar<span class="op">$</span>theta</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt; , , 1</span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt;            0          1          2</span></a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">#&gt; 0  0.0000000 -0.9909923 -0.9909923</span></a>
+<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="co">#&gt; 1 -0.9909923  0.0000000 -0.9909923</span></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">#&gt; 2 -0.9909923 -0.9909923  0.0000000</span></a>
+<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="co">#&gt; , , 2</span></a>
+<a class="sourceLine" id="cb15-13" data-line-number="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb15-14" data-line-number="14"><span class="co">#&gt;            0          1          2</span></a>
+<a class="sourceLine" id="cb15-15" data-line-number="15"><span class="co">#&gt; 0  0.0000000 -0.9909923 -0.9909923</span></a>
+<a class="sourceLine" id="cb15-16" data-line-number="16"><span class="co">#&gt; 1 -0.9909923  0.0000000 -0.9909923</span></a>
+<a class="sourceLine" id="cb15-17" data-line-number="17"><span class="co">#&gt; 2 -0.9909923 -0.9909923  0.0000000</span></a>
+<a class="sourceLine" id="cb15-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb15-19" data-line-number="19">sa_oneeach &lt;-<span class="st"> </span><span class="kw"><a href="../reference/fit_sa.html">fit_sa</a></span>(Z_potts, <span class="kw"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="dv">1</span>), <span class="dt">family =</span> <span class="st">"oneeach"</span>, </a>
+<a class="sourceLine" id="cb15-20" data-line-number="20">                    <span class="dt">gamma_seq =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dt">length.out =</span> <span class="dv">200</span>))</a>
+<a class="sourceLine" id="cb15-21" data-line-number="21">sa_oneeach<span class="op">$</span>theta</a>
+<a class="sourceLine" id="cb15-22" data-line-number="22"><span class="co">#&gt; , , 1</span></a>
+<a class="sourceLine" id="cb15-23" data-line-number="23"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb15-24" data-line-number="24"><span class="co">#&gt;            0          1          2</span></a>
+<a class="sourceLine" id="cb15-25" data-line-number="25"><span class="co">#&gt; 0  0.0000000 -0.9649173 -0.9649173</span></a>
+<a class="sourceLine" id="cb15-26" data-line-number="26"><span class="co">#&gt; 1 -0.9649173  0.0000000 -0.9649173</span></a>
+<a class="sourceLine" id="cb15-27" data-line-number="27"><span class="co">#&gt; 2 -0.9649173 -0.9649173  0.0000000</span></a>
+<a class="sourceLine" id="cb15-28" data-line-number="28"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb15-29" data-line-number="29"><span class="co">#&gt; , , 2</span></a>
+<a class="sourceLine" id="cb15-30" data-line-number="30"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb15-31" data-line-number="31"><span class="co">#&gt;           0         1         2</span></a>
+<a class="sourceLine" id="cb15-32" data-line-number="32"><span class="co">#&gt; 0  0.000000 -1.012101 -1.012101</span></a>
+<a class="sourceLine" id="cb15-33" data-line-number="33"><span class="co">#&gt; 1 -1.012101  0.000000 -1.012101</span></a>
+<a class="sourceLine" id="cb15-34" data-line-number="34"><span class="co">#&gt; 2 -1.012101 -1.012101  0.000000</span></a>
+<a class="sourceLine" id="cb15-35" data-line-number="35"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(sa_oneeach<span class="op">$</span>metrics[<span class="dv">2</span><span class="op">:</span><span class="dv">200</span>,])</a></code></pre></div>
 <p><img src="mrf2d_files/figure-html/fit_sa_examples-1.png" width="50%" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -432,7 +442,7 @@
 </li>
       <li>
 <a href="#parameter-estimation-on-markov-random-fields">Parameter estimation on Markov Random Fields</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#pseudo-likelihood">Pseudo-Likelihood</a></li>
+<li><a href="#pseudolikelihood">Pseudolikelihood</a></li>
       <li><a href="#stochastic-approximation">Stochastic Approximation</a></li>
       </ul>
 </li>
