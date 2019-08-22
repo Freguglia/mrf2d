@@ -147,7 +147,7 @@ mrf2d:::vec_to_array(c(-0.01, -0.02, -0.03, -0.04), family = "absdif", C = 2, 2)
 
 ### family `'dif'`
 
-The same as `'absdif'`, but allowing different values for positive and negative differences, i.e., $\theta_{a,b,r} \neq \theta_{b,a,r}$ for $a \neq b$. This restriction allows different effects on opposing directions to exist.
+The same as `'absdif'`, but allowing different values for positive and negative differences, i.e., $\theta_{a,b,r} \neq \theta_{b,a,r}$ for $a \neq b$. This restriction allows different effects on opposing directions to exist and there are $|\mathcal{R}| \cdot 2C$
 
 Note that `'dif'` and `'absdif'` are typically used when the observed values actually have a quantitative meaning (as the gray levels of images), but not in tasks like image segmentation, where the value describes a class where, usually, the order and therefore differences have no meaning.
 
@@ -161,7 +161,7 @@ mrf2d:::vec_to_array(c(-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08), 
 
 ### family `'free'`
 
-No additional restriction. The identifiability constraint $\theta_{0,0,r} = 0$ is still necessary.
+No additional restriction but the identifiability constraint $\theta_{0,0,r} = 0$ is still necessary. $|\mathcal{R}| \cdot \left( C^2 + 2C \right)$ free parameters.
 
 Example of valid array for `'free'`:
 
@@ -171,11 +171,26 @@ mrf2d:::vec_to_array(seq(-0.01, -0.16, by = -0.01), family = "free", C = 2, 2)
 
 # Parameter estimation on Markov Random Fields
 
-## Pseudo-Likelihood
+## Pseudolikelihood
 
-@besag1975statistical
+The concept of pseudolikelihood was introduced in @besag1975statistical and consists of using the product of conditional probabilities instead of the joint probability. The pseudolikelihood function $PL()$ is defined as
 
-$$ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} P(Z_i = z_i | \mathbf{Z}_{\mathcal{N}_i} = \mathbf{z}_{\mathcal{N}_i}) $$
+$$ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} P(Z_i = z_i | \mathbf{Z}_{\mathcal{N}_i} = \mathbf{z}_{\mathcal{N}_i}).$$
+
+In the lattice model defined, this is described by
+
+$$ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} \frac{\exp{\left( \sum_{r \in \mathcal{R}} \theta_{z_i, z_{i+r},r} + \theta_{z_{i-r}, z_i,r}  \right)}}{\sum_{a = 0}^C\exp{\left( \sum_{r \in \mathcal{R}} \theta_{a, z_{i+r},r} + \theta_{z_{i-r}, a,r}  \right)}},$$
+with $\theta_{z_i,z_j,a} = 0$ if either $i$ or $j$ is out of bounds (i.e. when $i+c \not \in \mathcal{L}$). This restriction keeps the expression above well-defined for pixels on the borders of $\mathcal{L}$.
+
+`mrf2d`'d function `pl_mrf2d()` computes the (log-scale) pseudolikelihood function for a given observed lattice $\mathbf{z}$, $\theta$ and interaction structure.
+
+```{r}
+pl_mrf2d(Z = Z_potts, mrfi = mrfi(1), theta = array(0, dim = c(3,3,2)))
+pl_mrf2d(Z = Z_potts, mrfi = mrfi(1), theta = array(diag(3) -1, dim = c(3,3,2)))
+pl_mrf2d(Z = Z_potts, mrfi = mrfi(1), theta = array(1 - diag(3), dim = c(3,3,2)))
+```
+
+Parameter estimation can be performed, therefore, by maximizing the pseudolikelihood function. Maximum Pseudolikelihood Estimators (MPLEs) are comparable to Maximum Likelihood Estimators (MLEs) when the dependence is not too strong and can be computed in `mrf2d` with the function `fit_pl()`.
 
 ```{r}
 fit_pl(Z_potts, mrfi(1), family = "onepar")
