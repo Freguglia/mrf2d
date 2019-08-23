@@ -188,3 +188,14 @@ setMethod("plot", signature(x = "mrfi", y = "missing"),
             if(no_axis) {p <- p + theme_void()}
             p
           })
+
+#' @exportMethod as.list
+setMethod("as.list", signature(x = "mrfi"),
+          definition = function(x, ...){
+            unname(split(x@Rmat, rep(1:nrow(x@Rmat), ncol(x@Rmat))))
+          })
+
+setMethod("[[", signature = c("mrfi", "numeric", "missing"),
+          definition = function(x, i, j, ..., drop = TRUE){
+            x@Rmat[i,]
+          })
