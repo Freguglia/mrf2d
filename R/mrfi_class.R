@@ -8,7 +8,6 @@
 #'
 #' @slot Rmat A 2-column `matrix` where each row represents a relative position
 #' of interaction.
-#' @slot n_neis The number of intracting positions.
 #'
 #' @details The interaction structure is defined by the list of relative
 #' positions in it. For a specific pixel, conditional to the values of pixels in
@@ -42,18 +41,17 @@
 #'
 #' @exportClass mrfi
 setClass("mrfi",
-         representation(Rmat = "matrix",
-                        n_neis = "numeric"))
+         representation(Rmat = "matrix"))
 
 setMethod("show", "mrfi",
           function(object){
-            cat(object@n_neis, "interacting positions.\n")
+            cat(nrow(object@Rmat), "interacting positions.\n")
             cat("  rx     ry")
-            for(i in seq_len(min(5,object@n_neis))){
+            for(i in seq_len(min(5,nrow(object@Rmat)))){
               cat( "\n"," ",object@Rmat[i,1],"    ", object@Rmat[i,2])
             }
-            if(object@n_neis > 5) {
-              cat("  ... and", (object@n_neis-5), "more.")
+            if(nrow(object@Rmat) > 5) {
+              cat("  ... and", (nrow(object@Rmat)-5), "more.")
             }
           })
 
@@ -134,7 +132,7 @@ mrfi <- function(max_norm = 1, norm_type = "1", positions = NULL){
   }
   df <- matrix(unlist(df), ncol = 2)
   df <- unique(df)
-  new("mrfi", Rmat = df, n_neis = nrow(df))
+  new("mrfi", Rmat = df)
 }
 
 
