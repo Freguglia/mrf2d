@@ -55,11 +55,20 @@ The model adopted in `mrf2d` has the following assumptions:
 plot(mrfi(1), no_axis = TRUE) +  geom_text(aes(label = glue("({rx},{ry})")), size = 6) + xlim(-2,2) + ylim(-2,2)
 ```
 
+  * $Z_i \in \{ 0,1, \dots, C \}$ for some small integer $C$ and all $i \in \mathcal{L}$.
 
-$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{i \in \mathcal{L}} \sum_{j = i + r}^{r \in \mathcal{R}} \theta_{z_i, z_j, r} \right) $$
+  * Potentials ($g_q(\mathbf{Z}_q)$) are only non-null for pairs (cliques with 2 elements): if $|q| \neq 2$, $g_q(\mathbf{Z}_q) = 0$. Therefore, we can simplify the notation to $g_{i,{i+r}}(z_i, z_{i+r})$, $r \in \mathcal{R}$.
+  
+  * Potentials only depend on the pair's relative position: $g_{i,i+r}(a,b) = g_{j, j+r}(a,b) = \theta_{a,b,r}$ for all $i,j \in \mathcal{L}$.
+  
+Under these assumptions, our probability distribution reduces to:
 
-$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{r \in \mathcal{R}} \sum_{a,b = 0}^C \theta_{a,b,r} n_r(a,b) \right) $$
-$n_r(a,b) = \sum_{i \in \mathcal{L}} \mathbb{1}(z_i = a, z_{i+r} = b)$
+$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{i \in \mathcal{L}} \sum_{j = i + r}^{r \in \mathcal{R}} \theta_{z_i, z_j, r} \right), $$
+
+or in terms of co-ocurrence counts:
+
+$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{r \in \mathcal{R}} \sum_{a,b = 0}^C \theta_{a,b,r} n_r(a,b) \right), $$
+where $n_r(a,b) = \sum_{i \in \mathcal{L}} \mathbb{1}(z_i = a, z_{i+r} = b)$.
 
 ## The `mrf2d` package
 
