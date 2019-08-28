@@ -131,7 +131,35 @@ structure for a spatially-stationary Markov Random Field.</p>
     
     </div>
 
-        
+    <pre class="usage"># S4 method for mrfi
+as.list(x)
+
+# S4 method for mrfi,numeric,missing
+[[(x, i)
+
+# S4 method for mrfi,numeric,missing
+[(x, i)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p><code>mrfi</code> object.</p></td>
+    </tr>
+    <tr>
+      <th>i</th>
+      <td><p>vector of indexes to extract interacting positions.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code><a href='https://www.rdocumentation.org/packages/base/topics/list'>as.list()</a></code> converts the <code>mrfi</code> object to a list of interacting
+positions (length 2 vectors).</p>
+<p><code>[[</code> converts to list and subsets it.</p>
+<p><code>[</code> subsets the <code>mrfi</code> object and returns another <code>mrfi</code> object.</p>
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The interaction structure is defined by the list of relative
@@ -159,18 +187,36 @@ are also conditionally dependent, as in</p>
     <dl class='dl-horizontal'>
 <dt><code>Rmat</code></dt><dd><p>A 2-column <code>matrix</code> where each row represents a relative position
 of interaction.</p></dd>
-    <dt><code>n_neis</code></dt><dd><p>The number of intracting positions.</p></dd>
 </dl>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='kw'>max_norm</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>norm_type</span> <span class='kw'>=</span> <span class='st'>"1"</span>))</div><div class='img'><img src='mrfi-class-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='kw'>max_norm</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>norm_type</span> <span class='kw'>=</span> <span class='st'>"m"</span>))</div><div class='img'><img src='mrfi-class-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='kw'>max_norm</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>norm_type</span> <span class='kw'>=</span> <span class='st'>"1"</span>, <span class='kw'>positions</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>4</span>))))</div><div class='img'><img src='mrfi-class-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>as.list</a></span>(<span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt; [[1]]
+#&gt; [1] 1 0
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] 0 1
+#&gt; </div><div class='input'><span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>)<span class='kw'>[[</span><span class='fl'>1</span>]]</div><div class='output co'>#&gt; [[1]]
+#&gt; [1] 1 0
+#&gt; </div><div class='input'><span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>2</span>)<span class='kw'>[[</span><span class='fl'>1</span>:<span class='fl'>3</span>]]</div><div class='output co'>#&gt; [[1]]
+#&gt; [1] 1 0
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] 2 0
+#&gt; 
+#&gt; [[3]]
+#&gt; [1] -1  1
+#&gt; </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
 
       <li><a href="#slots">Slots</a></li>
