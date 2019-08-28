@@ -3,7 +3,30 @@
 \docType{class}
 \name{mrfi-class}
 \alias{mrfi-class}
+\alias{as.list,mrfi-method}
+\alias{[[,mrfi,numeric,missing-method}
+\alias{[,mrfi,numeric,missing-method}
 \title{An S4 class to represent interactions for MRFs in 2d lattices}
+\usage{
+\S4method{as.list}{mrfi}(x)
+
+\S4method{[[}{mrfi,numeric,missing}(x, i)
+
+\S4method{[}{mrfi,numeric,missing}(x, i)
+}
+\arguments{
+\item{x}{\code{mrfi} object.}
+
+\item{i}{vector of indexes to extract interacting positions.}
+}
+\value{
+\code{as.list()} converts the \code{mrfi} object to a list of interacting
+positions (length 2 vectors).
+
+\code{[[} converts to list and subsets it.
+
+\code{[} subsets the \code{mrfi} object and returns another \code{mrfi} object.
+}
 \description{
 The \code{mrfi} S4 class is a representation of the interaction
 structure for a spatially-stationary Markov Random Field.
@@ -48,5 +71,9 @@ of interaction.}
 plot(mrfi(max_norm = 2, norm_type = "1"))
 plot(mrfi(max_norm = 2, norm_type = "m"))
 plot(mrfi(max_norm = 2, norm_type = "1", positions = list(c(4,4))))
+
+as.list(mrfi(1))
+mrfi(1)[[1]]
+mrfi(2)[[1:3]]
 
 }

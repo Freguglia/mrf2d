@@ -39,6 +39,10 @@
 #' plot(mrfi(max_norm = 2, norm_type = "m"))
 #' plot(mrfi(max_norm = 2, norm_type = "1", positions = list(c(4,4))))
 #'
+#' as.list(mrfi(1))
+#' mrfi(1)[[1]]
+#' mrfi(2)[[1:3]]
+#'
 #' @exportClass mrfi
 setClass("mrfi",
          representation(Rmat = "matrix"))
@@ -89,6 +93,7 @@ setMethod("show", "mrfi",
 #'
 #' #Repeated positions are handled automatically
 #' mrfi(1, positions = list(c(1,0), c(2,0)))
+#'
 #'
 #' @importFrom methods new
 #' @export
@@ -189,13 +194,35 @@ setMethod("plot", signature(x = "mrfi", y = "missing"),
             p
           })
 
+#' @rdname mrfi-class
+#'
+#' @param x `mrfi` object.
+#'
 #' @exportMethod as.list
 setMethod("as.list", signature(x = "mrfi"),
-          definition = function(x, ...){
+          definition = function(x){
             unname(split(x@Rmat, rep(1:nrow(x@Rmat), ncol(x@Rmat))))
           })
 
+#' @rdname mrfi-class
+#'
+#' @param i vector of indexes to extract interacting positions.
+#'
+#' @return `as.list()` converts the `mrfi` object to a list of interacting
+#' positions (length 2 vectors).
+#'
+#' `[[` converts to list and subsets it.
+#'
+#' `[` subsets the `mrfi` object and returns another `mrfi` object.
 setMethod("[[", signature = c("mrfi", "numeric", "missing"),
-          definition = function(x, i, j, ..., drop = TRUE){
-            x@Rmat[i,]
+          definition = function(x, i){
+            m <- x@Rmat[i,,drop = FALSE]
+            unname(split(m, rep(1:nrow(m), ncol(m))))
+          })
+
+#' @rdname mrfi-class
+setMethod("[", signature = c("mrfi", "numeric", "missing"),
+          definition = function(x, i){
+            m <- x@Rmat[i,,drop = FALSE]
+            new("mrfi", Rmat = m)
           })

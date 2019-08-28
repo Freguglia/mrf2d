@@ -42,6 +42,7 @@ mrfi(1, positions = list(c(4,4), c(-4,4)))
 #Repeated positions are handled automatically
 mrfi(1, positions = list(c(1,0), c(2,0)))
 
+
 }
 \author{
 Victor Freguglia
