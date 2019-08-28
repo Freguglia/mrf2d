@@ -27,7 +27,8 @@ Suggests:
     testthat (>= 2.1.0),
     covr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    glue
 VignetteBuilder: knitr
 URL: https://github.com/Freguglia/mrf2d
 BugReports: https://github.com/Freguglia/mrf2d/issues
