@@ -43,16 +43,16 @@ fourier_2d <- function(max_freqs, lattice_dim){
   l <- split(cbn, 1:nrow(cbn))[-1]
   l_sin_sin <- lapply(l, function(nm)
     return(
-      function(x, y, N, M) sin((x-1)*pi*nm[1,1]/N)*sin((y-1)*pi*nm[1,2]/M)))
+      function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)))
   l_cos_sin <- lapply(l, function(nm)
     return(
-      function(x, y, N, M) cos((x-1)*pi*nm[1,1]/N)*sin((y-1)*pi*nm[1,2]/M)))
+      function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)))
   l_sin_cos <- lapply(l, function(nm)
     return(
-      function(x, y, N, M) sin((x-1)*pi*nm[1,1]/N)*cos((y-1)*pi*nm[1,2]/M)))
+      function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)))
   l_cos_cos <- lapply(l, function(nm)
     return(
-      function(x, y, N, M) cos((x-1)*pi*nm[1,1]/N)*cos((y-1)*pi*nm[1,2]/M)))
+      function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)))
 
   return(c(l_sin_sin, l_cos_cos, l_cos_sin, l_sin_cos))
 }
