@@ -96,9 +96,13 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
   # compute initial fixed effect
   N <- nrow(Y); M <- ncol(Y)
   if(length(fixed_fn) > 0){
-    df_fixed <- basis_function_df(fixed_fn, N, M, standardize = TRUE)
-    fit_reg <- lm(gl ~ 0 + ., data = cbind(df_fixed[,-(1:2)], gl = as.vector(Y - mean(Y))))
-    S <- matrix(predict(fit_reg), nrow = N, ncol = M)
+    X <- basis_function_df(fixed_fn, N, M, standardize = TRUE)[,-(1:2)]
+    X <- as.matrix(X)
+    q <- qr(X)
+    X <- X[ ,q$pivot[seq(q$rank)]]
+    H_piece <- solve(t(X)%*%X) %*% t(X)
+    S <- X %*% (H_piece %*% as.vector(Y))
+    S <- matrix(S, nrow = nrow(Y))
     e <- Y - S
   } else {
     e <- Y
@@ -111,7 +115,7 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
     ind_fit <- fit_ghm(e, mrfi, theta*0, fixed_fn, equal_vars,
                        init_mus = seq(min(e), max(e), length.out = C+1),
                        init_sigmas = rep(diff(range(e))/(2*C), C+1),
-                       maxiter, max_dist, icm_cycles, verbose = FALSE)
+                       maxiter, max_dist, icm_cycles, verbose = TRUE)
     mus_old <- ind_fit$par$mu
     sigmas_old <- ind_fit$par$sigma
   } else {
@@ -141,11 +145,8 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
 
     ## update S
     if(length(fixed_fn) > 0){
-      fit_reg <- lm(gl ~ 0 + .,
-                    data = cbind(df_fixed[,-(1:2)],
-                                 gl = as.vector(Y - apply(cond_probs, MARGIN = c(1,2),
-                                                          function(p) sum(p*mus_new)))))
-      S <- matrix(predict(fit_reg), nrow = N, ncol = M)
+      S <- X %*% (H_piece %*% as.vector(Y))
+      S <- matrix(S, nrow = nrow(Y))
     }
     e <- Y - S
 
