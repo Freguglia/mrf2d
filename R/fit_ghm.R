@@ -115,7 +115,7 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
     ind_fit <- fit_ghm(e, mrfi, theta*0, fixed_fn, equal_vars,
                        init_mus = seq(min(e), max(e), length.out = C+1),
                        init_sigmas = rep(diff(range(e))/(2*C), C+1),
-                       maxiter, max_dist, icm_cycles, verbose = TRUE)
+                       maxiter, max_dist, icm_cycles, verbose = FALSE)
     mus_old <- ind_fit$par$mu
     sigmas_old <- ind_fit$par$sigma
   } else {
