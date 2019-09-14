@@ -6,7 +6,7 @@
 \usage{
 fit_ghm(Y, mrfi, theta, fixed_fn = list(), equal_vars = TRUE,
   init_mus = NULL, init_sigmas = NULL, maxiter = 100,
-  max_dist = 10^-3, icm_cycles = 6, verbose = TRUE)
+  max_dist = 10^-3, icm_cycles = 6, verbose = TRUE, qr = NULL)
 }
 \arguments{
 \item{Y}{A matrix of observed (continuous) pixel values.}
@@ -41,6 +41,8 @@ is less than \code{max_dist}.}
 algorithm executed in each interaction. Defaults to 6.}
 
 \item{verbose}{\code{logical} indicating wheter to print the progress or not.}
+
+\item{qr}{The QR decomposition of the design matrix. Used internally.}
 }
 \value{
 A \code{list} containing:

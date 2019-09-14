@@ -27,6 +27,7 @@
 #' @param icm_cycles Number of steps used in the Iterated Conditional Modes
 #'  algorithm executed in each interaction. Defaults to 6.
 #' @param verbose `logical` indicating wheter to print the progress or not.
+#' @param qr The QR decomposition of the design matrix. Used internally.
 #'
 #' @return A `list` containing:
 #'  * `par`: A `data.frame` with \eqn{\mu} and \eqn{\sigma} estimates for each
@@ -85,7 +86,7 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
                     init_mus = NULL,
                     init_sigmas = NULL,
                     maxiter = 100, max_dist = 10^-3,
-                    icm_cycles = 6, verbose = TRUE){
+                    icm_cycles = 6, verbose = TRUE, qr = NULL){
 
   Rmat <- mrfi@Rmat
 
@@ -96,13 +97,14 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
   # compute initial fixed effect
   N <- nrow(Y); M <- ncol(Y)
   if(length(fixed_fn) > 0){
-    X <- basis_function_df(fixed_fn, N, M, standardize = TRUE)[,-(1:2)]
-    X <- as.matrix(X)
-    q <- qr(X)
-    X <- X[ ,q$pivot[seq(q$rank)]]
-    H_piece <- solve(t(X)%*%X) %*% t(X)
-    S <- X %*% (H_piece %*% as.vector(Y))
-    S <- matrix(S, nrow = nrow(Y))
+    if(is.null(qr)){
+      X <- basis_function_df(fixed_fn, N, M, standardize = TRUE)[,-(1:2)]
+      X <- as.matrix(X)
+      q <- qr(X)
+    } else {
+      q <- qr
+    }
+    S <- matrix(qr.fitted(q, as.vector(Y)), nrow = nrow(Y))
     e <- Y - S
   } else {
     e <- Y
@@ -115,7 +117,7 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
     ind_fit <- fit_ghm(e, mrfi, theta*0, fixed_fn, equal_vars,
                        init_mus = seq(min(e), max(e), length.out = C+1),
                        init_sigmas = rep(diff(range(e))/(2*C), C+1),
-                       maxiter, max_dist, icm_cycles, verbose = FALSE)
+                       maxiter, max_dist, icm_cycles, verbose = FALSE, qr = q)
     mus_old <- ind_fit$par$mu
     sigmas_old <- ind_fit$par$sigma
   } else {
@@ -145,8 +147,11 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
 
     ## update S
     if(length(fixed_fn) > 0){
-      S <- X %*% (H_piece %*% as.vector(Y))
-      S <- matrix(S, nrow = nrow(Y))
+      mean_residual <- apply(cond_probs, MARGIN = c(1,2),
+                             function(p_vec){
+                               sum(p_vec*mus_new/sigmas_new)
+                             })/sum(sigmas_new)
+      S <- matrix(qr.fitted(q, as.vector(Y - mean_residual)), nrow = nrow(Y))
     }
     e <- Y - S
 
