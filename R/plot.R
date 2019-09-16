@@ -46,7 +46,7 @@ dplot <- function(Z, legend = FALSE){
     geom_raster() +
     scale_x_continuous(expand = c(0, 0)) +
     scale_y_continuous(expand = c(0, 0)) +
-    scale_fill_grey(start = 0, end = 0.9) +
+    scale_fill_grey(start = 0, end = 0.9, na.value = "white") +
     theme(axis.title.x = element_blank(),
           axis.title.y = element_blank(),
           legend.title = element_blank(),
@@ -66,7 +66,7 @@ cplot <- function(Y, legend = TRUE){
     geom_raster() +
     scale_x_continuous(expand = c(0, 0)) +
     scale_y_continuous(expand = c(0, 0)) +
-    scale_fill_gradient(low = "black", high = "gray90") +
+    scale_fill_gradient(low = "black", high = "gray90", na.value = "white") +
     theme(axis.title.x = element_blank(),
           axis.title.y = element_blank(),
           legend.title = element_blank(),
