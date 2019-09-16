@@ -43,7 +43,7 @@
 #' dplot(Z2)
 #'
 #' @export
-rmrf2d <- function(init_Z, mrfi, theta, cycles = 60){
+rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, sub_lattice = NULL, mask_na = TRUE){
   # Check validity of the input
   if(!is.matrix(init_Z)) {
     if(is.numeric(init_Z) & is.vector(init_Z)) {
@@ -58,6 +58,12 @@ rmrf2d <- function(init_Z, mrfi, theta, cycles = 60){
       stop("Argument 'init_Z' must be either a matrix or a length 2 numeric vector with lattice dimensions.")
     }
   }
+
+  if(is.null(sub_lattice)){
+    if(any(is.na(init_Z))){
+      sub_lattice <- !is.na(init_Z)
+    }
+  }
   theta <- sanitize_theta(theta)
 
   R <- mrfi@Rmat
@@ -66,7 +72,15 @@ rmrf2d <- function(init_Z, mrfi, theta, cycles = 60){
   theta <- theta[,,!null_interactions]
   R <- R[!null_interactions,]
 
-  return(gibbs_sampler_mrf2d(init_Z, R, theta, cycles))
+  if(is.null(sub_lattice)){
+    return(gibbs_sampler_mrf2d(init_Z, R, theta, cycles))
+  } else{
+    ret <- gibbs_sampler_mrf2d_sub(init_Z, sub_lattice, R, theta, cycles)
+    if(mask_na){
+      ret <- ifelse(!sub_lattice, NA, ret)
+    }
+    return(ret)
+  }
 
 
 }

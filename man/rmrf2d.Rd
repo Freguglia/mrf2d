@@ -4,7 +4,7 @@
 \alias{rmrf2d}
 \title{Sampling of Markov Random Fields on 2d lattices}
 \usage{
-rmrf2d(init_Z, mrfi, theta, cycles = 60)
+rmrf2d(init_Z, mrfi, theta, cycles = 60, sub_lattice = NULL)
 }
 \arguments{
 \item{init_Z}{One of two options:
