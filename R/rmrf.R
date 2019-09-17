@@ -11,10 +11,11 @@
 #'  valuesmust be integers in `{0,...,C}`.
 #'  * A length 2 `numeric` vector with the lattice dimensions.
 #' @param cycles The number of updates to be done (for each each pixel).
-#' @param sub_lattice `NULL` if the whole lattice is considered or a `logical`
+#' @param sub_region `NULL` if the whole lattice is considered or a `logical`
 #' `matrix` with `TRUE` for pixels in the considered region.
-#' @param mask_na `logical` indicating whether pixels not in the sub-lattice
-#' should be set to NA.
+#' @param fixed_region `NULL` if the whole lattice is to be sampled or a
+#' `logical` `matrix` with `TRUE` for pixels to be considered fixed. Fixed
+#' pixels are not updated in the Gibbs Sampler.
 #'
 #' @return A `matrix` with the sampled field.
 #'
@@ -31,6 +32,18 @@
 #'  `{0,...,C}`. The value of C is obtained from the number of rows/columns of
 #'  `theta`.
 #'
+#'  A MRF can be sampled in a non-rectangular region of the lattice with the use of
+#'  the `sub_region` argument or by setting pixels to `NA` in the initial
+#'  configuration `init_Z`. Pixels with `NA` values in `init_Z` are completely
+#'  disconsidered from the conditional probabilities and have the same effect as
+#'  setting `sub_region = is.na(init_Z)`. If `init_Z` has `NA` values,
+#'  `sub_region` is ignored and a warning is produced.
+#'
+#'  A specific region can be kept constant during the Gibbs Sampler by using the
+#'  `fixed_region` argument. Keeping a subset of pixels constant is useful when
+#'  you want to sample in a specific region of the image conditional to the
+#'  rest, for example, in texture synthesis problems.
+#'
 #' @note As in any Gibbs Sampling scheme, a large number of cycles may be
 #'  required to achieve the target distribution, specially for strong
 #'  interaction systems.
@@ -46,17 +59,31 @@
 #' dplot(Z)
 #' dplot(Z2)
 #'
-#' # Using sub-lattices
-#' sublat <- matrix(TRUE, 150, 150)
-#' sublat <- abs(row(sublat) - 75) + abs(col(sublat) - 75) <= 80
-#' # view the sub-lattice region
-#' dplot(sublat)
+#' # Using sub-regions
+#' subreg <- matrix(TRUE, 150, 150)
+#' subreg <- abs(row(subreg) - 75) + abs(col(subreg) - 75) <= 80
+#' # view the sub-region
+#' dplot(subreg)
 #'
-#' Z3 <- rmrf2d(c(150,150), mrfi(1), theta_potts, sub_lattice = sublat)
+#' Z3 <- rmrf2d(c(150,150), mrfi(1), theta_potts, sub_region = subreg)
 #' dplot(Z3)
 #'
+#' # Using fixed regions
+#' fixreg <- matrix(as.logical(diag(150)), 150, 150)
+#' # Set initial configuration: diagonal values are 0.
+#' init_Z4 <- Z
+#' init_Z4[fixreg] <- 0
+#'
+#' Z4 <- rmrf2d(init_Z4, mrfi(1), theta_potts, fixed_region = fixreg)
+#' dplot(Z4)
+#'
+#' # Combine fixed regions and sub-regions
+#' Z5 <- rmrf2d(init_Z4, mrfi(1), theta_potts,
+#' fixed_region = fixreg, sub_region = subreg)
+#' dplot(Z5)
+#'
 #' @export
-rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, sub_lattice = NULL, mask_na = TRUE){
+rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, sub_region = NULL, fixed_region = NULL){
   # Check validity of the input
   if(!is.matrix(init_Z)) {
     if(is.numeric(init_Z) & is.vector(init_Z)) {
@@ -72,22 +99,45 @@ rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, sub_lattice = NULL, mask_na
     }
   }
 
-  if(is.null(sub_lattice)){ # sub_lattice is NULL
+  if(is.null(sub_region)){ # sub_region is NULL
     if(any(is.na(init_Z))){
-      sub_lattice <- !is.na(init_Z)
+      sub_region <- !is.na(init_Z)
     }
     ###########################################################
-  } else if(is.matrix(sub_lattice)) { #sub_lattice is matrix
-    if(!identical(dim(init_Z), dim(sub_lattice))){
-      stop("'init_Z' and 'sub_lattice' must have the same dimension.")
+  } else if(is.matrix(sub_region)) { #sub_region is matrix
+    if(!identical(dim(init_Z), dim(sub_region))){
+      stop("'init_Z' and 'sub_region' must have the same dimension.")
     }
     if(any(is.na(init_Z))){ # and there are NAs
-      warning("'init_Z' has NA values and 'sub_lattice' was defined. Using non-NA values in 'init_Z' as sub-lattice and ignoring 'sub_lattice'")
-      sub_lattice <- !is.na(init_Z)
+      warning("'init_Z' has NA values and 'sub_region' was defined. Using non-NA values in 'init_Z' as sub-region and ignoring 'sub_region'")
+      sub_region <- !is.na(init_Z)
     }
     #########################################################
-  } else { # sub_lattice is wrong
-    stop("'sub_lattice' must be either NULL or a logical matrix.")
+  } else { # sub_region is wrong
+    stop("'sub_region' must be either NULL or a logical matrix.")
+  }
+
+  if(is.matrix(fixed_region)) { #fixed_region is matrix
+    if(!identical(dim(init_Z), dim(fixed_region))){
+      stop("'init_Z' and 'fixed_region' must have the same dimension.")
+    }
+    #########################################################
+  } else if(!is.null(fixed_region)) { # sub_region is wrong
+    stop("'fixed_region' must be either NULL or a logical matrix.")
+  }
+
+  if(is.null(fixed_region) && !is.null(sub_region)){
+    fixed_region <- matrix(FALSE, nrow(init_Z), ncol(init_Z))
+  }
+
+  if(!is.null(fixed_region) && is.null(sub_region)){
+    sub_region <- matrix(TRUE, nrow(init_Z), ncol(init_Z))
+  }
+
+  if(!is.null(fixed_region)){
+    if(any(fixed_region[!sub_region])){
+      warning("Some pixels in the 'fixed_region' are not part of the 'sub_region', they will be ignored.")
+    }
   }
 
   theta <- sanitize_theta(theta)
@@ -98,13 +148,11 @@ rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, sub_lattice = NULL, mask_na
   theta <- theta[,,!null_interactions]
   R <- R[!null_interactions,]
 
-  if(is.null(sub_lattice)){
+  if(is.null(sub_region) && is.null(fixed_region)){
     return(gibbs_sampler_mrf2d(init_Z, R, theta, cycles))
   } else{
-    ret <- gibbs_sampler_mrf2d_sub(init_Z, sub_lattice, R, theta, cycles)
-    if(mask_na){
-      ret <- ifelse(!sub_lattice, NA, ret)
-    }
+    ret <- gibbs_sampler_mrf2d_sub(init_Z, sub_region, fixed_region, R, theta, cycles)
+    ret[!sub_region] <- NA
     return(ret)
   }
 

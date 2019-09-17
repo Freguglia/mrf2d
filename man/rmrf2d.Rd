@@ -4,8 +4,8 @@
 \alias{rmrf2d}
 \title{Sampling of Markov Random Fields on 2d lattices}
 \usage{
-rmrf2d(init_Z, mrfi, theta, cycles = 60, sub_lattice = NULL,
-  mask_na = TRUE)
+rmrf2d(init_Z, mrfi, theta, cycles = 60, sub_region = NULL,
+  fixed_region = TRUE)
 }
 \arguments{
 \item{init_Z}{One of two options:
@@ -25,11 +25,12 @@ values 0,2 in the second relative position of \code{mrfi}.}
 
 \item{cycles}{The number of updates to be done (for each each pixel).}
 
-\item{sub_lattice}{\code{NULL} if the whole lattice is considered or a \code{logical}
+\item{sub_region}{\code{NULL} if the whole lattice is considered or a \code{logical}
 \code{matrix} with \code{TRUE} for pixels in the considered region.}
 
-\item{mask_na}{\code{logical} indicating whether pixels not in the sub-lattice
-should be set to NA.}
+\item{fixed_region}{\code{NULL} if the whole lattice is to be sampled or a
+\code{logical} \code{matrix} with \code{TRUE} for pixels to be considered fixed. Fixed
+pixels are not updated in the Gibbs Sampler.}
 }
 \value{
 A \code{matrix} with the sampled field.
@@ -51,6 +52,18 @@ If \code{init_Z} is passed as a length 2 vector with lattice dimensions, the
 initial field is sampled from independent discrete uniform distributions in
 \code{{0,...,C}}. The value of C is obtained from the number of rows/columns of
 \code{theta}.
+
+A MRF can be sampled in a non-rectangular region of the lattice with the use of
+the \code{sub_region} argument or by setting pixels to \code{NA} in the initial
+configuration \code{init_Z}. Pixels with \code{NA} values in \code{init_Z} are completely
+disconsidered from the conditional probabilities and have the same effect as
+setting \code{sub_region = is.na(init_Z)}. If \code{init_Z} has \code{NA} values,
+\code{sub_region} is ignored and a warning is produced.
+
+A specific region can be kept constant during the Gibbs Sampler by using the
+\code{fixed_region} argument. Keeping a subset of pixels constant is useful when
+you want to sample in a specific region of the image conditional to the
+rest, for example, in texture synthesis problems.
 }
 \note{
 As in any Gibbs Sampling scheme, a large number of cycles may be
@@ -68,13 +81,13 @@ Z2 <- rmrf2d(Z, mrfi(1), theta_potts)
 dplot(Z)
 dplot(Z2)
 
-# Using sub-lattices
+# Using sub-regions
 sublat <- matrix(TRUE, 150, 150)
 sublat <- abs(row(sublat) - 75) + abs(col(sublat) - 75) <= 80
-# view the sub-lattice region
+# view the sub-region region
 dplot(sublat)
 
-Z3 <- rmrf2d(c(150,150), mrfi(1), theta_potts, sub_lattice = sublat)
+Z3 <- rmrf2d(c(150,150), mrfi(1), theta_potts, sub_region = sublat)
 dplot(Z3)
 
 }

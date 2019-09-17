@@ -127,17 +127,18 @@ BEGIN_RCPP
 END_RCPP
 }
 // gibbs_sampler_mrf2d_sub
-IntegerMatrix gibbs_sampler_mrf2d_sub(IntegerMatrix init_Z, LogicalMatrix sub_mat, IntegerMatrix R, const arma::fcube theta, int n_steps);
-RcppExport SEXP _mrf2d_gibbs_sampler_mrf2d_sub(SEXP init_ZSEXP, SEXP sub_matSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP n_stepsSEXP) {
+IntegerMatrix gibbs_sampler_mrf2d_sub(IntegerMatrix init_Z, LogicalMatrix sub_mat, LogicalMatrix fix_mat, IntegerMatrix R, const arma::fcube theta, int n_steps);
+RcppExport SEXP _mrf2d_gibbs_sampler_mrf2d_sub(SEXP init_ZSEXP, SEXP sub_matSEXP, SEXP fix_matSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP n_stepsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< IntegerMatrix >::type init_Z(init_ZSEXP);
     Rcpp::traits::input_parameter< LogicalMatrix >::type sub_mat(sub_matSEXP);
+    Rcpp::traits::input_parameter< LogicalMatrix >::type fix_mat(fix_matSEXP);
     Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
     Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
     Rcpp::traits::input_parameter< int >::type n_steps(n_stepsSEXP);
-    rcpp_result_gen = Rcpp::wrap(gibbs_sampler_mrf2d_sub(init_Z, sub_mat, R, theta, n_steps));
+    rcpp_result_gen = Rcpp::wrap(gibbs_sampler_mrf2d_sub(init_Z, sub_mat, fix_mat, R, theta, n_steps));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -191,7 +192,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_mrf2d_cprob_ghm_all", (DL_FUNC) &_mrf2d_cprob_ghm_all, 6},
     {"_mrf2d_icm_gaussian_cpp", (DL_FUNC) &_mrf2d_icm_gaussian_cpp, 7},
     {"_mrf2d_gibbs_sampler_mrf2d", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf2d, 4},
-    {"_mrf2d_gibbs_sampler_mrf2d_sub", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf2d_sub, 5},
+    {"_mrf2d_gibbs_sampler_mrf2d_sub", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf2d_sub, 6},
     {"_mrf2d_table_relative", (DL_FUNC) &_mrf2d_table_relative, 4},
     {"_mrf2d_table_relative_3d", (DL_FUNC) &_mrf2d_table_relative_3d, 4},
     {"_mrf2d_log_pl_mrf", (DL_FUNC) &_mrf2d_log_pl_mrf, 3},

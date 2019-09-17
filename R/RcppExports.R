@@ -29,8 +29,8 @@ gibbs_sampler_mrf2d <- function(init_Z, R, theta, n_steps) {
     .Call('_mrf2d_gibbs_sampler_mrf2d', PACKAGE = 'mrf2d', init_Z, R, theta, n_steps)
 }
 
-gibbs_sampler_mrf2d_sub <- function(init_Z, sub_mat, R, theta, n_steps) {
-    .Call('_mrf2d_gibbs_sampler_mrf2d_sub', PACKAGE = 'mrf2d', init_Z, sub_mat, R, theta, n_steps)
+gibbs_sampler_mrf2d_sub <- function(init_Z, sub_mat, fix_mat, R, theta, n_steps) {
+    .Call('_mrf2d_gibbs_sampler_mrf2d_sub', PACKAGE = 'mrf2d', init_Z, sub_mat, fix_mat, R, theta, n_steps)
 }
 
 table_relative <- function(Z, r, C, prop) {
