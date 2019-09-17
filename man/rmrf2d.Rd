@@ -5,7 +5,7 @@
 \title{Sampling of Markov Random Fields on 2d lattices}
 \usage{
 rmrf2d(init_Z, mrfi, theta, cycles = 60, sub_region = NULL,
-  fixed_region = TRUE)
+  fixed_region = NULL)
 }
 \arguments{
 \item{init_Z}{One of two options:
@@ -82,13 +82,27 @@ dplot(Z)
 dplot(Z2)
 
 # Using sub-regions
-sublat <- matrix(TRUE, 150, 150)
-sublat <- abs(row(sublat) - 75) + abs(col(sublat) - 75) <= 80
-# view the sub-region region
-dplot(sublat)
+subreg <- matrix(TRUE, 150, 150)
+subreg <- abs(row(subreg) - 75) + abs(col(subreg) - 75) <= 80
+# view the sub-region
+dplot(subreg)
 
-Z3 <- rmrf2d(c(150,150), mrfi(1), theta_potts, sub_region = sublat)
+Z3 <- rmrf2d(c(150,150), mrfi(1), theta_potts, sub_region = subreg)
 dplot(Z3)
+
+# Using fixed regions
+fixreg <- matrix(as.logical(diag(150)), 150, 150)
+# Set initial configuration: diagonal values are 0.
+init_Z4 <- Z
+init_Z4[fixreg] <- 0
+
+Z4 <- rmrf2d(init_Z4, mrfi(1), theta_potts, fixed_region = fixreg)
+dplot(Z4)
+
+# Combine fixed regions and sub-regions
+Z5 <- rmrf2d(init_Z4, mrfi(1), theta_potts,
+fixed_region = fixreg, sub_region = subreg)
+dplot(Z5)
 
 }
 \author{
