@@ -59,11 +59,24 @@ rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, sub_lattice = NULL, mask_na
     }
   }
 
-  if(is.null(sub_lattice)){
+  if(is.null(sub_lattice)){ # sub_lattice is NULL
     if(any(is.na(init_Z))){
       sub_lattice <- !is.na(init_Z)
     }
+    ###########################################################
+  } else if(is.matrix(sub_lattice)) { #sub_lattice is matrix
+    if(!identical(dim(init_Z), dim(sub_lattice))){
+      stop("'init_Z' and 'sub_lattice' must have the same dimension.")
+    }
+    if(any(is.na(init_Z))){ # and there are NAs
+      warning("'init_Z' has NA values and 'sub_lattice' was defined. Using non-NA values in 'init_Z' as sub-lattice and ignoring 'sub_lattice'")
+      sub_lattice <- !is.na(init_Z)
+    }
+    #########################################################
+  } else { # sub_lattice is wrong
+    stop("'sub_lattice' must be either NULL or a logical matrix.")
   }
+
   theta <- sanitize_theta(theta)
 
   R <- mrfi@Rmat
