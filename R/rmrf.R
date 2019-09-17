@@ -11,6 +11,10 @@
 #'  valuesmust be integers in `{0,...,C}`.
 #'  * A length 2 `numeric` vector with the lattice dimensions.
 #' @param cycles The number of updates to be done (for each each pixel).
+#' @param sub_lattice `NULL` if the whole lattice is considered or a `logical`
+#' `matrix` with `TRUE` for pixels in the considered region.
+#' @param mask_na `logical` indicating whether pixels not in the sub-lattice
+#' should be set to NA.
 #'
 #' @return A `matrix` with the sampled field.
 #'
@@ -41,6 +45,15 @@
 #' # View results
 #' dplot(Z)
 #' dplot(Z2)
+#'
+#' # Using sub-lattices
+#' sublat <- matrix(TRUE, 150, 150)
+#' sublat <- abs(row(sublat) - 75) + abs(col(sublat) - 75) <= 80
+#' # view the sub-lattice region
+#' dplot(sublat)
+#'
+#' Z3 <- rmrf2d(c(150,150), mrfi(1), theta_potts, sub_lattice = sublat)
+#' dplot(Z3)
 #'
 #' @export
 rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, sub_lattice = NULL, mask_na = TRUE){

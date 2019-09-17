@@ -4,7 +4,8 @@
 \alias{rmrf2d}
 \title{Sampling of Markov Random Fields on 2d lattices}
 \usage{
-rmrf2d(init_Z, mrfi, theta, cycles = 60, sub_lattice = NULL)
+rmrf2d(init_Z, mrfi, theta, cycles = 60, sub_lattice = NULL,
+  mask_na = TRUE)
 }
 \arguments{
 \item{init_Z}{One of two options:
@@ -23,6 +24,12 @@ neighbor values. As an example: \code{theta[1,3,2]} has the potential pairs of
 values 0,2 in the second relative position of \code{mrfi}.}
 
 \item{cycles}{The number of updates to be done (for each each pixel).}
+
+\item{sub_lattice}{\code{NULL} if the whole lattice is considered or a \code{logical}
+\code{matrix} with \code{TRUE} for pixels in the considered region.}
+
+\item{mask_na}{\code{logical} indicating whether pixels not in the sub-lattice
+should be set to NA.}
 }
 \value{
 A \code{matrix} with the sampled field.
@@ -60,6 +67,15 @@ Z2 <- rmrf2d(Z, mrfi(1), theta_potts)
 # View results
 dplot(Z)
 dplot(Z2)
+
+# Using sub-lattices
+sublat <- matrix(TRUE, 150, 150)
+sublat <- abs(row(sublat) - 75) + abs(col(sublat) - 75) <= 80
+# view the sub-lattice region
+dplot(sublat)
+
+Z3 <- rmrf2d(c(150,150), mrfi(1), theta_potts, sub_lattice = sublat)
+dplot(Z3)
 
 }
 \author{
