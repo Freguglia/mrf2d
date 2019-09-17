@@ -47,4 +47,8 @@ test_that("Gibbs Sampler works with sub-lattices", {
   expect_is(rmrf2d(c(30,31), mrfi(), theta_potts, 40, fixed_region = border), "matrix")
 
   # Both fixed and sub-regions
+  init_diag <- sample(0:2, 30*30, replace = TRUE)
+  init_diag <- init_diag*(1-ifelse(diag(30), TRUE, FALSE))
+  expect_warning(rmrf2d(init_diag, mrfi(), theta_potts, 40, fixed_region = ifelse(diag(30),TRUE,FALSE), sub_region = mask), "Some pixels")
+  expect_warning(rmrf2d(c(30,30), mrfi(), theta_potts, 40, fixed_region = ifelse(diag(30),TRUE,FALSE), sub_region = mask), "Some pixels")
 })
