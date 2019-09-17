@@ -17,7 +17,7 @@ test_that("Gibbs Sampler works", {
 
 })
 
-test_that("Gibbs Sampler works with sub-lattices", {
+test_that("Gibbs Sampler works with sub_region and fixed_region", {
   set.seed(1)
   mask <- matrix(TRUE, 30, 30)
   mask <- ifelse((row(mask)-15)^2 + (col(mask)-15)^2 <= 15^2, TRUE, FALSE)
