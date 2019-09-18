@@ -45,3 +45,7 @@ log_pl_mrf <- function(Z, R, theta) {
     .Call('_mrf2d_log_pl_mrf', PACKAGE = 'mrf2d', Z, R, theta)
 }
 
+log_pl_mrf_sub <- function(Z, sub_mat, R, theta) {
+    .Call('_mrf2d_log_pl_mrf_sub', PACKAGE = 'mrf2d', Z, sub_mat, R, theta)
+}
+

@@ -30,8 +30,26 @@
 #'
 #' @export
 pl_mrf2d <- function(Z, mrfi, theta, log_scale = TRUE){
+  if(any(is.na(Z))){
+    return(pl_sub(Z, mrfi, theta, log_scale))
+  } else {
+    return(pl_nosub(Z, mrfi, theta, log_scale))
+  }
+}
+
+pl_nosub <- function(Z, mrfi, theta, log_scale){
   R <- mrfi@Rmat
   pl <- log_pl_mrf(Z, R, theta)
+  if(log_scale) {return(pl)
+  } else {
+    return(exp(pl))
+  }
+}
+
+pl_sub <- function(Z, mrfi, theta, log_scale){
+  sub_mat <- !is.na(Z)
+  R <- mrfi@Rmat
+  pl <- log_pl_mrf_sub(Z, sub_mat, R, theta)
   if(log_scale) {return(pl)
   } else {
     return(exp(pl))
@@ -49,7 +67,8 @@ pl_mrf2d <- function(Z, mrfi, theta, log_scale = TRUE){
 #' Pseudo-Likelihood function.
 #'
 #' @inheritParams pl_mrf2d
-#' @param Z A `matrix` object containing the observed MRF.
+#' @param Z A `matrix` object containing the observed MRF. `NA` values can be
+#' used to create a subregion of the lattice for non-rectangular data.
 #' @param family The family of parameter restrictions to potentials. Families
 #' are:
 #'   `'onepar'`, `'oneeach'`, `'absdif'`, `'dif'` or `'free'`.
@@ -85,7 +104,7 @@ fit_pl <- function(Z, mrfi, family = "onepar", init = 0,
   if(!is.numeric(init)) {
     stop("Argument 'init' must be numeric.")
   }
-  C <- length(unique(as.vector(Z))) - 1
+  C <- length(na.omit(unique(as.vector(Z)))) - 1
   R <- mrfi@Rmat
   n_R <- nrow(R)
 
