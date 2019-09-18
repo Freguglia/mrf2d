@@ -100,7 +100,7 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
     stop("'init' array is incompatible with family '", family,"'")
   }
 
-  arr_Z <- table_relative_3d(Z, mrfi@Rmat, C, FALSE)
+  arr_Z <- table_relative_3d(Z, mrfi@Rmat, C)
   S <- suf_stat(arr_Z, family)
   d <- numeric(length(gamma_seq))
   # Initialize
@@ -108,7 +108,7 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
   Z_t <- rmrf2d(dim(Z), mrfi, vec_to_array(theta_t, family, C, n_R), cycles)
   # Iterate
   for(t in seq_along(gamma_seq)){
-    arr_Z_t <- table_relative_3d(Z_t, mrfi@Rmat, C, FALSE)
+    arr_Z_t <- table_relative_3d(Z_t, mrfi@Rmat, C)
     S_t <- suf_stat(arr_Z_t, family)
     theta_t <- theta_t - gamma_seq[t]*(S_t - S)
     if(t%%refresh_each == 0){

@@ -1,5 +1,5 @@
 test_that("sufficient statistics computing works", {
-  pc <- table_relative_3d(Z_potts, diag(2), C = 2, FALSE)
+  pc <- table_relative_3d(Z_potts, diag(2), C = 2)
   expect_equal(length(suf_stat(pc, "onepar")), 1)
   expect_equal(length(suf_stat(pc, "oneeach")), 2)
   expect_equal(length(suf_stat(pc, "absdif")), 2*2)
