@@ -8,7 +8,8 @@ fit_pl(Z, mrfi, family = "onepar", init = 0, optim_args = list(method
   = "BFGS"), return_optim = FALSE)
 }
 \arguments{
-\item{Z}{A \code{matrix} object containing the observed MRF.}
+\item{Z}{A \code{matrix} object containing the observed MRF. \code{NA} values can be
+used to create a subregion of the lattice for non-rectangular data.}
 
 \item{mrfi}{A \code{\link[=mrfi-class]{mrfi}} object representing the
 interaction structure.}

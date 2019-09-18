@@ -5,6 +5,10 @@ conditional_probabilities_mrf <- function(Z, position, R, theta, N, M, n_R, C) {
     .Call('_mrf2d_conditional_probabilities_mrf', PACKAGE = 'mrf2d', Z, position, R, theta, N, M, n_R, C)
 }
 
+conditional_probabilities_mrf_sub <- function(Z, sub_mat, position, R, theta, N, M, n_R, C) {
+    .Call('_mrf2d_conditional_probabilities_mrf_sub', PACKAGE = 'mrf2d', Z, sub_mat, position, R, theta, N, M, n_R, C)
+}
+
 icm_restoration_cpp <- function(init_Z, R, theta, corr_prob, cycles) {
     .Call('_mrf2d_icm_restoration_cpp', PACKAGE = 'mrf2d', init_Z, R, theta, corr_prob, cycles)
 }
@@ -13,27 +17,47 @@ cprob_ghm_one <- function(Z, position, R, theta, N, M, n_R, C, mus, sigmas, Y) {
     .Call('_mrf2d_cprob_ghm_one', PACKAGE = 'mrf2d', Z, position, R, theta, N, M, n_R, C, mus, sigmas, Y)
 }
 
+cprob_ghm_one_sub <- function(Z, sub_mat, position, R, theta, N, M, n_R, C, mus, sigmas, Y) {
+    .Call('_mrf2d_cprob_ghm_one_sub', PACKAGE = 'mrf2d', Z, sub_mat, position, R, theta, N, M, n_R, C, mus, sigmas, Y)
+}
+
 cprob_ghm_all <- function(Z, R, theta, mus, sigmas, Y) {
     .Call('_mrf2d_cprob_ghm_all', PACKAGE = 'mrf2d', Z, R, theta, mus, sigmas, Y)
+}
+
+cprob_ghm_all_sub <- function(Z, sub_mat, R, theta, mus, sigmas, Y) {
+    .Call('_mrf2d_cprob_ghm_all_sub', PACKAGE = 'mrf2d', Z, sub_mat, R, theta, mus, sigmas, Y)
 }
 
 icm_gaussian_cpp <- function(Y, R, init_Z, theta, mus, sigmas, cycles) {
     .Call('_mrf2d_icm_gaussian_cpp', PACKAGE = 'mrf2d', Y, R, init_Z, theta, mus, sigmas, cycles)
 }
 
+icm_gaussian_cpp_sub <- function(Y, sub_mat, R, init_Z, theta, mus, sigmas, cycles) {
+    .Call('_mrf2d_icm_gaussian_cpp_sub', PACKAGE = 'mrf2d', Y, sub_mat, R, init_Z, theta, mus, sigmas, cycles)
+}
+
 gibbs_sampler_mrf2d <- function(init_Z, R, theta, n_steps) {
     .Call('_mrf2d_gibbs_sampler_mrf2d', PACKAGE = 'mrf2d', init_Z, R, theta, n_steps)
 }
 
-table_relative <- function(Z, r, C, prop) {
-    .Call('_mrf2d_table_relative', PACKAGE = 'mrf2d', Z, r, C, prop)
+gibbs_sampler_mrf2d_sub <- function(init_Z, sub_mat, fix_mat, R, theta, n_steps) {
+    .Call('_mrf2d_gibbs_sampler_mrf2d_sub', PACKAGE = 'mrf2d', init_Z, sub_mat, fix_mat, R, theta, n_steps)
 }
 
-table_relative_3d <- function(Z, R, C, prop) {
-    .Call('_mrf2d_table_relative_3d', PACKAGE = 'mrf2d', Z, R, C, prop)
+table_relative <- function(Z, r, C) {
+    .Call('_mrf2d_table_relative', PACKAGE = 'mrf2d', Z, r, C)
+}
+
+table_relative_3d <- function(Z, R, C) {
+    .Call('_mrf2d_table_relative_3d', PACKAGE = 'mrf2d', Z, R, C)
 }
 
 log_pl_mrf <- function(Z, R, theta) {
     .Call('_mrf2d_log_pl_mrf', PACKAGE = 'mrf2d', Z, R, theta)
+}
+
+log_pl_mrf_sub <- function(Z, sub_mat, R, theta) {
+    .Call('_mrf2d_log_pl_mrf_sub', PACKAGE = 'mrf2d', Z, sub_mat, R, theta)
 }
 
