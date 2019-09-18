@@ -143,30 +143,28 @@ BEGIN_RCPP
 END_RCPP
 }
 // table_relative
-arma::dmat table_relative(const IntegerMatrix& Z, IntegerVector r, int C, bool prop);
-RcppExport SEXP _mrf2d_table_relative(SEXP ZSEXP, SEXP rSEXP, SEXP CSEXP, SEXP propSEXP) {
+arma::dmat table_relative(const IntegerMatrix& Z, IntegerVector r, int C);
+RcppExport SEXP _mrf2d_table_relative(SEXP ZSEXP, SEXP rSEXP, SEXP CSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
     Rcpp::traits::input_parameter< IntegerVector >::type r(rSEXP);
     Rcpp::traits::input_parameter< int >::type C(CSEXP);
-    Rcpp::traits::input_parameter< bool >::type prop(propSEXP);
-    rcpp_result_gen = Rcpp::wrap(table_relative(Z, r, C, prop));
+    rcpp_result_gen = Rcpp::wrap(table_relative(Z, r, C));
     return rcpp_result_gen;
 END_RCPP
 }
 // table_relative_3d
-arma::dcube table_relative_3d(const IntegerMatrix& Z, IntegerMatrix R, int C, bool prop);
-RcppExport SEXP _mrf2d_table_relative_3d(SEXP ZSEXP, SEXP RSEXP, SEXP CSEXP, SEXP propSEXP) {
+arma::dcube table_relative_3d(const IntegerMatrix& Z, IntegerMatrix R, int C);
+RcppExport SEXP _mrf2d_table_relative_3d(SEXP ZSEXP, SEXP RSEXP, SEXP CSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
     Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
     Rcpp::traits::input_parameter< int >::type C(CSEXP);
-    Rcpp::traits::input_parameter< bool >::type prop(propSEXP);
-    rcpp_result_gen = Rcpp::wrap(table_relative_3d(Z, R, C, prop));
+    rcpp_result_gen = Rcpp::wrap(table_relative_3d(Z, R, C));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -207,8 +205,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_mrf2d_icm_gaussian_cpp", (DL_FUNC) &_mrf2d_icm_gaussian_cpp, 7},
     {"_mrf2d_gibbs_sampler_mrf2d", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf2d, 4},
     {"_mrf2d_gibbs_sampler_mrf2d_sub", (DL_FUNC) &_mrf2d_gibbs_sampler_mrf2d_sub, 6},
-    {"_mrf2d_table_relative", (DL_FUNC) &_mrf2d_table_relative, 4},
-    {"_mrf2d_table_relative_3d", (DL_FUNC) &_mrf2d_table_relative_3d, 4},
+    {"_mrf2d_table_relative", (DL_FUNC) &_mrf2d_table_relative, 3},
+    {"_mrf2d_table_relative_3d", (DL_FUNC) &_mrf2d_table_relative_3d, 3},
     {"_mrf2d_log_pl_mrf", (DL_FUNC) &_mrf2d_log_pl_mrf, 3},
     {"_mrf2d_log_pl_mrf_sub", (DL_FUNC) &_mrf2d_log_pl_mrf_sub, 4},
     {NULL, NULL, 0}

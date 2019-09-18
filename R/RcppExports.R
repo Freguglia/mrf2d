@@ -33,12 +33,12 @@ gibbs_sampler_mrf2d_sub <- function(init_Z, sub_mat, fix_mat, R, theta, n_steps)
     .Call('_mrf2d_gibbs_sampler_mrf2d_sub', PACKAGE = 'mrf2d', init_Z, sub_mat, fix_mat, R, theta, n_steps)
 }
 
-table_relative <- function(Z, r, C, prop) {
-    .Call('_mrf2d_table_relative', PACKAGE = 'mrf2d', Z, r, C, prop)
+table_relative <- function(Z, r, C) {
+    .Call('_mrf2d_table_relative', PACKAGE = 'mrf2d', Z, r, C)
 }
 
-table_relative_3d <- function(Z, R, C, prop) {
-    .Call('_mrf2d_table_relative_3d', PACKAGE = 'mrf2d', Z, R, C, prop)
+table_relative_3d <- function(Z, R, C) {
+    .Call('_mrf2d_table_relative_3d', PACKAGE = 'mrf2d', Z, R, C)
 }
 
 log_pl_mrf <- function(Z, R, theta) {
