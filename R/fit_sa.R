@@ -85,7 +85,7 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
     stop("Argument 'init' must be numeric.")
   }
 
-  C <- length(unique(as.vector(Z))) - 1
+  C <- length(na.omit(unique(as.vector(Z)))) - 1
   R <- mrfi@Rmat
   n_R <- nrow(R)
   gamma_seq <- gamma_seq/prod(dim(Z))
@@ -103,17 +103,31 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
   arr_Z <- table_relative_3d(Z, mrfi@Rmat, C)
   S <- suf_stat(arr_Z, family)
   d <- numeric(length(gamma_seq))
+  is_sub <- any(is.na(Z))
+  if(is_sub){
+    subr <- !is.na(Z)
+  }
   # Initialize
   theta_t <- array_to_vec(init, family)
-  Z_t <- rmrf2d(dim(Z), mrfi, vec_to_array(theta_t, family, C, n_R), cycles)
+  if(!is_sub){
+    Z_t <- rmrf2d(dim(Z), mrfi, vec_to_array(theta_t, family, C, n_R), cycles)
+  } else {
+    Z_t <-  rmrf2d(dim(Z), mrfi, vec_to_array(theta_t, family, C, n_R), cycles,
+                   sub_region = subr)
+  }
   # Iterate
   for(t in seq_along(gamma_seq)){
     arr_Z_t <- table_relative_3d(Z_t, mrfi@Rmat, C)
     S_t <- suf_stat(arr_Z_t, family)
     theta_t <- theta_t - gamma_seq[t]*(S_t - S)
     if(t%%refresh_each == 0){
-      Z_t <- rmrf2d(dim(Z), mrfi, vec_to_array(theta_t, family, C, n_R),
-                    refresh_cycles)
+      if(!is_sub){
+        Z_t <- rmrf2d(dim(Z), mrfi, vec_to_array(theta_t, family, C, n_R),
+                      refresh_cycles)
+      } else {
+        Z_t <-  rmrf2d(dim(Z), mrfi, vec_to_array(theta_t, family, C, n_R),
+                       refresh_cycles, sub_region = subr)
+      }
     } else {
       Z_t <- rmrf2d(Z_t, mrfi, vec_to_array(theta_t, family, C, n_R), cycles)
     }
