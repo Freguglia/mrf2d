@@ -69,11 +69,12 @@
 #' # mean values are 0, 1 and 2 and a linear effect on the x-axis.
 #' \dontrun{
 #' set.seed(2)
-#' Y <- Z_potts + rnorm(length(Z_potts), sd = 0.4) + row(Z_potts)*0.01
+#' Y <- Z_potts + rnorm(length(Z_potts), sd = 0.4) +
+#'       (row(Z_potts) - mean(row(Z_potts)))*0.01
 #' # Check what the data looks like
 #' cplot(Y)
 #'
-#' fixed <- polynomial_2d(c(1,1), dim(Y))
+#' fixed <- polynomial_2d(c(1,0), dim(Y))
 #' fit <- fit_ghm(Y, mrfi = mrfi(1), theta = theta_potts, fixed_fn = fixed)
 #' fit$par
 #' cplot(fit$fixed)
@@ -98,25 +99,35 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
   N <- nrow(Y); M <- ncol(Y)
   if(length(fixed_fn) > 0){
     if(is.null(qr)){
-      X <- basis_function_df(fixed_fn, N, M, standardize = TRUE)[,-(1:2)]
+      X <- basis_function_df(fixed_fn, N, M,
+                             standardize = TRUE)[as.logical(!is.na(Y)),-(1:2)]
       X <- as.matrix(X)
       q <- qr(X)
     } else {
       q <- qr
     }
-    S <- matrix(qr.fitted(q, as.vector(Y)), nrow = nrow(Y))
+    S <- Y
+    S[!is.na(Y)] <-   qr.fitted(q, Y[!is.na(Y)])
     e <- Y - S
   } else {
     e <- Y
     S <- Y*0
   }
 
+  is_sub <- any(is.na(Y))
+  if(is_sub){
+    subr <- !is.na(Y)
+  }
+
   # Initialize variables
-  if(is.null(init_mus) | is.null(init_sigmas)) {mus_old <- seq(min(e), max(e), length.out = C+1)
-    if(verbose) cat("\r Fitting independent mixture to obtain initial parameters. \n")
+  if(is.null(init_mus) | is.null(init_sigmas)) {
+    mus_old <- seq(min(e, na.rm = TRUE), max(e, na.rm = TRUE), length.out = C+1)
+    if(verbose)
+      cat("\r Fitting independent mixture to obtain initial parameters. \n")
     ind_fit <- fit_ghm(e, mrfi, theta*0, fixed_fn, equal_vars,
-                       init_mus = seq(min(e), max(e), length.out = C+1),
-                       init_sigmas = rep(diff(range(e))/(2*C), C+1),
+                       init_mus = seq(min(e, na.rm = TRUE), max(e, na.rm = TRUE),
+                                      length.out = C+1),
+                       init_sigmas = rep(diff(range(e, na.rm = TRUE))/(2*C), C+1),
                        maxiter, max_dist, icm_cycles, verbose = FALSE, qr = q)
     mus_old <- ind_fit$par$mu
     sigmas_old <- ind_fit$par$sigma
@@ -125,23 +136,35 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
     sigmas_old <- init_sigmas
   }
   Z <- matrix(sample(0:C, size = N*M, replace = TRUE), nrow = nrow(Y))
+  Z <- ifelse(is.na(Y), NA, Z)
 
   # Iterate
   iter <- 0; dist <- Inf
   while(iter < maxiter && dist > max_dist){
 
     # Compute MAP estimates of Z
-    Z <- icm_gaussian_cpp(e, Rmat, Z, theta, mus_old, sigmas_old, icm_cycles)
+    if(!is_sub){
+      Z <- icm_gaussian_cpp(e, Rmat, Z, theta, mus_old, sigmas_old, icm_cycles)
+      cond_probs <- cprob_ghm_all(Z, Rmat, theta, mus_old, sigmas_old, e)
+    } else {
+      Z <- icm_gaussian_cpp_sub(e, subr, Rmat, Z, theta, mus_old, sigmas_old, icm_cycles)
+      cond_probs <- cprob_ghm_all_sub(Z, subr, Rmat, theta, mus_old, sigmas_old, e)
+    }
 
     # Compute conditional probabilities
-    cond_probs <- cprob_ghm_all(Z, Rmat, theta, mus_old, sigmas_old, e)
 
     # Update mus, sigmas and S
     ## mus and sigmas
     if(equal_vars){
-      mus_new <- apply(cond_probs, MARGIN = 3, function(x) sum(x*e)/sum(x))
-      sigmas_new <- rep(sqrt(sum(simplify2array(lapply(mus_new,
-                                                       function(mu) (e - mu)^2))*cond_probs)/(N*M)), C+1)
+      mus_new <- apply(cond_probs, MARGIN = 3, function(x)
+        sum(x*e, na.rm = TRUE)/sum(x, na.rm = TRUE))
+      sigmas_new <- rep(
+        sqrt(
+          sum(
+            simplify2array(
+              lapply(mus_new,
+                     function(mu) (e - mu)^2))*cond_probs, na.rm = TRUE)/(N*M)),
+        C+1)
     }
     else {stop("Different variances still not implemented.")}
 
@@ -149,9 +172,11 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
     if(length(fixed_fn) > 0){
       mean_residual <- apply(cond_probs, MARGIN = c(1,2),
                              function(p_vec){
-                               sum(p_vec*mus_new/sigmas_new)
-                             })/sum(sigmas_new)
-      S <- matrix(qr.fitted(q, as.vector(Y - mean_residual)), nrow = nrow(Y))
+                               sum(p_vec*mus_new/sigmas_new, na.rm = TRUE)
+                             })/sum(sigmas_new, na.rm = TRUE)
+      pred <- qr.fitted(q, as.vector(Y - mean_residual)[!is.na(Y)])
+      S <- Y
+      S[!is.na(Y)] <- pred
     }
     e <- Y - S
 
