@@ -24,4 +24,11 @@ test_that("Pseudo-likelihood computing is correct", {
 
   # 'free'
   expect_is(fit_pl(Z_potts[1:30, 1:30], mrfi(), family = "free"), "list")
+
+  # with subregions
+  Z2 <- ifelse( (row(Z_potts) + col(Z_potts)) %% 2, Z_potts, NA)
+  expect_equal(pl_mrf2d(Z2, mrfi(), theta_potts), log(1/3)*length(Z2[!is.na(Z2)]))
+
+  Z3 <- ifelse( row(Z_potts) < 120, Z_potts, NA)
+  expect_is(fit_pl(Z3, mrfi(), "dif"), "list")
 })
