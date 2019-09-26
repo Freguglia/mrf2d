@@ -94,7 +94,7 @@ vec_to_array <- function(vec, family, C, n_R){
     if(length(vec) != (n_R*((C+1)^2 - 1))) { stop("'vec' must have length n_R*((C+1)^2 - 1) for family 'free'.")}
     # Parameters are filled by Columns.
     sanitize_theta(simplify2array(lapply(1:n_R, function(i) {
-      matrix(c(0, vec[(1 + (i-1)*((C+1)^2)-1) : (i*((C+1)^2) - i)]),
+      matrix(c(0, vec[(1 + (i-1)*(((C+1)^2)-1)) : (i*((C+1)^2) - i)]),
              nrow = C+1)
     })))
 
