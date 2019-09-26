@@ -124,11 +124,11 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
     mus_old <- seq(min(e, na.rm = TRUE), max(e, na.rm = TRUE), length.out = C+1)
     if(verbose)
       cat("\r Fitting independent mixture to obtain initial parameters. \n")
-    ind_fit <- fit_ghm(e, mrfi, theta*0, fixed_fn, equal_vars,
+    ind_fit <- fit_ghm(e, mrfi, theta*0, fixed_fn = NULL, equal_vars,
                        init_mus = seq(min(e, na.rm = TRUE), max(e, na.rm = TRUE),
                                       length.out = C+1),
                        init_sigmas = rep(diff(range(e, na.rm = TRUE))/(2*C), C+1),
-                       maxiter, max_dist, icm_cycles, verbose = FALSE, qr = q)
+                       maxiter, max_dist, icm_cycles, verbose = FALSE)
     mus_old <- ind_fit$par$mu
     sigmas_old <- ind_fit$par$sigma
   } else {
@@ -170,11 +170,11 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
 
     ## update S
     if(length(fixed_fn) > 0){
-      mean_residual <- apply(cond_probs, MARGIN = c(1,2),
+      mean_est <- apply(cond_probs, MARGIN = c(1,2),
                              function(p_vec){
-                               sum(p_vec*mus_new/sigmas_new, na.rm = TRUE)
-                             })/sum(sigmas_new, na.rm = TRUE)
-      pred <- qr.fitted(q, as.vector(Y - mean_residual)[!is.na(Y)])
+                               sum(p_vec*mus_new, na.rm = TRUE)
+                             })
+      pred <- qr.fitted(q, as.vector(Y - mean_est)[!is.na(Y)])
       S <- Y
       S[!is.na(Y)] <- pred
     }
