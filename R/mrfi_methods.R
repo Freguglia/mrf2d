@@ -65,12 +65,16 @@ setMethod("as.list", signature(x = "mrfi"),
 #'
 #' @param i vector of indexes to extract interacting positions.
 #'
-#' @return `as.list()` converts the `mrfi` object to a list of interacting
+#' @return `as.list()`: converts the `mrfi` object to a list of interacting
 #' positions (length 2 vectors).
 #'
-#' `[[` converts to list and subsets it.
+#' `[[`: converts to list and subsets it.
 #'
-#' `[` subsets the `mrfi` object and returns another `mrfi` object.
+#' `[`: subsets the `mrfi` object and returns another `mrfi` object.
+#'
+#' `+`: computes the union of the interaction structure in a `mrfi` object with
+#' a `numeric` representing an additional position to include or another `mrfi`
+#' object.
 setMethod("[[", signature = c("mrfi", "numeric", "missing"),
           definition = function(x, i){
             m <- x@Rmat[i,,drop = FALSE]
@@ -82,4 +86,25 @@ setMethod("[", signature = c("mrfi", "numeric", "missing"),
           definition = function(x, i){
             m <- x@Rmat[i,,drop = FALSE]
             new("mrfi", Rmat = m)
+          })
+
+mrfi_union <- function(mrfi1, mrfi2){
+  return(mrfi(0, positions = union(as.list(mrfi1), as.list(mrfi2))))
+}
+
+#' @rdname mrfi-class
+#'
+#' @examples
+#' mrfi(1) + c(2,0)
+setMethod("+", signature = c("mrfi", "numeric"),
+          definition = function(e1, e2){
+            if(length(e2) != 2){
+              stop("Right hand side must be a length 2 vector representing a relative position.")
+            } else if(any(sapply(as.list(e1), function(pos){
+              all(pos == e2) | all(pos == (-e2))}
+              ))){
+                return(e1)
+            }
+            result <- mrfi_union(e1, list(e2))
+            return(result)
           })
