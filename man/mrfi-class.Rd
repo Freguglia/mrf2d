@@ -7,6 +7,7 @@
 \alias{[[,mrfi,numeric,missing-method}
 \alias{[,mrfi,numeric,missing-method}
 \alias{+,mrfi,numeric-method}
+\alias{+,mrfi,mrfi-method}
 \title{An S4 class to represent interactions for MRFs in 2d lattices}
 \usage{
 \S4method{as.list}{mrfi}(x)
@@ -16,6 +17,8 @@
 \S4method{[}{mrfi,numeric,missing}(x, i)
 
 \S4method{+}{mrfi,numeric}(e1, e2)
+
+\S4method{+}{mrfi,mrfi}(e1, e2)
 }
 \arguments{
 \item{x}{\code{mrfi} object.}
@@ -84,4 +87,5 @@ mrfi(1)[[1]]
 mrfi(2)[[1:3]]
 
 mrfi(1) + c(2,0)
+mrfi(1) + mrfi(0, positions = list(c(2,0)))
 }

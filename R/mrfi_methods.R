@@ -108,3 +108,12 @@ setMethod("+", signature = c("mrfi", "numeric"),
             result <- mrfi_union(e1, list(e2))
             return(result)
           })
+
+#' @rdname mrfi-class
+#'
+#' @examples
+#' mrfi(1) + mrfi(0, positions = list(c(2,0)))
+setMethod("+", signature = c("mrfi", "mrfi"),
+          definition = function(e1, e2){
+            return(mrfi_union(e1,e2))
+          })
