@@ -112,6 +112,10 @@ mrfi <- function(max_norm = 1, norm_type = "1", positions = NULL){
       stop("'positions' must be a list of relative positions.")
     } else if(any(!unlist(lapply(positions, is.numeric)))) {
       stop("'positions' must be a list of relative positions (numeric).")
+    } else if(any(sapply(positions, function(pos){
+      any(as.integer(pos) != pos)
+    }))) {
+      stop("'positions' should contain only integer values.")
     } else {
       df <- rbind(as.matrix(df), do.call(rbind, positions))
     }
