@@ -30,20 +30,14 @@ library(mrf2d)
 
 # Introduction
 
-## A general introduction to Markov Random Fields
-
  Markov Random Fields are probabilistic models used for modeling processes with local dependence. This dependence can be described by a graph $\mathcal{G} = (\mathcal{V}, \mathcal{N})$, where $\mathcal{V}$ is a set of vertices and $\mathcal{N}$ a neighborhood system. A set of random variables $\mathbf{Z} = \{Z_i, i \in \mathcal{V} \}$ is called a Markov Random Field with respect to the neighborhood system $\mathcal{N}$ if 
  
 $$ P(Z_i = z_i | \{ Z_j, j \neq i \}) = P(Z_i| \{ Z_j, j \in \mathcal{N}_i \}), $$
 where $\mathcal{N}_i$ denotes the neighbors of $i$ according to $\mathcal{N}$. 
 
-If and only if the above equality holds for each $i \in \mathcal{V}$, under some additional technical conditions, the joint distribution of $\mathbf{Z}$ is given by a Gibbs distribution of the form
-$$ P(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta} \exp \left( \sum_{q \in Q(\mathcal{N})} g_q(\mathbf z_q) \right),$$
-where $\mathcal{Q}(\mathcal{N})$ denotes the set of cliques (fully connected subsets) of $\mathcal{N}$ and $g_q$ are arbitrary functions and $\zeta$ is a normalization constant (often called "partition function").
+`mrf2d` provides tools for a specific, yet large, class of Markov random field models present in an image processing context: Two-dimensional lattices.
 
-While having a general form of probability measure for local dependent processes is a good start, specific cases with different choices of $g_q$'s, $\mathcal{V}$ and $\mathcal{N}$ may lead to completely different models which statistical analysis should be carried differently. `mrf2d` provides tools for a specific, yet large, class models usually present in an image processing context: Two-dimensional lattices.
-
-## A spatially stationary MRF model for 2-dimensional lattices
+## MRF model for 2-dimensional lattices
 
 The model adopted in `mrf2d` has the following assumptions:
  
