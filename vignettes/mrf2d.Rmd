@@ -39,11 +39,13 @@ where $\mathcal{N}_i$ denotes the neighbors of $i$ according to $\mathcal{N}$.
 
 ## MRF model for 2-dimensional lattices
 
-The model adopted in `mrf2d` has the following assumptions:
+The Markov random field model considered in `mrf2d` has the following assumptions:
  
-  * $\mathcal{V} = \mathcal{L} = \{ i =  (i_x, i_j): 1 \leq i_x \leq N; 1 \leq i_y \leq M \}$: The data points (called pixels) are indexed by a retangular lattice $\mathcal{L}$ of dimension $N \times M$.
+  * $\mathcal{V}$ is a grid $\mathcal{L} = \{ i =  (i_1, i_2): 1 \leq i_1 \leq N; 1 \leq i_2 \leq M \}$: The data points (called pixels) are indexed by a rectangular lattice $\mathcal{L}$ of dimension $N \times M$. 
+
+ INSERT THE GRID REPRESENTATION IMAGE HERE
   
-  * $\mathcal{N}$ is determined by a set of relative positions $\mathcal{R}$: There is an edge connecting two pixels $i$ and $j$ if and only if their relative position $(i_x, i_y) - (j_x, j_y)$ is in $\mathcal{R}$. As an example, if $\mathcal{R} = \{ (1,0), (0,1) \}$, pixels are connected to their nearest neighbors horizontally and vertically, which can be represented by the structure below. Note the opposite directions have edges but they are not included in $\mathcal{R}$ to avoid redundancy.
+  * $\mathcal{N}$ is defined by a set of relative positions $\mathcal{R}$: two pixels $i$ and $j$ are connected if and only if their relative position $(i_1, i_2) - (j_1, j_2)$ is in $\mathcal{R}$. As an example, if $\mathcal{R} = \{ (1,0), (0,1) \}$, pixels are connected to their nearest neighbors horizontally and vertically, which can be represented by the structure below. Note the opposite directions have edges but they are not included in $\mathcal{R}$ to avoid redundancy.
   
 ```{r ex_mrfi, echo = FALSE, out.width="30%"}
 plot(mrfi(1), no_axis = TRUE) +  geom_text(aes(label = glue("({rx},{ry})")), size = 6) + xlim(-2,2) + ylim(-2,2)
