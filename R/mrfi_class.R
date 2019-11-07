@@ -1,10 +1,11 @@
 #' @name mrfi-class
-#' @title An S4 class to represent interactions for MRFs in 2d lattices
+#' @title mrfi: MRF interaction structure
 #' @description  The `mrfi` S4 class is a representation of the interaction
 #'  structure for a spatially-stationary Markov Random Field.
 #'
 #' The function \code{\link[=mrfi]{mrfi()}} provides an interface for creation
-#'  `mrfi` objects. A `plot` method is also available for visualization.
+#'  `mrfi` objects. A `plot` method is also available for visualization, as
+#'  well as conversion methods like \code{as.list} and operators like `+`.
 #'
 #' @slot Rmat A 2-column `matrix` where each row represents a relative position
 #' of interaction.

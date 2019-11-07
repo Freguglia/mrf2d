@@ -8,7 +8,7 @@
 \alias{[,mrfi,numeric,missing-method}
 \alias{+,mrfi,numeric-method}
 \alias{+,mrfi,mrfi-method}
-\title{An S4 class to represent interactions for MRFs in 2d lattices}
+\title{mrfi: MRF interaction structure}
 \usage{
 \S4method{as.list}{mrfi}(x)
 
@@ -47,7 +47,8 @@ The \code{mrfi} S4 class is a representation of the interaction
 structure for a spatially-stationary Markov Random Field.
 
 The function \code{\link[=mrfi]{mrfi()}} provides an interface for creation
-\code{mrfi} objects. A \code{plot} method is also available for visualization.
+\code{mrfi} objects. A \code{plot} method is also available for visualization, as
+well as conversion methods like \code{as.list} and operators like \code{+}.
 }
 \details{
 The interaction structure is defined by the list of relative
