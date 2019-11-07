@@ -94,7 +94,6 @@ setMethod("show", "mrfi",
 #' #Repeated positions are handled automatically
 #' mrfi(1, positions = list(c(1,0), c(2,0)))
 #'
-#'
 #' @importFrom methods new
 #' @export
 mrfi <- function(max_norm = 1, norm_type = "1", positions = NULL){
