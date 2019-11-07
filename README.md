@@ -20,8 +20,7 @@ of random variables with a local dependence property (the Markov
 property) defined on a neighborhood system. Particularly on the context
 of image processing, pixels can be seen as vertices of a graph defined
 on a finite 2-dimensional lattice, and a neighborhood system can be
-defined based on their relative positions to construct a
-MRF.
+defined based on their relative positions to construct a MRF.
 
 <img src="man/figures/animation_ising.gif" alt="drawing" width="300" align="left" />
 
@@ -30,8 +29,7 @@ analysis of Markov Random Fields on 2-dimensional lattices, including
 Hidden Markov Random Fields. It introduces the S4 class `mrfi` to
 describe interaction structures in a very general way, being able to
 adapt from very simple cases like the Ising Model to complex anisotropic
-models with different types of
-interaction.
+models with different types of interaction.
 
 <p align="center">
 
@@ -43,23 +41,20 @@ interaction.
 
 ## Installation
 
-<!--
-You can install the released version of mrf2d from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of mrf2d from
+[CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("mrf2d")
 ```
--->
 
-Currently, the package is only available as a development version on
-Github. It can be installed with the `devtools` package by using
+The development version is available on the package’s [Github
+page](https://github.com/Freguglia/mrf2d). It can be installed with the
+`devtools` package by using
 
 ``` r
 devtools::install_github("Freguglia/mrf2d")
 ```
-
-The package will be available on CRAN as soon as a reasonable number of
-features are added and well documented.
 
 -----
 
@@ -86,10 +81,9 @@ int
 plot(int)
 ```
 
-![](man/figures/README-unnamed-chunk-3-1.png)<!-- -->
+![](man/figures/README-plot_interaction-1.png)<!-- -->
 
-We can define a parameter array to sample from a MRF
-model:
+We can define a parameter array to sample from a MRF model:
 
 ``` r
 # We have 2 interacting positions and we'll use a 3 color model, therefore,
@@ -122,7 +116,7 @@ Z <- rmrf2d(img_dim, mrfi = int, theta = theta, cycles = 60)
 dplot(Z, legend = TRUE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-Z_example_plot-1.png" style="display: block; margin: auto;" />
 
 We now add a Gaussian error and a linear effect to the image (to create
 a hidden Markov Random Field):
@@ -133,7 +127,7 @@ Y <- Z + 4 + 0.02*row(Z) + rnorm(length(Z), sd = 0.4)
 cplot(Y)
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-Y_example_plot-1.png" style="display: block; margin: auto;" />
 
 We fit a Gaussian hidden Markov random field to recover the components:
 
@@ -147,10 +141,10 @@ Check the results:
 
 ``` r
 fit$par
-#>         mu    sigma
-#> 0 6.010691 0.400807
-#> 1 7.011794 0.400807
-#> 2 8.013461 0.400807
+#>         mu     sigma
+#> 0 6.010781 0.4008757
+#> 1 7.011698 0.4008757
+#> 2 8.013325 0.4008757
 
 library(ggplot2)
 cplot(fit$fixed) + ggtitle("Linear Effect")
@@ -158,7 +152,7 @@ dplot(fit$Z_pred, legend = TRUE) + ggtitle("Predicted Z")
 cplot(fit$predicted) + ggtitle("Predicted Value")
 ```
 
-![](man/figures/README-unnamed-chunk-8-1.png)![](man/figures/README-unnamed-chunk-8-2.png)![](man/figures/README-unnamed-chunk-8-3.png)
+![](man/figures/README-results_plot-1.png)![](man/figures/README-results_plot-2.png)![](man/figures/README-results_plot-3.png)
 
 -----
 

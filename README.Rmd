@@ -39,20 +39,18 @@ plot(mrfi(max_norm = 2, positions = list(c(3,3),c(4,4), c(-2,4))), no_axis = TRU
 ---
 
 ## Installation
-<!--
+
 You can install the released version of mrf2d from [CRAN](https://CRAN.R-project.org) with:
 
-``` r
+```{r, echo = TRUE, eval = FALSE}
 install.packages("mrf2d")
 ```
--->
-Currently, the package is only available as a development version on Github. It can be installed with the `devtools` package by using
+
+The development version is available on the package's [Github page](https://github.com/Freguglia/mrf2d). It can be installed with the `devtools` package by using
 
 ```{r, echo = TRUE, eval=FALSE}
 devtools::install_github("Freguglia/mrf2d")
 ```
-
-The package will be available on CRAN as soon as a reasonable number of features are added and well documented.
 
 ---
 
@@ -62,7 +60,7 @@ This is an example of what type of analysis you can do with `mrf2d`. More featur
 
 We can define an interaction structure with the `mrfi()` function:
 
-```{r, echo = TRUE, fig.width=2, fig.height=2}
+```{r plot_interaction, echo = TRUE, fig.width=2, fig.height=2}
 # We'll include dependence in nearest-neighbors only
 int <- mrfi(max_norm = 1)
 int
@@ -80,7 +78,7 @@ theta
 
 In short, the negative values out of diagonal means different "colors" are less likely in that relative position. We can sample from this model with:
 
-```{r, echo = TRUE, fig.width=5.5, fig.height=4, fig.align='center'}
+```{r Z_example_plot, echo = TRUE, fig.width=5.5, fig.height=4, fig.align='center'}
 set.seed(1)
 img_dim <- c(200,200)
 Z <- rmrf2d(img_dim, mrfi = int, theta = theta, cycles = 60)
@@ -89,7 +87,7 @@ dplot(Z, legend = TRUE)
 
 We now add a Gaussian error and a linear effect to the image (to create a hidden Markov Random Field):
 
-```{r, echo = TRUE, fig.width=5.5, fig.height=4, fig.align='center'}
+```{r Y_example_plot, echo = TRUE, fig.width=5.5, fig.height=4, fig.align='center'}
 set.seed(1)
 Y <- Z + 4 + 0.02*row(Z) + rnorm(length(Z), sd = 0.4)
 cplot(Y)
@@ -105,7 +103,7 @@ fit <- fit_ghm(Y, mrfi = int, theta = theta,
 
 Check the results:
 
-```{r, echo = TRUE, fig.width=3, fig.height=2.5, fig.show = 'hold'}
+```{r results_plot, echo = TRUE, fig.width=3, fig.height=2.5, fig.show = 'hold'}
 fit$par
 
 library(ggplot2)
