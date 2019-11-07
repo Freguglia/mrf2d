@@ -13,8 +13,9 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Tools for 2-dimensional Markov Random Fields">
 <meta property="og:description" content="An R package for estimation and sampling of Markov Random Fields
     and Hidden Markov Random Fields using different approaches and methods
@@ -27,7 +28,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -47,12 +48,9 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="articles/mrf2d.html">Get started</a>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
@@ -64,7 +62,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/Freguglia/mrf2d">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -77,99 +75,92 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-<div id="mrf2d" class="section level1">
+      </header><div class="row">
+  <div class="contents col-md-9">
+<div id="mrf2d-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#mrf2d" class="anchor"></a>mrf2d <a href="https://github.com/Freguglia/mrf2d"><img src="reference/figures/logo.png" align="right" height="200"></a>
+<a href="#mrf2d-" class="anchor"></a>mrf2d <a href="https://github.com/Freguglia/mrf2d"><img src="reference/figures/logo.png" align="right" height="200"></a>
 </h1></div>
 <!-- badges: start -->
 
 <p>Markov Random Fields are probabilistic models capable of describing sets of random variables with a local dependence property (the Markov property) defined on a neighborhood system. Particularly on the context of image processing, pixels can be seen as vertices of a graph defined on a finite 2-dimensional lattice, and a neighborhood system can be defined based on their relative positions to construct a MRF.</p>
 <p><img src="reference/figures/animation_ising.gif" alt="drawing" width="300" align="left"></p>
-The goal of <code>mrf2d</code> is to provide simple functions for sampling and analysis of Markov Random Fields on 2-dimensional lattices, including Hidden Markov Random Fields. It introduces the S4 class <code>mrfi</code> to describe interaction structures in a very general way, being able to adapt from very simple cases like the Ising Model to complex anisotropic models with different types of interaction.
+<p>The goal of <code>mrf2d</code> is to provide simple functions for sampling and analysis of Markov Random Fields on 2-dimensional lattices, including Hidden Markov Random Fields. It introduces the S4 class <code>mrfi</code> to describe interaction structures in a very general way, being able to adapt from very simple cases like the Ising Model to complex anisotropic models with different types of interaction.</p>
 <p align="center">
-<img src="reference/figures/README-example_interacions-1.png" width="172.8"><img src="reference/figures/README-example_interacions-2.png" width="172.8"><img src="reference/figures/README-example_interacions-3.png" width="172.8"></p>
+
+![](man/figures/README-example_interacions-1.png)![](man/figures/README-example_interacions-2.png)![](man/figures/README-example_interacions-3.png)
+
+</p>
 <hr>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<!--
-You can install the released version of mrf2d from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("mrf2d")
-```
--->
-<p>Currently, the package is only available as a development version on Github. It can be installed with the <code>devtools</code> package by using</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"Freguglia/mrf2d"</span>)</a></code></pre></div>
-<p>The package will be available on CRAN as soon as a reasonable number of features are added and well documented.</p>
+<p>You can install the released version of mrf2d from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"mrf2d"</span>)</span></code></pre></div>
+<p>The development version is available on the package’s <a href="https://github.com/Freguglia/mrf2d">Github page</a>. It can be installed with the <code>devtools</code> package by using</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"Freguglia/mrf2d"</span>)</span></code></pre></div>
 <hr>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>This is an example of what type of analysis you can do with <code>mrf2d</code>. More features are also present, including estimation of parameter in Markov Random Fields, families of parameter restrictions and more. Read the package’s <a href="https://freguglia.github.io/mrf2d/articles/mrf2d.html">vignette</a> for more information and detailed description of the functions used: <code><a href="https://www.rdocumentation.org/packages/utils/topics/browseVignettes">browseVignettes("mrf2d")</a></code>.</p>
+<p>This is an example of what type of analysis you can do with <code>mrf2d</code>. More features are also present, including estimation of parameter in Markov Random Fields, families of parameter restrictions and more. Read the package’s <a href="https://freguglia.github.io/mrf2d/articles/mrf2d.html">vignette</a> for more information and detailed description of the functions used: <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes("mrf2d")</a></code>.</p>
 <p>We can define an interaction structure with the <code><a href="reference/mrfi.html">mrfi()</a></code> function:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># We'll include dependence in nearest-neighbors only</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">int &lt;-<span class="st"> </span><span class="kw"><a href="reference/mrfi.html">mrfi</a></span>(<span class="dt">max_norm =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">int</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; 2 interacting positions.</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;   rx     ry</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;    1      0</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;    0      1</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(int)</a></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="192"></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># We'll include dependence in nearest-neighbors only</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>int &lt;-<span class="st"> </span><span class="kw"><a href="reference/mrfi.html">mrfi</a></span>(<span class="dt">max_norm =</span> <span class="dv">1</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>int</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; 2 interacting positions.</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;   rx     ry</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;    1      0</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;    0      1</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(int)</span></code></pre></div>
+<p><img src="reference/figures/README-plot_interaction-1.png"><!-- --></p>
 <p>We can define a parameter array to sample from a MRF model:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># We have 2 interacting positions and we'll use a 3 color model, therefore,</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># an array with dimensions (3,3,3) is used.</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">theta &lt;-<span class="st"> </span>mrf2d<span class="op">:::</span><span class="kw">vec_to_array</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dt">family =</span> <span class="st">"onepar"</span>, <span class="dt">C =</span> <span class="dv">2</span>, <span class="dt">n_R =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">theta</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; , , 1</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;    0  1  2</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 0  0 -1 -1</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 1 -1  0 -1</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 2 -1 -1  0</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; , , 2</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;    0  1  2</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; 0  0 -1 -1</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; 1 -1  0 -1</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; 2 -1 -1  0</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># We have 2 interacting positions and we'll use a 3 color model, therefore,</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co"># an array with dimensions (3,3,3) is used.</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>theta &lt;-<span class="st"> </span>mrf2d<span class="op">:::</span><span class="kw">vec_to_array</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dt">family =</span> <span class="st">"onepar"</span>, <span class="dt">C =</span> <span class="dv">2</span>, <span class="dt">n_R =</span> <span class="dv">2</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>theta</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt; , , 1</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt; </span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;    0  1  2</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt; 0  0 -1 -1</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt; 1 -1  0 -1</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt; 2 -1 -1  0</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt; </span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt; , , 2</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt; </span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt;    0  1  2</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt; 0  0 -1 -1</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co">#&gt; 1 -1  0 -1</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co">#&gt; 2 -1 -1  0</span></span></code></pre></div>
 <p>In short, the negative values out of diagonal means different “colors” are less likely in that relative position. We can sample from this model with:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">img_dim &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">200</span>,<span class="dv">200</span>)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">Z &lt;-<span class="st"> </span><span class="kw"><a href="reference/rmrf2d.html">rmrf2d</a></span>(img_dim, <span class="dt">mrfi =</span> int, <span class="dt">theta =</span> theta, <span class="dt">cycles =</span> <span class="dv">60</span>)</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw"><a href="reference/dplot.html">dplot</a></span>(Z, <span class="dt">legend =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="528" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>img_dim &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">200</span>,<span class="dv">200</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>Z &lt;-<span class="st"> </span><span class="kw"><a href="reference/rmrf2d.html">rmrf2d</a></span>(img_dim, <span class="dt">mrfi =</span> int, <span class="dt">theta =</span> theta, <span class="dt">cycles =</span> <span class="dv">60</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="kw"><a href="reference/dplot.html">dplot</a></span>(Z, <span class="dt">legend =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="reference/figures/README-Z_example_plot-1.png" style="display: block; margin: auto;"></p>
 <p>We now add a Gaussian error and a linear effect to the image (to create a hidden Markov Random Field):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">Y &lt;-<span class="st"> </span>Z <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.02</span><span class="op">*</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/row">row</a></span>(Z) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Normal">rnorm</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(Z), <span class="dt">sd =</span> <span class="fl">0.4</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="reference/dplot.html">cplot</a></span>(Y)</a></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="528" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">1</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>Y &lt;-<span class="st"> </span>Z <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.02</span><span class="op">*</span><span class="kw"><a href="https://rdrr.io/r/base/row.html">row</a></span>(Z) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(Z), <span class="dt">sd =</span> <span class="fl">0.4</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="kw"><a href="reference/dplot.html">cplot</a></span>(Y)</span></code></pre></div>
+<p><img src="reference/figures/README-Y_example_plot-1.png" style="display: block; margin: auto;"></p>
 <p>We fit a Gaussian hidden Markov random field to recover the components:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">fit &lt;-<span class="st"> </span><span class="kw"><a href="reference/fit_ghm.html">fit_ghm</a></span>(Y, <span class="dt">mrfi =</span> int, <span class="dt">theta =</span> theta, </a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">               <span class="dt">fixed_fn =</span> <span class="kw"><a href="reference/basis_functions.html">polynomial_2d</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/dim">dim</a></span>(Y)), <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">3</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>fit &lt;-<span class="st"> </span><span class="kw"><a href="reference/fit_ghm.html">fit_ghm</a></span>(Y, <span class="dt">mrfi =</span> int, <span class="dt">theta =</span> theta, </span>
+<span id="cb7-3"><a href="#cb7-3"></a>               <span class="dt">fixed_fn =</span> <span class="kw"><a href="reference/basis_functions.html">polynomial_2d</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(Y)), <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <p>Check the results:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">fit<span class="op">$</span>par</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt;         mu    sigma</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; 0 6.010691 0.400807</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; 1 7.011794 0.400807</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; 2 8.013461 0.400807</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="kw"><a href="reference/dplot.html">cplot</a></span>(fit<span class="op">$</span>fixed) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Linear Effect"</span>)</a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="kw"><a href="reference/dplot.html">dplot</a></span>(fit<span class="op">$</span>Z_pred, <span class="dt">legend =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Predicted Z"</span>)</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="kw"><a href="reference/dplot.html">cplot</a></span>(fit<span class="op">$</span>predicted) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Predicted Value"</span>)</a></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-8-1.png" width="288"><img src="reference/figures/README-unnamed-chunk-8-2.png" width="288"><img src="reference/figures/README-unnamed-chunk-8-3.png" width="288"></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>fit<span class="op">$</span>par</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co">#&gt;         mu     sigma</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co">#&gt; 0 6.010781 0.4008757</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co">#&gt; 1 7.011698 0.4008757</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt; 2 8.013325 0.4008757</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="kw"><a href="reference/dplot.html">cplot</a></span>(fit<span class="op">$</span>fixed) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Linear Effect"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="kw"><a href="reference/dplot.html">dplot</a></span>(fit<span class="op">$</span>Z_pred, <span class="dt">legend =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Predicted Z"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="kw"><a href="reference/dplot.html">cplot</a></span>(fit<span class="op">$</span>predicted) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Predicted Value"</span>)</span></code></pre></div>
+<p><img src="reference/figures/README-results_plot-1.png"><img src="reference/figures/README-results_plot-2.png"><img src="reference/figures/README-results_plot-3.png"></p>
 <hr>
 </div>
 <div id="contributing-and-bug-reports" class="section level2">
@@ -204,7 +195,7 @@ install.packages("mrf2d")
 </ul>
 </div>
 
-      <div class="dev-status">
+  <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/Freguglia/mrf2d"><img src="https://travis-ci.org/Freguglia/mrf2d.svg?branch=master" alt="Travis build status"></a></li>
@@ -214,7 +205,6 @@ install.packages("mrf2d")
 </ul>
 </div>
 </div>
-
 </div>
 
 
@@ -223,12 +213,14 @@ install.packages("mrf2d")
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
