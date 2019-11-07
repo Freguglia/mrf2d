@@ -24,6 +24,11 @@
 \item{x}{\code{mrfi} object.}
 
 \item{i}{vector of indexes to extract interacting positions.}
+
+\item{e1}{A \code{mrfi} object.}
+
+\item{e2}{Either a second \code{mrfi} object or a length 2 \code{numeric} with the new
+relative position to include.}
 }
 \value{
 \code{as.list()}: converts the \code{mrfi} object to a list of interacting

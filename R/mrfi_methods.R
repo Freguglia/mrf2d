@@ -94,6 +94,10 @@ mrfi_union <- function(mrfi1, mrfi2){
 
 #' @rdname mrfi-class
 #'
+#' @param e1 A `mrfi` object.
+#' @param e2 Either a second `mrfi` object or a length 2 `numeric` with the new
+#' relative position to include.
+#'
 #' @examples
 #' mrfi(1) + c(2,0)
 setMethod("+", signature = c("mrfi", "numeric"),
