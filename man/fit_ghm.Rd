@@ -74,19 +74,8 @@ the initial parameter configuration is too far from the maximum likelihood
 estimators.
 
 \code{max_dist} defines a stopping condition. The algorithm will stop if the
-maximum absolute difference between (\eqn{\mu} and \eqn{\sigma})  parameters
+maximum absolute difference between (\eqn{\mu} and \eqn{\sigma}) parameters
 in consecutive iterations is less than \code{max_dist}.
-
-\deqn{\max (| \mu_{t+1} - \mu_t |, | \sigma_{t+1} - \sigma_t|) \leq
- \text{max_dist}}{max (| \mu_{t+1} - \mu_t |, | \sigma_{t+1} - \sigma_t|)<=
- max_dist}
-
-Note that if the maximum probability configuration for \code{Z} is unchanged
-between two iterations, then the parameter estimates will also be unchanged,
-this makes possible to set \code{max_dist = 0} and hit the stopping condition.
-
-For more details see the guide vignette:
-\code{vignette("guide", package = "mrf2d")}
 }
 \examples{
 # Sample a Gaussian mixture with components given by Z_potts
