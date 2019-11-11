@@ -7,14 +7,14 @@ using namespace Rcpp;
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
 IntegerMatrix gibbs_sampler_mrf2d(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, int n_steps){
-  int N = init_Z.nrow(); const int M = init_Z.ncol();
+  int N = init_Z.nrow(); int M = init_Z.ncol();
   int C = theta.n_rows - 1;
   IntegerMatrix Z(N,M); Z = Rcpp::clone(init_Z);
   IntegerVector values = seq_len(C+1) - 1;
   IntegerVector order = seq_len(N*M);
   int x, y;
   int n_R = R.nrow();
-  const int num = N*M;
+  int num = N*M;
   IntegerVector position(2);
   NumericVector cprobs(C+1);
 
@@ -36,14 +36,14 @@ IntegerMatrix gibbs_sampler_mrf2d_sub(IntegerMatrix init_Z,
                                       LogicalMatrix sub_mat,
                                       LogicalMatrix fix_mat, IntegerMatrix R,
                                       const arma::fcube theta, int n_steps){
-  int N = init_Z.nrow(); const int M = init_Z.ncol();
+  int N = init_Z.nrow(); int M = init_Z.ncol();
   int C = theta.n_rows - 1;
   IntegerMatrix Z(N,M); Z = Rcpp::clone(init_Z);
   IntegerVector values = seq_len(C+1) - 1;
   IntegerVector order = seq_len(N*M);
   int x, y;
   int n_R = R.nrow();
-  const int num = N*M;
+  int num = N*M;
   IntegerVector position(2);
   NumericVector cprobs(C+1);
 
