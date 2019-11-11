@@ -1,6 +1,6 @@
 Package: mrf2d
 Type: Package
-Title: Tools for Markov Random Field models
+Title: Tools for Markov Random Field Models
 Version: 0.1.0
 Author: Victor Freguglia
 Maintainer: Victor Freguglia <victorfreguglia@gmail.com>
