@@ -16,11 +16,13 @@ test_that("fit_pl is returning correctly", {
 })
 
 test_that("fit_pl works with family 'oneeach'", {
-  expect_is(fit_pl(Z_potts[1:30, 1:30], mrfi(), family = "oneeach"), "list")
+  oneeach <- fit_pl(Z_potts[1:30, 1:30], mrfi(), family = "oneeach")
+  expect_is(oneeach, "list")
 })
 
 test_that("fit_pl works with family 'absdif'", {
-  expect_is(fit_pl(Z_potts[1:30, 1:30], mrfi(), family = "absdif"), "list")
+  absdif <- fit_pl(Z_potts[1:30, 1:30], mrfi(), family = "absdif")
+  expect_is(absdif, "list")
 })
 
 test_that("fit_pl works with family 'dif'", {
@@ -29,7 +31,8 @@ test_that("fit_pl works with family 'dif'", {
 })
 
 test_that("fit_pl works with family 'free'", {
-  expect_is(fit_pl(Z_potts[1:30, 1:30], mrfi(), family = "free"), "list")
+  free1 <- fit_pl(Z_potts[1:30, 1:30], mrfi(), family = "free")
+  expect_is(free1, "list")
 })
 
 test_that("Pseudo-likelihood works with sub_region", {
