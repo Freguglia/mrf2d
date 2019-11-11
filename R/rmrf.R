@@ -53,6 +53,7 @@
 #' Z <- rmrf2d(c(150,150), mrfi(1), theta_potts)
 #'
 #' #Sample using itial configuration
+#' \dontrun{
 #' Z2 <- rmrf2d(Z, mrfi(1), theta_potts)
 #'
 #' # View results
@@ -81,6 +82,7 @@
 #' Z5 <- rmrf2d(init_Z4, mrfi(1), theta_potts,
 #' fixed_region = fixreg, sub_region = subreg)
 #' dplot(Z5)
+#' }
 #'
 #' @export
 rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, sub_region = NULL, fixed_region = NULL){

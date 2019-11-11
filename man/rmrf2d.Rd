@@ -75,6 +75,7 @@ interaction systems.
 Z <- rmrf2d(c(150,150), mrfi(1), theta_potts)
 
 #Sample using itial configuration
+\dontrun{
 Z2 <- rmrf2d(Z, mrfi(1), theta_potts)
 
 # View results
@@ -103,6 +104,7 @@ dplot(Z4)
 Z5 <- rmrf2d(init_Z4, mrfi(1), theta_potts,
 fixed_region = fixreg, sub_region = subreg)
 dplot(Z5)
+}
 
 }
 \author{
