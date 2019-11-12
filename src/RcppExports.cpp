@@ -7,194 +7,194 @@
 using namespace Rcpp;
 
 // conditional_probabilities_mrf
-NumericVector conditional_probabilities_mrf(const IntegerMatrix& Z, IntegerVector position, IntegerMatrix R, const arma::fcube& theta, int N, int M, int n_R, int C);
+NumericVector conditional_probabilities_mrf(const IntegerMatrix& Z, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C);
 RcppExport SEXP _mrf2d_conditional_probabilities_mrf(SEXP ZSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type position(positionSEXP);
-    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector >::type position(positionSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
     Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< int >::type N(NSEXP);
-    Rcpp::traits::input_parameter< int >::type M(MSEXP);
-    Rcpp::traits::input_parameter< int >::type n_R(n_RSEXP);
-    Rcpp::traits::input_parameter< int >::type C(CSEXP);
+    Rcpp::traits::input_parameter< const int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< const int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< const int >::type n_R(n_RSEXP);
+    Rcpp::traits::input_parameter< const int >::type C(CSEXP);
     rcpp_result_gen = Rcpp::wrap(conditional_probabilities_mrf(Z, position, R, theta, N, M, n_R, C));
     return rcpp_result_gen;
 END_RCPP
 }
 // conditional_probabilities_mrf_sub
-NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix& Z, const LogicalMatrix& sub_mat, IntegerVector position, IntegerMatrix R, const arma::fcube& theta, int N, int M, int n_R, int C);
+NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix& Z, const LogicalMatrix& sub_mat, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C);
 RcppExport SEXP _mrf2d_conditional_probabilities_mrf_sub(SEXP ZSEXP, SEXP sub_matSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
     Rcpp::traits::input_parameter< const LogicalMatrix& >::type sub_mat(sub_matSEXP);
-    Rcpp::traits::input_parameter< IntegerVector >::type position(positionSEXP);
-    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector >::type position(positionSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
     Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< int >::type N(NSEXP);
-    Rcpp::traits::input_parameter< int >::type M(MSEXP);
-    Rcpp::traits::input_parameter< int >::type n_R(n_RSEXP);
-    Rcpp::traits::input_parameter< int >::type C(CSEXP);
+    Rcpp::traits::input_parameter< const int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< const int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< const int >::type n_R(n_RSEXP);
+    Rcpp::traits::input_parameter< const int >::type C(CSEXP);
     rcpp_result_gen = Rcpp::wrap(conditional_probabilities_mrf_sub(Z, sub_mat, position, R, theta, N, M, n_R, C));
     return rcpp_result_gen;
 END_RCPP
 }
 // icm_restoration_cpp
-IntegerMatrix icm_restoration_cpp(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, double corr_prob, int cycles);
+IntegerMatrix icm_restoration_cpp(const IntegerMatrix& init_Z, const IntegerMatrix R, const arma::fcube& theta, const double corr_prob, const int cycles);
 RcppExport SEXP _mrf2d_icm_restoration_cpp(SEXP init_ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP corr_probSEXP, SEXP cyclesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< IntegerMatrix >::type init_Z(init_ZSEXP);
-    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< double >::type corr_prob(corr_probSEXP);
-    Rcpp::traits::input_parameter< int >::type cycles(cyclesSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type init_Z(init_ZSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const double >::type corr_prob(corr_probSEXP);
+    Rcpp::traits::input_parameter< const int >::type cycles(cyclesSEXP);
     rcpp_result_gen = Rcpp::wrap(icm_restoration_cpp(init_Z, R, theta, corr_prob, cycles));
     return rcpp_result_gen;
 END_RCPP
 }
 // cprob_ghm_one
-NumericVector cprob_ghm_one(const IntegerMatrix Z, const IntegerVector position, const IntegerMatrix R, const arma::fcube theta, int N, int M, int n_R, int C, NumericVector mus, NumericVector sigmas, const NumericMatrix Y);
+NumericVector cprob_ghm_one(const IntegerMatrix& Z, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C, const NumericVector mus, const NumericVector sigmas, const NumericMatrix& Y);
 RcppExport SEXP _mrf2d_cprob_ghm_one(SEXP ZSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP, SEXP musSEXP, SEXP sigmasSEXP, SEXP YSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const IntegerMatrix >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
     Rcpp::traits::input_parameter< const IntegerVector >::type position(positionSEXP);
     Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< int >::type N(NSEXP);
-    Rcpp::traits::input_parameter< int >::type M(MSEXP);
-    Rcpp::traits::input_parameter< int >::type n_R(n_RSEXP);
-    Rcpp::traits::input_parameter< int >::type C(CSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type mus(musSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type sigmas(sigmasSEXP);
-    Rcpp::traits::input_parameter< const NumericMatrix >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< const int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< const int >::type n_R(n_RSEXP);
+    Rcpp::traits::input_parameter< const int >::type C(CSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type mus(musSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type sigmas(sigmasSEXP);
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type Y(YSEXP);
     rcpp_result_gen = Rcpp::wrap(cprob_ghm_one(Z, position, R, theta, N, M, n_R, C, mus, sigmas, Y));
     return rcpp_result_gen;
 END_RCPP
 }
 // cprob_ghm_one_sub
-NumericVector cprob_ghm_one_sub(const IntegerMatrix Z, const LogicalMatrix sub_mat, const IntegerVector position, const IntegerMatrix R, const arma::fcube theta, int N, int M, int n_R, int C, NumericVector mus, NumericVector sigmas, const NumericMatrix Y);
+NumericVector cprob_ghm_one_sub(const IntegerMatrix& Z, const LogicalMatrix& sub_mat, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C, const NumericVector mus, const NumericVector sigmas, const NumericMatrix Y);
 RcppExport SEXP _mrf2d_cprob_ghm_one_sub(SEXP ZSEXP, SEXP sub_matSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP, SEXP musSEXP, SEXP sigmasSEXP, SEXP YSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const IntegerMatrix >::type Z(ZSEXP);
-    Rcpp::traits::input_parameter< const LogicalMatrix >::type sub_mat(sub_matSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< const LogicalMatrix& >::type sub_mat(sub_matSEXP);
     Rcpp::traits::input_parameter< const IntegerVector >::type position(positionSEXP);
     Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< int >::type N(NSEXP);
-    Rcpp::traits::input_parameter< int >::type M(MSEXP);
-    Rcpp::traits::input_parameter< int >::type n_R(n_RSEXP);
-    Rcpp::traits::input_parameter< int >::type C(CSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type mus(musSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type sigmas(sigmasSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< const int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< const int >::type n_R(n_RSEXP);
+    Rcpp::traits::input_parameter< const int >::type C(CSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type mus(musSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type sigmas(sigmasSEXP);
     Rcpp::traits::input_parameter< const NumericMatrix >::type Y(YSEXP);
     rcpp_result_gen = Rcpp::wrap(cprob_ghm_one_sub(Z, sub_mat, position, R, theta, N, M, n_R, C, mus, sigmas, Y));
     return rcpp_result_gen;
 END_RCPP
 }
 // cprob_ghm_all
-arma::fcube cprob_ghm_all(const IntegerMatrix Z, const IntegerMatrix R, const arma::fcube theta, NumericVector mus, NumericVector sigmas, const NumericMatrix Y);
+arma::fcube cprob_ghm_all(const IntegerMatrix& Z, const IntegerMatrix R, const arma::fcube& theta, const NumericVector mus, const NumericVector sigmas, const NumericMatrix& Y);
 RcppExport SEXP _mrf2d_cprob_ghm_all(SEXP ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP musSEXP, SEXP sigmasSEXP, SEXP YSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const IntegerMatrix >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
     Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type mus(musSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type sigmas(sigmasSEXP);
-    Rcpp::traits::input_parameter< const NumericMatrix >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type mus(musSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type sigmas(sigmasSEXP);
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type Y(YSEXP);
     rcpp_result_gen = Rcpp::wrap(cprob_ghm_all(Z, R, theta, mus, sigmas, Y));
     return rcpp_result_gen;
 END_RCPP
 }
 // cprob_ghm_all_sub
-arma::fcube cprob_ghm_all_sub(const IntegerMatrix Z, const LogicalMatrix sub_mat, const IntegerMatrix R, const arma::fcube theta, NumericVector mus, NumericVector sigmas, const NumericMatrix Y);
+arma::fcube cprob_ghm_all_sub(const IntegerMatrix& Z, const LogicalMatrix& sub_mat, const IntegerMatrix R, const arma::fcube& theta, const NumericVector mus, const NumericVector sigmas, const NumericMatrix& Y);
 RcppExport SEXP _mrf2d_cprob_ghm_all_sub(SEXP ZSEXP, SEXP sub_matSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP musSEXP, SEXP sigmasSEXP, SEXP YSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const IntegerMatrix >::type Z(ZSEXP);
-    Rcpp::traits::input_parameter< const LogicalMatrix >::type sub_mat(sub_matSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< const LogicalMatrix& >::type sub_mat(sub_matSEXP);
     Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type mus(musSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type sigmas(sigmasSEXP);
-    Rcpp::traits::input_parameter< const NumericMatrix >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type mus(musSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type sigmas(sigmasSEXP);
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type Y(YSEXP);
     rcpp_result_gen = Rcpp::wrap(cprob_ghm_all_sub(Z, sub_mat, R, theta, mus, sigmas, Y));
     return rcpp_result_gen;
 END_RCPP
 }
 // icm_gaussian_cpp
-IntegerMatrix icm_gaussian_cpp(NumericMatrix Y, IntegerMatrix R, IntegerMatrix init_Z, const arma::fcube theta, NumericVector mus, NumericVector sigmas, int cycles);
+IntegerMatrix icm_gaussian_cpp(const NumericMatrix& Y, const IntegerMatrix R, const IntegerMatrix& init_Z, const arma::fcube& theta, const NumericVector mus, const NumericVector sigmas, const int cycles);
 RcppExport SEXP _mrf2d_icm_gaussian_cpp(SEXP YSEXP, SEXP RSEXP, SEXP init_ZSEXP, SEXP thetaSEXP, SEXP musSEXP, SEXP sigmasSEXP, SEXP cyclesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type Y(YSEXP);
-    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< IntegerMatrix >::type init_Z(init_ZSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type mus(musSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type sigmas(sigmasSEXP);
-    Rcpp::traits::input_parameter< int >::type cycles(cyclesSEXP);
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type init_Z(init_ZSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type mus(musSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type sigmas(sigmasSEXP);
+    Rcpp::traits::input_parameter< const int >::type cycles(cyclesSEXP);
     rcpp_result_gen = Rcpp::wrap(icm_gaussian_cpp(Y, R, init_Z, theta, mus, sigmas, cycles));
     return rcpp_result_gen;
 END_RCPP
 }
 // icm_gaussian_cpp_sub
-IntegerMatrix icm_gaussian_cpp_sub(NumericMatrix Y, LogicalMatrix sub_mat, IntegerMatrix R, IntegerMatrix init_Z, const arma::fcube theta, NumericVector mus, NumericVector sigmas, int cycles);
+IntegerMatrix icm_gaussian_cpp_sub(const NumericMatrix& Y, const LogicalMatrix& sub_mat, const IntegerMatrix R, const IntegerMatrix& init_Z, const arma::fcube& theta, const NumericVector mus, const NumericVector sigmas, const int cycles);
 RcppExport SEXP _mrf2d_icm_gaussian_cpp_sub(SEXP YSEXP, SEXP sub_matSEXP, SEXP RSEXP, SEXP init_ZSEXP, SEXP thetaSEXP, SEXP musSEXP, SEXP sigmasSEXP, SEXP cyclesSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericMatrix >::type Y(YSEXP);
-    Rcpp::traits::input_parameter< LogicalMatrix >::type sub_mat(sub_matSEXP);
-    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< IntegerMatrix >::type init_Z(init_ZSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type mus(musSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type sigmas(sigmasSEXP);
-    Rcpp::traits::input_parameter< int >::type cycles(cyclesSEXP);
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< const LogicalMatrix& >::type sub_mat(sub_matSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type init_Z(init_ZSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type mus(musSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type sigmas(sigmasSEXP);
+    Rcpp::traits::input_parameter< const int >::type cycles(cyclesSEXP);
     rcpp_result_gen = Rcpp::wrap(icm_gaussian_cpp_sub(Y, sub_mat, R, init_Z, theta, mus, sigmas, cycles));
     return rcpp_result_gen;
 END_RCPP
 }
 // gibbs_sampler_mrf2d
-IntegerMatrix gibbs_sampler_mrf2d(IntegerMatrix init_Z, IntegerMatrix R, const arma::fcube theta, int n_steps);
+IntegerMatrix gibbs_sampler_mrf2d(const IntegerMatrix& init_Z, const IntegerMatrix R, const arma::fcube& theta, const int n_steps);
 RcppExport SEXP _mrf2d_gibbs_sampler_mrf2d(SEXP init_ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP n_stepsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< IntegerMatrix >::type init_Z(init_ZSEXP);
-    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< int >::type n_steps(n_stepsSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type init_Z(init_ZSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const int >::type n_steps(n_stepsSEXP);
     rcpp_result_gen = Rcpp::wrap(gibbs_sampler_mrf2d(init_Z, R, theta, n_steps));
     return rcpp_result_gen;
 END_RCPP
 }
 // gibbs_sampler_mrf2d_sub
-IntegerMatrix gibbs_sampler_mrf2d_sub(IntegerMatrix init_Z, LogicalMatrix sub_mat, LogicalMatrix fix_mat, IntegerMatrix R, const arma::fcube theta, int n_steps);
+IntegerMatrix gibbs_sampler_mrf2d_sub(const IntegerMatrix& init_Z, const LogicalMatrix& sub_mat, const LogicalMatrix& fix_mat, const IntegerMatrix R, const arma::fcube& theta, const int n_steps);
 RcppExport SEXP _mrf2d_gibbs_sampler_mrf2d_sub(SEXP init_ZSEXP, SEXP sub_matSEXP, SEXP fix_matSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP n_stepsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< IntegerMatrix >::type init_Z(init_ZSEXP);
-    Rcpp::traits::input_parameter< LogicalMatrix >::type sub_mat(sub_matSEXP);
-    Rcpp::traits::input_parameter< LogicalMatrix >::type fix_mat(fix_matSEXP);
-    Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
-    Rcpp::traits::input_parameter< int >::type n_steps(n_stepsSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type init_Z(init_ZSEXP);
+    Rcpp::traits::input_parameter< const LogicalMatrix& >::type sub_mat(sub_matSEXP);
+    Rcpp::traits::input_parameter< const LogicalMatrix& >::type fix_mat(fix_matSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const int >::type n_steps(n_stepsSEXP);
     rcpp_result_gen = Rcpp::wrap(gibbs_sampler_mrf2d_sub(init_Z, sub_mat, fix_mat, R, theta, n_steps));
     return rcpp_result_gen;
 END_RCPP
@@ -226,20 +226,20 @@ BEGIN_RCPP
 END_RCPP
 }
 // log_pl_mrf
-double log_pl_mrf(IntegerMatrix Z, IntegerMatrix R, const arma::fcube theta);
+double log_pl_mrf(IntegerMatrix Z, IntegerMatrix R, arma::fcube theta);
 RcppExport SEXP _mrf2d_log_pl_mrf(SEXP ZSEXP, SEXP RSEXP, SEXP thetaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< IntegerMatrix >::type Z(ZSEXP);
     Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< arma::fcube >::type theta(thetaSEXP);
     rcpp_result_gen = Rcpp::wrap(log_pl_mrf(Z, R, theta));
     return rcpp_result_gen;
 END_RCPP
 }
 // log_pl_mrf_sub
-double log_pl_mrf_sub(IntegerMatrix Z, LogicalMatrix sub_mat, IntegerMatrix R, const arma::fcube theta);
+double log_pl_mrf_sub(IntegerMatrix Z, LogicalMatrix sub_mat, IntegerMatrix R, arma::fcube theta);
 RcppExport SEXP _mrf2d_log_pl_mrf_sub(SEXP ZSEXP, SEXP sub_matSEXP, SEXP RSEXP, SEXP thetaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -247,7 +247,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< IntegerMatrix >::type Z(ZSEXP);
     Rcpp::traits::input_parameter< LogicalMatrix >::type sub_mat(sub_matSEXP);
     Rcpp::traits::input_parameter< IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< arma::fcube >::type theta(thetaSEXP);
     rcpp_result_gen = Rcpp::wrap(log_pl_mrf_sub(Z, sub_mat, R, theta));
     return rcpp_result_gen;
 END_RCPP

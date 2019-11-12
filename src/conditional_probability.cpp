@@ -9,11 +9,11 @@ using namespace Rcpp;
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
 NumericVector conditional_probabilities_mrf(const IntegerMatrix &Z,
-                                            IntegerVector position,
-                                            IntegerMatrix R,
+                                            const IntegerVector position,
+                                            const IntegerMatrix R,
                                             const arma::fcube &theta,
-                                            int N, int M,
-                                            int n_R, int C){
+                                            const int N, const int M,
+                                            const int n_R, const int C){
 
   IntegerVector this_pos(2);
   NumericVector probs(C+1);
@@ -39,11 +39,11 @@ NumericVector conditional_probabilities_mrf(const IntegerMatrix &Z,
 // [[Rcpp::export]]
 NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix &Z,
                                                 const LogicalMatrix &sub_mat,
-                                                IntegerVector position,
-                                                IntegerMatrix R,
+                                                const IntegerVector position,
+                                                const IntegerMatrix R,
                                                 const arma::fcube &theta,
-                                                int N, int M,
-                                                int n_R, int C){
+                                                const int N, const int M,
+                                                const int n_R, const int C){
 
   IntegerVector this_pos(2);
   NumericVector probs(C+1);
@@ -69,9 +69,11 @@ NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix &Z,
 
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-IntegerMatrix icm_restoration_cpp(IntegerMatrix init_Z, IntegerMatrix R,
-                                  const arma::fcube theta, double corr_prob,
-                                  int cycles){
+IntegerMatrix icm_restoration_cpp(const IntegerMatrix &init_Z,
+                                  const IntegerMatrix R,
+                                  const arma::fcube &theta,
+                                  const double corr_prob,
+                                  const int cycles){
   int N = init_Z.nrow(); const int M = init_Z.ncol();
   int C = theta.n_rows - 1;
   IntegerMatrix Z(N,M); Z = Rcpp::clone(init_Z);
@@ -101,11 +103,13 @@ IntegerMatrix icm_restoration_cpp(IntegerMatrix init_Z, IntegerMatrix R,
 // Computes conditional probabilities in one specific position.
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-NumericVector cprob_ghm_one(const IntegerMatrix Z, const IntegerVector position,
-                           const IntegerMatrix R, const arma::fcube theta,
-                           int N, int M, int n_R, int C,
-                           NumericVector mus, NumericVector sigmas,
-                           const NumericMatrix Y){
+NumericVector cprob_ghm_one(const IntegerMatrix &Z,
+                            const IntegerVector position,
+                            const IntegerMatrix R, const arma::fcube &theta,
+                            const int N, const int M,
+                            const int n_R, const int C,
+                            const NumericVector mus, const NumericVector sigmas,
+                            const NumericMatrix &Y){
 
   NumericVector probs(C+1);
   NumericVector y(1);
@@ -119,12 +123,14 @@ NumericVector cprob_ghm_one(const IntegerMatrix Z, const IntegerVector position,
 
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-NumericVector cprob_ghm_one_sub(const IntegerMatrix Z,
-                                const LogicalMatrix sub_mat,
+NumericVector cprob_ghm_one_sub(const IntegerMatrix &Z,
+                                const LogicalMatrix &sub_mat,
                                 const IntegerVector position,
-                                const IntegerMatrix R, const arma::fcube theta,
-                                int N, int M, int n_R, int C,
-                                NumericVector mus, NumericVector sigmas,
+                                const IntegerMatrix R, const arma::fcube &theta,
+                                const int N, const int M,
+                                const int n_R, const int C,
+                                const NumericVector mus,
+                                const NumericVector sigmas,
                                 const NumericMatrix Y){
 
   NumericVector probs(C+1);
@@ -142,10 +148,12 @@ NumericVector cprob_ghm_one_sub(const IntegerMatrix Z,
 // probabilities for (position i,position j, class).
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-arma::fcube cprob_ghm_all(const IntegerMatrix Z, const IntegerMatrix R,
-                          const arma::fcube theta,
-                          NumericVector mus, NumericVector sigmas,
-                          const NumericMatrix Y){
+arma::fcube cprob_ghm_all(const IntegerMatrix &Z,
+                          const IntegerMatrix R,
+                          const arma::fcube &theta,
+                          const NumericVector mus,
+                          const NumericVector sigmas,
+                          const NumericMatrix &Y){
 
   int N = Z.nrow();
   int M = Z.ncol();
@@ -170,12 +178,13 @@ arma::fcube cprob_ghm_all(const IntegerMatrix Z, const IntegerMatrix R,
 
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-arma::fcube cprob_ghm_all_sub(const IntegerMatrix Z,
-                              const LogicalMatrix sub_mat,
+arma::fcube cprob_ghm_all_sub(const IntegerMatrix &Z,
+                              const LogicalMatrix &sub_mat,
                               const IntegerMatrix R,
-                              const arma::fcube theta,
-                              NumericVector mus, NumericVector sigmas,
-                              const NumericMatrix Y){
+                              const arma::fcube &theta,
+                              const NumericVector mus,
+                              const NumericVector sigmas,
+                              const NumericMatrix &Y){
 
   int N = Z.nrow();
   int M = Z.ncol();
@@ -208,11 +217,13 @@ arma::fcube cprob_ghm_all_sub(const IntegerMatrix Z,
 
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-IntegerMatrix icm_gaussian_cpp(NumericMatrix Y, IntegerMatrix R,
-                               IntegerMatrix init_Z,
-                               const arma::fcube theta,
-                               NumericVector mus, NumericVector sigmas,
-                               int cycles){
+IntegerMatrix icm_gaussian_cpp(const NumericMatrix &Y,
+                               const IntegerMatrix R,
+                               const IntegerMatrix &init_Z,
+                               const arma::fcube &theta,
+                               const NumericVector mus,
+                               const NumericVector sigmas,
+                               const int cycles){
   int N = Y.nrow(); const int M = Y.ncol();
   int C = theta.n_rows - 1;
   IntegerMatrix Z(N,M); Z = Rcpp::clone(init_Z);
@@ -240,12 +251,14 @@ IntegerMatrix icm_gaussian_cpp(NumericMatrix Y, IntegerMatrix R,
 
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-IntegerMatrix icm_gaussian_cpp_sub(NumericMatrix Y,
-                                   LogicalMatrix sub_mat, IntegerMatrix R,
-                                   IntegerMatrix init_Z,
-                                   const arma::fcube theta,
-                                   NumericVector mus, NumericVector sigmas,
-                                   int cycles){
+IntegerMatrix icm_gaussian_cpp_sub(const NumericMatrix &Y,
+                                   const LogicalMatrix &sub_mat,
+                                   const IntegerMatrix R,
+                                   const IntegerMatrix &init_Z,
+                                   const arma::fcube &theta,
+                                   const NumericVector mus,
+                                   const NumericVector sigmas,
+                                   const int cycles){
   int N = Y.nrow(); const int M = Y.ncol();
   int C = theta.n_rows - 1;
   IntegerMatrix Z(N,M); Z = Rcpp::clone(init_Z);
