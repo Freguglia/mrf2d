@@ -226,28 +226,28 @@ BEGIN_RCPP
 END_RCPP
 }
 // log_pl_mrf
-double log_pl_mrf(const IntegerMatrix& Z, const IntegerMatrix R, const arma::fcube& theta);
+double log_pl_mrf(const IntegerMatrix Z, const IntegerMatrix R, const arma::fcube theta);
 RcppExport SEXP _mrf2d_log_pl_mrf(SEXP ZSEXP, SEXP RSEXP, SEXP thetaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix >::type Z(ZSEXP);
     Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
     rcpp_result_gen = Rcpp::wrap(log_pl_mrf(Z, R, theta));
     return rcpp_result_gen;
 END_RCPP
 }
 // log_pl_mrf_sub
-double log_pl_mrf_sub(const IntegerMatrix& Z, const LogicalMatrix& sub_mat, const IntegerMatrix R, const arma::fcube& theta);
+double log_pl_mrf_sub(const IntegerMatrix Z, const LogicalMatrix sub_mat, const IntegerMatrix R, const arma::fcube theta);
 RcppExport SEXP _mrf2d_log_pl_mrf_sub(SEXP ZSEXP, SEXP sub_matSEXP, SEXP RSEXP, SEXP thetaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
-    Rcpp::traits::input_parameter< const LogicalMatrix& >::type sub_mat(sub_matSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< const LogicalMatrix >::type sub_mat(sub_matSEXP);
     Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube >::type theta(thetaSEXP);
     rcpp_result_gen = Rcpp::wrap(log_pl_mrf_sub(Z, sub_mat, R, theta));
     return rcpp_result_gen;
 END_RCPP
