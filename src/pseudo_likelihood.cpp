@@ -5,7 +5,9 @@ using namespace Rcpp;
 
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-double log_pl_mrf(IntegerMatrix Z,  IntegerMatrix R, arma::fcube theta){
+double log_pl_mrf(const IntegerMatrix &Z,
+                  const IntegerMatrix R,
+                  const arma::fcube &theta){
   int N = Z.nrow(); int M = Z.ncol();
   int n_R = R.nrow();
   int C = theta.n_rows - 1;
@@ -25,7 +27,10 @@ double log_pl_mrf(IntegerMatrix Z,  IntegerMatrix R, arma::fcube theta){
 
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-double log_pl_mrf_sub(IntegerMatrix Z, LogicalMatrix sub_mat, IntegerMatrix R, arma::fcube theta){
+double log_pl_mrf_sub(const IntegerMatrix &Z,
+                      const LogicalMatrix &sub_mat,
+                      const IntegerMatrix R,
+                      const arma::fcube &theta){
   int N = Z.nrow(); int M = Z.ncol();
   int n_R = R.nrow();
   int C = theta.n_rows - 1;

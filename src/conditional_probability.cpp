@@ -81,7 +81,7 @@ IntegerMatrix icm_restoration_cpp(const IntegerMatrix &init_Z,
   IntegerVector order = seq_len(N*M);
   int x, y;
   int n_R = R.nrow();
-  const int num = N*M;
+  long num = N*M;
   IntegerVector position(2);
   NumericVector cprobs(C+1);
   NumericVector postprobs(C+1);
@@ -224,14 +224,14 @@ IntegerMatrix icm_gaussian_cpp(const NumericMatrix &Y,
                                const NumericVector mus,
                                const NumericVector sigmas,
                                const int cycles){
-  int N = Y.nrow(); const int M = Y.ncol();
+  int N = Y.nrow(); int M = Y.ncol();
   int C = theta.n_rows - 1;
   IntegerMatrix Z(N,M); Z = Rcpp::clone(init_Z);
   IntegerVector values = seq_len(C+1) - 1;
   IntegerVector order = seq_len(N*M);
   int x, y;
   int n_R = R.nrow();
-  const int num = N*M;
+  long num = N*M;
   IntegerVector position(2);
   NumericVector cprobs(C+1);
   NumericVector pix(1);
@@ -259,14 +259,14 @@ IntegerMatrix icm_gaussian_cpp_sub(const NumericMatrix &Y,
                                    const NumericVector mus,
                                    const NumericVector sigmas,
                                    const int cycles){
-  int N = Y.nrow(); const int M = Y.ncol();
+  int N = Y.nrow(); int M = Y.ncol();
   int C = theta.n_rows - 1;
   IntegerMatrix Z(N,M); Z = Rcpp::clone(init_Z);
   IntegerVector values = seq_len(C+1) - 1;
   IntegerVector order = seq_len(N*M);
   int x, y;
   int n_R = R.nrow();
-  const int num = N*M;
+  long num = N*M;
   IntegerVector position(2);
   NumericVector cprobs(C+1);
   NumericVector pix(1);
