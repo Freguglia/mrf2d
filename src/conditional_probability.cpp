@@ -15,14 +15,13 @@ NumericVector conditional_probabilities_mrf(const IntegerMatrix &Z,
                                             const int N, const int M,
                                             const int n_R, const int C){
 
-  IntegerVector this_pos(2);
   NumericVector probs(C+1);
-  float this_prob;
+  double this_prob;
   int dx, dy;
   int x = position[0] -1; int y = position[1] -1;
 
   for(int value = 0; value <= C; value++){
-    this_prob = 0;
+    this_prob = 0.0;
     for(int i = 0; i < n_R; i++){
       dx = R(i,0); dy = R(i,1);
       if(0 <= x+dx && x+dx < N && 0 <= y+dy && y+dy < M){
@@ -45,14 +44,13 @@ NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix &Z,
                                                 const int N, const int M,
                                                 const int n_R, const int C){
 
-  IntegerVector this_pos(2);
   NumericVector probs(C+1);
-  float this_prob;
+  double this_prob;
   int dx, dy;
   int x = position[0] -1; int y = position[1] -1;
 
   for(int value = 0; value <= C; value++){
-    this_prob = 0;
+    this_prob = 0.0;
     for(int i = 0; i < n_R; i++){
       dx = R(i,0); dy = R(i,1);
       if(0 <= x+dx && x+dx < N && 0 <= y+dy && y+dy < M){
