@@ -113,7 +113,7 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
     mus_old <- seq(min(e, na.rm = TRUE), max(e, na.rm = TRUE), length.out = C+1)
     if(verbose)
       cat("\r Fitting independent mixture to obtain initial parameters. \n")
-    ind_fit <- fit_ghm(e, mrfi, theta*0, fixed_fn = NULL, equal_vars,
+    ind_fit <- fit_ghm(e, mrfi, theta*0, fixed_fn = fixed_fn, equal_vars,
                        init_mus = seq(min(e, na.rm = TRUE), max(e, na.rm = TRUE),
                                       length.out = C+1),
                        init_sigmas = rep(diff(range(e, na.rm = TRUE))/(2*C), C+1),
@@ -156,11 +156,10 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
         C+1)
     }
     else {
-      summed_probs <- apply(cond_probs, MARGIN = c(1,2), sum)
       mus_new <- apply(cond_probs, MARGIN = 3, function(x)
         sum(x*e, na.rm = TRUE)/sum(x, na.rm = TRUE))
       sigmas_new <- sapply(1:(C+1), function(l) {
-        sum(cond_probs[,,l]*(e - mus_new[l])^2)/sum(cond_probs[,,l])
+        sum(cond_probs[,,l]*(e - mus_new[l])^2, na.rm = TRUE)/sum(cond_probs[,,l], na.rm = TRUE)
       })
       sigmas_new <- sqrt(sigmas_new)
     }
@@ -176,7 +175,18 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
         S <- Y
         S[!is.na(Y)] <- pred
       } else {
-        stop("Fixed effect + different variances not implemented.")
+        norm_cond_probs <- sweep(cond_probs, MARGIN = c(1,2), sigmas_new^2, "/")
+        mean_est <- apply(norm_cond_probs, MARGIN = c(1,2),
+                          function(p_vec){
+                            sum(p_vec*mus_new)
+                          })
+
+        mean_ys <- sweep(norm_cond_probs, MARGIN = c(1,2), Y, "*")
+        mean_ys <- apply(mean_ys, MARGIN = c(1,2), sum)
+        psi_inv <-  apply(norm_cond_probs, MARGIN = c(1,2), sum)
+        pred <- qr.fitted(q, as.vector((mean_ys - mean_est)/psi_inv)[!is.na(Y)])
+        S <- Y
+        S[!is.na(Y)] <- pred
       }
     }
     e <- Y - S
