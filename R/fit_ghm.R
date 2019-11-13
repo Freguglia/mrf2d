@@ -155,17 +155,29 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
                      function(mu) (e - mu)^2))*cond_probs, na.rm = TRUE)/(N*M)),
         C+1)
     }
-    else {stop("Different variances still not implemented.")}
+    else {
+      summed_probs <- apply(cond_probs, MARGIN = c(1,2), sum)
+      mus_new <- apply(cond_probs, MARGIN = 3, function(x)
+        sum(x*e, na.rm = TRUE)/sum(x, na.rm = TRUE))
+      sigmas_new <- sapply(1:(C+1), function(l) {
+        sum(cond_probs[,,l]*(e - mus_new[l])^2)/sum(cond_probs[,,l])
+      })
+      sigmas_new <- sqrt(sigmas_new)
+    }
 
     ## update S
     if(length(fixed_fn) > 0){
-      mean_est <- apply(cond_probs, MARGIN = c(1,2),
-                             function(p_vec){
-                               sum(p_vec*mus_new, na.rm = TRUE)
-                             })
-      pred <- qr.fitted(q, as.vector(Y - mean_est)[!is.na(Y)])
-      S <- Y
-      S[!is.na(Y)] <- pred
+      if(equal_vars){
+        mean_est <- apply(cond_probs, MARGIN = c(1,2),
+                          function(p_vec){
+                            sum(p_vec*mus_new, na.rm = TRUE)
+                          })
+        pred <- qr.fitted(q, as.vector(Y - mean_est)[!is.na(Y)])
+        S <- Y
+        S[!is.na(Y)] <- pred
+      } else {
+        stop("Fixed effect + different variances not implemented.")
+      }
     }
     e <- Y - S
 
