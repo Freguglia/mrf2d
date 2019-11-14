@@ -16,7 +16,7 @@ Imports: Rcpp (>= 1.0.1),
          methods,
          ggplot2,
          Rdpack
-Depends: R (>= 3.3.0)
+Depends: R (>= 3.5.0)
 LinkingTo: Rcpp, 
            RcppArmadillo
 Roxygen: list(markdown = TRUE)
