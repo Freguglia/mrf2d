@@ -4,8 +4,14 @@
 \alias{fit_pl}
 \title{Maximum Pseudo-likelihood fitting of MRFs on 2d lattices.}
 \usage{
-fit_pl(Z, mrfi, family = "onepar", init = 0, optim_args = list(method
-  = "BFGS"), return_optim = FALSE)
+fit_pl(
+  Z,
+  mrfi,
+  family = "onepar",
+  init = 0,
+  optim_args = list(method = "BFGS"),
+  return_optim = FALSE
+)
 }
 \arguments{
 \item{Z}{A \code{matrix} object containing the observed MRF. \code{NA} values can be

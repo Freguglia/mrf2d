@@ -34,11 +34,11 @@ relative position to include.}
 \code{as.list()}: converts the \code{mrfi} object to a list of interacting
 positions (length 2 vectors).
 
-\code{[[}: converts to list and subsets it.
+\verb{[[}: converts to list and subsets it.
 
-\code{[}: subsets the \code{mrfi} object and returns another \code{mrfi} object.
+\verb{[}: subsets the \code{mrfi} object and returns another \code{mrfi} object.
 
-\code{+}: computes the union of the interaction structure in a \code{mrfi} object with
+\verb{+}: computes the union of the interaction structure in a \code{mrfi} object with
 a \code{numeric} representing an additional position to include or another \code{mrfi}
 object.
 }
@@ -48,7 +48,7 @@ structure for a spatially-stationary Markov Random Field.
 
 The function \code{\link[=mrfi]{mrfi()}} provides an interface for creation
 \code{mrfi} objects. A \code{plot} method is also available for visualization, as
-well as conversion methods like \code{as.list} and operators like \code{+}.
+well as conversion methods like \code{as.list} and operators like \verb{+}.
 }
 \details{
 The interaction structure is defined by the list of relative
@@ -58,8 +58,8 @@ in the image.
 
 The relative positions are indentified by two integers \code{rx} and \code{ry}
 representing the "shift" in the \code{x}-axis and \code{y}-axis respectively. As an
-example: The relative position \code{(1,0)} representes the pixel in the immediate
-right position, while \code{(-1,0)} the left one.
+example: The relative position \verb{(1,0)} representes the pixel in the immediate
+right position, while \verb{(-1,0)} the left one.
 
 Note that the inclusion of a relative position to the dependence also implies
 its opposite direction is not conditionally independent (commutativeness of
@@ -70,7 +70,7 @@ by:
 
 \code{mrfi(1)}
 
-Note that it only includes the positions \code{(1,0)} and \code{(0,1)}, but when
+Note that it only includes the positions \verb{(1,0)} and \verb{(0,1)}, but when
 visualizing it, for example, \code{mrf2d} understands the opposite directions
 are also conditionally dependent, as in
 

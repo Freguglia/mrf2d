@@ -4,8 +4,16 @@
 \alias{fit_sa}
 \title{Stochastic Approximation algorithm for MRFs on 2d lattices}
 \usage{
-fit_sa(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
-  refresh_each = length(gamma_seq) + 1, refresh_cycles = 60)
+fit_sa(
+  Z,
+  mrfi,
+  family = "onepar",
+  gamma_seq,
+  init = 0,
+  cycles = 5,
+  refresh_each = length(gamma_seq) + 1,
+  refresh_cycles = 60
+)
 }
 \arguments{
 \item{Z}{A \code{matrix} object containing the observed MRF. \code{NA} values can be

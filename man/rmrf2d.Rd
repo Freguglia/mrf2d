@@ -4,14 +4,20 @@
 \alias{rmrf2d}
 \title{Sampling of Markov Random Fields on 2d lattices}
 \usage{
-rmrf2d(init_Z, mrfi, theta, cycles = 60, sub_region = NULL,
-  fixed_region = NULL)
+rmrf2d(
+  init_Z,
+  mrfi,
+  theta,
+  cycles = 60,
+  sub_region = NULL,
+  fixed_region = NULL
+)
 }
 \arguments{
 \item{init_Z}{One of two options:
 \itemize{
 \item A \code{matrix} object with the initial field configuration. Its
-valuesmust be integers in \code{{0,...,C}}.
+valuesmust be integers in \verb{\{0,...,C\}}.
 \item A length 2 \code{numeric} vector with the lattice dimensions.
 }}
 
@@ -50,7 +56,7 @@ sampled is randomized within each cycle.
 
 If \code{init_Z} is passed as a length 2 vector with lattice dimensions, the
 initial field is sampled from independent discrete uniform distributions in
-\code{{0,...,C}}. The value of C is obtained from the number of rows/columns of
+\verb{\{0,...,C\}}. The value of C is obtained from the number of rows/columns of
 \code{theta}.
 
 A MRF can be sampled in a non-rectangular region of the lattice with the use of

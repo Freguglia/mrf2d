@@ -7,7 +7,7 @@
 pl_mrf2d(Z, mrfi, theta, log_scale = TRUE)
 }
 \arguments{
-\item{Z}{A \code{matrix} with integers in \code{{0,...,C}}.}
+\item{Z}{A \code{matrix} with integers in \verb{\{0,...,C\}}.}
 
 \item{mrfi}{A \code{\link[=mrfi-class]{mrfi}} object representing the
 interaction structure.}

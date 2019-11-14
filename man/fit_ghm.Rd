@@ -4,9 +4,20 @@
 \alias{fit_ghm}
 \title{EM estimation for Gaussian Hidden Markov field}
 \usage{
-fit_ghm(Y, mrfi, theta, fixed_fn = list(), equal_vars = TRUE,
-  init_mus = NULL, init_sigmas = NULL, maxiter = 100,
-  max_dist = 10^-3, icm_cycles = 6, verbose = TRUE, qr = NULL)
+fit_ghm(
+  Y,
+  mrfi,
+  theta,
+  fixed_fn = list(),
+  equal_vars = TRUE,
+  init_mus = NULL,
+  init_sigmas = NULL,
+  maxiter = 100,
+  max_dist = 10^-3,
+  icm_cycles = 6,
+  verbose = TRUE,
+  qr = NULL
+)
 }
 \arguments{
 \item{Y}{A matrix of observed (continuous) pixel values.}
