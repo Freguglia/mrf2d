@@ -26,7 +26,8 @@ Markov Random Fields are probabilistic models capable of describing sets of rand
 <img src="man/figures/animation_ising.gif" alt="drawing" width="300" align="left" />
 
 The goal of `mrf2d` is to provide simple functions for sampling and analysis of Markov Random Fields on 2-dimensional lattices, including Hidden Markov Random Fields. It introduces the S4 class `mrfi` to describe interaction structures in a very general way, being able to adapt from very simple cases like the Ising Model to complex anisotropic models with different types of interaction.
-<p align="center">
+
+
 ```{r example_interacions, fig.show="hold", warning = FALSE, message = FALSE, fig.width=1.8, fig.height=1.6}
 library(mrf2d)
 
@@ -34,7 +35,6 @@ plot(mrfi(), no_axis = TRUE)
 plot(mrfi(max_norm = 2, norm_type = "m"), no_axis = TRUE)
 plot(mrfi(max_norm = 2, positions = list(c(3,3),c(4,4), c(-2,4))), no_axis = TRUE)
 ```
-</p>
 
 ---
 

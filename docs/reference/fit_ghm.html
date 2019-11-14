@@ -95,6 +95,9 @@ The algorithm is an implementation of
   </a>
 </li>
 <li>
+  <a href="../articles/mrf2d.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -225,15 +228,8 @@ initial values. This is necessary because the algorithm may not converge if
 the initial parameter configuration is too far from the maximum likelihood
 estimators.</p>
 <p><code>max_dist</code> defines a stopping condition. The algorithm will stop if the
-maximum absolute difference between (\(\mu\) and \(\sigma\))  parameters
+maximum absolute difference between (\(\mu\) and \(\sigma\)) parameters
 in consecutive iterations is less than <code>max_dist</code>.</p>
-<p>$$\max (| \mu_{t+1} - \mu_t |, | \sigma_{t+1} - \sigma_t|) \leq
- \text{max_dist}$$</p>
-<p>Note that if the maximum probability configuration for <code>Z</code> is unchanged
-between two iterations, then the parameter estimates will also be unchanged,
-this makes possible to set <code>max_dist = 0</code> and hit the stopping condition.</p>
-<p>For more details see the guide vignette:
-<code>vignette("guide", package = "mrf2d")</code></p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Zhang Y, Brady M, Smith S (2001).

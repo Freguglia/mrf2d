@@ -91,6 +91,9 @@ to sample from a Markov random field." />
   </a>
 </li>
 <li>
+  <a href="../articles/mrf2d.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -206,17 +209,22 @@ interaction systems.</p>
 <span class='no'>Z</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>150</span>,<span class='fl'>150</span>), <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>)
 
 <span class='co'>#Sample using itial configuration</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='no'>Z2</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='no'>Z</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>)
 
 <span class='co'># View results</span>
-<span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z</span>)</div><div class='img'><img src='rmrf2d-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z2</span>)</div><div class='img'><img src='rmrf2d-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z</span>)
+<span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z2</span>)
+
 <span class='co'># Using sub-regions</span>
 <span class='no'>subreg</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>150</span>, <span class='fl'>150</span>)
 <span class='no'>subreg</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/row.html'>row</a></span>(<span class='no'>subreg</span>) - <span class='fl'>75</span>) + <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/col.html'>col</a></span>(<span class='no'>subreg</span>) - <span class='fl'>75</span>) <span class='kw'>&lt;=</span> <span class='fl'>80</span>
 <span class='co'># view the sub-region</span>
-<span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>subreg</span>)</div><div class='img'><img src='rmrf2d-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>subreg</span>)
+
 <span class='no'>Z3</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>150</span>,<span class='fl'>150</span>), <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>, <span class='kw'>sub_region</span> <span class='kw'>=</span> <span class='no'>subreg</span>)
-<span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z3</span>)</div><div class='img'><img src='rmrf2d-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z3</span>)
+
 <span class='co'># Using fixed regions</span>
 <span class='no'>fixreg</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/logical.html'>as.logical</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span>(<span class='fl'>150</span>)), <span class='fl'>150</span>, <span class='fl'>150</span>)
 <span class='co'># Set initial configuration: diagonal values are 0.</span>
@@ -224,11 +232,13 @@ interaction systems.</p>
 <span class='no'>init_Z4</span>[<span class='no'>fixreg</span>] <span class='kw'>&lt;-</span> <span class='fl'>0</span>
 
 <span class='no'>Z4</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='no'>init_Z4</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>, <span class='kw'>fixed_region</span> <span class='kw'>=</span> <span class='no'>fixreg</span>)
-<span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z4</span>)</div><div class='img'><img src='rmrf2d-5.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z4</span>)
+
 <span class='co'># Combine fixed regions and sub-regions</span>
 <span class='no'>Z5</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='no'>init_Z4</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>,
-<span class='kw'>fixed_region</span> <span class='kw'>=</span> <span class='no'>fixreg</span>, <span class='kw'>sub_region</span> <span class='kw'>=</span> <span class='no'>subreg</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Some pixels in the 'fixed_region' are not part of the 'sub_region', they will be ignored.</span></div><div class='input'><span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z5</span>)</div><div class='img'><img src='rmrf2d-6.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+<span class='kw'>fixed_region</span> <span class='kw'>=</span> <span class='no'>fixreg</span>, <span class='kw'>sub_region</span> <span class='kw'>=</span> <span class='no'>subreg</span>)
+<span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z5</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -31,11 +31,7 @@ describe interaction structures in a very general way, being able to
 adapt from very simple cases like the Ising Model to complex anisotropic
 models with different types of interaction.
 
-<p align="center">
-
 ![](man/figures/README-example_interacions-1.png)![](man/figures/README-example_interacions-2.png)![](man/figures/README-example_interacions-3.png)
-
-</p>
 
 -----
 
@@ -141,10 +137,10 @@ Check the results:
 
 ``` r
 fit$par
-#>         mu     sigma
-#> 0 6.010781 0.4008757
-#> 1 7.011698 0.4008757
-#> 2 8.013325 0.4008757
+#>         mu    sigma
+#> 0 6.010691 0.400807
+#> 1 7.011794 0.400807
+#> 2 8.013461 0.400807
 
 library(ggplot2)
 cplot(fit$fixed) + ggtitle("Linear Effect")
