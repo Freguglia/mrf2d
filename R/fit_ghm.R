@@ -175,7 +175,7 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
         S <- Y
         S[!is.na(Y)] <- pred
       } else {
-        norm_cond_probs <- sweep(cond_probs, MARGIN = c(1,2), sigmas_new^2, "/")
+        norm_cond_probs <- sweep(cond_probs, MARGIN = c(3), sigmas_new^2, "/")
         mean_est <- apply(norm_cond_probs, MARGIN = c(1,2),
                           function(p_vec){
                             sum(p_vec*mus_new)
