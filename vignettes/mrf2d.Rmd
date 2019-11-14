@@ -2,14 +2,11 @@
 title: "An Introduction to mrf2d"
 output: 
   rmarkdown::html_vignette:
-    number_sections: true
+    number_sections: false
 vignette: >
   %\VignetteIndexEntry{A guide to mrf2d}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-bibliography: ../inst/REFERENCES.bib
-nocite: |
-  @wiki_sa, @wiki_pl
 ---
 
 ```{r setup, include = FALSE}
@@ -39,11 +36,11 @@ where $\mathcal{N}_i$ denotes the neighbors of $i$ according to $\mathcal{N}$.
 
 # MRF model for 2-dimensional lattices
 
-The Markov random field model considered in `mrf2d` has the following assumptions:
+The Markov random field model considered in `mrf2d` has the following properties:
  
   * $\mathcal{V}$ is a grid $\mathcal{L} = \{ i =  (i_1, i_2): 1 \leq i_1 \leq N; 1 \leq i_2 \leq M \}$: The data points (called pixels) are indexed by a rectangular lattice $\mathcal{L}$ of dimension $N \times M$. 
 
- INSERT THE GRID REPRESENTATION IMAGE HERE
+<center><img src="lattice.png" height=300 width=300></center>
   
   * $\mathcal{N}$ is defined by a set of relative positions $\mathcal{R}$: two pixels $i$ and $j$ are connected if and only if their relative position $(i_1, i_2) - (j_1, j_2)$ is in $\mathcal{R}$. As an example, if $\mathcal{R} = \{ (1,0), (0,1) \}$, pixels are connected to their nearest neighbors horizontally and vertically, which can be represented by the structure below. Note the opposite directions have edges but they are not included in $\mathcal{R}$ to avoid redundancy.
   
@@ -53,200 +50,62 @@ plot(mrfi(1), no_axis = TRUE) +  geom_text(aes(label = glue("({rx},{ry})")), siz
 
   * $Z_i \in \{ 0,1, \dots, C \}$ for some small integer $C$ and all $i \in \mathcal{L}$.
 
-  * Potentials ($g_q(\mathbf{Z}_q)$) are only non-null for pairs (cliques with 2 elements): if $|q| \neq 2$, $g_q(\mathbf{Z}_q) = 0$. Therefore, we can simplify the notation to $g_{i,{i+r}}(z_i, z_{i+r})$, $r \in \mathcal{R}$.
-  
-  * Potentials only depend on the pair's relative position: $g_{i,i+r}(a,b) = g_{j, j+r}(a,b) = \theta_{a,b,r}$ for all $i,j \in \mathcal{L}$.
-  
 Under these assumptions, our probability distribution reduces to:
 
-$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{i \in \mathcal{L}} \sum_{j = i + r}^{r \in \mathcal{R}} \theta_{z_i, z_j, r} \right), $$
+$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{i \in \mathcal{L}} \sum_{j = i + r \in \mathcal{L}}^{r \in \mathcal{R}} \theta(z_i, z_j, r) \right), $$
 
-or in terms of co-ocurrence counts:
+or in terms of co-occurrence counts:
 
-$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{r \in \mathcal{R}} \sum_{a,b = 0}^C \theta_{a,b,r} n_r(a,b) \right), $$
-where $n_r(a,b) = \sum_{i \in \mathcal{L}} \mathbb{1}(z_i = a, z_{i+r} = b)$.
+$$ P_\theta(\mathbf{Z} = \mathbf{z}) = \frac{1}{\zeta_\theta} \exp \left( \sum_{r \in \mathcal{R}} \sum_{a,b = 0}^C \theta(a,b,r) n(a,b,r) \right), $$
+where $n(a,b,r) = \sum_{i \in \mathcal{L}} \mathbb{1}(z_i = a, z_{i+r} = b)$ is the count of co-occurrences of $a$ and $b$ in relative position $r$.
 
 # The `mrf2d` package
 
-`mrf2d` has the goal to provide tools for analysis of Markov Random Fields on two-dimensional lattices, mainly, by using a simple and efficient representation of the interaction structure, as well as parameters sets with different types of restrictions. It exports efficient implementations of the most commom estimation methods and a sampling function, making it easy to implement new or specific algorithms with little effort taking advantage of the the package's API.
+`mrf2d` has the goal to provide tools for analysis of Markov Random Fields on two-dimensional lattices, mainly, by using a simple yet efficient representation of the interaction structure, as well as parameters sets with different types of restrictions. It exports efficient implementations of the most common estimation methods and a sampling function, making it easy to implement new or specific algorithms with little effort taking advantage of the package's API.
 
-Computational efficiency is also an important feature of the package, having most of the computational intensive functions written in `Rcpp` and object representations designed for high performance.
+Computational efficiency is also an important feature of the package, having most of the computationally intensive functions written in `Rcpp` and object representations designed for high performance.
 
 The package also provides [plotting](https://freguglia.github.io/mrf2d/reference/dplot.html) functions `dplot()` and `cplot()` that automatically convert `matrix` objects to appropriate `data.frame` structures and creates `ggplot` objects from it. These functions aim to provide easy to use methods of visualization but also take advantage of [`ggplot2`](https://ggplot2.tidyverse.org/)'s grammar to modify aesthetics and create elegant and customizable visualizations of lattice data. `dplot()` should be used for **d**iscrete data while `cplot()` is suitable for **c**ontinuous data.
 
-```{r plots_examples, out.width = "50%", warning=FALSE}
+```{r plots_examples, fig.width = 5, fig.height = 3, warning=FALSE}
 # Z_potts is a matrix with an example of random field available in the package.
 class(Z_potts)
 unique(as.vector(Z_potts))
 
 dplot(Z_potts, legend = TRUE)
-cplot(Z_potts + rnorm(length(Z_potts)))
+set.seed(1)
+cplot(Z_potts + rnorm(length(Z_potts), sd = 0.6))
 
 # Customizing plots with ggplot2's grammar
 library(ggplot2)
-dplot(Z_potts) + ggtitle("Title added with ggplot2")
-dplot(Z_potts) + scale_fill_brewer(type = "qual") + 
+dplot(Z_potts, legend = TRUE) + ggtitle("Title added with ggplot2")
+dplot(Z_potts, legend = TRUE) + scale_fill_brewer(type = "qual") + 
   ggtitle("Title added with ggplot2")
 ```
 
 
 # The `mrfi` class and parameter arrays
 
-The stationary Markov Random Fields described are completely specified by the set of relative positions where interactions exists $\mathcal{R}$ and the interaction parameters $\theta_{a,b,r}$, $(a,b) \in \{0,\dots,C \}^2, r \in \mathcal{R}$.
+The stationary Markov Random Fields described are completely specified by the set of relative positions where interactions exists $\mathcal{R}$ and the interaction parameters $\theta(a,b,r)$.
 
-In `mrf2d`, interaction structures $\mathcal{R}$ are represented by objects of the S4 class `mrfi`, while interaction parameters are reprensted by simple 3-dimensional arrays, where `theta[a,b,k]` contains the value of $\theta_{a,b,r}$ for the $k$-th relative position. As an example, in a nearest-neighbor structure ($|\mathcal{R}| = 2$) with $C = 1$, where the interaction for equal values ($a=b$) is `0` and `-0.99` for different values, the corresponding array would be
+In `mrf2d`, interaction structures $\mathcal{R}$ are represented by objects of the S4 class `mrfi`, while interaction parameters are represented by simple 3-dimensional arrays, where `theta[a,b,k]` contains the value of $\theta_{a,b,r}$ for the $k$-th relative position. As an example, in a nearest-neighbor structure ($|\mathcal{R}| = 2$) with $C = 1$, where the interaction for equal values ($a=b$) is `0` and `-0.99` for different values, the corresponding array would be
 
 ```{r theta_example}
 mrf2d:::vec_to_array(-0.99, "onepar", 1, 2)
 ```
 
-Note how rows represents values $a$, columns are values of $b$ and slices are the relative positions in $\mathcal{R}$.
+Note that rows represents $a$ values, columns are values of $b$ values and slices are the relative positions in $\mathcal{R}$ .
 
 ## Creating `mrfi` objects
 
-`mrfi` objects can be created with the `mrfi()` function. It takes three parameters: `max_norm`, `norm_type` and `positions`. `max_norm` and `norm_type` combined define a region where interactions are included. As example, if `max_norm` is `3` and `norm_type` is `"1"`, the interaction structure will include relative positions $r$ where $|r_x| + |r_y| \leq 3$.
+`mrfi` objects can be created with the `mrfi()` function. It takes three parameters: `max_norm`, `norm_type` and `positions`. `max_norm` and `norm_type` combined define a region of included interactions. As example, if `max_norm` is `3` and `norm_type` is `"1"`, the interaction structure will include relative positions $r$ where $|r_x| + |r_y| \leq 3$.
 
 Note that opposite positions, e.g., $(1,0)$ and $(-1,0)$ are not both included, as the second one is always redundant for the model. A `plot()` method is available to visualize `mrfi` objects.
 
 ```{r}
-mrfi(max_norm = 3, norm_type = "1")
+my_mrfi <- mrfi(max_norm = 3, norm_type = "1")
+my_mrfi
+
+plot(my_mrfi)
 ```
 
-
-## Parameter restriction families
-
-### family `'onepar'`
-
-The interaction depends only if the pair of values is equal or different and not on their values or relative position. Since we set $\theta_{0,0,r} = 0$, this simplifies as:
-
-$$ \theta_{a,b,r} = \theta \mathbb{1}_{[a \neq b]} $$
-
-Example of valid array for `'onepar'`:
-
-```{r, echo = FALSE}
-mrf2d:::vec_to_array(-0.01, family = "onepar", C = 2, 2)
-```
-
-
-### family `'oneeach'`
-
-The same as `'onepar'`, but allowing different values for different relative positions $r$, resulting a total of $|\mathcal{R}|$ free parameters:
-
-$$ \theta_{a,b,r} = \theta_r \mathbb{1}_{[a \neq b]} $$
-
-Example of valid array for `'oneeach'`:
-
-```{r, echo = FALSE}
-mrf2d:::vec_to_array(c(-0.01, -0.02), family = "oneeach", C = 2, 2)
-```
-
-### family `'absdif'`
-
-The values with equal absolute differences ($|b-a|$) are kept constant within each relative position, resulting a total of $|\mathcal{R}| \cdot C$ free parameters. Note that the restriction $\theta_{0,0,r} = 0$ implies all pairs with absolute difference equals $0$ will also be null. 
-
-$$ \theta_{a,b,r} = \theta_{|b-a|,r} $$
-
-Example of valid array for `'absdif'`:
-
-```{r, echo = FALSE}
-mrf2d:::vec_to_array(c(-0.01, -0.02, -0.03, -0.04), family = "absdif", C = 2, 2)
-```
-
-### family `'dif'`
-
-The same as `'absdif'`, but allowing different values for positive and negative differences, i.e., $\theta_{a,b,r} \neq \theta_{b,a,r}$ for $a \neq b$. This restriction allows different effects on opposing directions to exist and there are $|\mathcal{R}| \cdot 2C$
-
-Note that `'dif'` and `'absdif'` are typically used when the observed values actually have a quantitative meaning (as the gray levels of images), but not in tasks like image segmentation, where the value describes a class where, usually, the order and therefore differences have no meaning.
-
-$$ \theta_{a,b,r} = \theta_{b-a,r}$$
-
-Example of valid array for `'dif'`:
-
-```{r, echo = FALSE}
-mrf2d:::vec_to_array(c(-0.01, -0.02, -0.03, -0.04, -0.05, -0.06, -0.07, -0.08), family = "dif", C = 2, 2)
-```
-
-### family `'free'`
-
-No additional restriction but the identifiability constraint $\theta_{0,0,r} = 0$ is still necessary. $|\mathcal{R}| \cdot \left( C^2 + 2C \right)$ free parameters.
-
-Example of valid array for `'free'`:
-
-```{r, echo = FALSE}
-mrf2d:::vec_to_array(seq(-0.01, -0.16, by = -0.01), family = "free", C = 2, 2)
-```
-
-# Parameter estimation on Markov Random Fields
-
-## Pseudolikelihood
-
-The concept of pseudolikelihood was introduced in @besag1975statistical and consists of using the product of conditional probabilities instead of the joint probability. The pseudolikelihood function $PL()$ is defined as
-
-$$ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} P(Z_i = z_i | \mathbf{Z}_{\mathcal{N}_i} = \mathbf{z}_{\mathcal{N}_i}).$$
-
-In the lattice model defined, this is described by
-
-$$ PL(\theta;\mathbf{z}) = \prod_{i \in \mathcal{L}} \frac{\exp{\left( \sum_{r \in \mathcal{R}} \theta_{z_i, z_{i+r},r} + \theta_{z_{i-r}, z_i,r}  \right)}}{\sum_{a = 0}^C\exp{\left( \sum_{r \in \mathcal{R}} \theta_{a, z_{i+r},r} + \theta_{z_{i-r}, a,r}  \right)}},$$
-with $\theta_{z_i,z_j,a} = 0$ if either $i$ or $j$ is out of bounds (i.e. when $i+c \not \in \mathcal{L}$). This restriction keeps the expression above well-defined for pixels on the borders of $\mathcal{L}$.
-
-`mrf2d`'d function `pl_mrf2d()` computes the (log-scale) pseudolikelihood function for a given observed lattice $\mathbf{z}$, $\theta$ and interaction structure.
-
-```{r}
-pl_mrf2d(Z = Z_potts, mrfi = mrfi(1), theta = array(0, dim = c(3,3,2)))
-pl_mrf2d(Z = Z_potts, mrfi = mrfi(1), theta = array(diag(3) -1, dim = c(3,3,2)))
-pl_mrf2d(Z = Z_potts, mrfi = mrfi(1), theta = array(1 - diag(3), dim = c(3,3,2)))
-```
-
-Parameter estimation can be performed, therefore, by maximizing the pseudolikelihood function. Maximum Pseudolikelihood Estimators (MPLEs) are comparable to Maximum Likelihood Estimators (MLEs) when the dependence is not too strong and can be computed in `mrf2d` with the function `fit_pl()`.
-
-```{r}
-fit_pl(Z_potts, mrfi(1), family = "onepar")
-
-fit_pl(Z_potts, mrfi(1), family = "oneeach")
-```
-
-
-
-## Stochastic Approximation
-
-Stochastic Approximation is an algorithm for finding a (concave) function's maximum value without the need to evaluate it. Instead, it iteratively moves a solution in the gradient's direction
-
-The likelihood function of the MRF defined above belongs to the exponential family and can be written as 
-
-$$ l(\theta;\mathbf{z}^0) = (S(\mathbf{z}^0) \bullet \theta) -  \log(\zeta_\theta),$$
-where $\bullet$ denotes the dot product and $S(\mathbf{z})$ is the vector sufficient statistics. Therefore, the global maximum is the point where the gradient $\frac{\partial}{\partial \theta} l(\theta;\mathbf{z}^0)$ is equal to zero, and the gradient is given by
-$$\frac{\partial}{\partial \theta} l(\theta;\mathbf{z}^0) = S(\mathbf{z}^0) - \mathbb{E}_\theta(S(\mathbf{Z})).$$
-
-Starting from an arbitrary configuration $\theta^{(1)}$, which is considered the null vector by default in `mrf2d`, the algorithm iteratively samples a field $\mathbf{z}^{(t)}$ from the current parameter configuration $\theta^{(t)}$ and then updates $\theta^{(t+1)}$ according to an estimated gradient direction in the following recursion
-$$ \theta^{(t+1)} = \theta^{(t)} + \gamma^{(t)} \left( S(\mathbf{z}^0) - S(\mathbf{z}^{(t)}) \right).$$
-
-Some notes and details about `mrf2d`'s implementation of the Stochastic Approximation algorithm (function `fit_sa()`):
-
-  * Exact sampling from a MRF either has a high computational cost or is an intractable problem, therefore, iterative methods (here, the Gibbs Sampler) are used. Since these methods may take a large number of cycles to reach the equilibrium distribution, the last sampled field is cached and used as an initial value for the next sample, with a smaller number of cycles between interactions. This was used for example in @gimel1996texture.
-  * Two additional parameters are used in our implementation: `refresh_each` and `refresh_cycles`. If specified, the sampled field $\mathbf{z}^t$ will be completely reset each `refresh_each` iterations. Whenever the field is reset, a new one will be sampled from a random initial configuration and a number of cycles equals to `refresh_cycles`, which should typically be a large value. Extreme cases are `refresh_each = 1`, where a completely new field is generated in each iteration (very slow) and `refresh_each` larger than the number of iterations (function's defaults), which means no refresh will ever happen. 
-  * The algorithm requires the theoretical restrictions $\sum_t \gamma^{(t)} = +\infty$ and $\sum_t \left(\gamma^{(t)}\right)^2 < +\infty$. Since in practice only a finite number of iterations is executed, the choice of the $\gamma^{(t)}$ sequence requires some tuning to improve the results obtained.
-  * The sequence $\gamma^{(t)}$ is specified by the parameter `gamma_seq`, but the values are divided by `length(Z)`. This standardizes the notion of what is a "small" or "large" value for the step size regardless of the lattice dimensions.
-  * A `data.frame` containing the distances $|| \mathbf{z}^0 - \mathbf{z}^{(t)} ||^2_2$ is returned in the `metrics` field. It can be used to monitor the convergence of the algorithm.
-  
-```{r fit_sa_examples, cache = TRUE, out.width = "50%"}
-set.seed(1234)
-sa_onepar <- fit_sa(Z_potts, mrfi(1), family = "onepar", 
-                    gamma_seq = seq(3, 0, length.out = 200))
-sa_onepar$theta
-
-sa_oneeach <- fit_sa(Z_potts, mrfi(1), family = "oneeach", 
-                    gamma_seq = seq(3, 0, length.out = 200))
-sa_oneeach$theta
-plot(sa_oneeach$metrics[2:200,])
-```
-
-
-# Hidden Markov Random Fields
-
-## Gaussian Mixtures
-
-@zhang2001segmentation
-
-$$ f(\mathbf{y}|\mathbf{Z} = \mathbf{z}) = \prod_{i \in \mathcal{L}} \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( - \frac{(y_i - \mu_{Z_i})^2}{2\sigma^2} \right) $$
-
-# Bibliography
