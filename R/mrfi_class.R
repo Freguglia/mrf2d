@@ -104,7 +104,7 @@ mrfi <- function(max_norm = 1, norm_type = "1", positions = NULL){
     df <- df[apply(df, MARGIN = 1,
                    function(m) norm(matrix(m), type = norm_type)) <= max_norm,]
   } else {
-    df <- data.frame(x = c(0,0), y = c(0,0))
+    df <- data.frame(x = c(0L,0L), y = c(0L,0L))
   }
 
   if(!is.null(positions)){
