@@ -107,7 +107,7 @@ mrfi <- function(max_norm = 1, norm_type = "1", positions = NULL){
     df <- data.frame(x = c(0L,0L), y = c(0L,0L))
   }
 
-  if(!is.null(positions)){
+  if(length(positions) > 0){
     if(!is.list(positions)){
       stop("'positions' must be a list of relative positions.")
     } else if(any(!unlist(lapply(positions, is.numeric)))) {
