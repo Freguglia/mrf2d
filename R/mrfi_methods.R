@@ -122,6 +122,8 @@ setMethod("+", signature = c("mrfi", "numeric"),
           definition = function(e1, e2){
             if(length(e2) != 2){
               stop("Right hand side must be a length 2 vector representing a relative position.")
+            } else if (any(as.integer(e2) != e2)){
+              stop("Right hand side must be a vector of two integers.")
             } else if(any(sapply(as.list(e1), function(pos){
               all(pos == e2) | all(pos == (-e2))}
               ))){
