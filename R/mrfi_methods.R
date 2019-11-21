@@ -102,7 +102,7 @@ mrfi_diff <- function(mrfi1, mrfi2){
 #'
 #' @title Set operations for `mrfi` objects
 #'
-#' @Description Provides simple operations to include (in the sense of union)
+#' @description Provides simple operations to include (in the sense of union)
 #' new interacting positions to a `mrfi` object with the `'+'` operator and
 #' remove positions (set difference) with `-`. Individual positions can be
 #' included/excluded using length-2 vectors in the right hand side. Union and

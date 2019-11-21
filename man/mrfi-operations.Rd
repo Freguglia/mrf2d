@@ -19,7 +19,15 @@
 relative position to include (\verb{+}) or remove (\verb{-}).}
 }
 \description{
-Set operations for \code{mrfi} objects
+Provides simple operations to include (in the sense of union)
+new interacting positions to a \code{mrfi} object with the \code{'+'} operator and
+remove positions (set difference) with \verb{-}. Individual positions can be
+included/excluded using length-2 vectors in the right hand side. Union and
+set difference of complete structures can also be computed by adding or
+subtracting two \code{mrfi} objects.
+
+This operations deal with opposite directions filtering to avoid redundancy
+in the interaction structure.
 }
 \examples{
 mrfi(1) + c(2,0)
