@@ -55,20 +55,22 @@ setMethod("plot", signature(x = "mrfi", y = "missing"),
 #'
 #' @param x `mrfi` object.
 #'
+#' @return `as.list()`: converts the `mrfi` object to a list of interacting
+#' positions (length 2 vectors).
+#'
 #' @exportMethod as.list
 setMethod("as.list", signature(x = "mrfi"),
           definition = function(x){
             unname(split(x@Rmat, rep(1:nrow(x@Rmat), ncol(x@Rmat))))
           })
 
-#' @rdname mrfi-class
+#' @name mrfi-subsetting
+#'
+#' @title Subsetting `mrfi` objects
 #'
 #' @param i vector of indexes to extract interacting positions.
 #'
-#' @return `as.list()`: converts the `mrfi` object to a list of interacting
-#' positions (length 2 vectors).
-#'
-#' `[[`: converts to list and subsets it.
+#' @return `[[`: converts to list and subsets it.
 #'
 #' `[`: subsets the `mrfi` object and returns another `mrfi` object.
 #'
@@ -81,7 +83,7 @@ setMethod("[[", signature = c("mrfi", "numeric", "missing"),
             unname(split(m, rep(1:nrow(m), ncol(m))))
           })
 
-#' @rdname mrfi-class
+#' @rdname mrfi-subsetting
 setMethod("[", signature = c("mrfi", "numeric", "missing"),
           definition = function(x, i){
             m <- x@Rmat[i,,drop = FALSE]
@@ -92,11 +94,23 @@ mrfi_union <- function(mrfi1, mrfi2){
   return(mrfi(0, positions = union(as.list(mrfi1), as.list(mrfi2))))
 }
 
-#' @rdname mrfi-class
+#' @name mrfi-operations
+#'
+#' @title Set operations for `mrfi` objects
+#'
+#' @Description Provides simple operations to include (in the sense of union)
+#' new interacting positions to a `mrfi` object with the `'+'` operator and
+#' remove positions (set difference) with `-`. Individual positions can be
+#' included/excluded using length-2 vectors in the right hand side. Union and
+#' set difference of complete structures can also be computed by adding or
+#' subtracting two `mrfi` objects.
+#'
+#' This operations deal with opposite directions filtering to avoid redundancy
+#' in the interaction structure.
 #'
 #' @param e1 A `mrfi` object.
 #' @param e2 Either a second `mrfi` object or a length 2 `numeric` with the new
-#' relative position to include.
+#' relative position to include (`+`) or remove (`-`).
 #'
 #' @examples
 #' mrfi(1) + c(2,0)
@@ -113,7 +127,7 @@ setMethod("+", signature = c("mrfi", "numeric"),
             return(result)
           })
 
-#' @rdname mrfi-class
+#' @rdname mrfi-operations
 #'
 #' @examples
 #' mrfi(1) + mrfi(0, positions = list(c(2,0)))

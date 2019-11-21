@@ -4,43 +4,16 @@
 \name{mrfi-class}
 \alias{mrfi-class}
 \alias{as.list,mrfi-method}
-\alias{[[,mrfi,numeric,missing-method}
-\alias{[,mrfi,numeric,missing-method}
-\alias{+,mrfi,numeric-method}
-\alias{+,mrfi,mrfi-method}
 \title{mrfi: MRF interaction structure}
 \usage{
 \S4method{as.list}{mrfi}(x)
-
-\S4method{[[}{mrfi,numeric,missing}(x, i)
-
-\S4method{[}{mrfi,numeric,missing}(x, i)
-
-\S4method{+}{mrfi,numeric}(e1, e2)
-
-\S4method{+}{mrfi,mrfi}(e1, e2)
 }
 \arguments{
 \item{x}{\code{mrfi} object.}
-
-\item{i}{vector of indexes to extract interacting positions.}
-
-\item{e1}{A \code{mrfi} object.}
-
-\item{e2}{Either a second \code{mrfi} object or a length 2 \code{numeric} with the new
-relative position to include.}
 }
 \value{
 \code{as.list()}: converts the \code{mrfi} object to a list of interacting
 positions (length 2 vectors).
-
-\verb{[[}: converts to list and subsets it.
-
-\verb{[}: subsets the \code{mrfi} object and returns another \code{mrfi} object.
-
-\verb{+}: computes the union of the interaction structure in a \code{mrfi} object with
-a \code{numeric} representing an additional position to include or another \code{mrfi}
-object.
 }
 \description{
 The \code{mrfi} S4 class is a representation of the interaction
@@ -92,6 +65,4 @@ as.list(mrfi(1))
 mrfi(1)[[1]]
 mrfi(2)[[1:3]]
 
-mrfi(1) + c(2,0)
-mrfi(1) + mrfi(0, positions = list(c(2,0)))
 }
