@@ -158,3 +158,12 @@ setMethod("+", signature = c("mrfi", "mrfi"),
           definition = function(e1, e2){
             return(mrfi_union(e1,e2))
           })
+
+#' @rdname mrfi-operations
+#'
+#' @examples
+#' mrfi(2) - mrfi(1)
+setMethod("-", signature = c("mrfi", "mrfi"),
+          definition = function(e1, e2){
+            return(mrfi_diff(e1,e2))
+          })
