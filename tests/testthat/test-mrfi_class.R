@@ -7,6 +7,7 @@ test_that("mrfi class works", {
   expect_error(mrfi(max_norm = -1))
   expect_error(mrfi(positions = c(1,0)))
   expect_error(mrfi(positions = list(c("1","0"))))
+  expect_identical(mrfi(1), mrfi(1, positions = list()))
   expect_equal(mrfi(positions = list(c(3,3)))@Rmat, rbind(diag(2), c(3,3)))
 
   ## Subsetting and conversion
