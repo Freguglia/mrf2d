@@ -33,4 +33,6 @@ test_that("mrfi class works", {
   expect_identical(mrfi(1), mrfi(1) - c(0,0))
   expect_identical(mrfi(0, positions = list(c(0,1))), mrfi(1) - c(1,0))
   expect_identical(mrfi(1) - c(1,0), mrfi(1) - c(-1,0))
+  expect_identical(mrfi(1) - mrfi(1), mrfi(0))
+  expect_setequal(as.list(mrfi(2) - mrfi(1)), as.list(mrfi(0, positions = list(c(2,0), c(0,2), c(1,1), c(-1,1)))))
 })
