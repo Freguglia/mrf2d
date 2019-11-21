@@ -115,9 +115,9 @@ mrfi <- function(max_norm = 1, norm_type = "1", positions = NULL){
     } else if(any(sapply(positions, function(pos){
       any(as.integer(pos) != pos)
     }))) {
-      stop("'positions' should contain only integer values.")
+      stop("'positions' must be list containing length-2 vector(s) of integers.")
     } else {
-      df <- rbind(as.matrix(df), do.call(rbind, positions))
+      df <- rbind(as.matrix(df), do.call(rbind, lapply(positions, as.integer)))
     }
   }
 
