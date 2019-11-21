@@ -56,7 +56,7 @@ setMethod("plot", signature(x = "mrfi", y = "missing"),
 #' @param x `mrfi` object.
 #'
 #' @return `as.list()`: converts the `mrfi` object to a list of interacting
-#' positions (length 2 vectors).
+#' positions (list of length-2 vectors).
 #'
 #' @exportMethod as.list
 setMethod("as.list", signature(x = "mrfi"),
@@ -64,10 +64,11 @@ setMethod("as.list", signature(x = "mrfi"),
             unname(split(x@Rmat, rep(1:nrow(x@Rmat), ncol(x@Rmat))))
           })
 
-#' @name mrfi-subsetting
+#' @rdname mrfi-subsetting
 #'
 #' @title Subsetting `mrfi` objects
 #'
+#' @param x `mrfi` object.
 #' @param i vector of indexes to extract interacting positions.
 #'
 #' @return `[[`: converts to list and subsets it.
@@ -98,7 +99,7 @@ mrfi_diff <- function(mrfi1, mrfi2){
   return(mrfi(0, positions = setdiff(as.list(mrfi1), as.list(mrfi2))))
 }
 
-#' @name mrfi-operations
+#' @rdname mrfi-operations
 #'
 #' @title Set operations for `mrfi` objects
 #'

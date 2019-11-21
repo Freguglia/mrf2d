@@ -13,7 +13,7 @@
 }
 \value{
 \code{as.list()}: converts the \code{mrfi} object to a list of interacting
-positions (length 2 vectors).
+positions (list of length-2 vectors).
 }
 \description{
 The \code{mrfi} S4 class is a representation of the interaction
