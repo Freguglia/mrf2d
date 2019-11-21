@@ -94,6 +94,10 @@ mrfi_union <- function(mrfi1, mrfi2){
   return(mrfi(0, positions = union(as.list(mrfi1), as.list(mrfi2))))
 }
 
+mrfi_diff <- function(mrfi1, mrfi2){
+  return(mrfi(0, positions = setdiff(as.list(mrfi1), as.list(mrfi2))))
+}
+
 #' @name mrfi-operations
 #'
 #' @title Set operations for `mrfi` objects
@@ -125,6 +129,22 @@ setMethod("+", signature = c("mrfi", "numeric"),
             }
             result <- mrfi_union(e1, list(e2))
             return(result)
+          })
+
+#' @rdname mrfi-operations
+#'
+#' @examples
+#' mrfi(1) - c(1,0)
+setMethod("-", signature = c("mrfi", "numeric"),
+          definition = function(e1, e2){
+            if(length(e2) != 2){
+              stop("Right hand side must be a length 2 vector representing a relative position.")
+            } else if (any(as.integer(e2) != e2)){
+              stop("Right hand side must be a vector of two integers.")
+            } else {
+              e2 <- as.integer(e2)
+              return(mrfi_diff(e1, list(e2, -e2)))
+            }
           })
 
 #' @rdname mrfi-operations
