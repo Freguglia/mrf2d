@@ -4,6 +4,7 @@
 \alias{+,mrfi,numeric-method}
 \alias{-,mrfi,numeric-method}
 \alias{+,mrfi,mrfi-method}
+\alias{-,mrfi,mrfi-method}
 \title{Set operations for \code{mrfi} objects}
 \usage{
 \S4method{+}{mrfi,numeric}(e1, e2)
@@ -11,6 +12,8 @@
 \S4method{-}{mrfi,numeric}(e1, e2)
 
 \S4method{+}{mrfi,mrfi}(e1, e2)
+
+\S4method{-}{mrfi,mrfi}(e1, e2)
 }
 \arguments{
 \item{e1}{A \code{mrfi} object.}
@@ -33,4 +36,5 @@ in the interaction structure.
 mrfi(1) + c(2,0)
 mrfi(1) - c(1,0)
 mrfi(1) + mrfi(0, positions = list(c(2,0)))
+mrfi(2) - mrfi(1)
 }
