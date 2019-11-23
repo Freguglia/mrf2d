@@ -1,7 +1,7 @@
 Package: mrf2d
 Type: Package
 Title: Markov Random Field Models for Image Analysis
-Version: 0.1.0
+Version: 0.1.9000
 Author: Victor Freguglia
 Maintainer: Victor Freguglia <victorfreguglia@gmail.com>
 Description: Estimation and sampling of Markov Random Fields
