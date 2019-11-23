@@ -96,7 +96,9 @@ mrfi_union <- function(mrfi1, mrfi2){
 }
 
 mrfi_diff <- function(mrfi1, mrfi2){
-  return(mrfi(0, positions = setdiff(as.list(mrfi1), as.list(mrfi2))))
+  return(mrfi(0, positions =
+                setdiff(as.list(mrfi1),
+                        c(as.list(mrfi2), lapply(as.list(mrfi2), '*', -1L)))))
 }
 
 #' @rdname mrfi-operations
