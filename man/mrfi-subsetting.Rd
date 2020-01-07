@@ -15,11 +15,11 @@
 \item{i}{vector of indexes to extract interacting positions.}
 }
 \value{
-\verb{[[}: converts to list and subsets it.
+\code{[[}: converts to list and subsets it.
 
-\verb{[}: subsets the \code{mrfi} object and returns another \code{mrfi} object.
+\code{[}: subsets the \code{mrfi} object and returns another \code{mrfi} object.
 
-\verb{+}: computes the union of the interaction structure in a \code{mrfi} object with
+\code{+}: computes the union of the interaction structure in a \code{mrfi} object with
 a \code{numeric} representing an additional position to include or another \code{mrfi}
 object.
 }

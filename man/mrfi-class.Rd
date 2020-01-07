@@ -21,7 +21,7 @@ structure for a spatially-stationary Markov Random Field.
 
 The function \code{\link[=mrfi]{mrfi()}} provides an interface for creation
 \code{mrfi} objects. A \code{plot} method is also available for visualization, as
-well as conversion methods like \code{as.list} and operators like \verb{+}.
+well as conversion methods like \code{as.list} and operators like \code{+}.
 }
 \details{
 The interaction structure is defined by the list of relative

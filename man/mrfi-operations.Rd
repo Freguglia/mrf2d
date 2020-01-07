@@ -19,12 +19,12 @@
 \item{e1}{A \code{mrfi} object.}
 
 \item{e2}{Either a second \code{mrfi} object or a length 2 \code{numeric} with the new
-relative position to include (\verb{+}) or remove (\verb{-}).}
+relative position to include (\code{+}) or remove (\code{-}).}
 }
 \description{
 Provides simple operations to include (in the sense of union)
 new interacting positions to a \code{mrfi} object with the \code{'+'} operator and
-remove positions (set difference) with \verb{-}. Individual positions can be
+remove positions (set difference) with \code{-}. Individual positions can be
 included/excluded using length-2 vectors in the right hand side. Union and
 set difference of complete structures can also be computed by adding or
 subtracting two \code{mrfi} objects.
