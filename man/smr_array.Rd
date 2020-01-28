@@ -27,6 +27,11 @@ Creates a vector with only the free parameters from an array.
 The order the parameters appear in the vector matches
 the order in \code{\link[=smr_stat]{smr_stat()}}.
 }
+\examples{
+smr_array(theta_potts, "onepar")
+smr_array(theta_potts, "oneeach")
+
+}
 \author{
 Victor Freguglia
 }

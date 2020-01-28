@@ -29,6 +29,11 @@ interaction structure and a restriction family.
 The order the summarized counts appear in the summary vector matches
 the order in \code{\link[=smr_array]{smr_array()}}.
 }
+\examples{
+smr_stat(Z_potts, mrfi(1), "onepar")
+smr_stat(Z_potts, mrfi(1), "oneeach")
+
+}
 \author{
 Victor Freguglia
 }

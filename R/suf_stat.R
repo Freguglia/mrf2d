@@ -50,6 +50,11 @@ suf_stat <- function(arr, family){
 #' @inheritParams fit_pl
 #'
 #' @return A numeric vector with the summarized counts.
+#'
+#' @examples
+#' smr_stat(Z_potts, mrfi(1), "onepar")
+#' smr_stat(Z_potts, mrfi(1), "oneeach")
+#'
 #' @export
 smr_stat <- function(Z, mrfi, family){
   C <- max(Z)
@@ -70,6 +75,11 @@ smr_stat <- function(Z, mrfi, family){
 #' the order in \code{\link[=smr_stat]{smr_stat()}}.
 #'
 #' @return A numeric vector with the free parameters of `theta`.
+#'
+#' @examples
+#' smr_array(theta_potts, "onepar")
+#' smr_array(theta_potts, "oneeach")
+#'
 #' @export
 smr_array <- function(theta, family){
   array_to_vec(theta, family)
