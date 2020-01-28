@@ -36,3 +36,41 @@ suf_stat <- function(arr, family){
     stop("'", family, "' is not an implemented family.")
   }
 }
+
+#' @name smr_stat
+#' @author Victor Freguglia
+#' @title Summary Statistics
+#'
+#' @description Computes the summary count statistics of a field given an
+#' interaction structure and a restriction family.
+#'
+#' @details The order the summarized counts appear in the summary vector matches
+#' the order in \code{\link[=smr_array]{smr_array()}}.
+#'
+#' @inheritParams fit_pl
+#'
+#' @return A numeric vector with the summarized counts.
+#' @export
+smr_stat <- function(Z, mrfi, family){
+  C <- max(Z)
+  smr_array <- table_relative_3d(Z, mrfi@Rmat, C)
+  return(suf_stat(smr_array, family))
+}
+
+#' @name smr_array
+#' @author Victor Freguglia
+#' @title Summarized representation of theta arrays
+#'
+#' @description Creates a vector with only the free parameters from an array.
+#'
+#' @inheritParams fit_pl
+#' @inheritParams rmrf2d
+#'
+#' @details The order the parameters appear in the vector matches
+#' the order in \code{\link[=smr_stat]{smr_stat()}}.
+#'
+#' @return A numeric vector with the free parameters of `theta`.
+#' @export
+smr_array <- function(theta, family){
+  array_to_vec(theta, family)
+}
