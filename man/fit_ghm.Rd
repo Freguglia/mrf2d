@@ -91,7 +91,7 @@ in consecutive iterations is less than \code{max_dist}.
 \examples{
 # Sample a Gaussian mixture with components given by Z_potts
 # mean values are 0, 1 and 2 and a linear effect on the x-axis.
-\dontrun{
+\donttest{
 set.seed(2)
 Y <- Z_potts + rnorm(length(Z_potts), sd = 0.4) +
       (row(Z_potts) - mean(row(Z_potts)))*0.01

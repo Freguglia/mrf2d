@@ -63,7 +63,7 @@
 #' \insertAllCited{}
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' set.seed(2)
 #' fit1 <- fit_sa(Z_potts, mrfi(1), family = "onepar", gamma_seq = seq(1, 0, length.out = 50))
 #' # Estimated parameters

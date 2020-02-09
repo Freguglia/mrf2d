@@ -93,7 +93,7 @@ Examples where Stochastic Approximation is used with MRFs are
 \insertCite{gimel_sa}{mrf2d}, \insertCite{CR}{mrf2d}.
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(2)
 fit1 <- fit_sa(Z_potts, mrfi(1), family = "onepar", gamma_seq = seq(1, 0, length.out = 50))
 # Estimated parameters

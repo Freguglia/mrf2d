@@ -53,7 +53,7 @@
 #' Z <- rmrf2d(c(150,150), mrfi(1), theta_potts)
 #'
 #' #Sample using itial configuration
-#' \dontrun{
+#' \donttest{
 #' Z2 <- rmrf2d(Z, mrfi(1), theta_potts)
 #'
 #' # View results

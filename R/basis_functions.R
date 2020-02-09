@@ -17,7 +17,7 @@
 #' @details `fourier_2d()` is for 2-dimensional Fourier transform.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' fourier_2d(c(10,10), dim(Z_potts))
 #' polynomial_2d(c(3,3), dim(Z_potts))
 #' }
