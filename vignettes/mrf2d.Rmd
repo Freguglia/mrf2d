@@ -45,7 +45,7 @@ The Markov random field model considered in `mrf2d` has the following properties
   * $\mathcal{N}$ is defined by a set of relative positions $\mathcal{R}$: two pixels $i$ and $j$ are connected if and only if their relative position $(i_1, i_2) - (j_1, j_2)$ is in $\mathcal{R}$. As an example, if $\mathcal{R} = \{ (1,0), (0,1) \}$, pixels are connected to their nearest neighbors horizontally and vertically, which can be represented by the structure below. Note the opposite directions have edges but they are not included in $\mathcal{R}$ to avoid redundancy.
   
 ```{r ex_mrfi, echo = FALSE, out.width="30%"}
-plot(mrfi(1), no_axis = TRUE) +  geom_text(aes(label = glue("({rx},{ry})")), size = 6) + xlim(-2,2) + ylim(-2,2)
+plot(mrfi(1), include_axis = FALSE) +  geom_text(aes(label = glue("({rx},{ry})")), size = 6) + xlim(-2,2) + ylim(-2,2)
 ```
 
   * $Z_i \in \{ 0,1, \dots, C \}$ for some small integer $C$ and all $i \in \mathcal{L}$.
