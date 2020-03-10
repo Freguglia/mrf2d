@@ -1,7 +1,8 @@
 test_that("mrfi plotting works", {
   expect_is(mrfi(), "mrfi")
   expect_is(plot(mrfi()), "ggplot")
-  expect_is(plot(mrfi(), no_axis = TRUE), "ggplot")
+  expect_is(plot(mrfi(), include_axis = TRUE), "ggplot")
+  expect_is(plot(mrfi(), include_opposite = FALSE), "ggplot")
 })
 
 test_that("mrfi creation works", {
