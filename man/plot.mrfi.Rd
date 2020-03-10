@@ -5,10 +5,13 @@
 \alias{mrfi-plot}
 \title{Plotting of \code{mrfi} objects.}
 \usage{
-\S4method{plot}{mrfi,missing}(x, no_axis = FALSE)
+\S4method{plot}{mrfi,missing}(x, include_axis = FALSE, include_opposite = TRUE)
 }
 \arguments{
 \item{x}{A \code{\link[=mrfi-class]{mrfi}} object.}
+
+\item{include_opposite}{´logical` whether opposite directions should be
+included in the visualization of the dependence structure.}
 
 \item{no_axis}{\code{logical} value indicating whether the axis and grid lines
 are used. If \code{TRUE} it simply adds \code{theme_void()} to the \code{ggplot} object.}

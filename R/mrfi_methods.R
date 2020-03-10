@@ -13,6 +13,8 @@
 #' @param x A \code{\link[=mrfi-class]{mrfi}} object.
 #' @param no_axis `logical` value indicating whether the axis and grid lines
 #'  are used. If `TRUE` it simply adds `theme_void()` to the `ggplot` object.
+#' @param include_opposite ´logical` whether opposite directions should be 
+#'  included in the visualization of the dependence structure.
 #'
 #' @return A `ggplot` object using `geom_tile()` to represent interacting
 #' relative positions.
@@ -31,14 +33,15 @@
 #'
 #' @exportMethod plot
 setMethod("plot", signature(x = "mrfi", y = "missing"),
-          definition = function(x, no_axis = FALSE){
+          definition = function(x, include_axis = FALSE, include_opposite = TRUE){
             df <- as.data.frame(x@Rmat)
             names(df) <- c("rx", "ry")
-            df2 <- df
-            df2$rx <- -df$rx
-            df2$ry <- -df$ry
-            df <- rbind(df,df2)
-
+            if(include_opposite){
+              df2 <- df
+              df2$rx <- -df$rx
+              df2$ry <- -df$ry
+              df <- rbind(df,df2)
+            }
             df_center <- data.frame(rx = 0, ry = 0)
 
             max_norm <- max(5, max(df$rx), max(df$ry)) + 0.5
@@ -47,7 +50,7 @@ setMethod("plot", signature(x = "mrfi", y = "missing"),
               geom_tile(data = df_center, fill = "black") +
               theme_minimal() +
               lims(x = c(-max_norm, max_norm), y = c(-max_norm, max_norm))
-            if(no_axis) {p <- p + theme_void()}
+            if(include_axis) {p <- p + theme_void()}
             p
           })
 
