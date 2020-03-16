@@ -12,7 +12,8 @@ fit_sa(
   init = 0,
   cycles = 5,
   refresh_each = length(gamma_seq) + 1,
-  refresh_cycles = 60
+  refresh_cycles = 60,
+  verbose = FALSE
 )
 }
 \arguments{
@@ -45,6 +46,9 @@ refresh happens).}
 
 \item{refresh_cycles}{An iteger indicating how many Gibbs Sampler cycles are
 performed when a refresh happens. Larger is usually better, but slower.}
+
+\item{verbose}{\code{logical} indicating whether the iteration number is printed
+during execution.}
 }
 \value{
 A \code{list} object with the following elements:
