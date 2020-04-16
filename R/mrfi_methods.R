@@ -48,10 +48,9 @@ setMethod("plot", signature(x = "mrfi", y = "missing"),
             p <- ggplot(df, aes_string(x = "rx", y = "ry")) +
               geom_tile(fill = "gray", color = "black") +
               geom_tile(data = df_center, fill = "black") +
-              theme_minimal() +
-              lims(x = c(-max_norm, max_norm), y = c(-max_norm, max_norm))
+              theme_minimal() 
             if(!include_axis) {p <- p + theme_void()}
-            p
+            p + lims(x = c(-max_norm, max_norm), y = c(-max_norm, max_norm))
           })
 
 #' @rdname mrfi-class
