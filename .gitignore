@@ -13,3 +13,6 @@ Meta
 .RData
 .Rproj.user
 .Rhistory
+*.tar.gz
+..Rcheck/
+mrf2d.Rcheck/

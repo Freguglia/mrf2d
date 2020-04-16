@@ -11,8 +11,8 @@
 #'  package and add more `ggplot` layers to freely customize the `plot`.
 #'
 #' @param x A \code{\link[=mrfi-class]{mrfi}} object.
-#' @param no_axis `logical` value indicating whether the axis and grid lines
-#'  are used. If `TRUE` it simply adds `theme_void()` to the `ggplot` object.
+#' @param include_axis `logical` indicating whether the axis and grid lines
+#'  are included. If `FALSE` `theme_void()` is added to the `ggplot` object.
 #' @param include_opposite ´logical` whether opposite directions should be 
 #'  included in the visualization of the dependence structure.
 #'
@@ -33,22 +33,21 @@
 #'
 #' @exportMethod plot
 setMethod("plot", signature(x = "mrfi", y = "missing"),
-          definition = function(x, include_axis = FALSE, include_opposite = TRUE){
+          definition = function(x, include_axis = FALSE, 
+                                include_opposite = TRUE){
             df <- as.data.frame(x@Rmat)
             names(df) <- c("rx", "ry")
-            if(include_opposite){
-              df2 <- df
-              df2$rx <- -df$rx
-              df2$ry <- -df$ry
-              df <- rbind(df,df2)
-            }
             df_center <- data.frame(rx = 0, ry = 0)
 
             max_norm <- max(5, max(df$rx), max(df$ry)) + 0.5
             p <- ggplot(df, aes_string(x = "rx", y = "ry")) +
               geom_tile(fill = "gray", color = "black") +
               geom_tile(data = df_center, fill = "black") +
-              theme_minimal() 
+              theme_minimal()
+            if(include_opposite){p <- p +
+              geom_tile(data = data.frame(rx = -df$rx, ry = -df$ry), 
+                        linetype = "dotted", color = "white",
+                        fill = "gray95")}
             if(!include_axis) {p <- p + theme_void()}
             p + lims(x = c(-max_norm, max_norm), y = c(-max_norm, max_norm))
           })
