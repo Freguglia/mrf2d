@@ -10,11 +10,11 @@
 \arguments{
 \item{x}{A \code{\link[=mrfi-class]{mrfi}} object.}
 
+\item{include_axis}{\code{logical} indicating whether the axis and grid lines
+are included. If \code{FALSE} \code{theme_void()} is added to the \code{ggplot} object.}
+
 \item{include_opposite}{´logical` whether opposite directions should be
 included in the visualization of the dependence structure.}
-
-\item{no_axis}{\code{logical} value indicating whether the axis and grid lines
-are used. If \code{TRUE} it simply adds \code{theme_void()} to the \code{ggplot} object.}
 }
 \value{
 A \code{ggplot} object using \code{geom_tile()} to represent interacting
