@@ -58,6 +58,7 @@ setMethod("show", "mrfi",
             if(nrow(object@Rmat) > 5) {
               cat("  ... and", (nrow(object@Rmat)-5), "more.")
             }
+            cat("\n")
           })
 
 
