@@ -21,3 +21,21 @@ NULL
 #' @name theta_potts
 #' @rdname Z_potts
 NULL
+
+#' @name data_examples
+#' @title Example Data
+#' @author Victor Freguglia
+#'
+#' @description `mrf2d` contains a set of simulated fields to illustrate its
+#' usage.
+#' \describe{
+#'  \item{field1}{A binary field sampled from a sparse interaction structure:
+#'  `mrfi(1) + c(4,4)`}
+#'  \item{hfield1}{A continuous valued field, obtained by Gaussian mixture driven
+#'  by `field1`.}
+#' }
+#' @docType data
+"field1"
+
+#' @rdname data_examples
+"hfield1"
