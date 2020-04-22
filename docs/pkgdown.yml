@@ -1,8 +1,9 @@
-pandoc: 2.7.3
-pkgdown: 1.4.1
+pandoc: 2.9.2.1
+pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   mrf2d: mrf2d.html
+last_built: 2020-04-22T23:12Z
 urls:
   reference: https://freguglia.github.io/mrf2d//reference
   article: https://freguglia.github.io/mrf2d//articles

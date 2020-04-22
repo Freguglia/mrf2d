@@ -15,25 +15,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
-
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -41,16 +43,17 @@
 
 
 
-
 <meta property="og:title" content="EM estimation for Gaussian Hidden Markov field — fit_ghm" />
+
 <meta property="og:description" content="fit_ghm fits a Gaussian Mixture model with hidden components
 driven by a Markov random field with known parameters. The inclusion of a
 linear combination of basis functions as a fixed effect is also possible.
 The algorithm is an implementation of
 (Zhang et al. 2001)
 ." />
+
 <meta property="og:image" content="https://freguglia.github.io/mrf2d/logo.png" />
-<meta name="twitter:card" content="summary" />
+
 
 
 
@@ -68,7 +71,7 @@ The algorithm is an implementation of
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -82,7 +85,7 @@ The algorithm is an implementation of
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9999</span>
       </span>
     </div>
 
@@ -104,9 +107,10 @@ The algorithm is an implementation of
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/Freguglia/mrf2d">
+  <a href="https://github.com/Freguglia/mrf2d/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -130,18 +134,31 @@ The algorithm is an implementation of
     </div>
 
     <div class="ref-description">
+    
     <p><code>fit_ghm</code> fits a Gaussian Mixture model with hidden components
 driven by a Markov random field with known parameters. The inclusion of a
 linear combination of basis functions as a fixed effect is also possible.</p>
 <p>The algorithm is an implementation of
 (Zhang et al. 2001)
 .</p>
+    
     </div>
 
-    <pre class="usage"><span class='fu'>fit_ghm</span>(<span class='no'>Y</span>, <span class='no'>mrfi</span>, <span class='no'>theta</span>, <span class='kw'>fixed_fn</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>equal_vars</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>init_mus</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>init_sigmas</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>maxiter</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>max_dist</span> <span class='kw'>=</span> <span class='fl'>10</span>^-<span class='fl'>3</span>, <span class='kw'>icm_cycles</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>qr</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-
+    <pre class="usage"><span class='fu'>fit_ghm</span>(
+  <span class='no'>Y</span>,
+  <span class='no'>mrfi</span>,
+  <span class='no'>theta</span>,
+  <span class='kw'>fixed_fn</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  <span class='kw'>equal_vars</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>init_mus</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>init_sigmas</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>maxiter</span> <span class='kw'>=</span> <span class='fl'>100</span>,
+  <span class='kw'>max_dist</span> <span class='kw'>=</span> <span class='fl'>10</span>^-<span class='fl'>3</span>,
+  <span class='kw'>icm_cycles</span> <span class='kw'>=</span> <span class='fl'>6</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>qr</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -205,7 +222,7 @@ algorithm executed in each interaction. Defaults to 6.</p></td>
       <td><p>The QR decomposition of the design matrix. Used internally.</p></td>
     </tr>
     </table>
-
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>list</code> containing:</p><ul>
@@ -219,6 +236,7 @@ the predicted component in each pixel.</p></li>
 <li><p><code>iterations</code>: Number of EM iterations done.</p></li>
 </ul>
 
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>If either <code>init_mus</code> or <code>init_sigmas</code> is <code>NULL</code> an EM algorithm
@@ -230,40 +248,36 @@ estimators.</p>
 <p><code>max_dist</code> defines a stopping condition. The algorithm will stop if the
 maximum absolute difference between (\(\mu\) and \(\sigma\)) parameters
 in consecutive iterations is less than <code>max_dist</code>.</p>
+    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Zhang Y, Brady M, Smith S (2001).
 &#8220;Segmentation of brain MR images through a hidden Markov random field model and the expectation-maximization algorithm.&#8221;
 <em>IEEE transactions on medical imaging</em>, <b>20</b>(1), 45--57.</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Sample a Gaussian mixture with components given by Z_potts</span>
 <span class='co'># mean values are 0, 1 and 2 and a linear effect on the x-axis.</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'># \donttest{</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>2</span>)
 <span class='no'>Y</span> <span class='kw'>&lt;-</span> <span class='no'>Z_potts</span> + <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>Z_potts</span>), <span class='kw'>sd</span> <span class='kw'>=</span> <span class='fl'>0.4</span>) +
       (<span class='fu'><a href='https://rdrr.io/r/base/row.html'>row</a></span>(<span class='no'>Z_potts</span>) - <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/row.html'>row</a></span>(<span class='no'>Z_potts</span>)))*<span class='fl'>0.01</span>
 <span class='co'># Check what the data looks like</span>
-<span class='fu'><a href='dplot.html'>cplot</a></span>(<span class='no'>Y</span>)
-
+<span class='fu'><a href='dplot.html'>cplot</a></span>(<span class='no'>Y</span>)</div><div class='img'><img src='fit_ghm-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>fixed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='basis_functions.html'>polynomial_2d</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>Y</span>))
-<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'>fit_ghm</span>(<span class='no'>Y</span>, <span class='kw'>mrfi</span> <span class='kw'>=</span> <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>theta</span> <span class='kw'>=</span> <span class='no'>theta_potts</span>, <span class='kw'>fixed_fn</span> <span class='kw'>=</span> <span class='no'>fixed</span>)
-<span class='no'>fit</span>$<span class='no'>par</span>
-<span class='fu'><a href='dplot.html'>cplot</a></span>(<span class='no'>fit</span>$<span class='no'>fixed</span>)
-}</div></pre>
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#references">References</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'>fit_ghm</span>(<span class='no'>Y</span>, <span class='kw'>mrfi</span> <span class='kw'>=</span> <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>theta</span> <span class='kw'>=</span> <span class='no'>theta_potts</span>, <span class='kw'>fixed_fn</span> <span class='kw'>=</span> <span class='no'>fixed</span>)</div><div class='output co'>#&gt;  Fitting independent mixture to obtain initial parameters. 
+#&gt;  EM iteration: 1 EM iteration: 2 EM iteration: 3 EM iteration: 4 EM iteration: 5 Finished with  5 iterations. </div><div class='input'><span class='no'>fit</span>$<span class='no'>par</span></div><div class='output co'>#&gt;             mu     sigma
+#&gt; 0 -0.001489202 0.4009878
+#&gt; 1  0.995210994 0.4009878
+#&gt; 2  1.998527500 0.4009878</div><div class='input'><span class='fu'><a href='dplot.html'>cplot</a></span>(<span class='no'>fit</span>$<span class='no'>fixed</span>)</div><div class='img'><img src='fit_ghm-2.png' alt='' width='700' height='433' /></div><div class='input'># }
 
-    <h2>Author</h2>
-    <p>Victor Freguglia</p>
+</div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -274,7 +288,7 @@ in consecutive iterations is less than <code>max_dist</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

@@ -10,6 +10,9 @@
     <loc>https://freguglia.github.io/mrf2d//reference/basis_functions.html</loc>
   </url>
   <url>
+    <loc>https://freguglia.github.io/mrf2d//reference/data_examples.html</loc>
+  </url>
+  <url>
     <loc>https://freguglia.github.io/mrf2d//reference/dplot.html</loc>
   </url>
   <url>
@@ -28,6 +31,12 @@
     <loc>https://freguglia.github.io/mrf2d//reference/mrfi-class.html</loc>
   </url>
   <url>
+    <loc>https://freguglia.github.io/mrf2d//reference/mrfi-operations.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d//reference/mrfi-subsetting.html</loc>
+  </url>
+  <url>
     <loc>https://freguglia.github.io/mrf2d//reference/mrfi.html</loc>
   </url>
   <url>
@@ -38,6 +47,12 @@
   </url>
   <url>
     <loc>https://freguglia.github.io/mrf2d//reference/rmrf2d.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d//reference/smr_array.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d//reference/smr_stat.html</loc>
   </url>
   <url>
     <loc>https://freguglia.github.io/mrf2d//articles/mrf2d.html</loc>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • mrf2d</title>
+<title>Set operations for <code>mrfi</code> objects — +,mrfi,numeric-method • mrf2d</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,7 +43,16 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Set operations for <code>mrfi</code> objects — +,mrfi,numeric-method" />
+
+<meta property="og:description" content="Provides simple operations to include (in the sense of union)
+new interacting positions to a mrfi object with the '+' operator and
+remove positions (set difference) with -. Individual positions can be
+included/excluded using length-2 vectors in the right hand side. Union and
+set difference of complete structures can also be computed by adding or
+subtracting two mrfi objects.
+This operations deal with opposite directions filtering to avoid redundancy
+in the interaction structure." />
 
 <meta property="og:image" content="https://freguglia.github.io/mrf2d/logo.png" />
 
@@ -65,7 +74,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -119,138 +128,71 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Set operations for <code>mrfi</code> objects</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Freguglia/mrf2d/blob/master/R/mrfi_methods.R'><code>R/mrfi_methods.R</code></a></small>
+    <div class="hidden name"><code>mrfi-operations.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Provides simple operations to include (in the sense of union)
+new interacting positions to a <code>mrfi</code> object with the <code><a href='https://rdrr.io/r/base/Arithmetic.html'>'+'</a></code> operator and
+remove positions (set difference) with <code>-</code>. Individual positions can be
+included/excluded using length-2 vectors in the right hand side. Union and
+set difference of complete structures can also be computed by adding or
+subtracting two <code>mrfi</code> objects.</p>
+<p>This operations deal with opposite directions filtering to avoid redundancy
+in the interaction structure.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"># S4 method for mrfi,numeric
++(e1, e2)
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="Z_potts.html">Z_potts</a></code> </p>
-        </td>
-        <td><p>Example objects from <code>mrf2d</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="basis_functions.html">fourier_2d()</a></code> <code><a href="basis_functions.html">polynomial_2d()</a></code> </p>
-        </td>
-        <td><p>Creation of basis functions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="data_examples.html">field1</a></code> <code><a href="data_examples.html">hfield1</a></code> </p>
-        </td>
-        <td><p>Example Data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dplot.html">dplot()</a></code> <code><a href="dplot.html">cplot()</a></code> </p>
-        </td>
-        <td><p>Plotting functions for lattice data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fit_ghm.html">fit_ghm()</a></code> </p>
-        </td>
-        <td><p>EM estimation for Gaussian Hidden Markov field</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fit_pl.html">fit_pl()</a></code> </p>
-        </td>
-        <td><p>Maximum Pseudo-likelihood fitting of MRFs on 2d lattices.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fit_sa.html">fit_sa()</a></code> </p>
-        </td>
-        <td><p>Stochastic Approximation algorithm for MRFs on 2d lattices</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mrf2d-family.html">mrf2d-family</a></code> </p>
-        </td>
-        <td><p>Parameter restriction families</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mrfi-class.html">as.list(<i>&lt;mrfi&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>mrfi: MRF interaction structure</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mrfi-operations.html">`+`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="mrfi-operations.html">`-`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="mrfi-operations.html">`+`(<i>&lt;mrfi&gt;</i>,<i>&lt;mrfi&gt;</i>)</a></code> <code><a href="mrfi-operations.html">`-`(<i>&lt;mrfi&gt;</i>,<i>&lt;mrfi&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Set operations for <code>mrfi</code> objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mrfi-subsetting.html">`[[`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="mrfi-subsetting.html">`[`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Subsetting <code>mrfi</code> objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mrfi.html">mrfi()</a></code> </p>
-        </td>
-        <td><p>Creation of <code>mrfi</code> objects.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pl_mrf2d.html">pl_mrf2d()</a></code> </p>
-        </td>
-        <td><p>Pseudo-likelihood function for MRFs on 2d lattices</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot.mrfi.html">plot(<i>&lt;mrfi&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plotting of <code>mrfi</code> objects.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rmrf2d.html">rmrf2d()</a></code> </p>
-        </td>
-        <td><p>Sampling of Markov Random Fields on 2d lattices</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="smr_array.html">smr_array()</a></code> </p>
-        </td>
-        <td><p>Summarized representation of theta arrays</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="smr_stat.html">smr_stat()</a></code> </p>
-        </td>
-        <td><p>Summary Statistics</p></td>
-      </tr>
-    </tbody>
+# S4 method for mrfi,numeric
+-(e1, e2)
+
+# S4 method for mrfi,mrfi
++(e1, e2)
+
+# S4 method for mrfi,mrfi
+-(e1, e2)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>e1</th>
+      <td><p>A <code>mrfi</code> object.</p></td>
+    </tr>
+    <tr>
+      <th>e2</th>
+      <td><p>Either a second <code>mrfi</code> object or a length 2 <code>numeric</code> with the new
+relative position to include (<code>+</code>) or remove (<code>-</code>).</p></td>
+    </tr>
     </table>
-  </div>
+    
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>) + <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>0</span>)</div><div class='output co'>#&gt; 3 interacting positions.
+#&gt;   rx     ry
+#&gt;    1      0
+#&gt;    0      1
+#&gt;    2      0</div><div class='input'><span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>) - <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0</span>)</div><div class='output co'>#&gt; 1 interacting positions.
+#&gt;   rx     ry
+#&gt;    0      1</div><div class='input'><span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>) + <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>0</span>, <span class='kw'>positions</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>0</span>)))</div><div class='output co'>#&gt; 3 interacting positions.
+#&gt;   rx     ry
+#&gt;    1      0
+#&gt;    0      1
+#&gt;    2      0</div><div class='input'><span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>2</span>) - <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; 4 interacting positions.
+#&gt;   rx     ry
+#&gt;    2      0
+#&gt;    -1      1
+#&gt;    1      1
+#&gt;    0      2</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Maximum Pseudo-likelihood fitting of MRFs on 2d lattices. — fit_pl • mrf2d</title>
+<title>Summary Statistics — smr_stat • mrf2d</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -43,12 +43,10 @@
 
 
 
-<meta property="og:title" content="Maximum Pseudo-likelihood fitting of MRFs on 2d lattices. — fit_pl" />
+<meta property="og:title" content="Summary Statistics — smr_stat" />
 
-<meta property="og:description" content="Parameter estimation for Markov random fields via
-Pseudo-Likelihood function optimization. See
-pl_mrf2d for information on the
-Pseudo-Likelihood function." />
+<meta property="og:description" content="Computes the summary count statistics of a field given an
+interaction structure and a restriction family." />
 
 <meta property="og:image" content="https://freguglia.github.io/mrf2d/logo.png" />
 
@@ -126,28 +124,19 @@ Pseudo-Likelihood function." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Maximum Pseudo-likelihood fitting of MRFs on 2d lattices.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Freguglia/mrf2d/blob/master/R/pseudo_likelihood.R'><code>R/pseudo_likelihood.R</code></a></small>
-    <div class="hidden name"><code>fit_pl.Rd</code></div>
+    <h1>Summary Statistics</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Freguglia/mrf2d/blob/master/R/suf_stat.R'><code>R/suf_stat.R</code></a></small>
+    <div class="hidden name"><code>smr_stat.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Parameter estimation for Markov random fields via
-Pseudo-Likelihood function optimization. See
-<code><a href='pl_mrf2d.html'>pl_mrf2d</a></code> for information on the
-Pseudo-Likelihood function.</p>
+    <p>Computes the summary count statistics of a field given an
+interaction structure and a restriction family.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fit_pl</span>(
-  <span class='no'>Z</span>,
-  <span class='no'>mrfi</span>,
-  <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"onepar"</span>,
-  <span class='kw'>init</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>optim_args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"BFGS"</span>),
-  <span class='kw'>return_optim</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>smr_stat</span>(<span class='no'>Z</span>, <span class='no'>mrfi</span>, <span class='no'>family</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,119 +158,20 @@ are:
 <code>'onepar'</code>, <code>'oneeach'</code>, <code>'absdif'</code>, <code>'dif'</code> or <code>'free'</code>.
 See <code><a href='mrf2d-family.html'>mrf2d-familiy</a></code>.</p></td>
     </tr>
-    <tr>
-      <th>init</th>
-      <td><p>The initial value to be used in the optimization. It can be:</p><ul>
-<li><p>A valid <code>array</code> of parameter values according to <code>family</code>.</p></li>
-<li><p><code>0</code>. If set to <code>0</code> an array with `0`` in all entries is created.</p></li>
-</ul></td>
-    </tr>
-    <tr>
-      <th>optim_args</th>
-      <td><p>Additional parameters passed to <code><a href='https://rdrr.io/r/stats/optim.html'>optim()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>return_optim</th>
-      <td><p><code>logical</code> indicating whether information from the
-<code><a href='https://rdrr.io/r/stats/optim.html'>optim()</a></code> call are returned.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>list</code> object with elements:</p><ul>
-<li><p><code>theta</code>: The estimated array of potential values.</p></li>
-<li><p><code>value</code>: The optimal pseudo-likelihood value.</p></li>
-<li><p><code>opt.xxx</code>(if <code>return_optim</code> is <code>TRUE</code>): Information returned by the
-<code><a href='https://rdrr.io/r/stats/optim.html'>optim()</a></code> function used for the optimization.</p></li>
-</ul>
+    <p>A numeric vector with the summarized counts.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>The order the summarized counts appear in the summary vector matches
+the order in <code><a href='smr_array.html'>smr_array()</a></code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>fit_pl</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"onepar"</span>)</div><div class='output co'>#&gt; $theta
-#&gt; , , 1
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.9906743 -0.9906743
-#&gt; 1 -0.9906743  0.0000000 -0.9906743
-#&gt; 2 -0.9906743 -0.9906743  0.0000000
-#&gt; 
-#&gt; , , 2
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.9906743 -0.9906743
-#&gt; 1 -0.9906743  0.0000000 -0.9906743
-#&gt; 2 -0.9906743 -0.9906743  0.0000000
-#&gt; 
-#&gt; 
-#&gt; $value
-#&gt; [1] -10707.56
-#&gt; </div><div class='input'><span class='fu'>fit_pl</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"oneeach"</span>)</div><div class='output co'>#&gt; $theta
-#&gt; , , 1
-#&gt; 
-#&gt;           0         1         2
-#&gt; 0  0.000000 -0.963595 -0.963595
-#&gt; 1 -0.963595  0.000000 -0.963595
-#&gt; 2 -0.963595 -0.963595  0.000000
-#&gt; 
-#&gt; , , 2
-#&gt; 
-#&gt;           0         1         2
-#&gt; 0  0.000000 -1.017916 -1.017916
-#&gt; 1 -1.017916  0.000000 -1.017916
-#&gt; 2 -1.017916 -1.017916  0.000000
-#&gt; 
-#&gt; 
-#&gt; $value
-#&gt; [1] -10705.05
-#&gt; </div><div class='input'><span class='fu'>fit_pl</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>2</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"onepar"</span>)</div><div class='output co'>#&gt; $theta
-#&gt; , , 1
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; , , 2
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; , , 3
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; , , 4
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; , , 5
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; , , 6
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; 
-#&gt; $value
-#&gt; [1] -12072.36
-#&gt; </div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>smr_stat</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='st'>"onepar"</span>)</div><div class='output co'>#&gt; [1] 11695</div><div class='input'><span class='fu'>smr_stat</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='st'>"oneeach"</span>)</div><div class='output co'>#&gt; [1] 5901 5794</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
