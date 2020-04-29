@@ -76,7 +76,7 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
                     init_mus = NULL,
                     init_sigmas = NULL,
                     maxiter = 100, max_dist = 10^-3,
-                    icm_cycles = 6, verbose = TRUE, qr = NULL){
+                    icm_cycles = 6, verbose = !interactive(), qr = NULL){
 
   Rmat <- mrfi@Rmat
 

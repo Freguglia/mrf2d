@@ -15,7 +15,7 @@ fit_ghm(
   maxiter = 100,
   max_dist = 10^-3,
   icm_cycles = 6,
-  verbose = TRUE,
+  verbose = !interactive(),
   qr = NULL
 )
 }
