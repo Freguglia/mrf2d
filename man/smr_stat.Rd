@@ -2,9 +2,12 @@
 % Please edit documentation in R/suf_stat.R
 \name{smr_stat}
 \alias{smr_stat}
+\alias{cohist}
 \title{Summary Statistics}
 \usage{
 smr_stat(Z, mrfi, family)
+
+cohist(Z, mrfi)
 }
 \arguments{
 \item{Z}{A \code{matrix} object containing the observed MRF. \code{NA} values can be
@@ -20,10 +23,19 @@ See \code{\link[=mrf2d-family]{mrf2d-familiy}}.}
 }
 \value{
 A numeric vector with the summarized counts.
+
+An array representing the co-ocurrence histogram of \code{Z} in the relative
+positions contained in \code{mrfi}. Each row and column corresponds a pair of values
+in \verb{(0, ..., C)} and each slice corresponds to
 }
 \description{
 Computes the summary count statistics of a field given an
 interaction structure and a restriction family.
+\itemize{
+\item \code{cohist()} computes the co-ocurrence histogram.
+\item \code{smr_stat()} computes the co-ocurrence histogram, then converts it into
+a vector of sufficient statistics given a \code{\link[=mrf2d-family]{family}} of restrictions.
+}
 }
 \details{
 The order the summarized counts appear in the summary vector matches
@@ -32,6 +44,8 @@ the order in \code{\link[=smr_array]{smr_array()}}.
 \examples{
 smr_stat(Z_potts, mrfi(1), "onepar")
 smr_stat(Z_potts, mrfi(1), "oneeach")
+
+cohist(Z_potts, mrfi(1), "onepar")
 
 }
 \author{

@@ -21,7 +21,8 @@ See \code{\link[=mrf2d-family]{mrf2d-familiy}}.}
 A numeric vector with the free parameters of \code{theta}.
 }
 \description{
-Creates a vector with only the free parameters from an array.
+Creates a vector containing only the free parameters from an array
+given a restriction \code{\link[=mrf2d-family]{family}}.
 }
 \details{
 The order the parameters appear in the vector matches

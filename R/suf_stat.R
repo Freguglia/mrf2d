@@ -43,6 +43,9 @@ suf_stat <- function(arr, family){
 #'
 #' @description Computes the summary count statistics of a field given an
 #' interaction structure and a restriction family.
+#'   * `cohist()` computes the co-ocurrence histogram.
+#'   * `smr_stat()` computes the co-ocurrence histogram, then converts it into
+#'   a vector of sufficient statistics given a \code{\link[=mrf2d-family]{family}} of restrictions.
 #'
 #' @details The order the summarized counts appear in the summary vector matches
 #' the order in \code{\link[=smr_array]{smr_array()}}.
@@ -62,11 +65,30 @@ smr_stat <- function(Z, mrfi, family){
   return(suf_stat(smr_array, family))
 }
 
+#' @rdname smr_stat
+#'
+#' @return An array representing the co-ocurrence histogram of `Z` in the relative
+#' positions contained in `mrfi`. Each row and column corresponds a pair of values
+#' in `(0, ..., C)` and each slice corresponds to
+#'
+#' @examples
+#' cohist(Z_potts, mrfi(1), "onepar")
+#'
+#' @export
+cohist <- function(Z, mrfi){
+  C <- max(Z)
+  coh <- table_relative_3d(Z, mrfi@Rmat, C)
+  pos_names <- sapply(as.list(mrfi), paste, collapse = ",")
+  dimnames(coh) <- list(0:C, 0:C, paste0("(", pos_names, ")"))
+  return(coh)
+}
+
 #' @name smr_array
 #' @author Victor Freguglia
 #' @title Summarized representation of theta arrays
 #'
-#' @description Creates a vector with only the free parameters from an array.
+#' @description Creates a vector containing only the free parameters from an array
+#' given a restriction \code{\link[=mrf2d-family]{family}}.
 #'
 #' @inheritParams fit_pl
 #' @inheritParams rmrf2d
