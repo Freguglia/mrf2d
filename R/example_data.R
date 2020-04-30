@@ -39,3 +39,19 @@ NULL
 
 #' @rdname data_examples
 "hfield1"
+
+#' @name bold5000
+#' @title BOLD5000 neuroimaging data
+#'
+#' @description An image extracted from the "BOLD5000" open dataset. It was read from
+#' the file in path `BOLD5000/DS001499/SUB-CSI2/SES-16/ANAT/SUB-CSI2_SES-16_T1W.NII.GZ`,
+#' available at the OpenNeuro platform (https://openneuro.org/datasets/ds001499/versions/1.3.0).
+#'
+#' @details The file was read using the `oro.nifti` package and the image was extracted from the
+#' matrix in slice 160.
+#'
+#' @references Chang, N., Pyles, J. A., Marcus, A., Gupta, A., Tarr, M. J., & Aminoff, E. M. (2019).
+#'  BOLD5000, a public fMRI dataset while viewing 5000 visual images. Scientific data, 6(1), 1-18.
+#'
+#' @docType data
+"bold5000"
