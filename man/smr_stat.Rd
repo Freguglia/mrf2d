@@ -45,7 +45,7 @@ the order in \code{\link[=smr_array]{smr_array()}}.
 smr_stat(Z_potts, mrfi(1), "onepar")
 smr_stat(Z_potts, mrfi(1), "oneeach")
 
-cohist(Z_potts, mrfi(1), "onepar")
+cohist(Z_potts, mrfi(1))
 
 }
 \author{

@@ -72,7 +72,7 @@ smr_stat <- function(Z, mrfi, family){
 #' in `(0, ..., C)` and each slice corresponds to
 #'
 #' @examples
-#' cohist(Z_potts, mrfi(1), "onepar")
+#' cohist(Z_potts, mrfi(1))
 #'
 #' @export
 cohist <- function(Z, mrfi){
