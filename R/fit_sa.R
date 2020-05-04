@@ -138,6 +138,8 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
     d[t] <- sqrt(sum((S_t - S)^2))
   }
   if(verbose) cat("\n")
-  return(list(theta = vec_to_array(theta_t, family, C, n_R),
+  theta_out <- vec_to_array(theta_t, family, C, n_R)
+  dimnames(theta_out)[[3]] <- mrfi_to_char(mrfi)
+  return(list(theta = theta_out,
               metrics = data.frame(t = seq_along(gamma_seq), distance = d)))
 }

@@ -144,3 +144,8 @@ mrfi <- function(max_norm = 1, norm_type = "1", positions = NULL){
   df <- unique(df)
   new("mrfi", Rmat = df)
 }
+
+mrfi_to_char <- function(mrfi){
+  sapply(as.list(mrfi), function(x) paste0("(", paste0(x, collapse = ","), ")"))
+}
+

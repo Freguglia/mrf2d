@@ -128,7 +128,9 @@ fit_pl <- function(Z, mrfi, family = "onepar", init = 0,
                              fn = pl_value,
                              control = list(fnscale = -1)),
                         optim_args))
-  out <- list(theta = vec_to_array(o$par, family, C, n_R),
+  theta_out = vec_to_array(o$par, family, C, n_R)
+  dimnames(theta_out)[[3]] <- mrfi_to_char(mrfi)
+  out <- list(theta = theta_out,
               value = o$value)
   if(return_optim) {out <- c(out, opt = o)}
   return(out)
