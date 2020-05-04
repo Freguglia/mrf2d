@@ -5,7 +5,7 @@
 \alias{bold5000}
 \title{BOLD5000 neuroimaging data}
 \format{
-An object of class \code{matrix} with 176 rows and 256 columns.
+An object of class \code{matrix} (inherits from \code{array}) with 176 rows and 256 columns.
 }
 \usage{
 bold5000

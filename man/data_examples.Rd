@@ -7,9 +7,9 @@
 \alias{hfield1}
 \title{Example Data}
 \format{
-An object of class \code{matrix} with 150 rows and 150 columns.
+An object of class \code{matrix} (inherits from \code{array}) with 150 rows and 150 columns.
 
-An object of class \code{matrix} with 150 rows and 150 columns.
+An object of class \code{matrix} (inherits from \code{array}) with 150 rows and 150 columns.
 }
 \usage{
 field1
