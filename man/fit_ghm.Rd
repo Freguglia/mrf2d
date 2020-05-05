@@ -9,7 +9,7 @@ fit_ghm(
   mrfi,
   theta,
   fixed_fn = list(),
-  equal_vars = TRUE,
+  equal_vars = FALSE,
   init_mus = NULL,
   init_sigmas = NULL,
   maxiter = 100,
