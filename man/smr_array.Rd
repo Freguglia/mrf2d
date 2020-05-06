@@ -2,9 +2,12 @@
 % Please edit documentation in R/suf_stat.R
 \name{smr_array}
 \alias{smr_array}
+\alias{expand_array}
 \title{Summarized representation of theta arrays}
 \usage{
 smr_array(theta, family)
+
+expand_array(theta_vec, family, mrfi, C)
 }
 \arguments{
 \item{theta}{A 3-dimensional array describing potentials. Slices represent
@@ -16,21 +19,36 @@ values 0,2 in the second relative position of \code{mrfi}.}
 are:
 \code{'onepar'}, \code{'oneeach'}, \code{'absdif'}, \code{'dif'} or \code{'free'}.
 See \code{\link[=mrf2d-family]{mrf2d-familiy}}.}
+
+\item{theta_vec}{A \code{numeric} vector with the free parameters of a potential
+array. It's dimension depends on the restriction \code{family}, \code{C} and the number
+of interacting positions on \code{mrfi}.}
+
+\item{mrfi}{A \code{\link[=mrfi-class]{mrfi}} object representing the
+interaction structure.}
+
+\item{C}{The maximum value of the field.}
 }
 \value{
-A numeric vector with the free parameters of \code{theta}.
+\code{smr_array} returns a numeric vector with the free parameters of \code{theta}.
+
+\code{expand_array} returns a three-dimensional \code{array} of potentials.
 }
 \description{
-Creates a vector containing only the free parameters from an array
-given a restriction \code{\link[=mrf2d-family]{family}}.
+\code{smr_array} creates a vector containing only the free parameters from an array
+given a restriction \code{\link[=mrf2d-family]{family}}. \code{exapand_array} is the reverse
+operation, expanding a complete array from the vector of sufficient statistics.
 }
 \details{
-The order the parameters appear in the vector matches
+The order the parameters appear in the summarized vector matches
 the order in \code{\link[=smr_stat]{smr_stat()}}.
 }
 \examples{
 smr_array(theta_potts, "onepar")
 smr_array(theta_potts, "oneeach")
+
+expand_array(0.99, family = "onepar", mrfi = mrfi(1), C = 2)
+expand_array(c(0.1, 0.2), family = "oneeach", mrfi = mrfi(1), C = 3)
 
 }
 \author{

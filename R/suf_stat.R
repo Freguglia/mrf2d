@@ -87,16 +87,17 @@ cohist <- function(Z, mrfi){
 #' @author Victor Freguglia
 #' @title Summarized representation of theta arrays
 #'
-#' @description Creates a vector containing only the free parameters from an array
-#' given a restriction \code{\link[=mrf2d-family]{family}}.
+#' @description `smr_array` creates a vector containing only the free parameters from an array
+#' given a restriction \code{\link[=mrf2d-family]{family}}. `exapand_array` is the reverse
+#' operation, expanding a complete array from the vector of sufficient statistics.
 #'
 #' @inheritParams fit_pl
 #' @inheritParams rmrf2d
 #'
-#' @details The order the parameters appear in the vector matches
+#' @details The order the parameters appear in the summarized vector matches
 #' the order in \code{\link[=smr_stat]{smr_stat()}}.
 #'
-#' @return A numeric vector with the free parameters of `theta`.
+#' @return `smr_array` returns a numeric vector with the free parameters of `theta`.
 #'
 #' @examples
 #' smr_array(theta_potts, "onepar")
@@ -105,4 +106,25 @@ cohist <- function(Z, mrfi){
 #' @export
 smr_array <- function(theta, family){
   array_to_vec(theta, family)
+}
+
+#' @rdname smr_array
+#'
+#' @param theta_vec A `numeric` vector with the free parameters of a potential
+#' array. It's dimension depends on the restriction `family`, `C` and the number
+#' of interacting positions on `mrfi`.
+#' @param C The maximum value of the field.
+#'
+#' @return `expand_array` returns a three-dimensional `array` of potentials.
+#'
+#' @examples
+#' expand_array(0.99, family = "onepar", mrfi = mrfi(1), C = 2)
+#' expand_array(c(0.1, 0.2), family = "oneeach", mrfi = mrfi(1), C = 3)
+#'
+#' @export
+expand_array <- function(theta_vec, family, mrfi, C){
+  theta <- vec_to_array(theta_vec, family, C, nrow(mrfi@Rmat))
+  pos_names <- sapply(as.list(mrfi), paste, collapse = ",")
+  dimnames(theta) <- list(0:C, 0:C, paste0("(", pos_names, ")"))
+  return(theta)
 }
