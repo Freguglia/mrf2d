@@ -46,7 +46,7 @@ is_valid_array <- function(arr, family){
 
   } else if(family == "free") {
     all(apply(arr, MARGIN = 3, function(m) {
-      all(diag(m) == 0)
+      m[1,1] == 0
     }))
 
   } else {
@@ -105,7 +105,7 @@ vec_to_array <- function(vec, family, C, n_R){
 
 # Converts array of potentials to a vector
 array_to_vec <- function(arr, family){
-  if(!is_valid_array(arr, family)){ stop("Object 'arr' is not a valid array for 'family'")}
+  if(!is_valid_array(arr, family)){ stop(paste0("Not a valid array for family '", family, "'"))}
   n_R <- dim(arr)[3]
   C <- dim(arr)[1] - 1
   if(C == 0) stop("Each slice needs at least two rows/columns.")
