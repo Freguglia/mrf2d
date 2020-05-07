@@ -13,7 +13,7 @@ fit_sa(
   cycles = 5,
   refresh_each = length(gamma_seq) + 1,
   refresh_cycles = 60,
-  verbose = FALSE
+  verbose = interactive()
 )
 }
 \arguments{

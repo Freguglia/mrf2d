@@ -79,7 +79,7 @@
 #' @export
 fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
                    refresh_each = length(gamma_seq)+1, refresh_cycles = 60,
-                   verbose = FALSE){
+                   verbose = interactive()){
 
   if(!family %in% mrf2d_families){
     stop("'", family, "' is not an implemented family.")
