@@ -13,7 +13,7 @@
 #' @param x A \code{\link[=mrfi-class]{mrfi}} object.
 #' @param include_axis `logical` indicating whether the axis and grid lines
 #'  are included. If `FALSE` `theme_void()` is added to the `ggplot` object.
-#' @param include_opposite ´logical` whether opposite directions should be 
+#' @param include_opposite ´logical` whether opposite directions should be
 #'  included in the visualization of the dependence structure.
 #'
 #' @return A `ggplot` object using `geom_tile()` to represent interacting
@@ -33,7 +33,7 @@
 #'
 #' @exportMethod plot
 setMethod("plot", signature(x = "mrfi", y = "missing"),
-          definition = function(x, include_axis = FALSE, 
+          definition = function(x, include_axis = FALSE,
                                 include_opposite = TRUE){
             df <- as.data.frame(x@Rmat)
             names(df) <- c("rx", "ry")
@@ -45,7 +45,7 @@ setMethod("plot", signature(x = "mrfi", y = "missing"),
               geom_tile(data = df_center, fill = "black") +
               theme_minimal()
             if(include_opposite){p <- p +
-              geom_tile(data = data.frame(rx = -df$rx, ry = -df$ry), 
+              geom_tile(data = data.frame(rx = -df$rx, ry = -df$ry),
                         linetype = "dotted", color = "white",
                         fill = "gray95")}
             if(!include_axis) {p <- p + theme_void()}
@@ -63,6 +63,13 @@ setMethod("plot", signature(x = "mrfi", y = "missing"),
 setMethod("as.list", signature(x = "mrfi"),
           definition = function(x){
             unname(split(x@Rmat, rep(1:nrow(x@Rmat), ncol(x@Rmat))))
+          })
+
+#' @rdname mrfi-subsetting
+#' @exportMethod length
+setMethod("length", signature(x = "mrfi"),
+          definition = function(x){
+            nrow(x@Rmat)
           })
 
 #' @rdname mrfi-subsetting
