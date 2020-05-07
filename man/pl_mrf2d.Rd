@@ -29,12 +29,9 @@ on a 2-dimensional lattice.
 }
 \details{
 The pseudo-likelihood function is defined as the product of
-conditional distributions:
+conditional probabilities of each pixel given its neighbors:
 
 \deqn{\prod_i P(Z_i | Z_{{N}_i}, \theta).}
-
-For more details see the guide vignette:
-\code{vignette("guide", package = "mrf2d")}
 }
 \examples{
 pl_mrf2d(Z_potts, mrfi(1), theta_potts)

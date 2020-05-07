@@ -24,11 +24,13 @@ The model used in `mrf2d` is very flexible, but many simpler and popular models 
   \frac{1}{\zeta_{\theta}} \exp \left( \sum_{r \in \mathcal{R}} \sum_{i,j \in \mathcal{L}}
     \theta_{z_i, z_j, r} \delta(j = i+r) ) \right),
 \end{equation}
-where $\zeta_\theta$ is the normalizing constant and $\mathcal{R}$ is a set of relative positions (`mrfi` objects). THe probability function of many other models like the Ising model and the Potts model can be written by adding constraints to the array $\theta_{a,b,r}$.
+where $\zeta_\theta$ is the normalizing constant and $\mathcal{R}$ is a set of relative positions (`mrfi` objects). The probability function of many other models like the Ising model and the Potts model can be written by adding constraints to the array $\theta_{a,b,r}$.
 
 Important tasks like extracting sufficient statistics and estimating the parameters $\theta_{a,b,r}$ must be able to reflect the parameter restrictions required by those less general models. Functions which result is affected by those restrictions take a `family` argument which determines what kind of restriction is considered. 5 families are available in `mrf2d` and this short article describes each them.
 
 # `'onepar'`
+
+A single parameter for all different-valued pairs in all interacting positions.
 
 ### Example
 
@@ -39,6 +41,8 @@ fit_pl(Z_potts, mrfi(1), family = "onepar")
 
 # `'oneeach'`
 
+One parameter for all different-valued pairs **for each** interacting position.
+
 ### Example
 
 ```{r}
@@ -47,6 +51,8 @@ fit_pl(Z_potts, mrfi(1), family = "oneeach")
 
 
 # `'absdif'`
+
+One parameter for each **absolute** difference of interacting pairs $d = |b-a|$ in each relative position.
 
 ### Example
 
@@ -57,6 +63,8 @@ fit_pl(Z_potts, mrfi(1), family = "absdif")
 
 # `'dif'`
 
+One parameter for each difference of interacting pairs $d = b-a$ in each relative position.
+
 ### Example
 
 ```{r}
@@ -65,6 +73,8 @@ fit_pl(Z_potts, mrfi(1), family = "dif")
 
 
 # `'free'`
+
+Only the identifiability restriction $\theta_{0,0,r} = 0$ for all $r \in \mathcal{R}$.
 
 ### Example
 

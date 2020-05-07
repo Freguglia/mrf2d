@@ -24,10 +24,10 @@ defined based on their relative positions to construct a MRF.
 
 <img src="man/figures/animation_ising.gif" alt="drawing" width="300" align="left" />
 
-The goal of `mrf2d` is to provide simple functions for sampling and
-analysis of Markov Random Fields on 2-dimensional lattices, including
-Hidden Markov Random Fields. It introduces the S4 class `mrfi` to
-describe interaction structures in a very general way, being able to
+The goal of `mrf2d` is to provide a framework for the analysis of Markov
+Random Fields with pairwise interactions on 2-dimensional lattices,
+including Hidden Markov Random Fields. It introduces the S4 class `mrfi`
+to describe interaction structures in a very general way, being able to
 adapt from very simple cases like the Ising Model to complex anisotropic
 models with different types of interaction.
 
@@ -37,7 +37,7 @@ models with different types of interaction.
 
 ## Installation
 
-You can install the released version of mrf2d from
+You can install the stable version of `mrf2d` from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
@@ -54,101 +54,77 @@ devtools::install_github("Freguglia/mrf2d")
 
 -----
 
-## Example
+## Usage
 
-This is an example of what type of analysis you can do with `mrf2d`.
-More features are also present, including estimation of parameter in
-Markov Random Fields, families of parameter restrictions and more. Read
-the package’s
-[vignette](https://freguglia.github.io/mrf2d/articles/mrf2d.html) for
-more information and detailed description of the functions used:
-`browseVignettes("mrf2d")`.
+`mrf2d` introduces a programming interface for the general Markov Random
+Field model in *Freguglia, Victor, Nancy L. Garcia, and Juliano L.
+Bicas. “Hidden Markov random field models applied to color homogeneity
+evaluation in dyed textile images.” Environmetrics (2019): e2613.* Using
+specific interaction structures and parameter restrictions can lead to
+important models as particular cases, such as the Potts model.
 
-We can define an interaction structure with the `mrfi()` function:
+It introduces the S4 class `mrfi` to represent interaction structures.
+The `mrfi()` function can be used to create these objects representing
+interaction structures with relative positions included based on norm or
+explicitly specified
 
 ``` r
 # We'll include dependence in nearest-neighbors only
-int <- mrfi(max_norm = 1)
-int
-#> 2 interacting positions.
+interact <- mrfi(max_norm = 1, positions = list(c(4,2)))
+interact
+#> 3 interacting positions.
 #>   rx     ry
 #>    1      0
 #>    0      1
-plot(int)
+#>    4      2
+plot(interact)
 ```
 
 ![](man/figures/README-plot_interaction-1.png)<!-- -->
 
-We can define a parameter array to sample from a MRF model:
+Potentials (parameters) are represented by three-dimensional arrays,
+where rows and columns represent pixel label values and slices represent
+interacting positions.
 
 ``` r
-# We have 2 interacting positions and we'll use a 3 color model, therefore,
-# an array with dimensions (3,3,3) is used.
-theta <- mrf2d:::vec_to_array(-1, family = "onepar", C = 2, n_R = 2)
-theta
-#> , , 1
+potentials <- expand_array(c(-0.9, -0.9, 0.2), family = "oneeach", C = 1, mrfi = interact)
+potentials
+#> , , (1,0)
 #> 
-#>    0  1  2
-#> 0  0 -1 -1
-#> 1 -1  0 -1
-#> 2 -1 -1  0
+#>      0    1
+#> 0  0.0 -0.9
+#> 1 -0.9  0.0
 #> 
-#> , , 2
+#> , , (0,1)
 #> 
-#>    0  1  2
-#> 0  0 -1 -1
-#> 1 -1  0 -1
-#> 2 -1 -1  0
+#>      0    1
+#> 0  0.0 -0.9
+#> 1 -0.9  0.0
+#> 
+#> , , (4,2)
+#> 
+#>     0   1
+#> 0 0.0 0.2
+#> 1 0.2 0.0
 ```
 
-In short, the negative values out of diagonal means different “colors”
-are less likely in that relative position. We can sample from this model
-with:
+The negative values out of diagonal means different “colors” are less
+likely in that relative position.
+
+The package has many built-in functions for sampling, potentials
+estimation and hidden MRF model fitting (used for image segmentation),
+but it also provides all the basic stack of computations used to
+implement algorithms for MRF models, making it suitable for development
+of research in Markov Random Field models.
 
 ``` r
 set.seed(1)
 img_dim <- c(200,200)
-Z <- rmrf2d(img_dim, mrfi = int, theta = theta, cycles = 60)
+Z <- rmrf2d(img_dim, mrfi = interact, theta = potentials, cycles = 60)
 dplot(Z, legend = TRUE)
 ```
 
 <img src="man/figures/README-Z_example_plot-1.png" style="display: block; margin: auto;" />
-
-We now add a Gaussian error and a linear effect to the image (to create
-a hidden Markov Random Field):
-
-``` r
-set.seed(1)
-Y <- Z + 4 + 0.02*row(Z) + rnorm(length(Z), sd = 0.4)
-cplot(Y)
-```
-
-<img src="man/figures/README-Y_example_plot-1.png" style="display: block; margin: auto;" />
-
-We fit a Gaussian hidden Markov random field to recover the components:
-
-``` r
-set.seed(3)
-fit <- fit_ghm(Y, mrfi = int, theta = theta, 
-               fixed_fn = polynomial_2d(c(1,1), dim(Y)), verbose = FALSE)
-```
-
-Check the results:
-
-``` r
-fit$par
-#>         mu    sigma
-#> 0 6.010691 0.400807
-#> 1 7.011794 0.400807
-#> 2 8.013461 0.400807
-
-library(ggplot2)
-cplot(fit$fixed) + ggtitle("Linear Effect")
-dplot(fit$Z_pred, legend = TRUE) + ggtitle("Predicted Z")
-cplot(fit$predicted) + ggtitle("Predicted Value")
-```
-
-![](man/figures/README-results_plot-1.png)![](man/figures/README-results_plot-2.png)![](man/figures/README-results_plot-3.png)
 
 -----
 
