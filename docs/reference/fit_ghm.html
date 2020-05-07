@@ -15,10 +15,12 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -43,17 +45,15 @@
 
 
 
-<meta property="og:title" content="EM estimation for Gaussian Hidden Markov field — fit_ghm" />
 
+<meta property="og:title" content="EM estimation for Gaussian Hidden Markov field — fit_ghm" />
 <meta property="og:description" content="fit_ghm fits a Gaussian Mixture model with hidden components
 driven by a Markov random field with known parameters. The inclusion of a
 linear combination of basis functions as a fixed effect is also possible.
 The algorithm is an implementation of
 (Zhang et al. 2001)
 ." />
-
 <meta property="og:image" content="https://freguglia.github.io/mrf2d/logo.png" />
-
 
 
 
@@ -98,16 +98,24 @@ The algorithm is an implementation of
   </a>
 </li>
 <li>
-  <a href="../articles/mrf2d.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/mrf2d-family.html">Parameter restriction families in mrf2d</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Freguglia/mrf2d/">
@@ -134,14 +142,12 @@ The algorithm is an implementation of
     </div>
 
     <div class="ref-description">
-    
     <p><code>fit_ghm</code> fits a Gaussian Mixture model with hidden components
 driven by a Markov random field with known parameters. The inclusion of a
 linear combination of basis functions as a fixed effect is also possible.</p>
 <p>The algorithm is an implementation of
 (Zhang et al. 2001)
 .</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>fit_ghm</span>(
@@ -149,16 +155,16 @@ linear combination of basis functions as a fixed effect is also possible.</p>
   <span class='no'>mrfi</span>,
   <span class='no'>theta</span>,
   <span class='kw'>fixed_fn</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  <span class='kw'>equal_vars</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>equal_vars</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>init_mus</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>init_sigmas</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>maxiter</span> <span class='kw'>=</span> <span class='fl'>100</span>,
   <span class='kw'>max_dist</span> <span class='kw'>=</span> <span class='fl'>10</span>^-<span class='fl'>3</span>,
   <span class='kw'>icm_cycles</span> <span class='kw'>=</span> <span class='fl'>6</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(),
   <span class='kw'>qr</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -222,7 +228,7 @@ algorithm executed in each interaction. Defaults to 6.</p></td>
       <td><p>The QR decomposition of the design matrix. Used internally.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>list</code> containing:</p><ul>
@@ -236,7 +242,6 @@ the predicted component in each pixel.</p></li>
 <li><p><code>iterations</code>: Number of EM iterations done.</p></li>
 </ul>
 
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>If either <code>init_mus</code> or <code>init_sigmas</code> is <code>NULL</code> an EM algorithm
@@ -248,13 +253,11 @@ estimators.</p>
 <p><code>max_dist</code> defines a stopping condition. The algorithm will stop if the
 maximum absolute difference between (\(\mu\) and \(\sigma\)) parameters
 in consecutive iterations is less than <code>max_dist</code>.</p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Zhang Y, Brady M, Smith S (2001).
 &#8220;Segmentation of brain MR images through a hidden Markov random field model and the expectation-maximization algorithm.&#8221;
 <em>IEEE transactions on medical imaging</em>, <b>20</b>(1), 45--57.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Sample a Gaussian mixture with components given by Z_potts</span>
@@ -266,11 +269,11 @@ in consecutive iterations is less than <code>max_dist</code>.</p>
 <span class='co'># Check what the data looks like</span>
 <span class='fu'><a href='dplot.html'>cplot</a></span>(<span class='no'>Y</span>)</div><div class='img'><img src='fit_ghm-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>fixed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='basis_functions.html'>polynomial_2d</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>Y</span>))
-<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'>fit_ghm</span>(<span class='no'>Y</span>, <span class='kw'>mrfi</span> <span class='kw'>=</span> <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>theta</span> <span class='kw'>=</span> <span class='no'>theta_potts</span>, <span class='kw'>fixed_fn</span> <span class='kw'>=</span> <span class='no'>fixed</span>)</div><div class='output co'>#&gt;  Fitting independent mixture to obtain initial parameters. 
-#&gt;  EM iteration: 1 EM iteration: 2 EM iteration: 3 EM iteration: 4 EM iteration: 5 Finished with  5 iterations. </div><div class='input'><span class='no'>fit</span>$<span class='no'>par</span></div><div class='output co'>#&gt;             mu     sigma
-#&gt; 0 -0.001489202 0.4009878
-#&gt; 1  0.995210994 0.4009878
-#&gt; 2  1.998527500 0.4009878</div><div class='input'><span class='fu'><a href='dplot.html'>cplot</a></span>(<span class='no'>fit</span>$<span class='no'>fixed</span>)</div><div class='img'><img src='fit_ghm-2.png' alt='' width='700' height='433' /></div><div class='input'># }
+<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'>fit_ghm</span>(<span class='no'>Y</span>, <span class='kw'>mrfi</span> <span class='kw'>=</span> <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>theta</span> <span class='kw'>=</span> <span class='no'>theta_potts</span>, <span class='kw'>fixed_fn</span> <span class='kw'>=</span> <span class='no'>fixed</span>)
+<span class='no'>fit</span>$<span class='no'>par</span></div><div class='output co'>#&gt;             mu     sigma
+#&gt; 0 -0.001568028 0.4012135
+#&gt; 1  0.999990536 0.3966913
+#&gt; 2  2.002972466 0.4026593</div><div class='input'><span class='fu'><a href='dplot.html'>cplot</a></span>(<span class='no'>fit</span>$<span class='no'>fixed</span>)</div><div class='img'><img src='fit_ghm-2.png' alt='' width='700' height='433' /></div><div class='input'># }
 
 </div></pre>
   </div>

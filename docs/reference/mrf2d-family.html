@@ -15,10 +15,12 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -43,20 +45,16 @@
 
 
 
-<meta property="og:title" content="Parameter restriction families — mrf2d-family" />
 
+<meta property="og:title" content="Parameter restriction families — mrf2d-family" />
 <meta property="og:description" content="Different parameter restrictions can be included in estimation processes
-to make sure mrf2d can sucessfully include a wide range of models available in
-its inference functions. For a more complete description of which restrictions are
-used to characterize some of the most commom models read the
-corresponding section of the package's vignette
+to make sure mrf2d can sucessfully include a wide range of models types in
+its inference functions.
 For model identifiability, at least one linear restriction is necessary.
 mrf2d always assume \(\theta_{0,0,r} = 0\) for all relative positions
 \(r\).
 Additionally, each family of restrictions may introduce other restrictions:" />
-
 <meta property="og:image" content="https://freguglia.github.io/mrf2d/logo.png" />
-
 
 
 
@@ -101,16 +99,24 @@ Additionally, each family of restrictions may introduce other restrictions:" />
   </a>
 </li>
 <li>
-  <a href="../articles/mrf2d.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/mrf2d-family.html">Parameter restriction families in mrf2d</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Freguglia/mrf2d/">
@@ -137,31 +143,27 @@ Additionally, each family of restrictions may introduce other restrictions:" />
     </div>
 
     <div class="ref-description">
-    
     <p>Different parameter restrictions can be included in estimation processes
-to make sure <code>mrf2d</code> can sucessfully include a wide range of models available in
-its inference functions. For a more complete description of which restrictions are
-used to characterize some of the most commom models read the
-<a href='https://freguglia.github.io/mrf2d/articles/mrf2d.html#parameter-restriction-families'>corresponding section of the package's vignette</a></p>
+to make sure <code>mrf2d</code> can sucessfully include a wide range of models types in
+its inference functions.</p>
 <p>For model identifiability, at least one linear restriction is necessary.
 <code>mrf2d</code> always assume \(\theta_{0,0,r} = 0\) for all relative positions
 \(r\).</p>
 <p>Additionally, each family of restrictions may introduce other restrictions:</p>
-    
     </div>
 
-        
+
+
     <h2 class="hasAnchor" id="-onepar-"><a class="anchor" href="#-onepar-"></a>'onepar'</h2>
 
     
 
 <p>This family assumes the model is defined by a single parameter
 by adding the restriction</p>
-<p>$$\theta_{a,b,r} = \gamma * 1(a != b).$$</p>
+<p>$$\theta_{a,b,r} = \phi * 1(a != b).$$</p>
 <p>Here \(1()\) denotes de indicator function. In words, the parameter must
 be the same value for any pair with different values and 0 for any
 equal-valued pair.</p>
-    
     <h2 class="hasAnchor" id="-oneeach-"><a class="anchor" href="#-oneeach-"></a>'oneeach'</h2>
 
     
@@ -169,8 +171,7 @@ equal-valued pair.</p>
 <p>Similar to <code>'onepar'</code>, parameters are 0 for equal-valued pairs and a
 constant for pairs with different values, but the constant may differ
 between different relative positions \(r\):</p>
-<p>$$\theta{a,b,r} = \gamma_r * 1(a != b).$$</p>
-    
+<p>$$\theta{a,b,r} = \phi_r * 1(a != b).$$</p>
     <h2 class="hasAnchor" id="-absdif-"><a class="anchor" href="#-absdif-"></a>'absdif'</h2>
 
     
@@ -178,23 +179,20 @@ between different relative positions \(r\):</p>
 <p>All parameters \(\theta_{a,b,r}\) with the same absolute difference
 between \(a\) and \(b\) must be equal within each relative position
 \(r\).</p>
-<p>$$\theta_{a,b,r} = \sum_d \gamma_{d,r} * 1(|a-b| == d)$$</p>
-    
+<p>$$\theta_{a,b,r} = \sum_d \phi_{d,r} * 1(|a-b| == d)$$</p>
     <h2 class="hasAnchor" id="-dif-"><a class="anchor" href="#-dif-"></a>'dif'</h2>
 
     
 
 <p>The same as <code>'absdif'</code>, but parameters may differ between positive and
 negative differences.</p>
-<p>$$\theta_{a,b,r} = \sum_d \gamma_{d,r} * 1(a-b == d)$$</p>
-    
+<p>$$\theta_{a,b,r} = \sum_d \phi_{d,r} * 1(a-b == d)$$</p>
     <h2 class="hasAnchor" id="-free-"><a class="anchor" href="#-free-"></a>'free'</h2>
 
     
 
 <p>No additional restriction, all parameters other than \(\theta_{0,0,r}\)
 vary freely.</p>
-    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

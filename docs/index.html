@@ -56,10 +56,19 @@
   </a>
 </li>
 <li>
-  <a href="articles/mrf2d.html">Get started</a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/mrf2d-family.html">Parameter restriction families in mrf2d</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="news/index.html">Changelog</a>
@@ -92,77 +101,60 @@
 
 <p>Markov Random Fields are probabilistic models capable of describing sets of random variables with a local dependence property (the Markov property) defined on a neighborhood system. Particularly on the context of image processing, pixels can be seen as vertices of a graph defined on a finite 2-dimensional lattice, and a neighborhood system can be defined based on their relative positions to construct a MRF.</p>
 <p><img src="reference/figures/animation_ising.gif" alt="drawing" width="300" align="left"></p>
-<p>The goal of <code>mrf2d</code> is to provide simple functions for sampling and analysis of Markov Random Fields on 2-dimensional lattices, including Hidden Markov Random Fields. It introduces the S4 class <code>mrfi</code> to describe interaction structures in a very general way, being able to adapt from very simple cases like the Ising Model to complex anisotropic models with different types of interaction.</p>
+<p>The goal of <code>mrf2d</code> is to provide a framework for the analysis of Markov Random Fields with pairwise interactions on 2-dimensional lattices, including Hidden Markov Random Fields. It introduces the S4 class <code>mrfi</code> to describe interaction structures in a very general way, being able to adapt from very simple cases like the Ising Model to complex anisotropic models with different types of interaction.</p>
 <p><img src="reference/figures/README-example_interacions-1.png"><img src="reference/figures/README-example_interacions-2.png"><img src="reference/figures/README-example_interacions-3.png"></p>
 <hr>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of mrf2d from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<p>You can install the stable version of <code>mrf2d</code> from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"mrf2d"</span>)</pre></div>
 <p>The development version is available on the package’s <a href="https://github.com/Freguglia/mrf2d">Github page</a>. It can be installed with the <code>devtools</code> package by using</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/reexports.html">install_github</a></span>(<span class="st">"Freguglia/mrf2d"</span>)</pre></div>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"Freguglia/mrf2d"</span>)</pre></div>
 <hr>
 </div>
-<div id="example" class="section level2">
+<div id="usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>This is an example of what type of analysis you can do with <code>mrf2d</code>. More features are also present, including estimation of parameter in Markov Random Fields, families of parameter restrictions and more. Read the package’s <a href="https://freguglia.github.io/mrf2d/articles/mrf2d.html">vignette</a> for more information and detailed description of the functions used: <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes("mrf2d")</a></code>.</p>
-<p>We can define an interaction structure with the <code><a href="reference/mrfi.html">mrfi()</a></code> function:</p>
+<a href="#usage" class="anchor"></a>Usage</h2>
+<p><code>mrf2d</code> introduces a programming interface for the general Markov Random Field model in <em>Freguglia, Victor, Nancy L. Garcia, and Juliano L. Bicas. “Hidden Markov random field models applied to color homogeneity evaluation in dyed textile images.” Environmetrics (2019): e2613.</em> Using specific interaction structures and parameter restrictions can lead to important models as particular cases, such as the Potts model.</p>
+<p>It introduces the S4 class <code>mrfi</code> to represent interaction structures. The <code><a href="reference/mrfi.html">mrfi()</a></code> function can be used to create these objects representing interaction structures with relative positions included based on norm or explicitly specified</p>
 <div class="sourceCode" id="cb3"><pre class="r"><span class="co"># We'll include dependence in nearest-neighbors only</span>
-<span class="no">int</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/mrfi.html">mrfi</a></span>(<span class="kw">max_norm</span> <span class="kw">=</span> <span class="fl">1</span>)
-<span class="no">int</span>
-<span class="co">#&gt; 2 interacting positions.</span>
+<span class="no">interact</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/mrfi.html">mrfi</a></span>(<span class="kw">max_norm</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">positions</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">4</span>,<span class="fl">2</span>)))
+<span class="no">interact</span>
+<span class="co">#&gt; 3 interacting positions.</span>
 <span class="co">#&gt;   rx     ry</span>
 <span class="co">#&gt;    1      0</span>
 <span class="co">#&gt;    0      1</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="no">int</span>)</pre></div>
+<span class="co">#&gt;    4      2</span>
+<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">interact</span>)</pre></div>
 <p><img src="reference/figures/README-plot_interaction-1.png"><!-- --></p>
-<p>We can define a parameter array to sample from a MRF model:</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="co"># We have 2 interacting positions and we'll use a 3 color model, therefore,</span>
-<span class="co"># an array with dimensions (3,3,3) is used.</span>
-<span class="no">theta</span> <span class="kw">&lt;-</span> <span class="kw pkg">mrf2d</span><span class="kw ns">:::</span><span class="fu">vec_to_array</span>(-<span class="fl">1</span>, <span class="kw">family</span> <span class="kw">=</span> <span class="st">"onepar"</span>, <span class="kw">C</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">n_R</span> <span class="kw">=</span> <span class="fl">2</span>)
-<span class="no">theta</span>
-<span class="co">#&gt; , , 1</span>
+<p>Potentials (parameters) are represented by three-dimensional arrays, where rows and columns represent pixel label values and slices represent interacting positions.</p>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="no">potentials</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/smr_array.html">expand_array</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(-<span class="fl">0.9</span>, -<span class="fl">0.9</span>, <span class="fl">0.2</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"oneeach"</span>, <span class="kw">C</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">mrfi</span> <span class="kw">=</span> <span class="no">interact</span>)
+<span class="no">potentials</span>
+<span class="co">#&gt; , , (1,0)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;    0  1  2</span>
-<span class="co">#&gt; 0  0 -1 -1</span>
-<span class="co">#&gt; 1 -1  0 -1</span>
-<span class="co">#&gt; 2 -1 -1  0</span>
+<span class="co">#&gt;      0    1</span>
+<span class="co">#&gt; 0  0.0 -0.9</span>
+<span class="co">#&gt; 1 -0.9  0.0</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; , , 2</span>
+<span class="co">#&gt; , , (0,1)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;    0  1  2</span>
-<span class="co">#&gt; 0  0 -1 -1</span>
-<span class="co">#&gt; 1 -1  0 -1</span>
-<span class="co">#&gt; 2 -1 -1  0</span></pre></div>
-<p>In short, the negative values out of diagonal means different “colors” are less likely in that relative position. We can sample from this model with:</p>
+<span class="co">#&gt;      0    1</span>
+<span class="co">#&gt; 0  0.0 -0.9</span>
+<span class="co">#&gt; 1 -0.9  0.0</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; , , (4,2)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     0   1</span>
+<span class="co">#&gt; 0 0.0 0.2</span>
+<span class="co">#&gt; 1 0.2 0.0</span></pre></div>
+<p>The negative values out of diagonal means different “colors” are less likely in that relative position.</p>
+<p>The package has many built-in functions for sampling, potentials estimation and hidden MRF model fitting (used for image segmentation), but it also provides all the basic stack of computations used to implement algorithms for MRF models, making it suitable for development of research in Markov Random Field models.</p>
 <div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">1</span>)
 <span class="no">img_dim</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">200</span>,<span class="fl">200</span>)
-<span class="no">Z</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/rmrf2d.html">rmrf2d</a></span>(<span class="no">img_dim</span>, <span class="kw">mrfi</span> <span class="kw">=</span> <span class="no">int</span>, <span class="kw">theta</span> <span class="kw">=</span> <span class="no">theta</span>, <span class="kw">cycles</span> <span class="kw">=</span> <span class="fl">60</span>)
+<span class="no">Z</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/rmrf2d.html">rmrf2d</a></span>(<span class="no">img_dim</span>, <span class="kw">mrfi</span> <span class="kw">=</span> <span class="no">interact</span>, <span class="kw">theta</span> <span class="kw">=</span> <span class="no">potentials</span>, <span class="kw">cycles</span> <span class="kw">=</span> <span class="fl">60</span>)
 <span class="fu"><a href="reference/dplot.html">dplot</a></span>(<span class="no">Z</span>, <span class="kw">legend</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></div>
 <p><img src="reference/figures/README-Z_example_plot-1.png" style="display: block; margin: auto;"></p>
-<p>We now add a Gaussian error and a linear effect to the image (to create a hidden Markov Random Field):</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">1</span>)
-<span class="no">Y</span> <span class="kw">&lt;-</span> <span class="no">Z</span> + <span class="fl">4</span> + <span class="fl">0.02</span>*<span class="fu"><a href="https://rdrr.io/r/base/row.html">row</a></span>(<span class="no">Z</span>) + <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="no">Z</span>), <span class="kw">sd</span> <span class="kw">=</span> <span class="fl">0.4</span>)
-<span class="fu"><a href="reference/dplot.html">cplot</a></span>(<span class="no">Y</span>)</pre></div>
-<p><img src="reference/figures/README-Y_example_plot-1.png" style="display: block; margin: auto;"></p>
-<p>We fit a Gaussian hidden Markov random field to recover the components:</p>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">3</span>)
-<span class="no">fit</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/fit_ghm.html">fit_ghm</a></span>(<span class="no">Y</span>, <span class="kw">mrfi</span> <span class="kw">=</span> <span class="no">int</span>, <span class="kw">theta</span> <span class="kw">=</span> <span class="no">theta</span>,
-               <span class="kw">fixed_fn</span> <span class="kw">=</span> <span class="fu"><a href="reference/basis_functions.html">polynomial_2d</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">1</span>), <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">Y</span>)), <span class="kw">verbose</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></div>
-<p>Check the results:</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="no">fit</span>$<span class="no">par</span>
-<span class="co">#&gt;         mu    sigma</span>
-<span class="co">#&gt; 0 6.010691 0.400807</span>
-<span class="co">#&gt; 1 7.011794 0.400807</span>
-<span class="co">#&gt; 2 8.013461 0.400807</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
-<span class="fu"><a href="reference/dplot.html">cplot</a></span>(<span class="no">fit</span>$<span class="no">fixed</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Linear Effect"</span>)
-<span class="fu"><a href="reference/dplot.html">dplot</a></span>(<span class="no">fit</span>$<span class="no">Z_pred</span>, <span class="kw">legend</span> <span class="kw">=</span> <span class="fl">TRUE</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Predicted Z"</span>)
-<span class="fu"><a href="reference/dplot.html">cplot</a></span>(<span class="no">fit</span>$<span class="no">predicted</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Predicted Value"</span>)</pre></div>
-<p><img src="reference/figures/README-results_plot-1.png"><img src="reference/figures/README-results_plot-2.png"><img src="reference/figures/README-results_plot-3.png"></p>
 <hr>
 </div>
 <div id="contributing-and-bug-reports" class="section level2">

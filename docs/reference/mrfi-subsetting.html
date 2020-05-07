@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Subsetting <code>mrfi</code> objects — [[,mrfi,numeric,missing-method • mrf2d</title>
+<title>Subsetting <code>mrfi</code> objects — length,mrfi-method • mrf2d</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -15,10 +15,12 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -43,12 +45,10 @@
 
 
 
-<meta property="og:title" content="Subsetting <code>mrfi</code> objects — [[,mrfi,numeric,missing-method" />
 
+<meta property="og:title" content="Subsetting <code>mrfi</code> objects — length,mrfi-method" />
 <meta property="og:description" content="Subsetting mrfi objects" />
-
 <meta property="og:image" content="https://freguglia.github.io/mrf2d/logo.png" />
-
 
 
 
@@ -93,16 +93,24 @@
   </a>
 </li>
 <li>
-  <a href="../articles/mrf2d.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/mrf2d-family.html">Parameter restriction families in mrf2d</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Freguglia/mrf2d/">
@@ -129,17 +137,18 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Subsetting <code>mrfi</code> objects</p>
-    
     </div>
 
-    <pre class="usage"># S4 method for mrfi,numeric,missing
+    <pre class="usage"># S4 method for mrfi
+length(x)
+
+# S4 method for mrfi,numeric,missing
 [[(x, i)
 
 # S4 method for mrfi,numeric,missing
 [(x, i)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -152,7 +161,7 @@
       <td><p>vector of indexes to extract interacting positions.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>[[</code>: converts to list and subsets it.</p>
@@ -160,7 +169,6 @@
 <p><code>+</code>: computes the union of the interaction structure in a <code>mrfi</code> object with
 a <code>numeric</code> representing an additional position to include or another <code>mrfi</code>
 object.</p>
-    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
