@@ -137,7 +137,7 @@ setMethod("+", signature = c("mrfi", "numeric"),
               stop("Right hand side must be a vector with two integer values.")
             } else if(any(sapply(as.list(e1), function(pos){
               all(pos == e2) | all(pos == (-e2))}
-              ))){
+              )) & length(e1) > 0){
                 return(e1)
             }
             result <- mrfi_union(e1, list(e2))
@@ -155,6 +155,7 @@ setMethod("-", signature = c("mrfi", "numeric"),
             } else if (any(as.integer(e2) != e2)){
               stop("Right hand side must be a vector of two integers.")
             } else {
+              if(length(e1) == 0) return(e1)
               e2 <- as.integer(e2)
               return(mrfi_diff(e1, list(e2, -e2)))
             }
@@ -175,5 +176,6 @@ setMethod("+", signature = c("mrfi", "mrfi"),
 #' mrfi(2) - mrfi(1)
 setMethod("-", signature = c("mrfi", "mrfi"),
           definition = function(e1, e2){
+            if(length(e1) == 0) return(e1)
             return(mrfi_diff(e1,e2))
           })
