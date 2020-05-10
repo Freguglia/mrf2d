@@ -1,3 +1,18 @@
+mrfi_is_valid <- function(object){
+  errors <- character()
+  Rmat <- object@Rmat
+  if(ncol(Rmat) != 2){
+    msg <- "'Rmat' slot must be a matrix with 2 columns"
+    errors <- c(errors, msg)
+  } 
+  
+  if(any(as.integer(Rmat) != Rmat)){
+    msg <- "'Rmat' rows must be integers representing relative positions"
+  }
+
+  if(length(errors) == 0) TRUE else errors
+}
+
 #' @name mrfi-class
 #' @title mrfi: MRF interaction structure
 #' @description  The `mrfi` S4 class is a representation of the interaction
@@ -46,7 +61,8 @@
 #'
 #' @exportClass mrfi
 setClass("mrfi",
-         representation(Rmat = "matrix"))
+         representation(Rmat = "matrix"),
+         validity = mrfi_is_valid)
 
 setMethod("show", "mrfi",
           function(object){
