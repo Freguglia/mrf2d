@@ -46,7 +46,7 @@ setMethod("plot", signature(x = "mrfi", y = "missing"),
               theme_minimal()
             if(include_opposite){p <- p +
               geom_tile(data = data.frame(rx = -df$rx, ry = -df$ry),
-                        linetype = "dotted", color = "white",
+                        linetype = "dashed", color = "gray55",
                         fill = "gray95")}
             if(!include_axis) {p <- p + theme_void()}
             p + lims(x = c(-max_norm, max_norm), y = c(-max_norm, max_norm))
