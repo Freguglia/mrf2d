@@ -1,0 +1,9 @@
+bibentry(bibtype = "misc",
+         title = "{mrf2d}: Markov random field image models in R",
+         author = c(person("Victor", "Freguglia"),
+                    person("Nancy", "Lopes Garcia")),
+         eprint="{2006.00383}",
+         archivePrefix="{arXiv}",
+         primaryClass="{stat.CO}",
+         year = 2020,
+         url = "https://CRAN.R-project.org/package=mrf2d")
