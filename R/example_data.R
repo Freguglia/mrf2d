@@ -53,5 +53,10 @@ NULL
 #' @references Chang, N., Pyles, J. A., Marcus, A., Gupta, A., Tarr, M. J., & Aminoff, E. M. (2019).
 #'  BOLD5000, a public fMRI dataset while viewing 5000 visual images. Scientific data, 6(1), 1-18.
 #'
+#' @seealso
+#'
+#' A paper with detailed description of the package can be found at
+#' \url{https://arxiv.org/abs/2006.00383}
+#'
 #' @docType data
 "bold5000"

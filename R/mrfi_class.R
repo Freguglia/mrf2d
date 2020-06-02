@@ -4,8 +4,8 @@ mrfi_is_valid <- function(object){
   if(ncol(Rmat) != 2){
     msg <- "'Rmat' slot must be a matrix with 2 columns"
     errors <- c(errors, msg)
-  } 
-  
+  }
+
   if(any(as.integer(Rmat) != Rmat)){
     msg <- "'Rmat' rows must be integers representing relative positions"
   }
@@ -58,6 +58,11 @@ mrfi_is_valid <- function(object){
 #' as.list(mrfi(1))
 #' mrfi(1)[[1]]
 #' mrfi(2)[[1:3]]
+#'
+#' @seealso
+#'
+#' A paper with detailed description of the package can be found at
+#' \url{https://arxiv.org/abs/2006.00383}
 #'
 #' @exportClass mrfi
 setClass("mrfi",
@@ -113,6 +118,12 @@ setMethod("show", "mrfi",
 #' mrfi(1, positions = list(c(1,0), c(2,0)))
 #'
 #' @importFrom methods new
+#'
+#' @seealso
+#'
+#' A paper with detailed description of the package can be found at
+#' \url{https://arxiv.org/abs/2006.00383}
+#'
 #' @export
 mrfi <- function(max_norm = 1, norm_type = "1", positions = NULL){
   if(max_norm < 0){stop("'max_norm' must be greater than or equal 0.")}

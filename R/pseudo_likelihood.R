@@ -25,6 +25,11 @@
 #' @examples
 #' pl_mrf2d(Z_potts, mrfi(1), theta_potts)
 #'
+#' @seealso
+#'
+#' A paper with detailed description of the package can be found at
+#' \url{https://arxiv.org/abs/2006.00383}
+#'
 #' @export
 pl_mrf2d <- function(Z, mrfi, theta, log_scale = TRUE){
   if(any(is.na(Z))){
@@ -88,6 +93,11 @@ pl_sub <- function(Z, mrfi, theta, log_scale){
 #' fit_pl(Z_potts, mrfi(1), family = "onepar")
 #' fit_pl(Z_potts, mrfi(1), family = "oneeach")
 #' fit_pl(Z_potts, mrfi(2), family = "onepar")
+#'
+#' @seealso
+#'
+#' A paper with detailed description of the package can be found at
+#' \url{https://arxiv.org/abs/2006.00383}
 #'
 #' @importFrom stats optim
 #' @export

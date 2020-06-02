@@ -43,6 +43,10 @@ mrfi(1, positions = list(c(4,4), c(-4,4)))
 mrfi(1, positions = list(c(1,0), c(2,0)))
 
 }
+\seealso{
+A paper with detailed description of the package can be found at
+\url{https://arxiv.org/abs/2006.00383}
+}
 \author{
 Victor Freguglia
 }

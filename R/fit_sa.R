@@ -76,6 +76,11 @@
 #' fit_sa(Z_potts, mrfi(1), family = "oneeach", gamma_seq = seq(1, 0, length.out = 50))
 #' }
 #'
+#' @seealso
+#'
+#' A paper with detailed description of the package can be found at
+#' \url{https://arxiv.org/abs/2006.00383}
+#'
 #' @export
 fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
                    refresh_each = length(gamma_seq)+1, refresh_cycles = 60,

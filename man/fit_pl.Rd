@@ -57,6 +57,10 @@ fit_pl(Z_potts, mrfi(1), family = "oneeach")
 fit_pl(Z_potts, mrfi(2), family = "onepar")
 
 }
+\seealso{
+A paper with detailed description of the package can be found at
+\url{https://arxiv.org/abs/2006.00383}
+}
 \author{
 Victor Freguglia
 }

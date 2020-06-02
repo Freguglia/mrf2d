@@ -36,6 +36,10 @@ fourier_2d(c(10,10), dim(Z_potts))
 polynomial_2d(c(3,3), dim(Z_potts))
 }
 }
+\seealso{
+A paper with detailed description of the package can be found at
+\url{https://arxiv.org/abs/2006.00383}
+}
 \author{
 Victor Freguglia
 }

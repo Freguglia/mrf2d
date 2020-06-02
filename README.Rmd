@@ -36,6 +36,8 @@ plot(mrfi(max_norm = 2, norm_type = "m"))
 plot(mrfi(max_norm = 2, positions = list(c(3,3),c(4,4), c(-2,4))))
 ```
 
+A complete paper describing the details of the package and examples can be found at https://arxiv.org/abs/2006.00383.
+
 ---
 
 ## Installation

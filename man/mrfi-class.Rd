@@ -66,3 +66,7 @@ mrfi(1)[[1]]
 mrfi(2)[[1:3]]
 
 }
+\seealso{
+A paper with detailed description of the package can be found at
+\url{https://arxiv.org/abs/2006.00383}
+}

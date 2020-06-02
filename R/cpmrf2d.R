@@ -16,6 +16,11 @@
 #' cp_mrf2d(Z_potts, mrfi(1), theta_potts, c(57,31))
 #' cp_mrf2d(Z_potts, mrfi(1), theta_potts*0.1, c(57,31))
 #'
+#' @seealso
+#'
+#' A paper with detailed description of the package can be found at
+#' \url{https://arxiv.org/abs/2006.00383}
+#'
 #' @export
 cp_mrf2d <- function(Z, mrfi, theta, pos){
   C <- max(Z, na.rm = TRUE)

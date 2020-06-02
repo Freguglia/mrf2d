@@ -37,6 +37,10 @@ conditional probabilities of each pixel given its neighbors:
 pl_mrf2d(Z_potts, mrfi(1), theta_potts)
 
 }
+\seealso{
+A paper with detailed description of the package can be found at
+\url{https://arxiv.org/abs/2006.00383}
+}
 \author{
 Victor Freguglia
 }

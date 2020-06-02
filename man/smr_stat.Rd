@@ -48,6 +48,10 @@ smr_stat(Z_potts, mrfi(1), "oneeach")
 cohist(Z_potts, mrfi(1))
 
 }
+\seealso{
+A paper with detailed description of the package can be found at
+\url{https://arxiv.org/abs/2006.00383}
+}
 \author{
 Victor Freguglia
 }

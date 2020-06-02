@@ -58,6 +58,11 @@ suf_stat <- function(arr, family){
 #' smr_stat(Z_potts, mrfi(1), "onepar")
 #' smr_stat(Z_potts, mrfi(1), "oneeach")
 #'
+#' @seealso
+#'
+#' A paper with detailed description of the package can be found at
+#' \url{https://arxiv.org/abs/2006.00383}
+#'
 #' @export
 smr_stat <- function(Z, mrfi, family){
   C <- max(Z)
@@ -102,6 +107,11 @@ cohist <- function(Z, mrfi){
 #' @examples
 #' smr_array(theta_potts, "onepar")
 #' smr_array(theta_potts, "oneeach")
+#'
+#' @seealso
+#'
+#' A paper with detailed description of the package can be found at
+#' \url{https://arxiv.org/abs/2006.00383}
 #'
 #' @export
 smr_array <- function(theta, family){

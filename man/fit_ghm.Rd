@@ -73,8 +73,9 @@ the predicted component in each pixel.
 driven by a Markov random field with known parameters. The inclusion of a
 linear combination of basis functions as a fixed effect is also possible.
 
-The algorithm is an implementation of
-\insertCite{zhang2001segmentation}{mrf2d}.
+The algorithm is a modification of of
+\insertCite{zhang2001segmentation}{mrf2d}, which is
+described in \insertCite{freguglia2020hidden}{mrf2d}.
 }
 \details{
 If either \code{init_mus} or \code{init_sigmas} is \code{NULL} an EM algorithm
@@ -107,6 +108,10 @@ cplot(fit$fixed)
 }
 \references{
 \insertAllCited{}
+}
+\seealso{
+A paper with detailed description of the package can be found at
+\url{https://arxiv.org/abs/2006.00383}
 }
 \author{
 Victor Freguglia

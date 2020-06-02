@@ -16,6 +16,11 @@
 #'
 #' @details `fourier_2d()` is for 2-dimensional Fourier transform.
 #'
+#' @seealso
+#'
+#' A paper with detailed description of the package can be found at
+#' \url{https://arxiv.org/abs/2006.00383}
+#'
 #' @examples
 #' \donttest{
 #' fourier_2d(c(10,10), dim(Z_potts))

@@ -3,7 +3,7 @@
 #' @title Parameter restriction families
 #'
 #' @description Different parameter restrictions can be included in estimation processes
-#' to make sure `mrf2d` can sucessfully include a wide range of models types in
+#' to make sure `mrf2d` can successfully include a wide range of model types in
 #' its inference functions.
 #'
 #' For model identifiability, at least one linear restriction is necessary.
@@ -32,7 +32,7 @@
 #' @section 'absdif':
 #'  All parameters \eqn{\theta_{a,b,r}} with the same absolute difference
 #'  between \eqn{a} and \eqn{b} must be equal within each relative position
-#'  \eqn{r}.
+#'  \eqn{r}. (Note that `'absdif'` is equal to `'oneeach'` for binary images).
 #'
 #'  \deqn{\theta_{a,b,r} = \sum_d \phi_{d,r} * 1(|a-b| == d)}
 #'
@@ -46,7 +46,11 @@
 #'  No additional restriction, all parameters other than \eqn{\theta_{0,0,r}}
 #'  vary freely.
 #'
+#' @seealso
+#' \code{vignette("mrf2d-family", package = "mrf2d")}
 #'
+#' A paper with detailed description of the package can be found at
+#' \url{https://arxiv.org/abs/2006.00383}
 NULL
 
 mrf2d_families <- c("onepar", "oneeach", "absdif", "dif", "free")

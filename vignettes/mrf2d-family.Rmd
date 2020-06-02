@@ -2,7 +2,7 @@
 title: "Parameter restriction families in mrf2d"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{mrf2d-family}
+  %\VignetteIndexEntry{Parameter restriction families in mrf2d}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -35,7 +35,7 @@ A single parameter for all different-valued pairs in all interacting positions.
 ### Example
 
 ```{r}
-fit_pl(Z_potts, mrfi(1), family = "onepar")
+fit_pl(field1, mrfi(1), family = "onepar")
 ```
 
 
@@ -46,7 +46,7 @@ One parameter for all different-valued pairs **for each** interacting position.
 ### Example
 
 ```{r}
-fit_pl(Z_potts, mrfi(1), family = "oneeach")
+fit_pl(field1, mrfi(1), family = "oneeach")
 ```
 
 
@@ -57,7 +57,7 @@ One parameter for each **absolute** difference of interacting pairs $d = |b-a|$ 
 ### Example
 
 ```{r}
-fit_pl(Z_potts, mrfi(1), family = "absdif")
+fit_pl(field1, mrfi(1), family = "absdif")
 ```
 
 
@@ -68,7 +68,7 @@ One parameter for each difference of interacting pairs $d = b-a$ in each relativ
 ### Example
 
 ```{r}
-fit_pl(Z_potts, mrfi(1), family = "dif")
+fit_pl(field1, mrfi(1), family = "dif")
 ```
 
 
@@ -79,6 +79,6 @@ Only the identifiability restriction $\theta_{0,0,r} = 0$ for all $r \in \mathca
 ### Example
 
 ```{r}
-fit_pl(Z_potts, mrfi(1), family = "free")
+fit_pl(field1, mrfi(1), family = "free")
 ```
 
