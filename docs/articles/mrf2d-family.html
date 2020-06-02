@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@
 
       
 
-      </header><script src="mrf2d-family_files/header-attrs-2.1/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Parameter restriction families in mrf2d</h1>
@@ -114,25 +114,23 @@
 <div id="example" class="section level3">
 <h3 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h3>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span>(<span class="no">Z_potts</span>, <span class="fu"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="fl">1</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"onepar"</span>)
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span>(<span class="no">field1</span>, <span class="fu"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="fl">1</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"onepar"</span>)
 <span class="co">#&gt; $theta</span>
 <span class="co">#&gt; , , (1,0)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;            0          1          2</span>
-<span class="co">#&gt; 0  0.0000000 -0.9906743 -0.9906743</span>
-<span class="co">#&gt; 1 -0.9906743  0.0000000 -0.9906743</span>
-<span class="co">#&gt; 2 -0.9906743 -0.9906743  0.0000000</span>
+<span class="co">#&gt;           0         1</span>
+<span class="co">#&gt; 0  0.000000 -1.047524</span>
+<span class="co">#&gt; 1 -1.047524  0.000000</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; , , (0,1)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;            0          1          2</span>
-<span class="co">#&gt; 0  0.0000000 -0.9906743 -0.9906743</span>
-<span class="co">#&gt; 1 -0.9906743  0.0000000 -0.9906743</span>
-<span class="co">#&gt; 2 -0.9906743 -0.9906743  0.0000000</span>
+<span class="co">#&gt;           0         1</span>
+<span class="co">#&gt; 0  0.000000 -1.047524</span>
+<span class="co">#&gt; 1 -1.047524  0.000000</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $value</span>
-<span class="co">#&gt; [1] -10707.56</span></pre></body></html></div>
+<span class="co">#&gt; [1] -5341.793</span></pre></body></html></div>
 </div>
 </div>
 <div id="oneeach" class="section level1">
@@ -143,25 +141,23 @@
 <div id="example-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#example-1" class="anchor"></a>Example</h3>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span>(<span class="no">Z_potts</span>, <span class="fu"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="fl">1</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"oneeach"</span>)
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span>(<span class="no">field1</span>, <span class="fu"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="fl">1</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"oneeach"</span>)
 <span class="co">#&gt; $theta</span>
 <span class="co">#&gt; , , (1,0)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;           0         1         2</span>
-<span class="co">#&gt; 0  0.000000 -0.963595 -0.963595</span>
-<span class="co">#&gt; 1 -0.963595  0.000000 -0.963595</span>
-<span class="co">#&gt; 2 -0.963595 -0.963595  0.000000</span>
+<span class="co">#&gt;           0         1</span>
+<span class="co">#&gt; 0  0.000000 -1.032319</span>
+<span class="co">#&gt; 1 -1.032319  0.000000</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; , , (0,1)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;           0         1         2</span>
-<span class="co">#&gt; 0  0.000000 -1.017916 -1.017916</span>
-<span class="co">#&gt; 1 -1.017916  0.000000 -1.017916</span>
-<span class="co">#&gt; 2 -1.017916 -1.017916  0.000000</span>
+<span class="co">#&gt;           0         1</span>
+<span class="co">#&gt; 0  0.000000 -1.062373</span>
+<span class="co">#&gt; 1 -1.062373  0.000000</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $value</span>
-<span class="co">#&gt; [1] -10705.05</span></pre></body></html></div>
+<span class="co">#&gt; [1] -5341.39</span></pre></body></html></div>
 </div>
 </div>
 <div id="absdif" class="section level1">
@@ -172,25 +168,23 @@
 <div id="example-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#example-2" class="anchor"></a>Example</h3>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span>(<span class="no">Z_potts</span>, <span class="fu"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="fl">1</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"absdif"</span>)
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span>(<span class="no">field1</span>, <span class="fu"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="fl">1</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"absdif"</span>)
 <span class="co">#&gt; $theta</span>
 <span class="co">#&gt; , , (1,0)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;            0          1          2</span>
-<span class="co">#&gt; 0  0.0000000 -0.9831376 -0.9266824</span>
-<span class="co">#&gt; 1 -0.9831376  0.0000000 -0.9831376</span>
-<span class="co">#&gt; 2 -0.9266824 -0.9831376  0.0000000</span>
+<span class="co">#&gt;           0         1</span>
+<span class="co">#&gt; 0  0.000000 -1.032319</span>
+<span class="co">#&gt; 1 -1.032319  0.000000</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; , , (0,1)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;           0         1         2</span>
-<span class="co">#&gt; 0  0.000000 -1.008181 -1.036678</span>
-<span class="co">#&gt; 1 -1.008181  0.000000 -1.008181</span>
-<span class="co">#&gt; 2 -1.036678 -1.008181  0.000000</span>
+<span class="co">#&gt;           0         1</span>
+<span class="co">#&gt; 0  0.000000 -1.062373</span>
+<span class="co">#&gt; 1 -1.062373  0.000000</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $value</span>
-<span class="co">#&gt; [1] -10702.53</span></pre></body></html></div>
+<span class="co">#&gt; [1] -5341.39</span></pre></body></html></div>
 </div>
 </div>
 <div id="dif" class="section level1">
@@ -201,25 +195,23 @@
 <div id="example-3" class="section level3">
 <h3 class="hasAnchor">
 <a href="#example-3" class="anchor"></a>Example</h3>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span>(<span class="no">Z_potts</span>, <span class="fu"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="fl">1</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"dif"</span>)
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span>(<span class="no">field1</span>, <span class="fu"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="fl">1</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"dif"</span>)
 <span class="co">#&gt; $theta</span>
 <span class="co">#&gt; , , (1,0)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;            0          1         2</span>
-<span class="co">#&gt; 0  0.0000000 -1.0494792 -1.146483</span>
-<span class="co">#&gt; 1 -0.9169354  0.0000000 -1.049479</span>
-<span class="co">#&gt; 2 -0.7074751 -0.9169354  0.000000</span>
+<span class="co">#&gt;           0          1</span>
+<span class="co">#&gt; 0  0.000000 -0.9555115</span>
+<span class="co">#&gt; 1 -1.109077  0.0000000</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; , , (0,1)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;           0          1          2</span>
-<span class="co">#&gt; 0  0.000000 -0.8500643 -0.6777844</span>
-<span class="co">#&gt; 1 -1.167967  0.0000000 -0.8500643</span>
-<span class="co">#&gt; 2 -1.397596 -1.1679668  0.0000000</span>
+<span class="co">#&gt;           0         1</span>
+<span class="co">#&gt; 0  0.000000 -1.009902</span>
+<span class="co">#&gt; 1 -1.114572  0.000000</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $value</span>
-<span class="co">#&gt; [1] -10697.19</span></pre></body></html></div>
+<span class="co">#&gt; [1] -5341.258</span></pre></body></html></div>
 </div>
 </div>
 <div id="free" class="section level1">
@@ -230,25 +222,23 @@
 <div id="example-4" class="section level3">
 <h3 class="hasAnchor">
 <a href="#example-4" class="anchor"></a>Example</h3>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span>(<span class="no">Z_potts</span>, <span class="fu"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="fl">1</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"free"</span>)
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span>(<span class="no">field1</span>, <span class="fu"><a href="../reference/mrfi.html">mrfi</a></span>(<span class="fl">1</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"free"</span>)
 <span class="co">#&gt; $theta</span>
 <span class="co">#&gt; , , (1,0)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;            0          1            2</span>
-<span class="co">#&gt; 0  0.0000000 -0.9690334 -1.142239425</span>
-<span class="co">#&gt; 1 -0.9099914  0.1623456 -0.968472933</span>
-<span class="co">#&gt; 2 -0.7026073 -0.7626250  0.003933491</span>
+<span class="co">#&gt;           0          1</span>
+<span class="co">#&gt; 0  0.000000 -0.8966628</span>
+<span class="co">#&gt; 1 -1.052229  0.1157553</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; , , (0,1)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;           0          1           2</span>
-<span class="co">#&gt; 0  0.000000 -0.9977450 -0.67563921</span>
-<span class="co">#&gt; 1 -1.154876 -0.1608085 -0.86409652</span>
-<span class="co">#&gt; 2 -1.424691 -1.3725545 -0.02835359</span>
+<span class="co">#&gt;           0          1</span>
+<span class="co">#&gt; 0  0.000000 -1.0640117</span>
+<span class="co">#&gt; 1 -1.171724 -0.1117498</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $value</span>
-<span class="co">#&gt; [1] -10693.75</span></pre></body></html></div>
+<span class="co">#&gt; [1] -5341.155</span></pre></body></html></div>
 </div>
 </div>
   </div>

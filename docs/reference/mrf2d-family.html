@@ -48,7 +48,7 @@
 
 <meta property="og:title" content="Parameter restriction families — mrf2d-family" />
 <meta property="og:description" content="Different parameter restrictions can be included in estimation processes
-to make sure mrf2d can sucessfully include a wide range of models types in
+to make sure mrf2d can successfully include a wide range of model types in
 its inference functions.
 For model identifiability, at least one linear restriction is necessary.
 mrf2d always assume \(\theta_{0,0,r} = 0\) for all relative positions
@@ -86,7 +86,7 @@ Additionally, each family of restrictions may introduce other restrictions:" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3</span>
       </span>
     </div>
 
@@ -144,7 +144,7 @@ Additionally, each family of restrictions may introduce other restrictions:" />
 
     <div class="ref-description">
     <p>Different parameter restrictions can be included in estimation processes
-to make sure <code>mrf2d</code> can sucessfully include a wide range of models types in
+to make sure <code>mrf2d</code> can successfully include a wide range of model types in
 its inference functions.</p>
 <p>For model identifiability, at least one linear restriction is necessary.
 <code>mrf2d</code> always assume \(\theta_{0,0,r} = 0\) for all relative positions
@@ -178,7 +178,7 @@ between different relative positions \(r\):</p>
 
 <p>All parameters \(\theta_{a,b,r}\) with the same absolute difference
 between \(a\) and \(b\) must be equal within each relative position
-\(r\).</p>
+\(r\). (Note that <code>'absdif'</code> is equal to <code>'oneeach'</code> for binary images).</p>
 <p>$$\theta_{a,b,r} = \sum_d \phi_{d,r} * 1(|a-b| == d)$$</p>
     <h2 class="hasAnchor" id="-dif-"><a class="anchor" href="#-dif-"></a>'dif'</h2>
 
@@ -193,6 +193,11 @@ negative differences.</p>
 
 <p>No additional restriction, all parameters other than \(\theta_{0,0,r}\)
 vary freely.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='../articles/mrf2d-family.html'>vignette("mrf2d-family", package = "mrf2d")</a></code></p>
+<p>A paper with detailed description of the package can be found at
+<a href='https://arxiv.org/abs/2006.00383'>https://arxiv.org/abs/2006.00383</a></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
