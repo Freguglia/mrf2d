@@ -37,9 +37,12 @@ See \code{\link[=mrf2d-family]{mrf2d-familiy}}.}
 \code{optim()} call are returned.}
 }
 \value{
-A \code{list} object with elements:
+An object of class \code{mrfout} with elements:
 \itemize{
 \item \code{theta}: The estimated array of potential values.
+\item \code{mrfi}: The interaction structure considered.
+\item \code{family}: The parameter restriction family considered.
+\item \code{method}: The estimation method (\code{"Pseudolikelihood"}).
 \item \code{value}: The optimal pseudo-likelihood value.
 \item \code{opt.xxx}(if \code{return_optim} is \code{TRUE}): Information returned by the
 \code{optim()} function used for the optimization.

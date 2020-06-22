@@ -82,8 +82,11 @@ pl_sub <- function(Z, mrfi, theta, log_scale){
 #' @param return_optim `logical` indicating whether information from the
 #' `optim()` call are returned.
 #'
-#' @return A `list` object with elements:
+#' @return An object of class `mrfout` with elements:
 #'  * `theta`: The estimated array of potential values.
+#'  * `mrfi`: The interaction structure considered.
+#'  * `family`: The parameter restriction family considered.
+#'  * `method`: The estimation method (`"Pseudolikelihood"`).
 #'  * `value`: The optimal pseudo-likelihood value.
 #'  * `opt.xxx`(if `return_optim` is `TRUE`): Information returned by the
 #'   `optim()` function used for the optimization.
@@ -138,7 +141,11 @@ fit_pl <- function(Z, mrfi, family = "onepar", init = 0,
   theta_out = vec_to_array(o$par, family, C, n_R)
   dimnames(theta_out)[[3]] <- mrfi_to_char(mrfi)
   out <- list(theta = theta_out,
+              mrfi = mrfi,
+              family = family,
+              method = "Pseudolikelihood",
               value = o$value)
   if(return_optim) {out <- c(out, opt = o)}
+  class(out) <- "mrfout"
   return(out)
 }
