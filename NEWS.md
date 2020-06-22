@@ -1,3 +1,6 @@
+# mrf2d 0.4
+  * Added `mrfout` class for model fitting functions output.
+
 # mrf2d 0.3
 
   * Co-ocurrence histogram computing is now exported in the `cohist()` function.
