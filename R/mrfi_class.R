@@ -8,6 +8,7 @@ mrfi_is_valid <- function(object){
 
   if(any(as.integer(Rmat) != Rmat)){
     msg <- "'Rmat' rows must be integers representing relative positions"
+    errors <- c(errors, msg)
   }
 
   if(length(errors) == 0) TRUE else errors
