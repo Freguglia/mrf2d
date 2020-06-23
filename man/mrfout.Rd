@@ -3,14 +3,19 @@
 \name{mrfout}
 \alias{mrfout}
 \alias{print.mrfout}
+\alias{summary.mrfout}
 \title{MRF fitting functions output}
 \usage{
 \method{print}{mrfout}(x, ...)
+
+\method{summary}{mrfout}(object, ...)
 }
 \arguments{
 \item{x}{a \code{mrfout} object.}
 
-\item{...}{other arguments not used by this method}
+\item{...}{other arguments not used by this method.}
+
+\item{object}{a \code{mrfout} object.}
 }
 \description{
 MRF fitting functions output

@@ -144,7 +144,8 @@ fit_pl <- function(Z, mrfi, family = "onepar", init = 0,
               mrfi = mrfi,
               family = family,
               method = "Pseudolikelihood",
-              value = o$value)
+              value = o$value,
+              Z = Z)
   if(return_optim) {out <- c(out, opt = o)}
   class(out) <- "mrfout"
   return(out)

@@ -8,7 +8,7 @@ test_that("Pseudo-likelihood computing is correct", {
 test_that("fit_pl is returning correctly", {
   # 'onepar'
   onepar <- fit_pl(Z_potts[1:30, 1:30], mrfi(), family = "onepar")
-  expect_setequal(names(onepar), c("theta", "mrfi", "family", "method", "value"))
+  expect_setequal(names(onepar), c("theta", "mrfi", "family", "method", "value", "Z"))
   onepar <- fit_pl(Z_potts[1:30, 1:30], mrfi(), return_optim = TRUE)
   expect_true(all(c("theta", "value", "opt.convergence") %in% names(onepar)))
   expect_is(fit_pl(Z_potts[1:30,1:30], mrfi(), init = -0.8), "mrfout")
@@ -27,7 +27,7 @@ test_that("fit_pl works with family 'absdif'", {
 
 test_that("fit_pl works with family 'dif'", {
   dif <- fit_pl(Z_potts[1:30, 1:30], mrfi(), family = "dif")
-  expect_setequal(names(dif), c("theta", "mrfi", "family", "method", "value"))
+  expect_setequal(names(dif), c("theta", "mrfi", "family", "method", "value", "Z"))
 })
 
 test_that("fit_pl works with family 'free'", {
