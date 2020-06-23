@@ -23,8 +23,11 @@
 #' @param verbose `logical` indicating whether the iteration number is printed
 #' during execution.
 #'
-#' @return A `list` object with the following elements:
+#' @return A `mrfout` object with the following elements:
 #'  * `theta`: The estimated `array` of potentials.
+#'  * `mrfi`: The interaction structure considered.
+#'  * `family`: The parameter restriction family considered.
+#'  * `method`: The estimation method (`"Stochastic Approximation"`).
 #'  * `metrics`: A `data.frame` containing the the euclidean distance between
 #'  the sufficient statics computed for `Z` and the current sample.
 #'
@@ -67,11 +70,11 @@
 #' @examples
 #' \donttest{
 #' set.seed(2)
-#' fit1 <- fit_sa(Z_potts, mrfi(1), family = "onepar", gamma_seq = seq(1, 0, length.out = 50))
+#' fit1 <- fit_sa(Z_potts, mrfi(1), family = "oneeach", gamma_seq = seq(1, 0, length.out = 50))
 #' # Estimated parameters
 #' fit1$theta
 #' # A visualization of estimated gradient norm over iterations.
-#' plot(fit1$metrics)
+#' plot(fit1$metrics, type = "l")
 #'
 #' fit_sa(Z_potts, mrfi(1), family = "oneeach", gamma_seq = seq(1, 0, length.out = 50))
 #' }
@@ -145,6 +148,13 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
   if(verbose) cat("\n")
   theta_out <- vec_to_array(theta_t, family, C, n_R)
   dimnames(theta_out)[[3]] <- mrfi_to_char(mrfi)
-  return(list(theta = theta_out,
-              metrics = data.frame(t = seq_along(gamma_seq), distance = d)))
+  out <- list(theta = theta_out,
+              mrfi = mrfi,
+              family = family,
+              method = "Stochastic Approximation",
+              metrics = data.frame(t = seq_along(gamma_seq), distance = d),
+              Z = Z,
+              ncycles = length(gamma_seq))
+  class(out) <- "mrfout"
+  return(out)
 }

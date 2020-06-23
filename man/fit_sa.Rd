@@ -51,9 +51,12 @@ performed when a refresh happens. Larger is usually better, but slower.}
 during execution.}
 }
 \value{
-A \code{list} object with the following elements:
+A \code{mrfout} object with the following elements:
 \itemize{
 \item \code{theta}: The estimated \code{array} of potentials.
+\item \code{mrfi}: The interaction structure considered.
+\item \code{family}: The parameter restriction family considered.
+\item \code{method}: The estimation method (\code{"Stochastic Approximation"}).
 \item \code{metrics}: A \code{data.frame} containing the the euclidean distance between
 the sufficient statics computed for \code{Z} and the current sample.
 }
@@ -99,11 +102,11 @@ Examples where Stochastic Approximation is used with MRFs are
 \examples{
 \donttest{
 set.seed(2)
-fit1 <- fit_sa(Z_potts, mrfi(1), family = "onepar", gamma_seq = seq(1, 0, length.out = 50))
+fit1 <- fit_sa(Z_potts, mrfi(1), family = "oneeach", gamma_seq = seq(1, 0, length.out = 50))
 # Estimated parameters
 fit1$theta
 # A visualization of estimated gradient norm over iterations.
-plot(fit1$metrics)
+plot(fit1$metrics, type = "l")
 
 fit_sa(Z_potts, mrfi(1), family = "oneeach", gamma_seq = seq(1, 0, length.out = 50))
 }

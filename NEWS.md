@@ -1,5 +1,5 @@
 # mrf2d 0.4
-  * Added `mrfout` class for model fitting functions output.
+  * Added `mrfout` class for model fitting functions output. A `summary()` method os available.
 
 # mrf2d 0.3
 
