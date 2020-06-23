@@ -42,22 +42,22 @@ summary.mrfout <- function(object, ...){
 
   if(family != "onepar"){
     if(family == "oneeach"){
-      cat(sprintf("%10s", ""), "Interaction for", "\n")
+      cat(sprintf("%10s", ""), "Interaction for:", "\n")
       cat("Position  ", "Different")
       cat(sprintf("%10s", ""),"Rel. Contribution")
       cat("\n")
     } else if (family == "absdif"){
-      cat(sprintf("%10s", ""), "Interaction for abs. difference", "\n")
+      cat(sprintf("%10s", ""), "Interaction for abs. difference:", "\n")
       cat("Position  ", sprintf(" %-5s",1:C))
       cat(sprintf("%10s", ""),"Rel. Contribution")
       cat("\n")
     } else if (family == "dif"){
-      cat(sprintf("%10s", ""), "Interaction for difference", "\n")
+      cat(sprintf("%10s", ""), "Interaction for difference:", "\n")
       cat("Position  ", sprintf(" %-6s",c(-C:-1, 1:C)))
       cat(sprintf("%10s", ""),"Rel. Contribution")
       cat("\n")
     } else if (family == "free"){
-      cat(sprintf("%10s", ""), "Interaction for pair", "\n")
+      cat(sprintf("%10s", ""), "Interaction for pair:", "\n")
       cat("Position  ", sprintf(" %-6s",paste0("(", rep(0:C, C+1), ",", rep(0:C, each = C+1), ")")[-1]))
       cat(sprintf("%10s", ""),"Rel. Contribution")
       cat("\n")
