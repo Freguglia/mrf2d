@@ -19,6 +19,7 @@ LazyData: true
 Imports: Rcpp (>= 1.0.1),
          dplyr(>= 0.8.1),
          reshape2,
+         tidyr,
          methods,
          ggplot2,
          Rdpack

@@ -15,6 +15,7 @@
 #'  are included. If `FALSE` `theme_void()` is added to the `ggplot` object.
 #' @param include_opposite ´logical` whether opposite directions should be
 #'  included in the visualization of the dependence structure.
+#' @param ... other arguments not used by this method.
 #'
 #' @return A `ggplot` object using `geom_tile()` to represent interacting
 #' relative positions.
@@ -31,26 +32,26 @@
 #'
 #' plot(mrfi(1)) + geom_text(aes(label = paste0("(",rx,",",ry,")")))
 #'
-#' @exportMethod plot
-setMethod("plot", signature(x = "mrfi", y = "missing"),
-          definition = function(x, include_axis = FALSE,
-                                include_opposite = TRUE){
-            df <- as.data.frame(x@Rmat)
-            names(df) <- c("rx", "ry")
-            df_center <- data.frame(rx = 0, ry = 0)
+#' @export
+plot.mrfi <- function(x, include_axis = FALSE,
+                      include_opposite = TRUE,
+                      ...){
+  df <- as.data.frame(x@Rmat)
+  names(df) <- c("rx", "ry")
+  df_center <- data.frame(rx = 0, ry = 0)
 
-            max_norm <- max(5, max(df$rx), max(df$ry)) + 0.5
-            p <- ggplot(df, aes_string(x = "rx", y = "ry")) +
-              geom_tile(fill = "gray", color = "black") +
-              geom_tile(data = df_center, fill = "black") +
-              theme_minimal()
-            if(include_opposite){p <- p +
-              geom_tile(data = data.frame(rx = -df$rx, ry = -df$ry),
-                        linetype = "dashed", color = "gray55",
-                        fill = "gray95")}
-            if(!include_axis) {p <- p + theme_void()}
-            p + lims(x = c(-max_norm, max_norm), y = c(-max_norm, max_norm))
-          })
+  max_norm <- max(5, max(df$rx), max(df$ry)) + 0.5
+  p <- ggplot(df, aes_string(x = "rx", y = "ry")) +
+    geom_tile(fill = "gray", color = "black") +
+    geom_tile(data = df_center, fill = "black") +
+    theme_minimal()
+  if(include_opposite){p <- p +
+    geom_tile(data = data.frame(rx = -df$rx, ry = -df$ry),
+              linetype = "dashed", color = "gray55",
+              fill = "gray95")}
+  if(!include_axis) {p <- p + theme_void()}
+  p + lims(x = c(-max_norm, max_norm), y = c(-max_norm, max_norm))
+}
 
 #' @rdname mrfi-class
 #'

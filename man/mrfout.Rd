@@ -4,11 +4,14 @@
 \alias{mrfout}
 \alias{print.mrfout}
 \alias{summary.mrfout}
+\alias{plot.mrfout}
 \title{MRF fitting functions output}
 \usage{
 \method{print}{mrfout}(x, ...)
 
 \method{summary}{mrfout}(object, ...)
+
+\method{plot}{mrfout}(x, ...)
 }
 \arguments{
 \item{x}{a \code{mrfout} object.}
