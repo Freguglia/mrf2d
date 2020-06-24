@@ -81,7 +81,7 @@ smr_stat <- function(Z, mrfi, family){
 #'
 #' @export
 cohist <- function(Z, mrfi){
-  C <- max(Z)
+  C <- max(Z, na.rm = TRUE)
   coh <- table_relative_3d(Z, mrfi@Rmat, C)
   pos_names <- sapply(as.list(mrfi), paste, collapse = ",")
   dimnames(coh) <- list(0:C, 0:C, paste0("(", pos_names, ")"))
