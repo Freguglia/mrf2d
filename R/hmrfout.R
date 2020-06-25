@@ -42,6 +42,7 @@ summary.hmrfout <- function(object, ...){
 }
 
 #' @rdname hmrfout
+#' @importFrom graphics par
 #' @export
 plot.hmrfout <- function(x, ...){
   plot(dplot(x$Z_pred) + ggtitle("Predicted component"))
