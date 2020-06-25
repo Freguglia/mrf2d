@@ -56,7 +56,7 @@ algorithm executed in each interaction. Defaults to 6.}
 \item{qr}{The QR decomposition of the design matrix. Used internally.}
 }
 \value{
-A \code{list} containing:
+A \code{hmrfout} containing:
 \itemize{
 \item \code{par}: A \code{data.frame} with \eqn{\mu} and \eqn{\sigma} estimates for each
 component.

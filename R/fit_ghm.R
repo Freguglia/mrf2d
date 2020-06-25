@@ -30,7 +30,7 @@
 #' @param verbose `logical` indicating wheter to print the progress or not.
 #' @param qr The QR decomposition of the design matrix. Used internally.
 #'
-#' @return A `list` containing:
+#' @return A `hmrfout` containing:
 #'  * `par`: A `data.frame` with \eqn{\mu} and \eqn{\sigma} estimates for each
 #' component.
 #'  * `fixed`: A `matrix` with the estimated fixed effect in each pixel.
@@ -213,9 +213,16 @@ fit_ghm <- function(Y, mrfi, theta, fixed_fn = list(),
   df_par <- data.frame(mu = mus_old, sigma = sigmas_old)
   rownames(df_par) = 0:C
 
-  return(list(par = df_par,
+  out <- list(par = df_par,
               fixed = S,
               Z_pred = Z,
+              mrfi = mrfi,
+              theta = theta,
               predicted = apply(Z, c(1,2), function(z) mus_old[z+1]) + S,
-              iterations = iter))
+              iterations = iter,
+              Y = Y,
+              C = C,
+              covs = fixed_fn)
+  class(out) <- "hmrfout"
+  return(out)
 }
