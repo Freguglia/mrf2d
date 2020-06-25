@@ -3,6 +3,7 @@
 #' @param x a `mrfout` object.
 #' @param object a `mrfout` object.
 #' @param ... other arguments not used by this method.
+
 #' @rdname mrfout
 #' @export
 print.mrfout <- function(x, ...){
