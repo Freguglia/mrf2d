@@ -38,7 +38,7 @@ mrfi_is_valid <- function(object){
 #'
 #' Note that the inclusion of a relative position to the dependence also implies
 #' its opposite direction is not conditionally independent (commutativeness of
-#' dependence), but only one is actually included to the `mrfi` object.
+#' dependence), but only one is included in the `mrfi` object.
 #'
 #' To illustrate that, a nearest neighbor dependence structure can be specified
 #' by:
@@ -84,10 +84,7 @@ setMethod("show", "mrfi",
           })
 
 
-#' @name mrfi
-#' @title Creation of \code{\link[=mrfi-class]{mrfi}} objects.
-#' @author Victor Freguglia
-#'
+#' @rdname mrfi-class
 #' @description `mrfi()` creates an object of class `mrfi` based on a distance
 #' rule and optionally a list of relative positions. The argument `max_norm` and
 #' `norm_type` can be used to automatically include all positions within a
@@ -119,11 +116,6 @@ setMethod("show", "mrfi",
 #' mrfi(1, positions = list(c(1,0), c(2,0)))
 #'
 #' @importFrom methods new
-#'
-#' @seealso
-#'
-#' A paper with detailed description of the package can be found at
-#' \url{https://arxiv.org/abs/2006.00383}
 #'
 #' @export
 mrfi <- function(max_norm = 1, norm_type = "1", positions = NULL){

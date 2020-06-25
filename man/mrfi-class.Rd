@@ -3,17 +3,69 @@
 \docType{class}
 \name{mrfi-class}
 \alias{mrfi-class}
-\alias{as.list,mrfi-method}
+\alias{mrfi}
+\alias{as.list.mrfi}
+\alias{length,mrfi-method}
+\alias{[[,mrfi,numeric,missing-method}
+\alias{[,mrfi,numeric,missing-method}
+\alias{+,mrfi,numeric-method}
+\alias{-,mrfi,numeric-method}
+\alias{+,mrfi,mrfi-method}
+\alias{-,mrfi,mrfi-method}
 \title{mrfi: MRF interaction structure}
 \usage{
-\S4method{as.list}{mrfi}(x)
+mrfi(max_norm = 1, norm_type = "1", positions = NULL)
+
+\method{as.list}{mrfi}(x, ...)
+
+\S4method{length}{mrfi}(x)
+
+\S4method{[[}{mrfi,numeric,missing}(x, i)
+
+\S4method{[}{mrfi,numeric,missing}(x, i)
+
+\S4method{+}{mrfi,numeric}(e1, e2)
+
+\S4method{-}{mrfi,numeric}(e1, e2)
+
+\S4method{+}{mrfi,mrfi}(e1, e2)
+
+\S4method{-}{mrfi,mrfi}(e1, e2)
 }
 \arguments{
+\item{max_norm}{a \code{numeric} value. All points with norm \eqn{\le} \code{max_dist}
+are included.}
+
+\item{norm_type}{a \code{character} indicating the norm type used. Possible values
+are "m", "1", "2", etc. See \code{\link[=norm]{norm}} for details.}
+
+\item{positions}{a \code{list} of \code{numeric} vectors of length 2. Each vector
+corresponds to a relative position included.}
+
 \item{x}{\code{mrfi} object.}
+
+\item{...}{other arguments not used by this method.}
+
+\item{i}{vector of indexes to extract interacting positions.}
+
+\item{e1}{A \code{mrfi} object.}
+
+\item{e2}{Either a second \code{mrfi} object or a length 2 \code{numeric} with the new
+relative position to include (\code{+}) or remove (\code{-}).}
 }
 \value{
+A \code{\link[=mrfi-class]{mrfi}} object.
+
 \code{as.list()}: converts the \code{mrfi} object to a list of interacting
 positions (list of length-2 vectors).
+
+\code{[[}: converts to list and subsets it.
+
+\code{[}: subsets the \code{mrfi} object and returns another \code{mrfi} object.
+
+\code{+}: computes the union of the interaction structure in a \code{mrfi} object with
+a \code{numeric} representing an additional position to include or another \code{mrfi}
+object.
 }
 \description{
 The \code{mrfi} S4 class is a representation of the interaction
@@ -22,6 +74,24 @@ structure for a spatially-stationary Markov Random Field.
 The function \code{\link[=mrfi]{mrfi()}} provides an interface for creation
 \code{mrfi} objects. A \code{plot} method is also available for visualization, as
 well as conversion methods like \code{as.list} and operators like \code{+}.
+
+\code{mrfi()} creates an object of class \code{mrfi} based on a distance
+rule and optionally a list of relative positions. The argument \code{max_norm} and
+\code{norm_type} can be used to automatically include all positions within a
+"range" defined by the norm type chosen and distance using that norm.
+
+A list of relative positions may also be included to specify sparse
+interaction structures, for example.
+
+Simple operations are provided to include (set union)
+new interacting positions to a \code{mrfi} object with the \code{'+'} operator and
+remove positions (set difference) with \code{-}. Individual positions can be
+included/excluded using length-2 vectors in the right hand side. Union and
+set difference of complete structures can also be computed by adding or
+subtracting two \code{mrfi} objects.
+
+These operations deal with opposite directions filtering to avoid redundancy
+in the interaction structure.
 }
 \details{
 The interaction structure is defined by the list of relative
@@ -36,7 +106,7 @@ right position, while \verb{(-1,0)} the left one.
 
 Note that the inclusion of a relative position to the dependence also implies
 its opposite direction is not conditionally independent (commutativeness of
-dependence), but only one is actually included to the \code{mrfi} object.
+dependence), but only one is included in the \code{mrfi} object.
 
 To illustrate that, a nearest neighbor dependence structure can be specified
 by:
@@ -56,6 +126,11 @@ are also conditionally dependent, as in
 of interaction.}
 }}
 
+\note{
+If a position in \code{positions} is already included due to the
+\code{max_norm} and \code{norm_type} specification, the second ocurrence is ignored.
+The same is valid for repeated or opposite positions in \code{positions}.
+}
 \examples{
 plot(mrfi(max_norm = 2, norm_type = "1"))
 plot(mrfi(max_norm = 2, norm_type = "m"))
@@ -65,6 +140,18 @@ as.list(mrfi(1))
 mrfi(1)[[1]]
 mrfi(2)[[1:3]]
 
+mrfi(1)
+mrfi(2)
+mrfi(2, norm_type = "m")
+mrfi(1, positions = list(c(4,4), c(-4,4)))
+
+#Repeated positions are handled automatically
+mrfi(1, positions = list(c(1,0), c(2,0)))
+
+mrfi(1) + c(2,0)
+mrfi(1) - c(1,0)
+mrfi(1) + mrfi(0, positions = list(c(2,0)))
+mrfi(2) - mrfi(1)
 }
 \seealso{
 A paper with detailed description of the package can be found at

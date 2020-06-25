@@ -56,28 +56,25 @@ plot.mrfi <- function(x, include_axis = FALSE,
 #' @rdname mrfi-class
 #'
 #' @param x `mrfi` object.
+#' @param ... other arguments not used by this method.
 #'
 #' @return `as.list()`: converts the `mrfi` object to a list of interacting
 #' positions (list of length-2 vectors).
 #'
-#' @exportMethod as.list
-setMethod("as.list", signature(x = "mrfi"),
-          definition = function(x){
-            unname(split(x@Rmat, rep(1:nrow(x@Rmat), ncol(x@Rmat))))
-          })
+#' @export
+as.list.mrfi <- function(x, ...){
+  unname(split(x@Rmat, rep(1:nrow(x@Rmat), ncol(x@Rmat))))
+}
 
-#' @rdname mrfi-subsetting
+#' @rdname mrfi-class
 #' @exportMethod length
 setMethod("length", signature(x = "mrfi"),
           definition = function(x){
             nrow(x@Rmat)
           })
 
-#' @rdname mrfi-subsetting
+#' @rdname mrfi-class
 #'
-#' @title Subsetting `mrfi` objects
-#'
-#' @param x `mrfi` object.
 #' @param i vector of indexes to extract interacting positions.
 #'
 #' @return `[[`: converts to list and subsets it.
@@ -93,7 +90,7 @@ setMethod("[[", signature = c("mrfi", "numeric", "missing"),
             unname(split(m, rep(1:nrow(m), ncol(m))))
           })
 
-#' @rdname mrfi-subsetting
+#' @rdname mrfi-class
 setMethod("[", signature = c("mrfi", "numeric", "missing"),
           definition = function(x, i){
             m <- x@Rmat[i,,drop = FALSE]
@@ -110,18 +107,16 @@ mrfi_diff <- function(mrfi1, mrfi2){
                         c(as.list(mrfi2), lapply(as.list(mrfi2), '*', -1L)))))
 }
 
-#' @rdname mrfi-operations
+#' @rdname mrfi-class
 #'
-#' @title Set operations for `mrfi` objects
-#'
-#' @description Provides simple operations to include (in the sense of union)
+#' @description Simple operations are provided to include (set union)
 #' new interacting positions to a `mrfi` object with the `'+'` operator and
 #' remove positions (set difference) with `-`. Individual positions can be
 #' included/excluded using length-2 vectors in the right hand side. Union and
 #' set difference of complete structures can also be computed by adding or
 #' subtracting two `mrfi` objects.
 #'
-#' This operations deal with opposite directions filtering to avoid redundancy
+#' These operations deal with opposite directions filtering to avoid redundancy
 #' in the interaction structure.
 #'
 #' @param e1 A `mrfi` object.
@@ -145,7 +140,7 @@ setMethod("+", signature = c("mrfi", "numeric"),
             return(result)
           })
 
-#' @rdname mrfi-operations
+#' @rdname mrfi-class
 #'
 #' @examples
 #' mrfi(1) - c(1,0)
@@ -162,7 +157,7 @@ setMethod("-", signature = c("mrfi", "numeric"),
             }
           })
 
-#' @rdname mrfi-operations
+#' @rdname mrfi-class
 #'
 #' @examples
 #' mrfi(1) + mrfi(0, positions = list(c(2,0)))
@@ -171,7 +166,7 @@ setMethod("+", signature = c("mrfi", "mrfi"),
             return(mrfi_union(e1,e2))
           })
 
-#' @rdname mrfi-operations
+#' @rdname mrfi-class
 #'
 #' @examples
 #' mrfi(2) - mrfi(1)
