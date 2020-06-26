@@ -128,7 +128,7 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
   }
   # Iterate
   for(t in seq_along(gamma_seq)){
-    if(verbose) cat("\r Iteration:", t)
+    cat(ifelse(verbose, paste("\r Iteration:", t), ""))
     arr_Z_t <- table_relative_3d(Z_t, mrfi@Rmat, C)
     S_t <- suf_stat(arr_Z_t, family)
     theta_t <- theta_t - gamma_seq[t]*(S_t - S)
@@ -145,7 +145,7 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
     }
     d[t] <- sqrt(sum((S_t - S)^2))
   }
-  if(verbose) cat("\n")
+  cat(ifelse(verbose, "\n", ""))
   theta_out <- vec_to_array(theta_t, family, C, n_R)
   dimnames(theta_out)[[3]] <- mrfi_to_char(mrfi)
   out <- list(theta = theta_out,
