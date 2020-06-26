@@ -68,11 +68,10 @@ important models as particular cases, such as the Potts model.
 
 It introduces the S4 class `mrfi` to represent interaction structures.
 The `mrfi()` function can be used to create these objects representing
-interaction structures with relative positions included based on norm or
-explicitly specified
+interaction structures with relative positions included based on the
+norm of the relative position (distance) or explicitly specified
 
 ``` r
-# We'll include dependence in nearest-neighbors only
 interact <- mrfi(max_norm = 1, positions = list(c(4,2)))
 interact
 #> 3 interacting positions.

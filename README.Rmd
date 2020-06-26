@@ -60,10 +60,9 @@ devtools::install_github("Freguglia/mrf2d")
 
 `mrf2d` introduces a programming interface for the general Markov Random Field model in *Freguglia, Victor, Nancy L. Garcia, and Juliano L. Bicas. "Hidden Markov random field models applied to color homogeneity evaluation in dyed textile images." Environmetrics (2019): e2613.* Using specific interaction structures and parameter restrictions can lead to important models as particular cases, such as the Potts model.
 
-It introduces the S4 class `mrfi` to represent interaction structures. The `mrfi()` function can be used to create these objects representing interaction structures with relative positions included based on norm or explicitly specified
+It introduces the S4 class `mrfi` to represent interaction structures. The `mrfi()` function can be used to create these objects representing interaction structures with relative positions included based on the norm of the relative position (distance) or explicitly specified
 
 ```{r plot_interaction, echo = TRUE, fig.width=2, fig.height=2}
-# We'll include dependence in nearest-neighbors only
 interact <- mrfi(max_norm = 1, positions = list(c(4,2)))
 interact
 plot(interact)
@@ -86,8 +85,6 @@ img_dim <- c(200,200)
 Z <- rmrf2d(img_dim, mrfi = interact, theta = potentials, cycles = 60)
 dplot(Z, legend = TRUE)
 ```
-
-
 
 ---
 
