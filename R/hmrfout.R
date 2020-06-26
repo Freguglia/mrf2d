@@ -52,4 +52,5 @@ plot.hmrfout <- function(x, ...){
   }
   plot(cplot(x$predicted) + ggtitle("Predicted pixel mean"))
   par(ask = FALSE)
+  return(x)
 }
