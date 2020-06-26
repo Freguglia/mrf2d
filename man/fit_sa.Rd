@@ -2,7 +2,7 @@
 % Please edit documentation in R/fit_sa.R
 \name{fit_sa}
 \alias{fit_sa}
-\title{Stochastic Approximation algorithm for MRFs on 2d lattices}
+\title{Stochastic Approximation fitting of MRFs on 2d lattices}
 \usage{
 fit_sa(
   Z,
@@ -44,7 +44,7 @@ complete refresh (restart from a random state). This prevents the sample from
 being stuck in a mode for too long. Defaults to \code{length(gamma_seq) + 1} (no
 refresh happens).}
 
-\item{refresh_cycles}{An iteger indicating how many Gibbs Sampler cycles are
+\item{refresh_cycles}{An integer indicating how many Gibbs Sampler cycles are
 performed when a refresh happens. Larger is usually better, but slower.}
 
 \item{verbose}{\code{logical} indicating whether the iteration number is printed
