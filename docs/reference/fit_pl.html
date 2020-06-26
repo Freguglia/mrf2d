@@ -83,7 +83,7 @@ Pseudo-Likelihood function." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9999</span>
       </span>
     </div>
 
@@ -195,8 +195,11 @@ See <code><a href='mrf2d-family.html'>mrf2d-familiy</a></code>.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>list</code> object with elements:</p><ul>
+    <p>An object of class <code>mrfout</code> with elements:</p><ul>
 <li><p><code>theta</code>: The estimated array of potential values.</p></li>
+<li><p><code>mrfi</code>: The interaction structure considered.</p></li>
+<li><p><code>family</code>: The parameter restriction family considered.</p></li>
+<li><p><code>method</code>: The estimation method (<code>"Pseudolikelihood"</code>).</p></li>
 <li><p><code>value</code>: The optimal pseudo-likelihood value.</p></li>
 <li><p><code>opt.xxx</code>(if <code>return_optim</code> is <code>TRUE</code>): Information returned by the
 <code><a href='https://rdrr.io/r/stats/optim.html'>optim()</a></code> function used for the optimization.</p></li>
@@ -208,89 +211,13 @@ See <code><a href='mrf2d-family.html'>mrf2d-familiy</a></code>.</p></td>
 <a href='https://arxiv.org/abs/2006.00383'>https://arxiv.org/abs/2006.00383</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>fit_pl</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"onepar"</span>)</div><div class='output co'>#&gt; $theta
-#&gt; , , (1,0)
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.9906743 -0.9906743
-#&gt; 1 -0.9906743  0.0000000 -0.9906743
-#&gt; 2 -0.9906743 -0.9906743  0.0000000
-#&gt; 
-#&gt; , , (0,1)
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.9906743 -0.9906743
-#&gt; 1 -0.9906743  0.0000000 -0.9906743
-#&gt; 2 -0.9906743 -0.9906743  0.0000000
-#&gt; 
-#&gt; 
-#&gt; $value
-#&gt; [1] -10707.56
-#&gt; </div><div class='input'><span class='fu'>fit_pl</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"oneeach"</span>)</div><div class='output co'>#&gt; $theta
-#&gt; , , (1,0)
-#&gt; 
-#&gt;           0         1         2
-#&gt; 0  0.000000 -0.963595 -0.963595
-#&gt; 1 -0.963595  0.000000 -0.963595
-#&gt; 2 -0.963595 -0.963595  0.000000
-#&gt; 
-#&gt; , , (0,1)
-#&gt; 
-#&gt;           0         1         2
-#&gt; 0  0.000000 -1.017916 -1.017916
-#&gt; 1 -1.017916  0.000000 -1.017916
-#&gt; 2 -1.017916 -1.017916  0.000000
-#&gt; 
-#&gt; 
-#&gt; $value
-#&gt; [1] -10705.05
-#&gt; </div><div class='input'><span class='fu'>fit_pl</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>2</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"onepar"</span>)</div><div class='output co'>#&gt; $theta
-#&gt; , , (1,0)
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; , , (2,0)
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; , , (-1,1)
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; , , (0,1)
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; , , (1,1)
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; , , (0,2)
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.3355747 -0.3355747
-#&gt; 1 -0.3355747  0.0000000 -0.3355747
-#&gt; 2 -0.3355747 -0.3355747  0.0000000
-#&gt; 
-#&gt; 
-#&gt; $value
-#&gt; [1] -12072.36
-#&gt; </div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>fit_pl</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"onepar"</span>)</div><div class='output co'>#&gt; Model fitted via Pseudolikelihood 
+#&gt; 2 interacting positions: (1,0) (0,1) 
+#&gt; family: onepar </div><div class='input'><span class='fu'>fit_pl</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"oneeach"</span>)</div><div class='output co'>#&gt; Model fitted via Pseudolikelihood 
+#&gt; 2 interacting positions: (1,0) (0,1) 
+#&gt; family: oneeach </div><div class='input'><span class='fu'>fit_pl</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>2</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"onepar"</span>)</div><div class='output co'>#&gt; Model fitted via Pseudolikelihood 
+#&gt; 6 interacting positions: (1,0) (2,0) (-1,1) (0,1) (1,1) (0,2) 
+#&gt; family: onepar </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

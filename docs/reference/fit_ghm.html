@@ -87,7 +87,7 @@ described in (Freguglia et al. 2020)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9999</span>
       </span>
     </div>
 
@@ -235,7 +235,7 @@ algorithm executed in each interaction. Defaults to 6.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>list</code> containing:</p><ul>
+    <p>A <code>hmrfout</code> containing:</p><ul>
 <li><p><code>par</code>: A <code>data.frame</code> with \(\mu\) and \(\sigma\) estimates for each
 component.</p></li>
 <li><p><code>fixed</code>: A <code>matrix</code> with the estimated fixed effect in each pixel.</p></li>
@@ -279,7 +279,7 @@ in consecutive iterations is less than <code>max_dist</code>.</p>
 <span class='co'># Check what the data looks like</span>
 <span class='fu'><a href='dplot.html'>cplot</a></span>(<span class='no'>Y</span>)</div><div class='img'><img src='fit_ghm-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='no'>fixed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='basis_functions.html'>polynomial_2d</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>Y</span>))
-<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'>fit_ghm</span>(<span class='no'>Y</span>, <span class='kw'>mrfi</span> <span class='kw'>=</span> <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>theta</span> <span class='kw'>=</span> <span class='no'>theta_potts</span>, <span class='kw'>fixed_fn</span> <span class='kw'>=</span> <span class='no'>fixed</span>)
+<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'>fit_ghm</span>(<span class='no'>Y</span>, <span class='kw'>mrfi</span> <span class='kw'>=</span> <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>theta</span> <span class='kw'>=</span> <span class='no'>theta_potts</span>, <span class='kw'>fixed_fn</span> <span class='kw'>=</span> <span class='no'>fixed</span>)
 <span class='no'>fit</span>$<span class='no'>par</span></div><div class='output co'>#&gt;             mu     sigma
 #&gt; 0 -0.001568028 0.4012135
 #&gt; 1  0.999990536 0.3966913

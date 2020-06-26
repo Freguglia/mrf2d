@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stochastic Approximation algorithm for MRFs on 2d lattices — fit_sa • mrf2d</title>
+<title>Stochastic Approximation fitting of MRFs on 2d lattices — fit_sa • mrf2d</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Stochastic Approximation algorithm for MRFs on 2d lattices — fit_sa" />
+<meta property="og:title" content="Stochastic Approximation fitting of MRFs on 2d lattices — fit_sa" />
 <meta property="og:description" content="Estimates the parameters of a MRF by successively sampling from
 a parameter configuration and updating it by comparing the sufficient statistics
 of the sampled field and the observed field.
@@ -84,7 +84,7 @@ likelihood function is equal to zero." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9999</span>
       </span>
     </div>
 
@@ -135,7 +135,7 @@ likelihood function is equal to zero." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Stochastic Approximation algorithm for MRFs on 2d lattices</h1>
+    <h1>Stochastic Approximation fitting of MRFs on 2d lattices</h1>
     <small class="dont-index">Source: <a href='https://github.com/Freguglia/mrf2d/blob/master/R/fit_sa.R'><code>R/fit_sa.R</code></a></small>
     <div class="hidden name"><code>fit_sa.Rd</code></div>
     </div>
@@ -205,7 +205,7 @@ refresh happens).</p></td>
     </tr>
     <tr>
       <th>refresh_cycles</th>
-      <td><p>An iteger indicating how many Gibbs Sampler cycles are
+      <td><p>An integer indicating how many Gibbs Sampler cycles are
 performed when a refresh happens. Larger is usually better, but slower.</p></td>
     </tr>
     <tr>
@@ -217,8 +217,11 @@ during execution.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>list</code> object with the following elements:</p><ul>
+    <p>A <code>mrfout</code> object with the following elements:</p><ul>
 <li><p><code>theta</code>: The estimated <code>array</code> of potentials.</p></li>
+<li><p><code>mrfi</code>: The interaction structure considered.</p></li>
+<li><p><code>family</code>: The parameter restriction family considered.</p></li>
+<li><p><code>method</code>: The estimation method (<code>"Stochastic Approximation"</code>).</p></li>
 <li><p><code>metrics</code>: A <code>data.frame</code> containing the the euclidean distance between
 the sufficient statics computed for <code>Z</code> and the current sample.</p></li>
 </ul>
@@ -249,14 +252,14 @@ required.</p>
 some references.</p>
 <p>Examples where Stochastic Approximation is used with MRFs are
 (Gimel'farb 1996)
-, (Atchad攼㸹 et al. 2013)
+, (Atchadé et al. 2013)
 .</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Wikipedia (2019).
 &#8220;Stochastic approximation.&#8221;
 <a href='https://en.wikipedia.org/wiki/Stochastic_approximation'>https://en.wikipedia.org/wiki/Stochastic_approximation</a>.</p>
-<p>Atchad攼㸹 YF, Lartillot N, Robert C, others (2013).
+<p>Atchadé YF, Lartillot N, Robert C, others (2013).
 &#8220;Bayesian computation for statistical models with intractable normalizing constants.&#8221;
 <em>Brazilian Journal of Probability and Statistics</em>, <b>27</b>(4), 416--436.<br /><br /> Gimel'farb GL (1996).
 &#8220;Texture modeling by multiple pairwise pixel interactions.&#8221;
@@ -269,92 +272,26 @@ some references.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>2</span>)
-<span class='no'>fit1</span> <span class='kw'>&lt;-</span> <span class='fu'>fit_sa</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"onepar"</span>, <span class='kw'>gamma_seq</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>50</span>))
+<span class='no'>fit1</span> <span class='kw'>&lt;-</span> <span class='fu'>fit_sa</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"oneeach"</span>, <span class='kw'>gamma_seq</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>50</span>))
 <span class='co'># Estimated parameters</span>
 <span class='no'>fit1</span>$<span class='no'>theta</span></div><div class='output co'>#&gt; , , (1,0)
 #&gt; 
 #&gt;            0          1          2
-#&gt; 0  0.0000000 -0.9981941 -0.9981941
-#&gt; 1 -0.9981941  0.0000000 -0.9981941
-#&gt; 2 -0.9981941 -0.9981941  0.0000000
-#&gt; 
-#&gt; , , (0,1)
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.9981941 -0.9981941
-#&gt; 1 -0.9981941  0.0000000 -0.9981941
-#&gt; 2 -0.9981941 -0.9981941  0.0000000
-#&gt; </div><div class='input'><span class='co'># A visualization of estimated gradient norm over iterations.</span>
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>fit1</span>$<span class='no'>metrics</span>)</div><div class='img'><img src='fit_sa-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'>fit_sa</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"oneeach"</span>, <span class='kw'>gamma_seq</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>50</span>))</div><div class='output co'>#&gt; $theta
-#&gt; , , (1,0)
-#&gt; 
-#&gt;            0          1          2
-#&gt; 0  0.0000000 -0.9699166 -0.9699166
-#&gt; 1 -0.9699166  0.0000000 -0.9699166
-#&gt; 2 -0.9699166 -0.9699166  0.0000000
+#&gt; 0  0.0000000 -0.9719982 -0.9719982
+#&gt; 1 -0.9719982  0.0000000 -0.9719982
+#&gt; 2 -0.9719982 -0.9719982  0.0000000
 #&gt; 
 #&gt; , , (0,1)
 #&gt; 
 #&gt;           0         1         2
-#&gt; 0  0.000000 -1.015816 -1.015816
-#&gt; 1 -1.015816  0.000000 -1.015816
-#&gt; 2 -1.015816 -1.015816  0.000000
-#&gt; 
-#&gt; 
-#&gt; $metrics
-#&gt;     t    distance
-#&gt; 1   1 12865.85842
-#&gt; 2   2  9698.68321
-#&gt; 3   3  6452.70997
-#&gt; 4   4  3642.76173
-#&gt; 5   5  1613.61767
-#&gt; 6   6   441.16324
-#&gt; 7   7   261.19916
-#&gt; 8   8   443.71725
-#&gt; 9   9   301.60239
-#&gt; 10 10   486.70730
-#&gt; 11 11    76.55064
-#&gt; 12 12    83.18654
-#&gt; 13 13   138.19551
-#&gt; 14 14    72.17340
-#&gt; 15 15    75.58439
-#&gt; 16 16   181.89283
-#&gt; 17 17   203.35437
-#&gt; 18 18   223.14345
-#&gt; 19 19    26.62705
-#&gt; 20 20    18.02776
-#&gt; 21 21    75.13322
-#&gt; 22 22   162.00309
-#&gt; 23 23   234.40137
-#&gt; 24 24   281.30055
-#&gt; 25 25   181.28982
-#&gt; 26 26   154.73849
-#&gt; 27 27   261.59893
-#&gt; 28 28   119.57006
-#&gt; 29 29    61.03278
-#&gt; 30 30    48.25971
-#&gt; 31 31     5.00000
-#&gt; 32 32    72.56032
-#&gt; 33 33    44.18144
-#&gt; 34 34   107.00467
-#&gt; 35 35   207.66319
-#&gt; 36 36   272.37658
-#&gt; 37 37    68.02941
-#&gt; 38 38   112.53888
-#&gt; 39 39   103.81233
-#&gt; 40 40    47.88528
-#&gt; 41 41   160.97515
-#&gt; 42 42   138.85244
-#&gt; 43 43    10.81665
-#&gt; 44 44    48.66210
-#&gt; 45 45    87.20665
-#&gt; 46 46    82.56513
-#&gt; 47 47   130.74020
-#&gt; 48 48    94.00532
-#&gt; 49 49   125.01600
-#&gt; 50 50   123.03658
-#&gt; </div><div class='input'># }
+#&gt; 0  0.000000 -1.009834 -1.009834
+#&gt; 1 -1.009834  0.000000 -1.009834
+#&gt; 2 -1.009834 -1.009834  0.000000
+#&gt; </div><div class='input'><span class='co'># A visualization of estimated gradient norm over iterations.</span>
+<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>fit1</span>$<span class='no'>metrics</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"l"</span>)</div><div class='img'><img src='fit_sa-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>fit_sa</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"oneeach"</span>, <span class='kw'>gamma_seq</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>50</span>))</div><div class='output co'>#&gt; Model fitted via Stochastic Approximation 
+#&gt; 2 interacting positions: (1,0) (0,1) 
+#&gt; family: oneeach </div><div class='input'># }
 
 </div></pre>
   </div>

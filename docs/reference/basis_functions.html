@@ -81,7 +81,7 @@ functions to be used as the fixed effect in fit_ghm." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9999</span>
       </span>
     </div>
 
@@ -180,2478 +180,3453 @@ polynomial to be considered.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>fourier_2d</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10</span>,<span class='fl'>10</span>), <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>Z_potts</span>))</div><div class='output co'>#&gt; $`2`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238be498&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a83e408&gt;
 #&gt; 
 #&gt; $`3`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c3ff0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a83e5c8&gt;
 #&gt; 
 #&gt; $`4`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c3df8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a83e788&gt;
 #&gt; 
 #&gt; $`5`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c3c00&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a838bf8&gt;
 #&gt; 
 #&gt; $`6`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c3a08&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a838db8&gt;
 #&gt; 
 #&gt; $`7`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c3810&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a838f78&gt;
 #&gt; 
 #&gt; $`8`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c3618&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a839138&gt;
 #&gt; 
 #&gt; $`9`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c3420&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8392f8&gt;
 #&gt; 
 #&gt; $`10`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c3228&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8394b8&gt;
 #&gt; 
 #&gt; $`11`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c3030&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a839678&gt;
 #&gt; 
 #&gt; $`12`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c2e38&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a839838&gt;
 #&gt; 
 #&gt; $`13`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c2c08&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8399f8&gt;
 #&gt; 
 #&gt; $`14`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c2a10&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a839bb8&gt;
 #&gt; 
 #&gt; $`15`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c2818&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a839d78&gt;
 #&gt; 
 #&gt; $`16`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c2620&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a839f38&gt;
 #&gt; 
 #&gt; $`17`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c2428&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a83a0f8&gt;
 #&gt; 
 #&gt; $`18`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c6060&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a83a2b8&gt;
 #&gt; 
 #&gt; $`19`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c5e68&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a83a478&gt;
 #&gt; 
 #&gt; $`20`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c5c70&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a836ca0&gt;
 #&gt; 
 #&gt; $`21`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c5a78&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a836e60&gt;
 #&gt; 
 #&gt; $`22`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c5880&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a837058&gt;
 #&gt; 
 #&gt; $`23`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c5688&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a837218&gt;
 #&gt; 
 #&gt; $`24`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c5490&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8373d8&gt;
 #&gt; 
 #&gt; $`25`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c5298&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a837950&gt;
 #&gt; 
 #&gt; $`26`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c50a0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a837b48&gt;
 #&gt; 
 #&gt; $`27`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c4ea8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a837d08&gt;
 #&gt; 
 #&gt; $`28`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c4cb0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a837ec8&gt;
 #&gt; 
 #&gt; $`29`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c4ab8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a838248&gt;
 #&gt; 
 #&gt; $`30`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c48c0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a838408&gt;
 #&gt; 
 #&gt; $`31`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c46c8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a838600&gt;
 #&gt; 
 #&gt; $`32`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c44d0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8387c0&gt;
 #&gt; 
 #&gt; $`33`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c42d8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a838980&gt;
 #&gt; 
 #&gt; $`34`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c7f10&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a834d10&gt;
 #&gt; 
 #&gt; $`35`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c7d18&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a834ed0&gt;
 #&gt; 
 #&gt; $`36`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c7b20&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a835090&gt;
 #&gt; 
 #&gt; $`37`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c7928&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a835250&gt;
 #&gt; 
 #&gt; $`38`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c76f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a835410&gt;
 #&gt; 
 #&gt; $`39`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c7308&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8355d0&gt;
 #&gt; 
 #&gt; $`40`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c7110&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a835790&gt;
 #&gt; 
 #&gt; $`41`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c6ee0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a835950&gt;
 #&gt; 
 #&gt; $`42`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c6ce8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a835b10&gt;
 #&gt; 
 #&gt; $`43`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c6af0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a835cd0&gt;
 #&gt; 
 #&gt; $`44`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c68f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a835e90&gt;
 #&gt; 
 #&gt; $`45`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c6700&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a836050&gt;
 #&gt; 
 #&gt; $`46`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c6508&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a836210&gt;
 #&gt; 
 #&gt; $`47`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c6310&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a836408&gt;
 #&gt; 
 #&gt; $`48`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c6118&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8365c8&gt;
 #&gt; 
 #&gt; $`49`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c9d50&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a836788&gt;
 #&gt; 
 #&gt; $`50`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c9b58&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a836948&gt;
 #&gt; 
 #&gt; $`51`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c9960&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a836b40&gt;
 #&gt; 
 #&gt; $`52`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c9768&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a832ed0&gt;
 #&gt; 
 #&gt; $`53`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c9570&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a833090&gt;
 #&gt; 
 #&gt; $`54`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c9378&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a833250&gt;
 #&gt; 
 #&gt; $`55`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c9180&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a833410&gt;
 #&gt; 
 #&gt; $`56`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c8f88&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8335d0&gt;
 #&gt; 
 #&gt; $`57`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c8d90&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a833790&gt;
 #&gt; 
 #&gt; $`58`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c8b98&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a833950&gt;
 #&gt; 
 #&gt; $`59`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c89a0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a833b10&gt;
 #&gt; 
 #&gt; $`60`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c8770&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a833cd0&gt;
 #&gt; 
 #&gt; $`61`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238c8578&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a833e90&gt;
 #&gt; 
 #&gt; $`62`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cb8f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a834050&gt;
 #&gt; 
 #&gt; $`63`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cb6f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a834210&gt;
 #&gt; 
 #&gt; $`64`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cb4c8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8343d0&gt;
 #&gt; 
 #&gt; $`65`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cb2d0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a834590&gt;
 #&gt; 
 #&gt; $`66`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cadc8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a834750&gt;
 #&gt; 
 #&gt; $`67`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cabd0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a834910&gt;
 #&gt; 
 #&gt; $`68`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ca9d8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a834ad0&gt;
 #&gt; 
 #&gt; $`69`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ca7e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a830e60&gt;
 #&gt; 
 #&gt; $`70`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ca5e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a831020&gt;
 #&gt; 
 #&gt; $`71`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ca3f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8311e0&gt;
 #&gt; 
 #&gt; $`72`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ca1f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8313a0&gt;
 #&gt; 
 #&gt; $`73`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ca000&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a831560&gt;
 #&gt; 
 #&gt; $`74`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cfb58&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a831950&gt;
 #&gt; 
 #&gt; $`75`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cf960&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a831b10&gt;
 #&gt; 
 #&gt; $`76`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cf768&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a831d08&gt;
 #&gt; 
 #&gt; $`77`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cf570&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a831ec8&gt;
 #&gt; 
 #&gt; $`78`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cf378&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a832088&gt;
 #&gt; 
 #&gt; $`79`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cf180&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a832248&gt;
 #&gt; 
 #&gt; $`80`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cef88&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a832408&gt;
 #&gt; 
 #&gt; $`81`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ced90&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8325c8&gt;
 #&gt; 
 #&gt; $`82`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ceb98&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8327c0&gt;
 #&gt; 
 #&gt; $`83`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ce9a0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a832980&gt;
 #&gt; 
 #&gt; $`84`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ce7a8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a832b40&gt;
 #&gt; 
 #&gt; $`85`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ce5b0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a832d00&gt;
 #&gt; 
 #&gt; $`86`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ce3b8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a82f090&gt;
 #&gt; 
 #&gt; $`87`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238ce1c0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a82a050&gt;
 #&gt; 
 #&gt; $`88`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cdfc8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a82a210&gt;
 #&gt; 
 #&gt; $`89`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238cddd0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a82a408&gt;
 #&gt; 
 #&gt; $`90`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d3928&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a82a5c8&gt;
 #&gt; 
 #&gt; $`91`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d3730&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a82a7c0&gt;
 #&gt; 
 #&gt; $`92`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d3538&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a82a9f0&gt;
 #&gt; 
 #&gt; $`93`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d3340&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a82abb0&gt;
 #&gt; 
 #&gt; $`94`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d3148&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a82ade0&gt;
 #&gt; 
 #&gt; $`95`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d2f50&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a826bd8&gt;
 #&gt; 
 #&gt; $`96`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d2d58&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a826d98&gt;
 #&gt; 
 #&gt; $`97`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d2b60&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a826f90&gt;
 #&gt; 
 #&gt; $`98`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d2968&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8271c0&gt;
 #&gt; 
 #&gt; $`99`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d2770&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a827380&gt;
 #&gt; 
 #&gt; $`100`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d2578&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a827540&gt;
 #&gt; 
 #&gt; $`101`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d2310&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a827700&gt;
 #&gt; 
 #&gt; $`102`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d2118&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8278c0&gt;
 #&gt; 
 #&gt; $`103`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d1d28&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a827a80&gt;
 #&gt; 
 #&gt; $`104`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d5960&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a827cb0&gt;
 #&gt; 
 #&gt; $`105`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d5768&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a827ee0&gt;
 #&gt; 
 #&gt; $`106`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d5570&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8280a0&gt;
 #&gt; 
 #&gt; $`107`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d5308&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a828260&gt;
 #&gt; 
 #&gt; $`108`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d50d8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a828420&gt;
 #&gt; 
 #&gt; $`109`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d4ee0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8286f8&gt;
 #&gt; 
 #&gt; $`110`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d4ce8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8288b8&gt;
 #&gt; 
 #&gt; $`111`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d4af0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a828a78&gt;
 #&gt; 
 #&gt; $`112`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d48f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a824eb0&gt;
 #&gt; 
 #&gt; $`113`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d4700&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a8267d8&gt;
 #&gt; 
 #&gt; $`114`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d4508&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a826998&gt;
 #&gt; 
 #&gt; $`115`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d4310&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a826b58&gt;
 #&gt; 
 #&gt; $`116`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d4118&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a81f1c0&gt;
 #&gt; 
 #&gt; $`117`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d3f20&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a81f380&gt;
 #&gt; 
 #&gt; $`118`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d3d28&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a81f5e8&gt;
 #&gt; 
 #&gt; $`119`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d3b30&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a81f9d8&gt;
 #&gt; 
 #&gt; $`120`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d7768&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a81fb98&gt;
 #&gt; 
 #&gt; $`121`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x000000002339f9b0&gt;
-#&gt; &lt;environment: 0x00000000238d7570&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af52e40&gt;
+#&gt; &lt;environment: 0x55e08a81fdc8&gt;
 #&gt; 
 #&gt; $`2`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390b7b0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a522630&gt;
 #&gt; 
 #&gt; $`3`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390b350&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a522860&gt;
 #&gt; 
 #&gt; $`4`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390aac8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51ccd0&gt;
 #&gt; 
 #&gt; $`5`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390a8d0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51cf00&gt;
 #&gt; 
 #&gt; $`6`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390a6d8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51d0c0&gt;
 #&gt; 
 #&gt; $`7`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390a4a8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51d4e8&gt;
 #&gt; 
 #&gt; $`8`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390d820&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51d6e0&gt;
 #&gt; 
 #&gt; $`9`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390d5f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51d8a0&gt;
 #&gt; 
 #&gt; $`10`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390d3f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51da60&gt;
 #&gt; 
 #&gt; $`11`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390d200&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51dc20&gt;
 #&gt; 
 #&gt; $`12`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390d008&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51dde0&gt;
 #&gt; 
 #&gt; $`13`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390ce10&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51dfa0&gt;
 #&gt; 
 #&gt; $`14`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390cbe0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51e160&gt;
 #&gt; 
 #&gt; $`15`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390c9e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51e320&gt;
 #&gt; 
 #&gt; $`16`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390c780&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51e4e0&gt;
 #&gt; 
 #&gt; $`17`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390f5f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51e6a0&gt;
 #&gt; 
 #&gt; $`18`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390f3f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51e860&gt;
 #&gt; 
 #&gt; $`19`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390f200&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51ea20&gt;
 #&gt; 
 #&gt; $`20`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390efd0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51adb0&gt;
 #&gt; 
 #&gt; $`21`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390eb70&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51af70&gt;
 #&gt; 
 #&gt; $`22`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390e978&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51b130&gt;
 #&gt; 
 #&gt; $`23`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390e780&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51b2f0&gt;
 #&gt; 
 #&gt; $`24`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390e550&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51b4b0&gt;
 #&gt; 
 #&gt; $`25`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390e358&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51b670&gt;
 #&gt; 
 #&gt; $`26`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002390e128&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51b830&gt;
 #&gt; 
 #&gt; $`27`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023911d60&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51b9f0&gt;
 #&gt; 
 #&gt; $`28`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023911b68&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51bbb0&gt;
 #&gt; 
 #&gt; $`29`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023911970&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51bd70&gt;
 #&gt; 
 #&gt; $`30`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023911708&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51bf30&gt;
 #&gt; 
 #&gt; $`31`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023916b18&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51c0f0&gt;
 #&gt; 
 #&gt; $`32`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023920ec8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51c2b0&gt;
 #&gt; 
 #&gt; $`33`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023920cd0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51c470&gt;
 #&gt; 
 #&gt; $`34`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023924ba0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51c630&gt;
 #&gt; 
 #&gt; $`35`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023924708&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51c7f0&gt;
 #&gt; 
 #&gt; $`36`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239244d8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51c9b0&gt;
 #&gt; 
 #&gt; $`37`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239242a8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51cb70&gt;
 #&gt; 
 #&gt; $`38`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023924078&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a518f00&gt;
 #&gt; 
 #&gt; $`39`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023923e80&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5190c0&gt;
 #&gt; 
 #&gt; $`40`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023923c50&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a519280&gt;
 #&gt; 
 #&gt; $`41`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023922fd8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a519440&gt;
 #&gt; 
 #&gt; $`42`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392b718&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5197f8&gt;
 #&gt; 
 #&gt; $`43`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392b520&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5199f0&gt;
 #&gt; 
 #&gt; $`44`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392b328&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a519bb0&gt;
 #&gt; 
 #&gt; $`45`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392b130&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a519d70&gt;
 #&gt; 
 #&gt; $`46`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392af38&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a519f30&gt;
 #&gt; 
 #&gt; $`47`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392ad40&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51a0f0&gt;
 #&gt; 
 #&gt; $`48`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392ab48&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51a2b0&gt;
 #&gt; 
 #&gt; $`49`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392a950&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51a470&gt;
 #&gt; 
 #&gt; $`50`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392a720&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51a630&gt;
 #&gt; 
 #&gt; $`51`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392a330&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51a7f0&gt;
 #&gt; 
 #&gt; $`52`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392a138&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51a9b0&gt;
 #&gt; 
 #&gt; $`53`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023929f40&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a51ab70&gt;
 #&gt; 
 #&gt; $`54`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023929d48&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a516f00&gt;
 #&gt; 
 #&gt; $`55`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023929b18&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5170c0&gt;
 #&gt; 
 #&gt; $`56`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023929920&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a517280&gt;
 #&gt; 
 #&gt; $`57`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392e240&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a517440&gt;
 #&gt; 
 #&gt; $`58`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392e048&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a517600&gt;
 #&gt; 
 #&gt; $`59`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392de50&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5177c0&gt;
 #&gt; 
 #&gt; $`60`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392dc58&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a517980&gt;
 #&gt; 
 #&gt; $`61`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392da60&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a517b40&gt;
 #&gt; 
 #&gt; $`62`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392d868&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a517d00&gt;
 #&gt; 
 #&gt; $`63`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392d670&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a517ec0&gt;
 #&gt; 
 #&gt; $`64`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392d478&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a518080&gt;
 #&gt; 
 #&gt; $`65`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392d280&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a518240&gt;
 #&gt; 
 #&gt; $`66`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392d088&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a518400&gt;
 #&gt; 
 #&gt; $`67`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002392ce90&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5185c0&gt;
 #&gt; 
 #&gt; $`68`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023935698&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a518780&gt;
 #&gt; 
 #&gt; $`69`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239354a0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a518940&gt;
 #&gt; 
 #&gt; $`70`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023933a98&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a518b00&gt;
 #&gt; 
 #&gt; $`71`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239338a0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a518cc0&gt;
 #&gt; 
 #&gt; $`72`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023939f50&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a513130&gt;
 #&gt; 
 #&gt; $`73`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023939ce8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5132f0&gt;
 #&gt; 
 #&gt; $`74`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023938e40&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5134b0&gt;
 #&gt; 
 #&gt; $`75`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023938c48&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a513670&gt;
 #&gt; 
 #&gt; $`76`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023938a18&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a513830&gt;
 #&gt; 
 #&gt; $`77`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023938820&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5139f0&gt;
 #&gt; 
 #&gt; $`78`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002393f7f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a513bb0&gt;
 #&gt; 
 #&gt; $`79`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002393f600&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a513d70&gt;
 #&gt; 
 #&gt; $`80`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002393f408&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a513f30&gt;
 #&gt; 
 #&gt; $`81`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002393f210&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5140f0&gt;
 #&gt; 
 #&gt; $`82`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002393f018&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5142b0&gt;
 #&gt; 
 #&gt; $`83`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002393ee20&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a514470&gt;
 #&gt; 
 #&gt; $`84`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002393ec28&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a514630&gt;
 #&gt; 
 #&gt; $`85`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002393e9f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5147f0&gt;
 #&gt; 
 #&gt; $`86`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002393e800&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5149b0&gt;
 #&gt; 
 #&gt; $`87`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023942420&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a514b70&gt;
 #&gt; 
 #&gt; $`88`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239421f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a514d30&gt;
 #&gt; 
 #&gt; $`89`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239414d0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5110f8&gt;
 #&gt; 
 #&gt; $`90`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239412d8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5112b8&gt;
 #&gt; 
 #&gt; $`91`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239410a8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a511478&gt;
 #&gt; 
 #&gt; $`92`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023940708&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a511638&gt;
 #&gt; 
 #&gt; $`93`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023944340&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5117f8&gt;
 #&gt; 
 #&gt; $`94`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023944148&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5119b8&gt;
 #&gt; 
 #&gt; $`95`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023943f50&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a511bb0&gt;
 #&gt; 
 #&gt; $`96`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023943d58&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a511da8&gt;
 #&gt; 
 #&gt; $`97`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023943b60&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a511fa0&gt;
 #&gt; 
 #&gt; $`98`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023943968&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a512160&gt;
 #&gt; 
 #&gt; $`99`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023943770&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a512320&gt;
 #&gt; 
 #&gt; $`100`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023943578&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5124e0&gt;
 #&gt; 
 #&gt; $`101`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023943380&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a5126a0&gt;
 #&gt; 
 #&gt; $`102`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023943188&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a512860&gt;
 #&gt; 
 #&gt; $`103`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023942f90&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a512a20&gt;
 #&gt; 
 #&gt; $`104`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023942d98&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a512cc0&gt;
 #&gt; 
 #&gt; $`105`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023942ba0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a512e80&gt;
 #&gt; 
 #&gt; $`106`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239429a8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50f210&gt;
 #&gt; 
 #&gt; $`107`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239427b0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50f3d0&gt;
 #&gt; 
 #&gt; $`108`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239425b8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50f718&gt;
 #&gt; 
 #&gt; $`109`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023946380&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50f948&gt;
 #&gt; 
 #&gt; $`110`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023946188&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50fb08&gt;
 #&gt; 
 #&gt; $`111`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023945e40&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50fcc8&gt;
 #&gt; 
 #&gt; $`112`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023945c48&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50def8&gt;
 #&gt; 
 #&gt; $`113`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023945a50&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50e128&gt;
 #&gt; 
 #&gt; $`114`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023945820&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50e320&gt;
 #&gt; 
 #&gt; $`115`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023945628&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50e550&gt;
 #&gt; 
 #&gt; $`116`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023944ba8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50e8d0&gt;
 #&gt; 
 #&gt; $`117`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x00000000239449b0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50eb00&gt;
 #&gt; 
 #&gt; $`118`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023944780&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50ecf8&gt;
 #&gt; 
 #&gt; $`119`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002394a3a0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50eeb8&gt;
 #&gt; 
 #&gt; $`120`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x000000002394a170&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50f078&gt;
 #&gt; 
 #&gt; $`121`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233b0918&gt;
-#&gt; &lt;environment: 0x0000000023949f40&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4b1f8&gt;
+#&gt; &lt;environment: 0x55e08a50b408&gt;
 #&gt; 
 #&gt; $`2`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d6af0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a81e2d0&gt;
 #&gt; 
 #&gt; $`3`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d68f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a81e490&gt;
 #&gt; 
 #&gt; $`4`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d6700&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a81e650&gt;
 #&gt; 
 #&gt; $`5`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d6508&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a81e810&gt;
 #&gt; 
 #&gt; $`6`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d6310&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a81ea40&gt;
 #&gt; 
 #&gt; $`7`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d60e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a81a500&gt;
 #&gt; 
 #&gt; $`8`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d5ee8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a682b58&gt;
 #&gt; 
 #&gt; $`9`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d5cf0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a67d7a8&gt;
 #&gt; 
 #&gt; $`10`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d5af8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a67d9a0&gt;
 #&gt; 
 #&gt; $`11`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d9730&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a67db98&gt;
 #&gt; 
 #&gt; $`12`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d9538&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a670468&gt;
 #&gt; 
 #&gt; $`13`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d9340&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a6706d0&gt;
 #&gt; 
 #&gt; $`14`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d9148&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a670890&gt;
 #&gt; 
 #&gt; $`15`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d8f50&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66f9d8&gt;
 #&gt; 
 #&gt; $`16`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d8d58&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66fb98&gt;
 #&gt; 
 #&gt; $`17`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d8b60&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66fd90&gt;
 #&gt; 
 #&gt; $`18`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d8968&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66ff50&gt;
 #&gt; 
 #&gt; $`19`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d8770&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a670110&gt;
 #&gt; 
 #&gt; $`20`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d8578&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66c4a0&gt;
 #&gt; 
 #&gt; $`21`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d8380&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66c660&gt;
 #&gt; 
 #&gt; $`22`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d8150&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66c820&gt;
 #&gt; 
 #&gt; $`23`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d7f58&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66ca18&gt;
 #&gt; 
 #&gt; $`24`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d7d60&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66cc10&gt;
 #&gt; 
 #&gt; $`25`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d7b68&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66ce08&gt;
 #&gt; 
 #&gt; $`26`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d7938&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66d118&gt;
 #&gt; 
 #&gt; $`27`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238db538&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66d2d8&gt;
 #&gt; 
 #&gt; $`28`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238db340&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66d498&gt;
 #&gt; 
 #&gt; $`29`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238db110&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66dab8&gt;
 #&gt; 
 #&gt; $`30`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238daf18&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66dc78&gt;
 #&gt; 
 #&gt; $`31`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dac78&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66de38&gt;
 #&gt; 
 #&gt; $`32`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d9f58&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66e030&gt;
 #&gt; 
 #&gt; $`33`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d9d60&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66a9a8&gt;
 #&gt; 
 #&gt; $`34`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d9b68&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66ab68&gt;
 #&gt; 
 #&gt; $`35`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238d9970&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a66ad28&gt;
 #&gt; 
 #&gt; $`36`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dd5a8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a662988&gt;
 #&gt; 
 #&gt; $`37`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dd3b0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a662b48&gt;
 #&gt; 
 #&gt; $`38`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dd1b8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a662d40&gt;
 #&gt; 
 #&gt; $`39`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dcfc0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a662f38&gt;
 #&gt; 
 #&gt; $`40`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dcdc8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a663130&gt;
 #&gt; 
 #&gt; $`41`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dcbd0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a6632f0&gt;
 #&gt; 
 #&gt; $`42`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dc9d8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a663d70&gt;
 #&gt; 
 #&gt; $`43`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dc7e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a657568&gt;
 #&gt; 
 #&gt; $`44`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dc5e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a657760&gt;
 #&gt; 
 #&gt; $`45`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dc3f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a657920&gt;
 #&gt; 
 #&gt; $`46`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dc1f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a657b18&gt;
 #&gt; 
 #&gt; $`47`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dbe78&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a657cd8&gt;
 #&gt; 
 #&gt; $`48`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dbc80&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a630a30&gt;
 #&gt; 
 #&gt; $`49`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dba88&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a630bf0&gt;
 #&gt; 
 #&gt; $`50`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238db890&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a62d108&gt;
 #&gt; 
 #&gt; $`51`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e13e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a62d300&gt;
 #&gt; 
 #&gt; $`52`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e11f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a62d4f8&gt;
 #&gt; 
 #&gt; $`53`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e0ff8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a62d6b8&gt;
 #&gt; 
 #&gt; $`54`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e0e00&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a62d878&gt;
 #&gt; 
 #&gt; $`55`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e0c08&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a624ec8&gt;
 #&gt; 
 #&gt; $`56`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e0a10&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a6250c0&gt;
 #&gt; 
 #&gt; $`57`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e0818&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a625280&gt;
 #&gt; 
 #&gt; $`58`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e0620&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a6254b0&gt;
 #&gt; 
 #&gt; $`59`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e03f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a625670&gt;
 #&gt; 
 #&gt; $`60`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e01f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a625830&gt;
 #&gt; 
 #&gt; $`61`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e0000&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a6259f0&gt;
 #&gt; 
 #&gt; $`62`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dfdd0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a625bb0&gt;
 #&gt; 
 #&gt; $`63`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238dfbd8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a625e18&gt;
 #&gt; 
 #&gt; $`64`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238df9e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a626010&gt;
 #&gt; 
 #&gt; $`65`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238df7e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a6261d0&gt;
 #&gt; 
 #&gt; $`66`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238df5f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a622330&gt;
 #&gt; 
 #&gt; $`67`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e5148&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a6225d0&gt;
 #&gt; 
 #&gt; $`68`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e4f50&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a622790&gt;
 #&gt; 
 #&gt; $`69`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e4d58&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a622e90&gt;
 #&gt; 
 #&gt; $`70`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e49a0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a623050&gt;
 #&gt; 
 #&gt; $`71`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e47a8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a623248&gt;
 #&gt; 
 #&gt; $`72`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e45b0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a623478&gt;
 #&gt; 
 #&gt; $`73`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e43b8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a623670&gt;
 #&gt; 
 #&gt; $`74`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e41c0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a6177c8&gt;
 #&gt; 
 #&gt; $`75`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e3fc8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a617988&gt;
 #&gt; 
 #&gt; $`76`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e3dd0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a617b48&gt;
 #&gt; 
 #&gt; $`77`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e3bd8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a610f08&gt;
 #&gt; 
 #&gt; $`78`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e39e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a6110c8&gt;
 #&gt; 
 #&gt; $`79`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e37e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a611790&gt;
 #&gt; 
 #&gt; $`80`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e35f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a611950&gt;
 #&gt; 
 #&gt; $`81`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e71f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a60c628&gt;
 #&gt; 
 #&gt; $`82`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e6ff8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a60c820&gt;
 #&gt; 
 #&gt; $`83`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e6c08&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a60c9e0&gt;
 #&gt; 
 #&gt; $`84`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e69d8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5f9590&gt;
 #&gt; 
 #&gt; $`85`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e67e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5f9788&gt;
 #&gt; 
 #&gt; $`86`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e65e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5f9980&gt;
 #&gt; 
 #&gt; $`87`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e63b8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5f9bb0&gt;
 #&gt; 
 #&gt; $`88`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e61c0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5f9d70&gt;
 #&gt; 
 #&gt; $`89`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e5fc8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5f9f30&gt;
 #&gt; 
 #&gt; $`90`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e5dd0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5d6bb8&gt;
 #&gt; 
 #&gt; $`91`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e5bd8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5d6d78&gt;
 #&gt; 
 #&gt; $`92`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e59e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5d6f38&gt;
 #&gt; 
 #&gt; $`93`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e57e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5d7130&gt;
 #&gt; 
 #&gt; $`94`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e55f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5d72f0&gt;
 #&gt; 
 #&gt; $`95`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e53f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5af9b0&gt;
 #&gt; 
 #&gt; $`96`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e9030&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5afb70&gt;
 #&gt; 
 #&gt; $`97`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e8e38&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5afeb8&gt;
 #&gt; 
 #&gt; $`98`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e8c40&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5b00b0&gt;
 #&gt; 
 #&gt; $`99`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e8a48&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5b02a8&gt;
 #&gt; 
 #&gt; $`100`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e8850&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5b04a0&gt;
 #&gt; 
 #&gt; $`101`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e8658&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5b0698&gt;
 #&gt; 
 #&gt; $`102`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e8460&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a4040&gt;
 #&gt; 
 #&gt; $`103`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e8268&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a4200&gt;
 #&gt; 
 #&gt; $`104`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e8038&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a43f8&gt;
 #&gt; 
 #&gt; $`105`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e7c48&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a4628&gt;
 #&gt; 
 #&gt; $`106`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e79e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a4820&gt;
 #&gt; 
 #&gt; $`107`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238e77b0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a4a50&gt;
 #&gt; 
 #&gt; $`108`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238eaab8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a4c10&gt;
 #&gt; 
 #&gt; $`109`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238ea850&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a4dd0&gt;
 #&gt; 
 #&gt; $`110`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238ea658&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a4f90&gt;
 #&gt; 
 #&gt; $`111`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238ea460&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a51f8&gt;
 #&gt; 
 #&gt; $`112`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238ea268&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a16a0&gt;
 #&gt; 
 #&gt; $`113`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238ea038&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a1860&gt;
 #&gt; 
 #&gt; $`114`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238ec1f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a1a90&gt;
 #&gt; 
 #&gt; $`115`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238ec000&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a1cf8&gt;
 #&gt; 
 #&gt; $`116`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238ebd28&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a1f28&gt;
 #&gt; 
 #&gt; $`117`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238ebaf8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a23c0&gt;
 #&gt; 
 #&gt; $`118`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238eb900&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a2e78&gt;
 #&gt; 
 #&gt; $`119`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238eb708&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a3070&gt;
 #&gt; 
 #&gt; $`120`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238eb510&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a5a3268&gt;
 #&gt; 
 #&gt; $`121`
-#&gt; function(x, y, N, M) cos(2*(x-1)*pi*nm[1,1]/N)*sin(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a3390&gt;
-#&gt; &lt;environment: 0x00000000238eb2e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; cos(2 * (x - 1) * pi * nm[1, 1]/N) * sin(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af50b68&gt;
+#&gt; &lt;environment: 0x55e08a59f6d8&gt;
 #&gt; 
 #&gt; $`2`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238ee818&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5a0580&gt;
 #&gt; 
 #&gt; $`3`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238ee5e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5a0740&gt;
 #&gt; 
 #&gt; $`4`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238ee1f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5a0900&gt;
 #&gt; 
 #&gt; $`5`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238ee000&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a59b5e8&gt;
 #&gt; 
 #&gt; $`6`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238ede08&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a59b7e0&gt;
 #&gt; 
 #&gt; $`7`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238edc10&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a597ba8&gt;
 #&gt; 
 #&gt; $`8`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238eda18&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a597e10&gt;
 #&gt; 
 #&gt; $`9`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238ed7e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a598008&gt;
 #&gt; 
 #&gt; $`10`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238ed5f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5981c8&gt;
 #&gt; 
 #&gt; $`11`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238ed3c0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a598388&gt;
 #&gt; 
 #&gt; $`12`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238ed1c8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a598548&gt;
 #&gt; 
 #&gt; $`13`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f2cb0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a598740&gt;
 #&gt; 
 #&gt; $`14`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f2ab8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5989a8&gt;
 #&gt; 
 #&gt; $`15`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f1e08&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a598bd8&gt;
 #&gt; 
 #&gt; $`16`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f1c10&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a598e78&gt;
 #&gt; 
 #&gt; $`17`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f1a18&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a599118&gt;
 #&gt; 
 #&gt; $`18`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f1820&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a594040&gt;
 #&gt; 
 #&gt; $`19`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f1628&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a594238&gt;
 #&gt; 
 #&gt; $`20`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f1430&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a594628&gt;
 #&gt; 
 #&gt; $`21`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f11c8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5947e8&gt;
 #&gt; 
 #&gt; $`22`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f0f98&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a594a50&gt;
 #&gt; 
 #&gt; $`23`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f4bd0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a594dd0&gt;
 #&gt; 
 #&gt; $`24`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f49a0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a594f90&gt;
 #&gt; 
 #&gt; $`25`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f47a8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5952d8&gt;
 #&gt; 
 #&gt; $`26`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f45b0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a595498&gt;
 #&gt; 
 #&gt; $`27`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f43b8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a595850&gt;
 #&gt; 
 #&gt; $`28`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f4188&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a590468&gt;
 #&gt; 
 #&gt; $`29`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f3b68&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a590858&gt;
 #&gt; 
 #&gt; $`30`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f3970&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a590a18&gt;
 #&gt; 
 #&gt; $`31`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f3740&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a590c48&gt;
 #&gt; 
 #&gt; $`32`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f3510&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a590e08&gt;
 #&gt; 
 #&gt; $`33`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f32a8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a591188&gt;
 #&gt; 
 #&gt; $`34`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f5e78&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a591348&gt;
 #&gt; 
 #&gt; $`35`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f5708&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a591578&gt;
 #&gt; 
 #&gt; $`36`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f5510&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a591738&gt;
 #&gt; 
 #&gt; $`37`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f52e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a591ab8&gt;
 #&gt; 
 #&gt; $`38`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f50b0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a591c78&gt;
 #&gt; 
 #&gt; $`39`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f4e10&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a58a238&gt;
 #&gt; 
 #&gt; $`40`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f4c18&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a58a5b8&gt;
 #&gt; 
 #&gt; $`41`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f8818&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a58a778&gt;
 #&gt; 
 #&gt; $`42`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f85e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a58a938&gt;
 #&gt; 
 #&gt; $`43`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f83f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a587b28&gt;
 #&gt; 
 #&gt; $`44`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f8150&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a587ea8&gt;
 #&gt; 
 #&gt; $`45`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f7e78&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5880a0&gt;
 #&gt; 
 #&gt; $`46`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f7b68&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a584430&gt;
 #&gt; 
 #&gt; $`47`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f7858&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a584660&gt;
 #&gt; 
 #&gt; $`48`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238f75f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5849e0&gt;
 #&gt; 
 #&gt; $`49`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fb3c0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a585380&gt;
 #&gt; 
 #&gt; $`50`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fb1c8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a585540&gt;
 #&gt; 
 #&gt; $`51`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fafd0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5857a8&gt;
 #&gt; 
 #&gt; $`52`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fadd8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5830e0&gt;
 #&gt; 
 #&gt; $`53`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fabe0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5832a0&gt;
 #&gt; 
 #&gt; $`54`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fa9e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a583508&gt;
 #&gt; 
 #&gt; $`55`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fe620&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a583968&gt;
 #&gt; 
 #&gt; $`56`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fe428&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a583b60&gt;
 #&gt; 
 #&gt; $`57`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fe118&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a583d90&gt;
 #&gt; 
 #&gt; $`58`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fdbd8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a584110&gt;
 #&gt; 
 #&gt; $`59`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fd9e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5842d0&gt;
 #&gt; 
 #&gt; $`60`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fd7e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57e740&gt;
 #&gt; 
 #&gt; $`61`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fd5f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57e970&gt;
 #&gt; 
 #&gt; $`62`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fd350&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57ecf0&gt;
 #&gt; 
 #&gt; $`63`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fcf60&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57eee8&gt;
 #&gt; 
 #&gt; $`64`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000238fcd30&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57f150&gt;
 #&gt; 
 #&gt; $`65`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023901e78&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57f310&gt;
 #&gt; 
 #&gt; $`66`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023901c80&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57f690&gt;
 #&gt; 
 #&gt; $`67`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023901a88&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57f850&gt;
 #&gt; 
 #&gt; $`68`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023901890&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57fa80&gt;
 #&gt; 
 #&gt; $`69`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023901698&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57fc40&gt;
 #&gt; 
 #&gt; $`70`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000239014a0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57ffc0&gt;
 #&gt; 
 #&gt; $`71`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000239012a8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a580340&gt;
 #&gt; 
 #&gt; $`72`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000239010b0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57a7e8&gt;
 #&gt; 
 #&gt; $`73`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023900eb8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57ab68&gt;
 #&gt; 
 #&gt; $`74`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023900cc0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57ad28&gt;
 #&gt; 
 #&gt; $`75`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023900ac8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57af58&gt;
 #&gt; 
 #&gt; $`76`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000239008d0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57b2d8&gt;
 #&gt; 
 #&gt; $`77`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000239006d8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57b498&gt;
 #&gt; 
 #&gt; $`78`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023904310&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57b658&gt;
 #&gt; 
 #&gt; $`79`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023904118&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57b968&gt;
 #&gt; 
 #&gt; $`80`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023903f20&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57bce8&gt;
 #&gt; 
 #&gt; $`81`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023903d28&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57bea8&gt;
 #&gt; 
 #&gt; $`82`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023903b30&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57c0d8&gt;
 #&gt; 
 #&gt; $`83`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023903938&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a57c5e0&gt;
 #&gt; 
 #&gt; $`84`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023903740&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a576ac0&gt;
 #&gt; 
 #&gt; $`85`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023903548&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a576cf0&gt;
 #&gt; 
 #&gt; $`86`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023903350&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a577070&gt;
 #&gt; 
 #&gt; $`87`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023903158&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a577310&gt;
 #&gt; 
 #&gt; $`88`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023902f28&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a577968&gt;
 #&gt; 
 #&gt; $`89`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023902d30&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a577b28&gt;
 #&gt; 
 #&gt; $`90`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023902b38&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a577d90&gt;
 #&gt; 
 #&gt; $`91`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023902940&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a577fc0&gt;
 #&gt; 
 #&gt; $`92`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023902748&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a578340&gt;
 #&gt; 
 #&gt; $`93`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023906380&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a574eb0&gt;
 #&gt; 
 #&gt; $`94`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023906188&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5750a8&gt;
 #&gt; 
 #&gt; $`95`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023905f90&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a575268&gt;
 #&gt; 
 #&gt; $`96`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023905d98&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a575428&gt;
 #&gt; 
 #&gt; $`97`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023905b68&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a576570&gt;
 #&gt; 
 #&gt; $`98`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023905970&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a576768&gt;
 #&gt; 
 #&gt; $`99`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023905778&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5267c8&gt;
 #&gt; 
 #&gt; $`100`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023905580&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5269f8&gt;
 #&gt; 
 #&gt; $`101`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023905388&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a526bb8&gt;
 #&gt; 
 #&gt; $`102`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023905190&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a526ec8&gt;
 #&gt; 
 #&gt; $`103`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023904f98&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a527088&gt;
 #&gt; 
 #&gt; $`104`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023904da0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a527248&gt;
 #&gt; 
 #&gt; $`105`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023904b38&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5274b0&gt;
 #&gt; 
 #&gt; $`106`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023904908&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a527ad0&gt;
 #&gt; 
 #&gt; $`107`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023909dd0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a527c90&gt;
 #&gt; 
 #&gt; $`108`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023909bd8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a527e88&gt;
 #&gt; 
 #&gt; $`109`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000239099e0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a528048&gt;
 #&gt; 
 #&gt; $`110`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000239097e8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a528208&gt;
 #&gt; 
 #&gt; $`111`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000239095f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5283c8&gt;
 #&gt; 
 #&gt; $`112`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x00000000239093f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5285c0&gt;
 #&gt; 
 #&gt; $`113`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023909200&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a524988&gt;
 #&gt; 
 #&gt; $`114`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023909008&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a524b48&gt;
 #&gt; 
 #&gt; $`115`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023908e10&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a524d08&gt;
 #&gt; 
 #&gt; $`116`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023908c18&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a524ec8&gt;
 #&gt; 
 #&gt; $`117`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023908a20&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a525130&gt;
 #&gt; 
 #&gt; $`118`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023908828&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a523280&gt;
 #&gt; 
 #&gt; $`119`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023908630&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a523440&gt;
 #&gt; 
 #&gt; $`120`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x0000000023908438&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a523638&gt;
 #&gt; 
 #&gt; $`121`
-#&gt; function(x, y, N, M) sin(2*(x-1)*pi*nm[1,1]/N)*cos(2*(y-1)*pi*nm[1,2]/M)
-#&gt; &lt;bytecode: 0x00000000233a98a8&gt;
-#&gt; &lt;environment: 0x000000002390c070&gt;
+#&gt; function (x, y, N, M) 
+#&gt; sin(2 * (x - 1) * pi * nm[1, 1]/N) * cos(2 * (y - 1) * pi * nm[1, 
+#&gt;     2]/M)
+#&gt; &lt;bytecode: 0x55e08af4e8c8&gt;
+#&gt; &lt;environment: 0x55e08a5237f8&gt;
 #&gt; </div><div class='input'><span class='fu'>polynomial_2d</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>3</span>), <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>Z_potts</span>))</div><div class='output co'>#&gt; $`2`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fd8b0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2ecca8&gt;
 #&gt; 
 #&gt; $`3`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fd6b8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2ece68&gt;
 #&gt; 
 #&gt; $`4`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fd4c0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2ed028&gt;
 #&gt; 
 #&gt; $`5`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fd2c8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2ed1e8&gt;
 #&gt; 
 #&gt; $`6`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fd0d0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2ed3a8&gt;
 #&gt; 
 #&gt; $`7`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fced8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2ed568&gt;
 #&gt; 
 #&gt; $`8`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fcce0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2e98f8&gt;
 #&gt; 
 #&gt; $`9`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fcae8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2e9ab8&gt;
 #&gt; 
 #&gt; $`10`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fc8f0&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2e9c78&gt;
 #&gt; 
 #&gt; $`11`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fc6f8&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2e9e38&gt;
 #&gt; 
 #&gt; $`12`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fc500&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2e9ff8&gt;
 #&gt; 
 #&gt; $`13`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fc308&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2ea1b8&gt;
 #&gt; 
 #&gt; $`14`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fc110&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2ea378&gt;
 #&gt; 
 #&gt; $`15`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fbf18&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2ea538&gt;
 #&gt; 
 #&gt; $`16`
-#&gt; function(x, y, N, M) return((x - N/2)^nm[1,1]*(y - M/2)^nm[1,2])
-#&gt; &lt;bytecode: 0x0000000022a127a0&gt;
-#&gt; &lt;environment: 0x00000000232fbd20&gt;
+#&gt; function (x, y, N, M) 
+#&gt; return((x - N/2)^nm[1, 1] * (y - M/2)^nm[1, 2])
+#&gt; &lt;bytecode: 0x55e08a412be8&gt;
+#&gt; &lt;environment: 0x55e08a2ea6f8&gt;
 #&gt; </div><div class='input'># }
 </div></pre>
   </div>

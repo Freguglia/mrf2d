@@ -81,7 +81,7 @@ to sample from a Markov random field." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9999</span>
       </span>
     </div>
 
@@ -228,11 +228,11 @@ interaction systems.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Sample using specified lattice dimension</span>
-<span class='no'>Z</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>150</span>,<span class='fl'>150</span>), <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>)
+<span class='no'>Z</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>150</span>,<span class='fl'>150</span>), <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>)
 
 <span class='co'>#Sample using itial configuration</span>
 <span class='co'># \donttest{</span>
-<span class='no'>Z2</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='no'>Z</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>)
+<span class='no'>Z2</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='no'>Z</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>)
 
 <span class='co'># View results</span>
 <span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z</span>)</div><div class='img'><img src='rmrf2d-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z2</span>)</div><div class='img'><img src='rmrf2d-2.png' alt='' width='700' height='433' /></div><div class='input'>
@@ -241,7 +241,7 @@ interaction systems.</p>
 <span class='no'>subreg</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/row.html'>row</a></span>(<span class='no'>subreg</span>) - <span class='fl'>75</span>) + <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>abs</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/col.html'>col</a></span>(<span class='no'>subreg</span>) - <span class='fl'>75</span>) <span class='kw'>&lt;=</span> <span class='fl'>80</span>
 <span class='co'># view the sub-region</span>
 <span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>subreg</span>)</div><div class='img'><img src='rmrf2d-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='no'>Z3</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>150</span>,<span class='fl'>150</span>), <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>, <span class='kw'>sub_region</span> <span class='kw'>=</span> <span class='no'>subreg</span>)
+<span class='no'>Z3</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>150</span>,<span class='fl'>150</span>), <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>, <span class='kw'>sub_region</span> <span class='kw'>=</span> <span class='no'>subreg</span>)
 <span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z3</span>)</div><div class='img'><img src='rmrf2d-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Using fixed regions</span>
 <span class='no'>fixreg</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/logical.html'>as.logical</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span>(<span class='fl'>150</span>)), <span class='fl'>150</span>, <span class='fl'>150</span>)
@@ -249,10 +249,10 @@ interaction systems.</p>
 <span class='no'>init_Z4</span> <span class='kw'>&lt;-</span> <span class='no'>Z</span>
 <span class='no'>init_Z4</span>[<span class='no'>fixreg</span>] <span class='kw'>&lt;-</span> <span class='fl'>0</span>
 
-<span class='no'>Z4</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='no'>init_Z4</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>, <span class='kw'>fixed_region</span> <span class='kw'>=</span> <span class='no'>fixreg</span>)
+<span class='no'>Z4</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='no'>init_Z4</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>, <span class='kw'>fixed_region</span> <span class='kw'>=</span> <span class='no'>fixreg</span>)
 <span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z4</span>)</div><div class='img'><img src='rmrf2d-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Combine fixed regions and sub-regions</span>
-<span class='no'>Z5</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='no'>init_Z4</span>, <span class='fu'><a href='mrfi.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>,
+<span class='no'>Z5</span> <span class='kw'>&lt;-</span> <span class='fu'>rmrf2d</span>(<span class='no'>init_Z4</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='no'>theta_potts</span>,
 <span class='kw'>fixed_region</span> <span class='kw'>=</span> <span class='no'>fixreg</span>, <span class='kw'>sub_region</span> <span class='kw'>=</span> <span class='no'>subreg</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Some pixels in the 'fixed_region' are not part of the 'sub_region', they will be ignored.</span></div><div class='input'><span class='fu'><a href='dplot.html'>dplot</a></span>(<span class='no'>Z5</span>)</div><div class='img'><img src='rmrf2d-6.png' alt='' width='700' height='433' /></div><div class='input'># }
 
 </div></pre>

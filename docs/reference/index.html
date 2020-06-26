@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9999</span>
       </span>
     </div>
 
@@ -156,6 +156,12 @@
       <tr>
         
         <td>
+          <p><code><a href="Z_potts.html">Z_potts</a></code> </p>
+        </td>
+        <td><p>Example objects from <code>mrf2d</code></p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="basis_functions.html">fourier_2d()</a></code> <code><a href="basis_functions.html">polynomial_2d()</a></code> </p>
         </td>
         <td><p>Creation of basis functions</p></td>
@@ -200,7 +206,13 @@
         <td>
           <p><code><a href="fit_sa.html">fit_sa()</a></code> </p>
         </td>
-        <td><p>Stochastic Approximation algorithm for MRFs on 2d lattices</p></td>
+        <td><p>Stochastic Approximation fitting of MRFs on 2d lattices</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="hmrfout.html">print(<i>&lt;hmrfout&gt;</i>)</a></code> <code><a href="hmrfout.html">summary(<i>&lt;hmrfout&gt;</i>)</a></code> <code><a href="hmrfout.html">plot(<i>&lt;hmrfout&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>MRF fitting functions output</p></td>
       </tr><tr>
         
         <td>
@@ -210,39 +222,27 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="mrfi-class.html">as.list(<i>&lt;mrfi&gt;</i>)</a></code> </p>
+          <p><code><a href="mrfi-class.html">mrfi()</a></code> <code><a href="mrfi-class.html">as.list(<i>&lt;mrfi&gt;</i>)</a></code> <code><a href="mrfi-class.html">length(<i>&lt;mrfi&gt;</i>)</a></code> <code><a href="mrfi-class.html">`[[`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="mrfi-class.html">`[`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="mrfi-class.html">`+`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="mrfi-class.html">`-`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="mrfi-class.html">`+`(<i>&lt;mrfi&gt;</i>,<i>&lt;mrfi&gt;</i>)</a></code> <code><a href="mrfi-class.html">`-`(<i>&lt;mrfi&gt;</i>,<i>&lt;mrfi&gt;</i>)</a></code> </p>
         </td>
         <td><p>mrfi: MRF interaction structure</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="mrfi-operations.html">`+`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="mrfi-operations.html">`-`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="mrfi-operations.html">`+`(<i>&lt;mrfi&gt;</i>,<i>&lt;mrfi&gt;</i>)</a></code> <code><a href="mrfi-operations.html">`-`(<i>&lt;mrfi&gt;</i>,<i>&lt;mrfi&gt;</i>)</a></code> </p>
+          <p><code><a href="mrfout.html">print(<i>&lt;mrfout&gt;</i>)</a></code> <code><a href="mrfout.html">summary(<i>&lt;mrfout&gt;</i>)</a></code> <code><a href="mrfout.html">plot(<i>&lt;mrfout&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Set operations for <code>mrfi</code> objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mrfi-subsetting.html">length(<i>&lt;mrfi&gt;</i>)</a></code> <code><a href="mrfi-subsetting.html">`[[`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="mrfi-subsetting.html">`[`(<i>&lt;mrfi&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Subsetting <code>mrfi</code> objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mrfi.html">mrfi()</a></code> </p>
-        </td>
-        <td><p>Creation of <code>mrfi</code> objects.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot.mrfi.html">plot(<i>&lt;mrfi&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plotting of <code>mrfi</code> objects.</p></td>
+        <td><p>MRF fitting functions output</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="pl_mrf2d.html">pl_mrf2d()</a></code> </p>
         </td>
         <td><p>Pseudo-likelihood function for MRFs on 2d lattices</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot.mrfi.html">plot(<i>&lt;mrfi&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plotting of <code>mrfi</code> objects.</p></td>
       </tr><tr>
         
         <td>
@@ -261,12 +261,6 @@
           <p><code><a href="smr_stat.html">smr_stat()</a></code> <code><a href="smr_stat.html">cohist()</a></code> </p>
         </td>
         <td><p>Summary Statistics</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Z_potts.html">Z_potts</a></code> </p>
-        </td>
-        <td><p>Example objects from <code>mrf2d</code></p></td>
       </tr>
     </tbody>
     </table>
