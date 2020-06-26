@@ -9,8 +9,19 @@ test_that("mrfi creation works", {
   expect_error(mrfi(max_norm = -1))
   expect_error(mrfi(positions = c(1,0)))
   expect_error(mrfi(positions = list(c("1","0"))))
+  expect_error(mrfi(positions = list( c(1.2, 1.5))))
   expect_identical(mrfi(1), mrfi(1, positions = list()))
   expect_equal(mrfi(positions = list(c(3,3)))@Rmat, rbind(diag(2), c(3,3)))
+})
+
+test_that("mrfi validity checks work", {
+  expect_true(mrfi_is_valid(mrfi(1)))
+  m1 <- m2 <- mrfi(1)
+  m1@Rmat <- matrix(0, 3, 3)
+  expect_false(isTRUE(mrfi_is_valid(m1)))
+
+  m2@Rmat <- m2@Rmat + 0.23
+  expect_false(isTRUE(mrfi_is_valid(m2)))
 })
 
 test_that("mrfi subsetting and conversion", {
