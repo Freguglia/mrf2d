@@ -34,10 +34,12 @@ summary.hmrfout <- function(object, ...){
 
   cat("\n")
   cat("Mixture parameters:\n")
-  cat(sprintf("%10s", "Component"), sprintf("%6s", 0:C), "\n")
-  cat(sprintf("%10s", "mu"), sprintf("%6s", sprintf("%.2f", object$par$mu)), "\n")
-  cat(sprintf("%10s", "sigma"), sprintf("%6s", sprintf("%.2f", object$par$sigma)), "\n")
-
+  cat(sprintf("%10s", "Component"), sprintf("%6s", "mu"), sprintf("%6s", "sigma"), "\n")
+  for(i in 1:nrow(object$par)){
+    cat(sprintf("%10s", i-1),
+        sprintf("%6s", sprintf("%.2f", object$par$mu[i])),
+        sprintf("%6s", sprintf("%.2f", object$par$sigma[i])), "\n")
+  }
   cat("\nModel fitted in", object$iterations, "iterations.")
 }
 
