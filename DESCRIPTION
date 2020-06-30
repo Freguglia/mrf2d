@@ -1,7 +1,7 @@
 Package: mrf2d
 Type: Package
 Title: Markov Random Field Models for Image Analysis
-Version: 0.3.0.9999
+Version: 0.4.0
 Authors@R: 
     person("Victor", "Freguglia", email = "victorfreguglia@gmail.com",
              role = c("aut", "cre"), 
@@ -28,7 +28,7 @@ LinkingTo: Rcpp,
            RcppArmadillo
 Roxygen: list(markdown = TRUE)
 RdMacros: Rdpack
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Suggests: 
     testthat (>= 2.1.0),
     covr,
