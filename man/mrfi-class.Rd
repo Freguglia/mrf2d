@@ -12,6 +12,7 @@
 \alias{-,mrfi,numeric-method}
 \alias{+,mrfi,mrfi-method}
 \alias{-,mrfi,mrfi-method}
+\alias{mrfi_to_string}
 \title{mrfi: MRF interaction structure}
 \usage{
 mrfi(max_norm = 1, norm_type = "1", positions = NULL)
@@ -31,6 +32,8 @@ mrfi(max_norm = 1, norm_type = "1", positions = NULL)
 \S4method{+}{mrfi,mrfi}(e1, e2)
 
 \S4method{-}{mrfi,mrfi}(e1, e2)
+
+mrfi_to_string(mrfi)
 }
 \arguments{
 \item{max_norm}{a \code{numeric} value. All points with norm \eqn{\le} \code{max_dist}
@@ -48,7 +51,7 @@ corresponds to a relative position included.}
 
 \item{i}{vector of indexes to extract interacting positions.}
 
-\item{e1}{A \code{mrfi} object.}
+\item{e1, mrfi}{A \code{mrfi} object.}
 
 \item{e2}{Either a second \code{mrfi} object or a length 2 \code{numeric} with the new
 relative position to include (\code{+}) or remove (\code{-}).}

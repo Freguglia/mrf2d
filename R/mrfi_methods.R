@@ -119,7 +119,7 @@ mrfi_diff <- function(mrfi1, mrfi2){
 #' These operations deal with opposite directions filtering to avoid redundancy
 #' in the interaction structure.
 #'
-#' @param e1 A `mrfi` object.
+#' @param e1,mrfi A `mrfi` object.
 #' @param e2 Either a second `mrfi` object or a length 2 `numeric` with the new
 #' relative position to include (`+`) or remove (`-`).
 #'
@@ -175,3 +175,11 @@ setMethod("-", signature = c("mrfi", "mrfi"),
             if(length(e1) == 0) return(e1)
             return(mrfi_diff(e1,e2))
           })
+
+
+#' @rdname mrfi-class
+#' @export
+mrfi_to_string <- function(mrfi){
+  s <- mrfi_to_char(mrfi)
+  return(paste0("{", paste(s, collapse = ","), "}"))
+}
