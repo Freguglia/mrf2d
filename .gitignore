@@ -16,3 +16,4 @@ Meta
 *.tar.gz
 ..Rcheck/
 mrf2d.Rcheck/
+src-i386/
