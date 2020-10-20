@@ -1,3 +1,7 @@
+# mrf2d 0.4.1
+  * Added `rmrf2d_mc` to simplify the use of Monte-Carlo methods from randomly generated fields.
+  * Minor documentation updates.
+
 # mrf2d 0.4
   * Added `mrfout` and `hmrfout` classes for model fitting functions output. A `summary()` and `plot()` methods are also available.
   * Simplified structure of documentation files.
