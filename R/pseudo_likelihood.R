@@ -10,9 +10,9 @@
 #'  interaction structure.
 #' @param theta A 3-dimensional array describing potentials. Slices represent
 #'  interacting positions, rows represent pixel values and columns represent
-#'  neighbor values. As an example: `theta[1,3,2]` has the potential pairs of
-#'  values 0,2 in the second relative position of `mrfi`.
-#' @param log_scale A `logical` value indicatin g whether the returned value
+#'  neighbor values. As an example: `theta[1,3,2]` has the potential for the
+#'  pair of values 0,2 observed in the second relative position of `mrfi`.
+#' @param log_scale A `logical` value indicating whether the returned value
 #'  should be in logarithmic scale.
 #'
 #' @return A `numeric` with the pseudo-likelihood value.

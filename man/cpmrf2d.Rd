@@ -15,8 +15,8 @@ interaction structure.}
 
 \item{theta}{A 3-dimensional array describing potentials. Slices represent
 interacting positions, rows represent pixel values and columns represent
-neighbor values. As an example: \code{theta[1,3,2]} has the potential pairs of
-values 0,2 in the second relative position of \code{mrfi}.}
+neighbor values. As an example: \code{theta[1,3,2]} has the potential for the
+pair of values 0,2 observed in the second relative position of \code{mrfi}.}
 
 \item{pos}{Length-2 vector with the position to compute conditional
 probabilities in.}
