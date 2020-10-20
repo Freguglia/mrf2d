@@ -115,7 +115,10 @@ dplot(Z5)
 }
 \seealso{
 A paper with detailed description of the package can be found at
-\url{https://arxiv.org/abs/2006.00383}
+\url{https://arxiv.org/abs/2006.00383}.
+
+\code{\link[=rmrf2d_mc]{rmrf2d_mc}} for generating multiple points of a
+Markov Chain to be used in Monte-Carlo methods.
 }
 \author{
 Victor Freguglia

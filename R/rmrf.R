@@ -87,7 +87,10 @@
 #' @seealso
 #'
 #' A paper with detailed description of the package can be found at
-#' \url{https://arxiv.org/abs/2006.00383}
+#' \url{https://arxiv.org/abs/2006.00383}.
+#'
+#' \code{\link[=rmrf2d_mc]{rmrf2d_mc}} for generating multiple points of a
+#' Markov Chain to be used in Monte-Carlo methods.
 #'
 #' @export
 rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, sub_region = NULL, fixed_region = NULL){
@@ -163,5 +166,50 @@ rmrf2d <- function(init_Z, mrfi, theta, cycles = 60, sub_region = NULL, fixed_re
     return(ret)
   }
 
+}
 
+#' @name rmrf2d_mc
+#' @author Victor Freguglia
+#' @title Markov Chain sampling of MRFs for Monte-Carlo methods
+#'
+#' @description Generates a Markov Chain of random fields and returns the
+#' sufficient statistics for each of the observations.
+#'
+#' This function automatizes the process of generating a random sample of MRFs
+#' to be used in Monte-Carlo methods by wrapping \code{\link[=rmrf2d]{rmrf2d}}
+#' and executing it multiple time while storing sufficient statistics instead
+#' of the entire lattice.
+#'
+#' @inheritParams rmrf2d
+#' @inheritParams smr_stat
+#' @param burnin Number of cycles iterated before start collecting sufficient
+#' statistics.
+#' @param cycles Number of cycles between collected samples.
+#' @param nmc Number of samples to be stored.
+#'
+#' @note Fixed regions and incomplete lattices are not supported.
+#'
+#' @return A matrix where each row contains the vector of sufficient statistics
+#' for an observation.
+#'
+#' @examples
+#' rmrf2d_mc(c(80, 80), mrfi(1), theta_potts, family = "oneeach", nmc = 8)
+#'
+#' @export
+rmrf2d_mc <- function(init_Z, mrfi, theta, family,
+                      nmc = 100, burnin = 100, cycles = 4){
+
+  # Initialize samples and matrix to store results
+  zt <- rmrf2d(init_Z, mrfi, theta, cycles = burnin)
+  smrs <- smr_stat(zt, mrfi, family)
+  M <- matrix(numeric(), nrow = nmc, ncol = length(smrs))
+
+  # Generate Markov Chain of Random Fields
+  for(i in seq_len(nmc)){
+    zt <- rmrf2d(zt, mrfi, theta, cycles = cycles)
+    # Store sufficient stastics
+    M[i,] <- smr_stat(zt, mrfi, family)
+  }
+
+  return(M)
 }
