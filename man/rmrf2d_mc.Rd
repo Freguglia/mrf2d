@@ -4,17 +4,7 @@
 \alias{rmrf2d_mc}
 \title{Markov Chain sampling of MRFs for Monte-Carlo methods}
 \usage{
-rmrf2d_mc(
-  init_Z,
-  mrfi,
-  theta,
-  family,
-  nmc = 100,
-  burnin = 100,
-  cycles = 4,
-  sub_region = NULL,
-  fixed_region = NULL
-)
+rmrf2d_mc(init_Z, mrfi, theta, family, nmc = 100, burnin = 100, cycles = 4)
 }
 \arguments{
 \item{init_Z}{One of two options:
@@ -37,19 +27,12 @@ are:
 \code{'onepar'}, \code{'oneeach'}, \code{'absdif'}, \code{'dif'} or \code{'free'}.
 See \code{\link[=mrf2d-family]{mrf2d-familiy}}.}
 
-\item{nmc}{Number of samples to be stored}
+\item{nmc}{Number of samples to be stored.}
 
 \item{burnin}{Number of cycles iterated before start collecting sufficient
 statistics.}
 
 \item{cycles}{Number of cycles between collected samples.}
-
-\item{sub_region}{\code{NULL} if the whole lattice is considered or a \code{logical}
-\code{matrix} with \code{TRUE} for pixels in the considered region.}
-
-\item{fixed_region}{\code{NULL} if the whole lattice is to be sampled or a
-\code{logical} \code{matrix} with \code{TRUE} for pixels to be considered fixed. Fixed
-pixels are not updated in the Gibbs Sampler.}
 }
 \value{
 A matrix where each row contains the vector of sufficient statistics
@@ -63,6 +46,9 @@ This function automatizes the process of generating a random sample of MRFs
 to be used in Monte-Carlo methods by wrapping \code{\link[=rmrf2d]{rmrf2d}}
 and executing it multiple time while storing sufficient statistics instead
 of the entire lattice.
+}
+\note{
+Fixed regions and incomplete lattices are not supported.
 }
 \examples{
 rmrf2d_mc(c(80, 80), mrfi(1), theta_potts, family = "oneeach", nmc = 8)
