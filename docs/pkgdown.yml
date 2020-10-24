@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   mrf2d-family: mrf2d-family.html
-last_built: 2020-10-24T16:15Z
+last_built: 2020-10-24T16:24Z
 urls:
   reference: https://freguglia.github.io/mrf2d//reference
   article: https://freguglia.github.io/mrf2d//articles

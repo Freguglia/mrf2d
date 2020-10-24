@@ -1,5 +1,5 @@
 bibentry(bibtype = "misc",
-         title = "{mrf2d}: Markov random field image models in R",
+         title = "Inference tools for Markov Random Fields on lattices: The R package {mrf2d}",
          author = c(person("Victor", "Freguglia"),
                     person("Nancy", "Lopes Garcia")),
          eprint="{2006.00383}",
