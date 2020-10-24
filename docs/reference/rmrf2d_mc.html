@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • mrf2d</title>
+<title>Markov Chain sampling of MRFs for Monte-Carlo methods — rmrf2d_mc • mrf2d</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,13 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Markov Chain sampling of MRFs for Monte-Carlo methods — rmrf2d_mc" />
+<meta property="og:description" content="Generates a Markov Chain of random fields and returns the
+sufficient statistics for each of the observations.
+This function automatizes the process of generating a random sample of MRFs
+to be used in Monte-Carlo methods by wrapping rmrf2d
+and executing it multiple time while storing sufficient statistics instead
+of the entire lattice." />
 <meta property="og:image" content="https://freguglia.github.io/mrf2d/logo.png" />
 
 
@@ -66,7 +72,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -130,49 +136,96 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/Freguglia/mrf2d/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Markov Chain sampling of MRFs for Monte-Carlo methods</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Freguglia/mrf2d/blob/master/R/rmrf.R'><code>R/rmrf.R</code></a></small>
+    <div class="hidden name"><code>rmrf2d_mc.Rd</code></div>
     </div>
 
-    <div id="mrf2d-041" class="section level1">
-<h1 class="page-header" data-toc-text="0.4.1">
-<a href="#mrf2d-041" class="anchor"></a>mrf2d 0.4.1<small> 2020-10-20 </small>
-</h1>
-<ul>
-<li>Added <code>rmrf2d_mc</code> to simplify the use of Monte-Carlo methods from randomly generated fields.</li>
-<li>Minor documentation updates.</li>
-</ul>
-</div>
-    <div id="mrf2d-04" class="section level1">
-<h1 class="page-header" data-toc-text="0.4">
-<a href="#mrf2d-04" class="anchor"></a>mrf2d 0.4<small> Unreleased </small>
-</h1>
-<ul>
-<li>Added <code>mrfout</code> and <code>hmrfout</code> classes for model fitting functions output. A <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> and <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> methods are also available.</li>
-<li>Simplified structure of documentation files.</li>
-</ul>
-</div>
-    <div id="mrf2d-03" class="section level1">
-<h1 class="page-header" data-toc-text="0.3">
-<a href="#mrf2d-03" class="anchor"></a>mrf2d 0.3<small> 2020-06-02 </small>
-</h1>
-<ul>
-<li>Co-ocurrence histogram computing is now exported in the <code><a href="../reference/smr_stat.html">cohist()</a></code> function.</li>
-<li>Computing of conditional probabilities for individual positions are now exported in the <code><a href="../reference/cpmrf2d.html">cp_mrf2d()</a></code> function.</li>
-<li>All the conversions from/to arrays to/from vectors are now available. See the help file for <code>smr_stat</code>.</li>
-<li>Additional example data included in <code>field1</code> and <code>hfield1</code>.</li>
-<li>Documentation improved, including paper available in: <a href="https://arxiv.org/abs/2006.00383" class="uri">https://arxiv.org/abs/2006.00383</a>
-</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>Generates a Markov Chain of random fields and returns the
+sufficient statistics for each of the observations.</p>
+<p>This function automatizes the process of generating a random sample of MRFs
+to be used in Monte-Carlo methods by wrapping <code><a href='rmrf2d.html'>rmrf2d</a></code>
+and executing it multiple time while storing sufficient statistics instead
+of the entire lattice.</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>rmrf2d_mc</span><span class='op'>(</span><span class='va'>init_Z</span>, <span class='va'>mrfi</span>, <span class='va'>theta</span>, <span class='va'>family</span>, nmc <span class='op'>=</span> <span class='fl'>100</span>, burnin <span class='op'>=</span> <span class='fl'>100</span>, cycles <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>init_Z</th>
+      <td><p>One of two options:</p><ul>
+<li><p>A <code>matrix</code> object with the initial field configuration. Its
+valuesmust be integers in <code>{0,...,C}</code>.</p></li>
+<li><p>A length 2 <code>numeric</code> vector with the lattice dimensions.</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>mrfi</th>
+      <td><p>A <code><a href='mrfi-class.html'>mrfi</a></code> object representing the
+interaction structure.</p></td>
+    </tr>
+    <tr>
+      <th>theta</th>
+      <td><p>A 3-dimensional array describing potentials. Slices represent
+interacting positions, rows represent pixel values and columns represent
+neighbor values. As an example: <code>theta[1,3,2]</code> has the potential for the
+pair of values 0,2 observed in the second relative position of <code>mrfi</code>.</p></td>
+    </tr>
+    <tr>
+      <th>family</th>
+      <td><p>The family of parameter restrictions to potentials. Families
+are:
+<code>'onepar'</code>, <code>'oneeach'</code>, <code>'absdif'</code>, <code>'dif'</code> or <code>'free'</code>.
+See <code><a href='mrf2d-family.html'>mrf2d-familiy</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>nmc</th>
+      <td><p>Number of samples to be stored.</p></td>
+    </tr>
+    <tr>
+      <th>burnin</th>
+      <td><p>Number of cycles iterated before start collecting sufficient
+statistics.</p></td>
+    </tr>
+    <tr>
+      <th>cycles</th>
+      <td><p>Number of cycles between collected samples.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A matrix where each row contains the vector of sufficient statistics
+for an observation.</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Fixed regions and incomplete lattices are not supported.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Victor Freguglia</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>rmrf2d_mc</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>80</span>, <span class='fl'>80</span><span class='op'>)</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, <span class='va'>theta_potts</span>, family <span class='op'>=</span> <span class='st'>"oneeach"</span>, nmc <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;      [,1] [,2]
+#&gt; [1,] 1741 1728
+#&gt; [2,] 1736 1749
+#&gt; [3,] 1596 1612
+#&gt; [4,] 1719 1725
+#&gt; [5,] 1771 1715
+#&gt; [6,] 1700 1705
+#&gt; [7,] 1655 1662
+#&gt; [8,] 1731 1721</div><div class='input'>
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 

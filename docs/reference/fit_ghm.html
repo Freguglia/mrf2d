@@ -87,7 +87,7 @@ described in (Freguglia et al. 2020)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1.9999</span>
       </span>
     </div>
 
@@ -154,20 +154,20 @@ described in (Freguglia et al. 2020)
 .</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fit_ghm</span>(
-  <span class='no'>Y</span>,
-  <span class='no'>mrfi</span>,
-  <span class='no'>theta</span>,
-  <span class='kw'>fixed_fn</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  <span class='kw'>equal_vars</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>init_mus</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>init_sigmas</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>maxiter</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>max_dist</span> <span class='kw'>=</span> <span class='fl'>10</span>^-<span class='fl'>3</span>,
-  <span class='kw'>icm_cycles</span> <span class='kw'>=</span> <span class='fl'>6</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>(),
-  <span class='kw'>qr</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>fit_ghm</span><span class='op'>(</span>
+  <span class='va'>Y</span>,
+  <span class='va'>mrfi</span>,
+  <span class='va'>theta</span>,
+  fixed_fn <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  equal_vars <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  init_mus <span class='op'>=</span> <span class='cn'>NULL</span>,
+  init_sigmas <span class='op'>=</span> <span class='cn'>NULL</span>,
+  maxiter <span class='op'>=</span> <span class='fl'>100</span>,
+  max_dist <span class='op'>=</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>-</span><span class='fl'>3</span>,
+  icm_cycles <span class='op'>=</span> <span class='fl'>6</span>,
+  verbose <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span>,
+  qr <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -185,8 +185,8 @@ interaction structure.</p></td>
       <th>theta</th>
       <td><p>A 3-dimensional array describing potentials. Slices represent
 interacting positions, rows represent pixel values and columns represent
-neighbor values. As an example: <code>theta[1,3,2]</code> has the potential pairs of
-values 0,2 in the second relative position of <code>mrfi</code>.</p></td>
+neighbor values. As an example: <code>theta[1,3,2]</code> has the potential for the
+pair of values 0,2 observed in the second relative position of <code>mrfi</code>.</p></td>
     </tr>
     <tr>
       <th>fixed_fn</th>
@@ -261,29 +261,35 @@ in consecutive iterations is less than <code>max_dist</code>.</p>
 
     <p>Freguglia V, Garcia NL, Bicas JL (2020).
 &#8220;Hidden Markov random field models applied to color homogeneity evaluation in dyed textile images.&#8221;
-<em>Environmetrics</em>, <b>31</b>(4), e2613.<br /><br /> Zhang Y, Brady M, Smith S (2001).
+<em>Environmetrics</em>, <b>31</b>.<br /><br /> Zhang Y, Brady M, Smith S (2001).
 &#8220;Segmentation of brain MR images through a hidden Markov random field model and the expectation-maximization algorithm.&#8221;
-<em>IEEE transactions on medical imaging</em>, <b>20</b>(1), 45--57.</p>
+<em>IEEE transactions on medical imaging</em>, <b>20</b>, 45--57.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>A paper with detailed description of the package can be found at
 <a href='https://arxiv.org/abs/2006.00383'>https://arxiv.org/abs/2006.00383</a></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Victor Freguglia</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Sample a Gaussian mixture with components given by Z_potts</span>
 <span class='co'># mean values are 0, 1 and 2 and a linear effect on the x-axis.</span>
 <span class='co'># \donttest{</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>2</span>)
-<span class='no'>Y</span> <span class='kw'>&lt;-</span> <span class='no'>Z_potts</span> + <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>Z_potts</span>), <span class='kw'>sd</span> <span class='kw'>=</span> <span class='fl'>0.4</span>) +
-      (<span class='fu'><a href='https://rdrr.io/r/base/row.html'>row</a></span>(<span class='no'>Z_potts</span>) - <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/row.html'>row</a></span>(<span class='no'>Z_potts</span>)))*<span class='fl'>0.01</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>Y</span> <span class='op'>&lt;-</span> <span class='va'>Z_potts</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>Z_potts</span><span class='op'>)</span>, sd <span class='op'>=</span> <span class='fl'>0.4</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/row.html'>row</a></span><span class='op'>(</span><span class='va'>Z_potts</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/row.html'>row</a></span><span class='op'>(</span><span class='va'>Z_potts</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>*</span><span class='fl'>0.01</span>
 <span class='co'># Check what the data looks like</span>
-<span class='fu'><a href='dplot.html'>cplot</a></span>(<span class='no'>Y</span>)</div><div class='img'><img src='fit_ghm-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='no'>fixed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='basis_functions.html'>polynomial_2d</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span>(<span class='no'>Y</span>))
-<span class='no'>fit</span> <span class='kw'>&lt;-</span> <span class='fu'>fit_ghm</span>(<span class='no'>Y</span>, <span class='kw'>mrfi</span> <span class='kw'>=</span> <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>theta</span> <span class='kw'>=</span> <span class='no'>theta_potts</span>, <span class='kw'>fixed_fn</span> <span class='kw'>=</span> <span class='no'>fixed</span>)
-<span class='no'>fit</span>$<span class='no'>par</span></div><div class='output co'>#&gt;             mu     sigma
+<span class='fu'><a href='dplot.html'>cplot</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>)</span>
+</div><div class='img'><img src='fit_ghm-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='va'>fixed</span> <span class='op'>&lt;-</span> <span class='fu'><a href='basis_functions.html'>polynomial_2d</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>0</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'>fit_ghm</span><span class='op'>(</span><span class='va'>Y</span>, mrfi <span class='op'>=</span> <span class='fu'><a href='mrfi-class.html'>mrfi</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, theta <span class='op'>=</span> <span class='va'>theta_potts</span>, fixed_fn <span class='op'>=</span> <span class='va'>fixed</span><span class='op'>)</span>
+<span class='va'>fit</span><span class='op'>$</span><span class='va'>par</span>
+</div><div class='output co'>#&gt;             mu     sigma
 #&gt; 0 -0.001568028 0.4012135
 #&gt; 1  0.999990536 0.3966913
-#&gt; 2  2.002972466 0.4026593</div><div class='input'><span class='fu'><a href='dplot.html'>cplot</a></span>(<span class='no'>fit</span>$<span class='no'>fixed</span>)</div><div class='img'><img src='fit_ghm-2.png' alt='' width='700' height='433' /></div><div class='input'># }
+#&gt; 2  2.002972466 0.4026593</div><div class='input'><span class='fu'><a href='dplot.html'>cplot</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>$</span><span class='va'>fixed</span><span class='op'>)</span>
+</div><div class='img'><img src='fit_ghm-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>
@@ -301,7 +307,7 @@ in consecutive iterations is less than <code>max_dist</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

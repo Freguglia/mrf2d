@@ -43,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1.9999</span>
       </span>
     </div>
 
@@ -109,9 +109,11 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the stable version of <code>mrf2d</code> from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"mrf2d"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"mrf2d"</span><span class="op">)</span></pre></div>
 <p>The development version is available on the package’s <a href="https://github.com/Freguglia/mrf2d">Github page</a>. It can be installed with the <code>devtools</code> package by using</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"Freguglia/mrf2d"</span>)</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"Freguglia/mrf2d"</span><span class="op">)</span></pre></div>
 <hr>
 </div>
 <div id="usage" class="section level2">
@@ -119,18 +121,20 @@
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p><code>mrf2d</code> introduces a programming interface for the general Markov Random Field model in <em>Freguglia, Victor, Nancy L. Garcia, and Juliano L. Bicas. “Hidden Markov random field models applied to color homogeneity evaluation in dyed textile images.” Environmetrics (2019): e2613.</em> Using specific interaction structures and parameter restrictions can lead to important models as particular cases, such as the Potts model.</p>
 <p>It introduces the S4 class <code>mrfi</code> to represent interaction structures. The <code><a href="reference/mrfi-class.html">mrfi()</a></code> function can be used to create these objects representing interaction structures with relative positions included based on the norm of the relative position (distance) or explicitly specified</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="no">interact</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/mrfi-class.html">mrfi</a></span>(<span class="kw">max_norm</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">positions</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">4</span>,<span class="fl">2</span>)))
-<span class="no">interact</span>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="va">interact</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/mrfi-class.html">mrfi</a></span><span class="op">(</span>max_norm <span class="op">=</span> <span class="fl">1</span>, positions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">interact</span>
 <span class="co">#&gt; 3 interacting positions.</span>
 <span class="co">#&gt;   rx     ry</span>
 <span class="co">#&gt;    1      0</span>
 <span class="co">#&gt;    0      1</span>
 <span class="co">#&gt;    4      2</span>
-<span class="fu"><a href="https://rdrr.io/r/base/plot.html">plot</a></span>(<span class="no">interact</span>)</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">interact</span><span class="op">)</span></pre></div>
 <p><img src="reference/figures/README-plot_interaction-1.png"><!-- --></p>
 <p>Potentials (parameters) are represented by three-dimensional arrays, where rows and columns represent pixel label values and slices represent interacting positions.</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="no">potentials</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/smr_array.html">expand_array</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(-<span class="fl">0.9</span>, -<span class="fl">0.9</span>, <span class="fl">0.2</span>), <span class="kw">family</span> <span class="kw">=</span> <span class="st">"oneeach"</span>, <span class="kw">C</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">mrfi</span> <span class="kw">=</span> <span class="no">interact</span>)
-<span class="no">potentials</span>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="va">potentials</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/smr_array.html">expand_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.9</span>, <span class="op">-</span><span class="fl">0.9</span>, <span class="fl">0.2</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"oneeach"</span>, C <span class="op">=</span> <span class="fl">1</span>, mrfi <span class="op">=</span> <span class="va">interact</span><span class="op">)</span>
+<span class="va">potentials</span>
 <span class="co">#&gt; , , (1,0)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;      0    1</span>
@@ -150,10 +154,11 @@
 <span class="co">#&gt; 1 0.2 0.0</span></pre></div>
 <p>The negative values out of diagonal means different “colors” are less likely in that relative position.</p>
 <p>The package has many built-in functions for sampling, potentials estimation and hidden MRF model fitting (used for image segmentation), but it also provides all the basic stack of computations used to implement algorithms for MRF models, making it suitable for development of research in Markov Random Field models.</p>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">1</span>)
-<span class="no">img_dim</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">200</span>,<span class="fl">200</span>)
-<span class="no">Z</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/rmrf2d.html">rmrf2d</a></span>(<span class="no">img_dim</span>, <span class="kw">mrfi</span> <span class="kw">=</span> <span class="no">interact</span>, <span class="kw">theta</span> <span class="kw">=</span> <span class="no">potentials</span>, <span class="kw">cycles</span> <span class="kw">=</span> <span class="fl">60</span>)
-<span class="fu"><a href="reference/dplot.html">dplot</a></span>(<span class="no">Z</span>, <span class="kw">legend</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">img_dim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">200</span>,<span class="fl">200</span><span class="op">)</span>
+<span class="va">Z</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/rmrf2d.html">rmrf2d</a></span><span class="op">(</span><span class="va">img_dim</span>, mrfi <span class="op">=</span> <span class="va">interact</span>, theta <span class="op">=</span> <span class="va">potentials</span>, cycles <span class="op">=</span> <span class="fl">60</span><span class="op">)</span>
+<span class="fu"><a href="reference/dplot.html">dplot</a></span><span class="op">(</span><span class="va">Z</span>, legend <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
 <p><img src="reference/figures/README-Z_example_plot-1.png" style="display: block; margin: auto;"></p>
 <hr>
 </div>
@@ -215,7 +220,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

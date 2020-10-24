@@ -98,7 +98,7 @@ in the interaction structure." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1.9999</span>
       </span>
     </div>
 
@@ -159,7 +159,7 @@ in the interaction structure." />
 structure for a spatially-stationary Markov Random Field.</p>
 <p>The function <code>mrfi()</code> provides an interface for creation
 <code>mrfi</code> objects. A <code>plot</code> method is also available for visualization, as
-well as conversion methods like <code>as.list</code> and operators like <code>+</code>.</p>
+well as conversion methods like <code>as.list</code> and operators like <code><a href='https://rdrr.io/r/base/Arithmetic.html'>+</a></code>.</p>
 <p><code>mrfi()</code> creates an object of class <code>mrfi</code> based on a distance
 rule and optionally a list of relative positions. The argument <code>max_norm</code> and
 <code>norm_type</code> can be used to automatically include all positions within a
@@ -167,8 +167,8 @@ rule and optionally a list of relative positions. The argument <code>max_norm</c
 <p>A list of relative positions may also be included to specify sparse
 interaction structures, for example.</p>
 <p>Simple operations are provided to include (set union)
-new interacting positions to a <code>mrfi</code> object with the <code><a href='https://rdrr.io/r/base/Arithmetic.html'>'+'</a></code> operator and
-remove positions (set difference) with <code>-</code>. Individual positions can be
+new interacting positions to a <code>mrfi</code> object with the <code>'+'</code> operator and
+remove positions (set difference) with <code><a href='https://rdrr.io/r/base/Arithmetic.html'>-</a></code>. Individual positions can be
 included/excluded using length-2 vectors in the right hand side. Union and
 set difference of complete structures can also be computed by adding or
 subtracting two <code>mrfi</code> objects.</p>
@@ -200,7 +200,9 @@ length(x)
 +(e1, e2)
 
 # S4 method for mrfi,mrfi
--(e1, e2)</pre>
+-(e1, e2)
+
+mrfi_to_string(mrfi)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -233,13 +235,13 @@ corresponds to a relative position included.</p></td>
       <td><p>vector of indexes to extract interacting positions.</p></td>
     </tr>
     <tr>
-      <th>e1</th>
+      <th>e1, mrfi</th>
       <td><p>A <code>mrfi</code> object.</p></td>
     </tr>
     <tr>
       <th>e2</th>
       <td><p>Either a second <code>mrfi</code> object or a length 2 <code>numeric</code> with the new
-relative position to include (<code>+</code>) or remove (<code>-</code>).</p></td>
+relative position to include (<code><a href='https://rdrr.io/r/base/Arithmetic.html'>+</a></code>) or remove (<code><a href='https://rdrr.io/r/base/Arithmetic.html'>-</a></code>).</p></td>
     </tr>
     </table>
 
@@ -248,9 +250,9 @@ relative position to include (<code>+</code>) or remove (<code>-</code>).</p></t
     <p>A <code>mrfi</code> object.</p>
 <p><code><a href='https://rdrr.io/r/base/list.html'>as.list()</a></code>: converts the <code>mrfi</code> object to a list of interacting
 positions (list of length-2 vectors).</p>
-<p><code>[[</code>: converts to list and subsets it.</p>
-<p><code>[</code>: subsets the <code>mrfi</code> object and returns another <code>mrfi</code> object.</p>
-<p><code>+</code>: computes the union of the interaction structure in a <code>mrfi</code> object with
+<p><code><a href='https://rdrr.io/r/base/Extract.html'>[[</a></code>: converts to list and subsets it.</p>
+<p><code><a href='https://rdrr.io/r/base/Extract.html'>[</a></code>: subsets the <code>mrfi</code> object and returns another <code>mrfi</code> object.</p>
+<p><code><a href='https://rdrr.io/r/base/Arithmetic.html'>+</a></code>: computes the union of the interaction structure in a <code>mrfi</code> object with
 a <code>numeric</code> representing an additional position to include or another <code>mrfi</code>
 object.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -272,12 +274,12 @@ by:</p>
 <p>Note that it only includes the positions <code>(1,0)</code> and <code>(0,1)</code>, but when
 visualizing it, for example, <code>mrf2d</code> understands the opposite directions
 are also conditionally dependent, as in</p>
-<p><code><a href='https://rdrr.io/r/base/plot.html'>plot(mrfi(1))</a></code>.</p>
+<p><code><a href='https://rdrr.io/r/graphics/plot.default.html'>plot(mrfi(1))</a></code>.</p>
     <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
 
     
 
-<dl'>
+<dl>
 <dt><code>Rmat</code></dt><dd><p>A 2-column <code>matrix</code> where each row represents a relative position
 of interaction.</p></dd>
 
@@ -293,15 +295,21 @@ The same is valid for repeated or opposite positions in <code>positions</code>.<
 <a href='https://arxiv.org/abs/2006.00383'>https://arxiv.org/abs/2006.00383</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'>mrfi</span>(<span class='kw'>max_norm</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>norm_type</span> <span class='kw'>=</span> <span class='st'>"1"</span>))</div><div class='img'><img src='mrfi-class-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'>mrfi</span>(<span class='kw'>max_norm</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>norm_type</span> <span class='kw'>=</span> <span class='st'>"m"</span>))</div><div class='img'><img src='mrfi-class-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='fu'>mrfi</span>(<span class='kw'>max_norm</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>norm_type</span> <span class='kw'>=</span> <span class='st'>"1"</span>, <span class='kw'>positions</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>4</span>))))</div><div class='img'><img src='mrfi-class-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/list.html'>as.list</a></span>(<span class='fu'>mrfi</span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt; [[1]]
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>mrfi</span><span class='op'>(</span>max_norm <span class='op'>=</span> <span class='fl'>2</span>, norm_type <span class='op'>=</span> <span class='st'>"1"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='mrfi-class-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>mrfi</span><span class='op'>(</span>max_norm <span class='op'>=</span> <span class='fl'>2</span>, norm_type <span class='op'>=</span> <span class='st'>"m"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='mrfi-class-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>mrfi</span><span class='op'>(</span>max_norm <span class='op'>=</span> <span class='fl'>2</span>, norm_type <span class='op'>=</span> <span class='st'>"1"</span>, positions <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='mrfi-class-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/list.html'>as.list</a></span><span class='op'>(</span><span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] 1 0
 #&gt; 
 #&gt; [[2]]
 #&gt; [1] 0 1
-#&gt; </div><div class='input'><span class='fu'>mrfi</span>(<span class='fl'>1</span>)<span class='kw'>[[</span><span class='fl'>1</span>]]</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] 1 0
-#&gt; </div><div class='input'><span class='fu'>mrfi</span>(<span class='fl'>2</span>)<span class='kw'>[[</span><span class='fl'>1</span>:<span class='fl'>3</span>]]</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>]</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] 1 0
 #&gt; 
 #&gt; [[2]]
@@ -310,44 +318,53 @@ The same is valid for repeated or opposite positions in <code>positions</code>.<
 #&gt; [[3]]
 #&gt; [1] -1  1
 #&gt; </div><div class='input'>
-<span class='fu'>mrfi</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; 2 interacting positions.
+<span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 2 interacting positions.
 #&gt;   rx     ry
 #&gt;    1      0
-#&gt;    0      1</div><div class='input'><span class='fu'>mrfi</span>(<span class='fl'>2</span>)</div><div class='output co'>#&gt; 6 interacting positions.
+#&gt;    0      1</div><div class='input'><span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 6 interacting positions.
 #&gt;   rx     ry
 #&gt;    1      0
 #&gt;    2      0
 #&gt;    -1      1
 #&gt;    0      1
-#&gt;    1      1  ... and 1 more.</div><div class='input'><span class='fu'>mrfi</span>(<span class='fl'>2</span>, <span class='kw'>norm_type</span> <span class='kw'>=</span> <span class='st'>"m"</span>)</div><div class='output co'>#&gt; 12 interacting positions.
+#&gt;    1      1  ... and 1 more.</div><div class='input'><span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>2</span>, norm_type <span class='op'>=</span> <span class='st'>"m"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 12 interacting positions.
 #&gt;   rx     ry
 #&gt;    1      0
 #&gt;    2      0
 #&gt;    -2      1
 #&gt;    -1      1
-#&gt;    0      1  ... and 7 more.</div><div class='input'><span class='fu'>mrfi</span>(<span class='fl'>1</span>, <span class='kw'>positions</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>4</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>4</span>,<span class='fl'>4</span>)))</div><div class='output co'>#&gt; 4 interacting positions.
+#&gt;    0      1  ... and 7 more.</div><div class='input'><span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>1</span>, positions <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='fl'>4</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>4</span>,<span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 4 interacting positions.
 #&gt;   rx     ry
 #&gt;    1      0
 #&gt;    0      1
 #&gt;    4      4
 #&gt;    -4      4</div><div class='input'>
 <span class='co'>#Repeated positions are handled automatically</span>
-<span class='fu'>mrfi</span>(<span class='fl'>1</span>, <span class='kw'>positions</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>0</span>)))</div><div class='output co'>#&gt; 3 interacting positions.
+<span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>1</span>, positions <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>0</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 3 interacting positions.
 #&gt;   rx     ry
 #&gt;    1      0
 #&gt;    0      1
 #&gt;    2      0</div><div class='input'>
-<span class='fu'>mrfi</span>(<span class='fl'>1</span>) + <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>0</span>)</div><div class='output co'>#&gt; 3 interacting positions.
+<span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>0</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 3 interacting positions.
 #&gt;   rx     ry
 #&gt;    1      0
 #&gt;    0      1
-#&gt;    2      0</div><div class='input'><span class='fu'>mrfi</span>(<span class='fl'>1</span>) - <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>0</span>)</div><div class='output co'>#&gt; 1 interacting positions.
+#&gt;    2      0</div><div class='input'><span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>0</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 1 interacting positions.
 #&gt;   rx     ry
-#&gt;    0      1</div><div class='input'><span class='fu'>mrfi</span>(<span class='fl'>1</span>) + <span class='fu'>mrfi</span>(<span class='fl'>0</span>, <span class='kw'>positions</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>0</span>)))</div><div class='output co'>#&gt; 3 interacting positions.
+#&gt;    0      1</div><div class='input'><span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>0</span>, positions <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 3 interacting positions.
 #&gt;   rx     ry
 #&gt;    1      0
 #&gt;    0      1
-#&gt;    2      0</div><div class='input'><span class='fu'>mrfi</span>(<span class='fl'>2</span>) - <span class='fu'>mrfi</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; 4 interacting positions.
+#&gt;    2      0</div><div class='input'><span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 4 interacting positions.
 #&gt;   rx     ry
 #&gt;    2      0
 #&gt;    -1      1
@@ -368,7 +385,7 @@ The same is valid for repeated or opposite positions in <code>positions</code>.<
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

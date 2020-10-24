@@ -84,7 +84,7 @@ likelihood function is equal to zero." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1.9999</span>
       </span>
     </div>
 
@@ -148,17 +148,17 @@ of the sampled field and the observed field.</p>
 likelihood function is equal to zero.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fit_sa</span>(
-  <span class='no'>Z</span>,
-  <span class='no'>mrfi</span>,
-  <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"onepar"</span>,
-  <span class='no'>gamma_seq</span>,
-  <span class='kw'>init</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>cycles</span> <span class='kw'>=</span> <span class='fl'>5</span>,
-  <span class='kw'>refresh_each</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>gamma_seq</span>) + <span class='fl'>1</span>,
-  <span class='kw'>refresh_cycles</span> <span class='kw'>=</span> <span class='fl'>60</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()
-)</pre>
+    <pre class="usage"><span class='fu'>fit_sa</span><span class='op'>(</span>
+  <span class='va'>Z</span>,
+  <span class='va'>mrfi</span>,
+  family <span class='op'>=</span> <span class='st'>"onepar"</span>,
+  <span class='va'>gamma_seq</span>,
+  init <span class='op'>=</span> <span class='fl'>0</span>,
+  cycles <span class='op'>=</span> <span class='fl'>5</span>,
+  refresh_each <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>gamma_seq</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>1</span>,
+  refresh_cycles <span class='op'>=</span> <span class='fl'>60</span>,
+  verbose <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -251,7 +251,7 @@ required.</p>
     <p>Stochastic Approximation is called "Controllable Simulated Annealing" in
 some references.</p>
 <p>Examples where Stochastic Approximation is used with MRFs are
-(Gimel'farb 1996)
+(Gimel’farb 1996)
 , (Atchadé et al. 2013)
 .</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -261,20 +261,24 @@ some references.</p>
 <a href='https://en.wikipedia.org/wiki/Stochastic_approximation'>https://en.wikipedia.org/wiki/Stochastic_approximation</a>.</p>
 <p>Atchadé YF, Lartillot N, Robert C, others (2013).
 &#8220;Bayesian computation for statistical models with intractable normalizing constants.&#8221;
-<em>Brazilian Journal of Probability and Statistics</em>, <b>27</b>(4), 416--436.<br /><br /> Gimel'farb GL (1996).
+<em>Brazilian Journal of Probability and Statistics</em>, <b>27</b>, 416--436.<br /><br /> Gimel’farb GL (1996).
 &#8220;Texture modeling by multiple pairwise pixel interactions.&#8221;
-<em>IEEE Transactions on pattern analysis and machine intelligence</em>, <b>18</b>(11), 1110--1114.</p>
+<em>IEEE Transactions on pattern analysis and machine intelligence</em>, <b>18</b>, 1110--1114.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>A paper with detailed description of the package can be found at
 <a href='https://arxiv.org/abs/2006.00383'>https://arxiv.org/abs/2006.00383</a></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Victor Freguglia</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>2</span>)
-<span class='no'>fit1</span> <span class='kw'>&lt;-</span> <span class='fu'>fit_sa</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"oneeach"</span>, <span class='kw'>gamma_seq</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>50</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>fit1</span> <span class='op'>&lt;-</span> <span class='fu'>fit_sa</span><span class='op'>(</span><span class='va'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, family <span class='op'>=</span> <span class='st'>"oneeach"</span>, gamma_seq <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>0</span>, length.out <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># Estimated parameters</span>
-<span class='no'>fit1</span>$<span class='no'>theta</span></div><div class='output co'>#&gt; , , (1,0)
+<span class='va'>fit1</span><span class='op'>$</span><span class='va'>theta</span>
+</div><div class='output co'>#&gt; , , (1,0)
 #&gt; 
 #&gt;            0          1          2
 #&gt; 0  0.0000000 -0.9719982 -0.9719982
@@ -288,10 +292,12 @@ some references.</p>
 #&gt; 1 -1.009834  0.000000 -1.009834
 #&gt; 2 -1.009834 -1.009834  0.000000
 #&gt; </div><div class='input'><span class='co'># A visualization of estimated gradient norm over iterations.</span>
-<span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>fit1</span>$<span class='no'>metrics</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"l"</span>)</div><div class='img'><img src='fit_sa-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'>fit_sa</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"oneeach"</span>, <span class='kw'>gamma_seq</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>50</span>))</div><div class='output co'>#&gt; Model fitted via Stochastic Approximation 
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>fit1</span><span class='op'>$</span><span class='va'>metrics</span>, type <span class='op'>=</span> <span class='st'>"l"</span><span class='op'>)</span>
+</div><div class='img'><img src='fit_sa-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>fit_sa</span><span class='op'>(</span><span class='va'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, family <span class='op'>=</span> <span class='st'>"oneeach"</span>, gamma_seq <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>0</span>, length.out <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Model fitted via Stochastic Approximation 
 #&gt; 2 interacting positions: (1,0) (0,1) 
-#&gt; family: oneeach </div><div class='input'># }
+#&gt; family: oneeach </div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>
@@ -309,7 +315,7 @@ some references.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

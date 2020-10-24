@@ -86,7 +86,7 @@ a vector of sufficient statistics given a family of restrictions.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1.9999</span>
       </span>
     </div>
 
@@ -152,9 +152,9 @@ a vector of sufficient statistics given a <code><a href='mrf2d-family.html'>fami
 
     </div>
 
-    <pre class="usage"><span class='fu'>smr_stat</span>(<span class='no'>Z</span>, <span class='no'>mrfi</span>, <span class='no'>family</span>)
+    <pre class="usage"><span class='fu'>smr_stat</span><span class='op'>(</span><span class='va'>Z</span>, <span class='va'>mrfi</span>, <span class='va'>family</span><span class='op'>)</span>
 
-<span class='fu'>cohist</span>(<span class='no'>Z</span>, <span class='no'>mrfi</span>)</pre>
+<span class='fu'>cohist</span><span class='op'>(</span><span class='va'>Z</span>, <span class='va'>mrfi</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -192,10 +192,16 @@ the order in <code><a href='smr_array.html'>smr_array()</a></code>.</p>
 
     <div class='dont-index'><p>A paper with detailed description of the package can be found at
 <a href='https://arxiv.org/abs/2006.00383'>https://arxiv.org/abs/2006.00383</a></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Victor Freguglia</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>smr_stat</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='st'>"onepar"</span>)</div><div class='output co'>#&gt; [1] 11695</div><div class='input'><span class='fu'>smr_stat</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>), <span class='st'>"oneeach"</span>)</div><div class='output co'>#&gt; [1] 5901 5794</div><div class='input'>
-<span class='fu'>cohist</span>(<span class='no'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt; , , (1,0)
+    <pre class="examples"><div class='input'><span class='fu'>smr_stat</span><span class='op'>(</span><span class='va'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"onepar"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 11695</div><div class='input'><span class='fu'>smr_stat</span><span class='op'>(</span><span class='va'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"oneeach"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 5901 5794</div><div class='input'>
+<span class='fu'>cohist</span><span class='op'>(</span><span class='va'>Z_potts</span>, <span class='fu'><a href='mrfi-class.html'>mrfi</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; , , (1,0)
 #&gt; 
 #&gt;      0    1    2
 #&gt; 0 6179  962 1037
@@ -225,7 +231,7 @@ the order in <code><a href='smr_array.html'>smr_array()</a></code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
