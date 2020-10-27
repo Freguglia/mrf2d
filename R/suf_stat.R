@@ -65,7 +65,7 @@ suf_stat <- function(arr, family){
 #'
 #' @export
 smr_stat <- function(Z, mrfi, family){
-  C <- max(Z)
+  C <- max(Z, na.rm = TRUE)
   smr_array <- table_relative_3d(Z, mrfi@Rmat, C)
   return(suf_stat(smr_array, family))
 }
