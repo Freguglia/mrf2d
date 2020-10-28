@@ -11,6 +11,7 @@ test_that("mrfi creation works", {
   expect_error(mrfi(positions = list(c("1","0"))))
   expect_error(mrfi(positions = list( c(1.2, 1.5))))
   expect_identical(mrfi(1), mrfi(1, positions = list()))
+  expect_identical(mrfi(1), rpositions(list(c(1,0), c(0,1))))
   expect_equal(mrfi(positions = list(c(3,3)))@Rmat, rbind(diag(2), c(3,3)))
 })
 

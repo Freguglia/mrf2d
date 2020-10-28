@@ -91,7 +91,8 @@ setMethod("show", "mrfi",
 #' "range" defined by the norm type chosen and distance using that norm.
 #'
 #' A list of relative positions may also be included to specify sparse
-#' interaction structures, for example.
+#' interaction structures, for example. Alternatively, `rpositions()`
+#' can be used to create a based exclusively on a list of relative positions.
 #'
 #' @param max_norm a `numeric` value. All points with norm \eqn{\le} `max_dist`
 #'  are included.
@@ -108,9 +109,11 @@ setMethod("show", "mrfi",
 #'
 #' @examples
 #' mrfi(1)
+#' rpositions(list(c(1,0), c(0,1)))
 #' mrfi(2)
 #' mrfi(2, norm_type = "m")
 #' mrfi(1, positions = list(c(4,4), c(-4,4)))
+#'
 #'
 #' #Repeated positions are handled automatically
 #' mrfi(1, positions = list(c(1,0), c(2,0)))
@@ -163,6 +166,16 @@ mrfi <- function(max_norm = 1, norm_type = "1", positions = NULL){
   df <- matrix(unlist(df), ncol = 2)
   df <- unique(df)
   new("mrfi", Rmat = df)
+}
+
+#' @rdname mrfi-class
+#' @export
+rpositions <- function(positions){
+  res <- mrfi(0)
+  for(i in seq_along(positions)){
+    res <- res + positions[[i]]
+  }
+  res
 }
 
 mrfi_to_char <- function(mrfi){

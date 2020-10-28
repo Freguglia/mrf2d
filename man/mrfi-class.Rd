@@ -4,6 +4,7 @@
 \name{mrfi-class}
 \alias{mrfi-class}
 \alias{mrfi}
+\alias{rpositions}
 \alias{as.list.mrfi}
 \alias{length,mrfi-method}
 \alias{[[,mrfi,numeric,missing-method}
@@ -16,6 +17,8 @@
 \title{mrfi: MRF interaction structure}
 \usage{
 mrfi(max_norm = 1, norm_type = "1", positions = NULL)
+
+rpositions(positions)
 
 \method{as.list}{mrfi}(x, ...)
 
@@ -84,7 +87,8 @@ rule and optionally a list of relative positions. The argument \code{max_norm} a
 "range" defined by the norm type chosen and distance using that norm.
 
 A list of relative positions may also be included to specify sparse
-interaction structures, for example.
+interaction structures, for example. Alternatively, \code{rpositions()}
+can be used to create a based exclusively on a list of relative positions.
 
 Simple operations are provided to include (set union)
 new interacting positions to a \code{mrfi} object with the \code{'+'} operator and
@@ -144,9 +148,11 @@ mrfi(1)[[1]]
 mrfi(2)[[1:3]]
 
 mrfi(1)
+rpositions(list(c(1,0), c(0,1)))
 mrfi(2)
 mrfi(2, norm_type = "m")
 mrfi(1, positions = list(c(4,4), c(-4,4)))
+
 
 #Repeated positions are handled automatically
 mrfi(1, positions = list(c(1,0), c(2,0)))
