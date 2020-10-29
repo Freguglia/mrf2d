@@ -35,8 +35,7 @@ models with different types of interaction.
 ![](man/figures/README-example_interacions-1.png)![](man/figures/README-example_interacions-2.png)![](man/figures/README-example_interacions-3.png)
 
 A complete paper describing the details of the package and examples can
-be found at
-<a href="https://arxiv.org/abs/2006.00383" class="uri">https://arxiv.org/abs/2006.00383</a>.
+be found at <https://arxiv.org/abs/2006.00383>.
 
 ------------------------------------------------------------------------
 

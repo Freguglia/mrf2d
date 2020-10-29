@@ -57,7 +57,8 @@ rule and optionally a list of relative positions. The argument max_norm and
 norm_type can be used to automatically include all positions within a
 &quot;range&quot; defined by the norm type chosen and distance using that norm.
 A list of relative positions may also be included to specify sparse
-interaction structures, for example.
+interaction structures, for example. Alternatively, rpositions()
+can be used to create a based exclusively on a list of relative positions.
 Simple operations are provided to include (set union)
 new interacting positions to a mrfi object with the '+' operator and
 remove positions (set difference) with -. Individual positions can be
@@ -98,7 +99,7 @@ in the interaction structure." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5</span>
       </span>
     </div>
 
@@ -122,6 +123,9 @@ in the interaction structure." />
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/mrf2d-family.html">Parameter restriction families in mrf2d</a>
+    </li>
+    <li>
+      <a href="../articles/three-dimensions-on-mrf2d.html">Working with 3d lattices in mrf2d</a>
     </li>
   </ul>
 </li>
@@ -165,7 +169,8 @@ rule and optionally a list of relative positions. The argument <code>max_norm</c
 <code>norm_type</code> can be used to automatically include all positions within a
 "range" defined by the norm type chosen and distance using that norm.</p>
 <p>A list of relative positions may also be included to specify sparse
-interaction structures, for example.</p>
+interaction structures, for example. Alternatively, <code>rpositions()</code>
+can be used to create a based exclusively on a list of relative positions.</p>
 <p>Simple operations are provided to include (set union)
 new interacting positions to a <code>mrfi</code> object with the <code>'+'</code> operator and
 remove positions (set difference) with <code><a href='https://rdrr.io/r/base/Arithmetic.html'>-</a></code>. Individual positions can be
@@ -177,6 +182,8 @@ in the interaction structure.</p>
     </div>
 
     <pre class="usage">mrfi(max_norm = 1, norm_type = "1", positions = NULL)
+
+rpositions(positions)
 
 # S3 method for mrfi
 as.list(x, ...)
@@ -322,6 +329,10 @@ The same is valid for repeated or opposite positions in <code>positions</code>.<
 </div><div class='output co'>#&gt; 2 interacting positions.
 #&gt;   rx     ry
 #&gt;    1      0
+#&gt;    0      1</div><div class='input'><span class='fu'>rpositions</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>0</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 2 interacting positions.
+#&gt;   rx     ry
+#&gt;    1      0
 #&gt;    0      1</div><div class='input'><span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>2</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 6 interacting positions.
 #&gt;   rx     ry
@@ -343,6 +354,7 @@ The same is valid for repeated or opposite positions in <code>positions</code>.<
 #&gt;    0      1
 #&gt;    4      4
 #&gt;    -4      4</div><div class='input'>
+
 <span class='co'>#Repeated positions are handled automatically</span>
 <span class='fu'>mrfi</span><span class='op'>(</span><span class='fl'>1</span>, positions <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>0</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 3 interacting positions.
