@@ -135,7 +135,7 @@ dplot(Z3_ising[,,2])
 
 Estimating parameters can also be done seamlessly after transforming 3d problems to a `mrf2d` comprehensible one. We use the previously generated 3d Ising Model sample to illustrate the estimation via Pseudo-Likelihood (recall the parameter used in the simulation was $-0.8$).
 
-```{r, cache = TRUE}
+```{r}
 pl3d <- fit_pl(Zflat_ising, R3, family = "onepar")
 pl3d$theta
 ```
@@ -152,7 +152,7 @@ cplot(Yflat)
 
 Again, by using the 2d projection of the 3d nearest-neighbor interaction structure `R3`, we can fit a Gaussian Hidden Markov Random Field model with the `fit_ghm()` function with the transformed data.
 
-```{r, cache = TRUE}
+```{r}
 set.seed(4)
 denoising <- fit_ghm(Yflat, R3, theta, verbose = FALSE)
 ```
