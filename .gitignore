@@ -17,3 +17,4 @@ Meta
 ..Rcheck/
 mrf2d.Rcheck/
 src-i386/
+*.swp

@@ -15,3 +15,17 @@ test_that("sufficient statistics computing works", {
   expect_equal(length(suf_stat(pc, "dif")), 2*4)
   expect_equal(length(suf_stat(pc, "free")), 2*(3*3 -1))
 })
+
+test_that("summarized vector description works", {
+  expect_is(vec_description(mrfi(1) + c(3,4), "onepar", 1), "data.frame")
+  expect_is(vec_description(mrfi(1) + c(3,4), "onepar", 2), "data.frame")
+  expect_is(vec_description(mrfi(1) + c(3,4), "oneeach", 1), "data.frame")
+  expect_is(vec_description(mrfi(1) + c(3,4), "oneeach", 1), "data.frame")
+  expect_is(vec_description(mrfi(1) + c(3,4), "absdif", 1), "data.frame")
+  expect_is(vec_description(mrfi(1) + c(3,4), "absdif", 2), "data.frame")
+  expect_is(vec_description(mrfi(1) + c(3,4), "dif", 2), "data.frame")
+  expect_is(vec_description(mrfi(1) + c(3,4), "dif", 2), "data.frame")
+  expect_is(vec_description(mrfi(1) + c(3,4), "free", 2), "data.frame")
+  expect_is(vec_description(mrfi(1) + c(3,4), "free", 2), "data.frame")
+  expect_error(vec_description(mrfi(1) + c(3,4), "invalidname", 2))
+})

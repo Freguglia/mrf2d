@@ -3,11 +3,14 @@
 \name{smr_stat}
 \alias{smr_stat}
 \alias{cohist}
+\alias{vec_description}
 \title{Summary Statistics}
 \usage{
 smr_stat(Z, mrfi, family)
 
 cohist(Z, mrfi)
+
+vec_description(mrfi, family, C)
 }
 \arguments{
 \item{Z}{A \code{matrix} object containing the observed MRF. \code{NA} values can be
@@ -20,6 +23,8 @@ interaction structure.}
 are:
 \code{'onepar'}, \code{'oneeach'}, \code{'absdif'}, \code{'dif'} or \code{'free'}.
 See \code{\link[=mrf2d-family]{mrf2d-familiy}}.}
+
+\item{C}{The maximum value of the field.}
 }
 \value{
 A numeric vector with the summarized counts.
@@ -27,6 +32,10 @@ A numeric vector with the summarized counts.
 An array representing the co-ocurrence histogram of \code{Z} in the relative
 positions contained in \code{mrfi}. Each row and column corresponds a pair of values
 in \verb{(0, ..., C)} and each slice corresponds to
+
+A \code{data.frame} describing the relative position
+and interaction associated with each potential in the vector
+form in each row, in the same order.
 }
 \description{
 Computes the summary count statistics of a field given an

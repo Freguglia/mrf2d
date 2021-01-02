@@ -42,6 +42,10 @@ operation, expanding a complete array from the vector of sufficient statistics.
 \details{
 The order the parameters appear in the summarized vector matches
 the order in \code{\link[=smr_stat]{smr_stat()}}.
+
+\code{vec_description()} provides a \code{data.frame} object describing
+which are the relative positions and interactions associated with each
+element of the summarized vector in the same order.
 }
 \examples{
 smr_array(theta_potts, "onepar")
