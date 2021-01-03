@@ -155,7 +155,7 @@ vec_description <- function(mrfi, family, C){
     pos <- apply(mrfi@Rmat, MARGIN = 1, paste0, collapse = ",")
     pos <- paste0("(", pos, ")")
     if(family == "onepar"){
-        res <- data.frame(interaction = "different")
+        res <- data.frame(position = "all", interaction = "different")
 
     } else if(family == "oneeach"){
         res <- data.frame(position = pos, interaction = "different")
