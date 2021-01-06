@@ -4,7 +4,16 @@
 \alias{rmrf2d_mc}
 \title{Markov Chain sampling of MRFs for Monte-Carlo methods}
 \usage{
-rmrf2d_mc(init_Z, mrfi, theta, family, nmc = 100, burnin = 100, cycles = 4)
+rmrf2d_mc(
+  init_Z,
+  mrfi,
+  theta,
+  family,
+  nmc = 100,
+  burnin = 100,
+  cycles = 4,
+  verbose = interactive()
+)
 }
 \arguments{
 \item{init_Z}{One of two options:
@@ -33,6 +42,8 @@ See \code{\link[=mrf2d-family]{mrf2d-familiy}}.}
 statistics.}
 
 \item{cycles}{Number of cycles between collected samples.}
+
+\item{verbose}{\code{logical} indicating whether to print iteration number or not.}
 }
 \value{
 A matrix where each row contains the vector of sufficient statistics
