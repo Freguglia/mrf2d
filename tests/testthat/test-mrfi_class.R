@@ -33,7 +33,7 @@ test_that("mrfi subsetting and conversion", {
 
   expect_equal(length(mrfi(1)), 2)
 
-  expect_identical(mrfi_to_string(mrfi(1)), "{(1,0),(0,1)}")
+  expect_identical(mrfi_to_string(mrfi(1)), "{(0,1),(1,0)}")
 })
 
 test_that("mrfi + and - operators work", {
