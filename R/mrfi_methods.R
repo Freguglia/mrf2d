@@ -180,6 +180,6 @@ setMethod("-", signature = c("mrfi", "mrfi"),
 #' @rdname mrfi-class
 #' @export
 mrfi_to_string <- function(mrfi){
-  s <- mrfi_to_char(mrfi)
+  s <- sort(mrfi_to_char(mrfi))
   return(paste0("{", paste(s, collapse = ","), "}"))
 }
