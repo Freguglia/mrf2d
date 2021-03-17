@@ -136,7 +136,8 @@ fit_pl <- function(Z, mrfi, family = "onepar", init = 0,
   }
   o <- do.call(optim, c(list(par = init,
                              fn = pl_value,
-                             control = list(fnscale = -1)),
+                             control = list(fnscale = -1),
+                             hessian = return_optim),
                         optim_args))
   theta_out = vec_to_array(o$par, family, C, n_R)
   dimnames(theta_out)[[3]] <- mrfi_to_char(mrfi)
