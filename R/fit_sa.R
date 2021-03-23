@@ -114,6 +114,7 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
   arr_Z <- table_relative_3d(Z, mrfi@Rmat, C)
   S <- suf_stat(arr_Z, family)
   d <- numeric(length(gamma_seq))
+  Zseq <- thetaseq <- matrix(NA, nrow = length(gamma_seq), ncol = length(S))
   is_sub <- any(is.na(Z))
   if(is_sub){
     subr <- !is.na(Z)
@@ -143,6 +144,8 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
     } else {
       Z_t <- rmrf2d(Z_t, mrfi, vec_to_array(theta_t, family, C, n_R), cycles)
     }
+    Zseq[t,] <- S_t
+    thetaseq[t,] <- theta_t
     d[t] <- sqrt(sum((S_t - S)^2))
   }
   cat(ifelse(verbose, "\n", ""))
@@ -153,6 +156,8 @@ fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,
               family = family,
               method = "Stochastic Approximation",
               metrics = data.frame(t = seq_along(gamma_seq), distance = d),
+              Zseq = Zseq,
+              thetaseq = thetaseq,
               Z = Z,
               ncycles = length(gamma_seq))
   class(out) <- "mrfout"
