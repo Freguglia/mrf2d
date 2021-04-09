@@ -1,9 +1,7 @@
-bibentry(bibtype = "misc",
+bibentry(bibtype = "article",
          title = "Inference tools for Markov Random Fields on lattices: The R package {mrf2d}",
          author = c(person("Victor", "Freguglia"),
-                    person("Nancy", "Lopes Garcia")),
-         eprint="{2006.00383}",
-         archivePrefix="{arXiv}",
-         primaryClass="{stat.CO}",
+                    person("Nancy Lopes", "Garcia")),
+         journal={"arXiv preprint arXiv:2006.00383"},
          year = 2020,
          url = "https://CRAN.R-project.org/package=mrf2d")
