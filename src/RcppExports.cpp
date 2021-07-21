@@ -43,6 +43,32 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// all_cond_probs
+arma::fcube all_cond_probs(const IntegerMatrix& Z, const IntegerMatrix R, const arma::fcube& theta);
+RcppExport SEXP _mrf2d_all_cond_probs(SEXP ZSEXP, SEXP RSEXP, SEXP thetaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    rcpp_result_gen = Rcpp::wrap(all_cond_probs(Z, R, theta));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gradient_crossed_free
+arma::fcube gradient_crossed_free(const IntegerMatrix& Z, const IntegerMatrix R, const arma::fcube& theta);
+RcppExport SEXP _mrf2d_gradient_crossed_free(SEXP ZSEXP, SEXP RSEXP, SEXP thetaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const arma::fcube& >::type theta(thetaSEXP);
+    rcpp_result_gen = Rcpp::wrap(gradient_crossed_free(Z, R, theta));
+    return rcpp_result_gen;
+END_RCPP
+}
 // icm_restoration_cpp
 IntegerMatrix icm_restoration_cpp(const IntegerMatrix& init_Z, const IntegerMatrix R, const arma::fcube& theta, const double corr_prob, const int cycles);
 RcppExport SEXP _mrf2d_icm_restoration_cpp(SEXP init_ZSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP corr_probSEXP, SEXP cyclesSEXP) {
@@ -256,6 +282,8 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_mrf2d_conditional_probabilities_mrf", (DL_FUNC) &_mrf2d_conditional_probabilities_mrf, 8},
     {"_mrf2d_conditional_probabilities_mrf_sub", (DL_FUNC) &_mrf2d_conditional_probabilities_mrf_sub, 9},
+    {"_mrf2d_all_cond_probs", (DL_FUNC) &_mrf2d_all_cond_probs, 3},
+    {"_mrf2d_gradient_crossed_free", (DL_FUNC) &_mrf2d_gradient_crossed_free, 3},
     {"_mrf2d_icm_restoration_cpp", (DL_FUNC) &_mrf2d_icm_restoration_cpp, 5},
     {"_mrf2d_cprob_ghm_one", (DL_FUNC) &_mrf2d_cprob_ghm_one, 11},
     {"_mrf2d_cprob_ghm_one_sub", (DL_FUNC) &_mrf2d_cprob_ghm_one_sub, 12},

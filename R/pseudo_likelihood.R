@@ -151,3 +151,14 @@ fit_pl <- function(Z, mrfi, family = "onepar", init = 0,
   class(out) <- "mrfout"
   return(out)
 }
+
+# Gradient for Pseudolikelihood under 'free' family
+grad_pl_free_nosub <- function(theta_vec, z, mrfi){
+  ns <- cohist(z, mrfi)
+  C <- dim(ns)[2] - 1
+  theta_arr <- expand_array(theta_vec, "free", mrfi, C)
+  wprob <- gradient_crossed_free(z, mrfi@Rmat, theta_arr)
+  out <- 2*ns - wprob
+  out[1,1,] <- 0
+  return(out)
+}

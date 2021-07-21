@@ -65,6 +65,69 @@ NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix &Z,
   return(probs/sum(probs));
 }
 
+// Computes all conditional probabilities simultaneously
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+arma::fcube all_cond_probs(const IntegerMatrix &Z,
+                           const IntegerMatrix R,
+                           const arma::fcube &theta){
+  int N = Z.nrow();
+  int M = Z.ncol();
+  int C = theta.n_rows - 1;
+  int n_R = theta.n_slices;
+  arma::fcube result(N, M, C+1);
+  IntegerVector position(2);
+  NumericVector cond_probs(C+1);
+
+  for(unsigned int i=0;i<N;i++){
+    for(unsigned int j=0;j<M;j++){
+      position[0] = i+1; position[1] = j+1;
+      cond_probs = conditional_probabilities_mrf(Z, position, R, theta, N, M, n_R, C);
+      for(unsigned int k=0; k<=C; k++){
+        result(i,j,k) = cond_probs[k];
+      }
+    }
+  }
+  return(result);
+}
+
+// Computes the crossed term for Pseudolikelihood gradient using 'free' family
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export]]
+arma::fcube gradient_crossed_free(const IntegerMatrix &Z,
+                                  const IntegerMatrix R,
+                                  const arma::fcube &theta){
+  int N = Z.nrow();
+  int M = Z.ncol();
+  int C = theta.n_rows - 1;
+  int n_R = theta.n_slices;
+  arma::fcube result(C+1, C+1, n_R);
+  arma::fcube cond_probs = all_cond_probs(Z,R,theta);
+
+  for(int i=0; i<N; i++){
+    for(int j=0; j<M; j++){
+      for(int r=0; r<n_R; r++){
+        for(int a=0; a<=C; a++){
+          for(int b=0; b<=C; b++){
+            if(i+R(r,0) < N && i+R(r,0)>-1 &&
+               j+R(r,1) < M && j+R(r,1)>-1 &&
+               Z(i+R(r,0), j+R(r,1)) == b){
+              result(a,b,r) += cond_probs(i,j,a);
+            }
+            if(i-R(r,0) < N && i-R(r,0)>-1 &&
+               j-R(r,1) < M && j-R(r,1)>-1 &&
+               Z(i-R(r,0), j-R(r,1)) == a){
+              result(a,b,r) += cond_probs(i,j,b);
+            }
+          }
+        }
+      }
+    }
+  }
+  return(result);
+}
+
+
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
 IntegerMatrix icm_restoration_cpp(const IntegerMatrix &init_Z,

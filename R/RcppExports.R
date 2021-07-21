@@ -9,6 +9,14 @@ conditional_probabilities_mrf_sub <- function(Z, sub_mat, position, R, theta, N,
     .Call('_mrf2d_conditional_probabilities_mrf_sub', PACKAGE = 'mrf2d', Z, sub_mat, position, R, theta, N, M, n_R, C)
 }
 
+all_cond_probs <- function(Z, R, theta) {
+    .Call('_mrf2d_all_cond_probs', PACKAGE = 'mrf2d', Z, R, theta)
+}
+
+gradient_crossed_free <- function(Z, R, theta) {
+    .Call('_mrf2d_gradient_crossed_free', PACKAGE = 'mrf2d', Z, R, theta)
+}
+
 icm_restoration_cpp <- function(init_Z, R, theta, corr_prob, cycles) {
     .Call('_mrf2d_icm_restoration_cpp', PACKAGE = 'mrf2d', init_Z, R, theta, corr_prob, cycles)
 }
