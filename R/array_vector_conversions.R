@@ -49,6 +49,10 @@ is_valid_array <- function(arr, family){
       m[1,1] == 0
     }))
 
+  } else if(family == "symmetric") {
+    all(apply(arr, MARGIN = 3, function(m) {
+      isSymmetric(m) & m[1,1] == 0
+    }))
   } else {
     stop("'", family, "' is not an implemented family.")
   }
@@ -76,7 +80,7 @@ vec_to_array <- function(vec, family, C, n_R){
     })))
 
   } else if(family == "dif") {
-    # Potential associated with zero difference (diagonal) is the sum of others.
+    # Potential associated with zero difference (diagonal) is 0.
     # The order is from -C to -1 then 1 to C.
     if(length(vec) != n_R*2*C) { stop("'vec' must have length n_R*2*C for family 'dif'.")}
     sanitize_theta(simplify2array(lapply(1:n_R, function(i){
@@ -98,6 +102,22 @@ vec_to_array <- function(vec, family, C, n_R){
              nrow = C+1)
     })))
 
+  } else if(family == "symmetric") {
+    if(length(vec) != (n_R*((C+2)*(C+1)/2 - 1))) {
+      stop("'vec' must have length n_R*((C+2)*(C+1)/2 -1) for family 'symmetric'.")}
+    # Parameters are filled by Columns.
+    sanitize_theta(simplify2array(lapply(1:n_R, function(i) {
+      m <- diag(C+1)*0
+      t <- 1
+      sub_vec <- c(0,vec[(1 + (i-1)*(((C+1)*(C+2)/2)-1)) : (i*((C+1)*(C+2)/2) - i)])
+      for(j in 1:(C+1)){
+        for(l in j:(C+1)){
+          m[j,l] <- m[l,j] <- sub_vec[t]
+          t <- t+1
+        }
+      }
+      return(m)
+    })))
   } else {
     stop("'", family, "' is not an implemented family.")
   }
@@ -135,6 +155,12 @@ array_to_vec <- function(arr, family){
   } else if(family == "free") {
     as.vector(apply(arr, MARGIN = 3, function(m){
       return(as.vector(m)[-1])
+    }))
+
+  } else if(family == "symmetric") {
+    as.vector(apply(arr, MARGIN = 3, function(m){
+      out <- m[lower.tri(m, diag = TRUE)]
+      out[-1]
     }))
 
   } else {

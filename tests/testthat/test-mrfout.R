@@ -29,4 +29,9 @@ test_that("mrfout methods work", {
   prnt <- capture.output(summary(a))
   expect_true(sum(grepl("Interaction", prnt)) > 0)
   expect_is(plot(a), "ggplot")
+
+  a <- fit_pl(Z_potts[1:30, 1:30], mrfi(1), family = "symmetric")
+  prnt <- capture.output(summary(a))
+  expect_true(sum(grepl("Interaction", prnt)) > 0)
+  expect_is(plot(a), "ggplot")
 })

@@ -32,6 +32,11 @@ suf_stat <- function(arr, family){
       return(as.vector(m)[-1])
     }))
 
+  } else if(family == "symmetric"){
+    as.vector(apply(arr, MARGIN = 3, function(m){
+      (t(m)+(m*lower.tri(m)))[lower.tri(m, diag = TRUE)][-1]
+    }))
+
   } else {
     stop("'", family, "' is not an implemented family.")
   }
@@ -164,20 +169,29 @@ vec_description <- function(mrfi, family, C){
 
     } else if(family == "absdif"){
         ints <- paste0("abs.dif. ",1:C)
-        res <- data.frame(position = as.factor(rep(pos, each = C)),
-                          interaction = as.factor(rep(ints, times = length(pos))))
+        res <- data.frame(position = rep(pos, each = C),
+                          interaction = rep(ints, times = length(pos)))
 
     } else if(family == "dif"){
         ints <- paste0("dif. ", c(-C:-1,1:C))
-        res <- data.frame(position = as.factor(rep(pos, each = 2*C)),
-                          interaction = as.factor(rep(ints, times = length(pos))))
+        res <- data.frame(position = rep(pos, each = 2*C),
+                          interaction = rep(ints, times = length(pos)))
+
 
     } else if(family == "free"){
         arr <- array(dim=c(C+1, C+1, length(pos)))
         ints <- paste0(rep(0:C, times = C+1), ",", rep(0:C, each = C+1))
         ints <- ints[ints != "0,0"]
-        res <- data.frame(position = as.factor(rep(pos, each = (C+1)^2 - 1)),
-                          interaction = as.factor(rep(ints, times = length(pos))))
+        res <- data.frame(position = rep(pos, each = (C+1)^2 - 1),
+                          interaction = rep(ints, times = length(pos)))
+
+    } else if(family == "symmetric"){
+        m <- matrix(nrow = C+1, ncol = C+1)
+        ints <- paste0(row(m)[lower.tri(m,TRUE)]-1, ",", col(m)[lower.tri(m, TRUE)]-1)
+        ints <- ints[ints != "0,0"]
+        res <- data.frame(position = rep(pos, each = (C+1)*(C+2)/2 - 1),
+                          interaction = rep(ints, times = length(pos)))
+
 
     } else {
         stop("'", family, "' is not an implemented family.")

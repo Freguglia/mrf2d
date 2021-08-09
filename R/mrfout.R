@@ -85,7 +85,13 @@ summary.mrfout <- function(object, ...){
     } else if (family == "free"){
       cat("Interaction for pairs of values:", "\n")
       cat("Position|",
-          sprintf("%-6s",paste0("(", rep(0:C, C+1), ",", rep(0:C, each = C+1), ")")[-1]),
+          sprintf("%-6s",paste0(rep(0:C, C+1), ",", rep(0:C, each = C+1))[-1]),
+          " Rel. Contribution")
+      cat("\n")
+    } else if (family == "symmetric"){
+      cat("Interaction for pairs of values:", "\n")
+      cat("Position|",
+          sprintf("%-6s",vec_description(mrfi, family, C)$interaction[1:((C+2)*(C+1)/2 - 1)]),
           " Rel. Contribution")
       cat("\n")
     }
@@ -113,7 +119,9 @@ plot.mrfout <- function(x, ...){
   } else if(x$family == "dif"){
     colnames(df) <- (-C:C)[-(C+1)]
   } else if(x$family == "free"){
-    colnames(df) <- paste0("(", rep(0:C, C+1), ",", rep(0:C, each = C+1), ")")[-1]
+    colnames(df) <- paste0(rep(0:C, C+1), ",", rep(0:C, each = C+1))[-1]
+  } else if(x$family == "symmetric"){
+    colnames(df) <- vec_description(mrfi(1), x$family, C)$interaction[1:((C+2)*(C+1)/2 - 1)]
   }
   df <- cbind(x$mrfi@Rmat, df)
   colnames(df)[1:2] <- c("rx", "ry")

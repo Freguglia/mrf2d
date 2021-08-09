@@ -53,4 +53,4 @@
 #' \url{https://arxiv.org/abs/2006.00383}
 NULL
 
-mrf2d_families <- c("onepar", "oneeach", "absdif", "dif", "free")
+mrf2d_families <- c("onepar", "oneeach", "absdif", "dif", "symmetric", "free")
