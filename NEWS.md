@@ -1,3 +1,7 @@
+# mrf2d 0.6
+
+  * Adds `symmetric` family for equality constraints of the potentials array.
+
 # mrf2d 0.5.1
 
   * Added `vec_description()` function to explicitly describe what relative positions and interactions are associated with each element of the summarized vector of parameters/sufficient statistics in each parameter restriction family.
