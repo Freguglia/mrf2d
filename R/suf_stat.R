@@ -160,10 +160,12 @@ vec_description <- function(mrfi, family, C){
     pos <- apply(mrfi@Rmat, MARGIN = 1, paste0, collapse = ",")
     pos <- paste0("(", pos, ")")
     if(family == "onepar"){
-        res <- data.frame(position = "all", interaction = "different")
+        res <- data.frame(position = as.factor("all"),
+                          interaction = as.factor("different"))
 
     } else if(family == "oneeach"){
-        res <- data.frame(position = pos, interaction = "different")
+        res <- data.frame(position = as.factor(pos),
+                          interaction = as.factor("different"))
 
     } else if(family == "absdif"){
         ints <- paste0("abs.dif. ",1:C)
@@ -174,6 +176,7 @@ vec_description <- function(mrfi, family, C){
         ints <- paste0("dif. ", c(-C:-1,1:C))
         res <- data.frame(position = rep(pos, each = 2*C),
                           interaction = rep(ints, times = length(pos)))
+
 
     } else if(family == "free"){
         arr <- array(dim=c(C+1, C+1, length(pos)))
@@ -188,6 +191,7 @@ vec_description <- function(mrfi, family, C){
         ints <- ints[ints != "0,0"]
         res <- data.frame(position = rep(pos, each = (C+1)*(C+2)/2 - 1),
                           interaction = rep(ints, times = length(pos)))
+
 
     } else {
         stop("'", family, "' is not an implemented family.")
