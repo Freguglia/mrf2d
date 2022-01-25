@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // conditional_probabilities_mrf
 NumericVector conditional_probabilities_mrf(const IntegerMatrix& Z, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C);
 RcppExport SEXP _mrf2d_conditional_probabilities_mrf(SEXP ZSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP) {

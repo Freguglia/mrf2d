@@ -1,7 +1,7 @@
 Package: mrf2d
 Type: Package
 Title: Markov Random Field Models for Image Analysis
-Version: 0.6.0.9999
+Version: 1.0
 Authors@R: 
     person("Victor", "Freguglia", email = "victorfreguglia@gmail.com",
              role = c("aut", "cre"), 
@@ -13,6 +13,8 @@ Description: Model fitting, sampling and visualization
     Freguglia, Garcia & Bicas (2020) <doi:10.1002/env.2613>,
     which has many popular models used in 2-dimensional lattices
     as particular cases, like the Ising Model and Potts Model.
+    A complete manuscript describing the package is available in
+    Freguglia & Garcia (2022) <doi:10.18637/jss.v101.i08>.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -27,7 +29,7 @@ LinkingTo: Rcpp,
            RcppArmadillo
 Roxygen: list(markdown = TRUE)
 RdMacros: Rdpack
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     testthat (>= 2.1.0),
     covr,
@@ -35,5 +37,5 @@ Suggests:
     rmarkdown,
     glue
 VignetteBuilder: knitr
-URL: https://github.com/Freguglia/mrf2d, https://arxiv.org/abs/2006.00383
+URL: https://github.com/Freguglia/mrf2d, https://doi.org/10.18637/jss.v101.i08
 BugReports: https://github.com/Freguglia/mrf2d/issues

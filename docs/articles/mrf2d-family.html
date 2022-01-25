@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,18 +40,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -74,8 +70,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Freguglia/mrf2d/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/Freguglia/mrf2d/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -89,100 +85,100 @@
 
       
 
-      </header><script src="mrf2d-family_files/header-attrs-2.4/header-attrs.js"></script><div class="row">
+      </header><script src="mrf2d-family_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Parameter restriction families in mrf2d</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Freguglia/mrf2d/blob/master/vignettes/mrf2d-family.Rmd"><code>vignettes/mrf2d-family.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Freguglia/mrf2d/blob/HEAD/vignettes/mrf2d-family.Rmd" class="external-link"><code>vignettes/mrf2d-family.Rmd</code></a></small>
       <div class="hidden name"><code>mrf2d-family.Rmd</code></div>
 
     </div>
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Freguglia/mrf2d">mrf2d</a></span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Freguglia/mrf2d" class="external-link">mrf2d</a></span><span class="op">)</span></code></pre></div>
 <p>The model used in <code>mrf2d</code> is very flexible, but many simpler and popular models of the Markov Random Field literature can be written as particular cases. It considers the probability function: <span class="math display">\[\begin{equation}
  \mathbb{P}(\mathbf{Z} = \mathbf{z}) = 
   \frac{1}{\zeta_{\theta}} \exp \left( \sum_{r \in \mathcal{R}} \sum_{i,j \in \mathcal{L}}
     \theta_{z_i, z_j, r} \delta(j = i+r) ) \right),
 \end{equation}\]</span> where <span class="math inline">\(\zeta_\theta\)</span> is the normalizing constant and <span class="math inline">\(\mathcal{R}\)</span> is a set of relative positions (<code>mrfi</code> objects). The probability function of many other models like the Ising model and the Potts model can be written by adding constraints to the array <span class="math inline">\(\theta_{a,b,r}\)</span>.</p>
 <p>Important tasks like extracting sufficient statistics and estimating the parameters <span class="math inline">\(\theta_{a,b,r}\)</span> must be able to reflect the parameter restrictions required by those less general models. Functions which result is affected by those restrictions take a <code>family</code> argument which determines what kind of restriction is considered. 5 families are available in <code>mrf2d</code> and this short article describes each them.</p>
-<div id="onepar" class="section level1">
-<h1 class="hasAnchor">
-<a href="#onepar" class="anchor"></a><code>'onepar'</code>
-</h1>
+<div class="section level2">
+<h2 id="onepar">
+<code>'onepar'</code><a class="anchor" aria-label="anchor" href="#onepar"></a>
+</h2>
 <p>A single parameter for all different-valued pairs in all interacting positions.</p>
-<div id="example" class="section level3">
-<h3 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h3>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">field1</span>, <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"onepar"</span><span class="op">)</span>
+<div class="section level4">
+<h4 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h4>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">field1</span>, <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"onepar"</span><span class="op">)</span>
 <span class="co">#&gt; Model fitted via Pseudolikelihood </span>
 <span class="co">#&gt; 2 interacting positions: (1,0) (0,1) </span>
-<span class="co">#&gt; family: onepar</span></pre></div>
+<span class="co">#&gt; family: onepar</span></code></pre></div>
 </div>
 </div>
-<div id="oneeach" class="section level1">
-<h1 class="hasAnchor">
-<a href="#oneeach" class="anchor"></a><code>'oneeach'</code>
-</h1>
+<div class="section level2">
+<h2 id="oneeach">
+<code>'oneeach'</code><a class="anchor" aria-label="anchor" href="#oneeach"></a>
+</h2>
 <p>One parameter for all different-valued pairs <strong>for each</strong> interacting position.</p>
-<div id="example-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#example-1" class="anchor"></a>Example</h3>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">field1</span>, <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"oneeach"</span><span class="op">)</span>
+<div class="section level4">
+<h4 id="example-1">Example<a class="anchor" aria-label="anchor" href="#example-1"></a>
+</h4>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">field1</span>, <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"oneeach"</span><span class="op">)</span>
 <span class="co">#&gt; Model fitted via Pseudolikelihood </span>
 <span class="co">#&gt; 2 interacting positions: (1,0) (0,1) </span>
-<span class="co">#&gt; family: oneeach</span></pre></div>
+<span class="co">#&gt; family: oneeach</span></code></pre></div>
 </div>
 </div>
-<div id="absdif" class="section level1">
-<h1 class="hasAnchor">
-<a href="#absdif" class="anchor"></a><code>'absdif'</code>
-</h1>
+<div class="section level2">
+<h2 id="absdif">
+<code>'absdif'</code><a class="anchor" aria-label="anchor" href="#absdif"></a>
+</h2>
 <p>One parameter for each <strong>absolute</strong> difference of interacting pairs <span class="math inline">\(d = |b-a|\)</span> in each relative position.</p>
-<div id="example-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#example-2" class="anchor"></a>Example</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">field1</span>, <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"absdif"</span><span class="op">)</span>
+<div class="section level4">
+<h4 id="example-2">Example<a class="anchor" aria-label="anchor" href="#example-2"></a>
+</h4>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">field1</span>, <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"absdif"</span><span class="op">)</span>
 <span class="co">#&gt; Model fitted via Pseudolikelihood </span>
 <span class="co">#&gt; 2 interacting positions: (1,0) (0,1) </span>
-<span class="co">#&gt; family: absdif</span></pre></div>
+<span class="co">#&gt; family: absdif</span></code></pre></div>
 </div>
 </div>
-<div id="dif" class="section level1">
-<h1 class="hasAnchor">
-<a href="#dif" class="anchor"></a><code>'dif'</code>
-</h1>
+<div class="section level2">
+<h2 id="dif">
+<code>'dif'</code><a class="anchor" aria-label="anchor" href="#dif"></a>
+</h2>
 <p>One parameter for each difference of interacting pairs <span class="math inline">\(d = b-a\)</span> in each relative position.</p>
-<div id="example-3" class="section level3">
-<h3 class="hasAnchor">
-<a href="#example-3" class="anchor"></a>Example</h3>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">field1</span>, <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"dif"</span><span class="op">)</span>
+<div class="section level4">
+<h4 id="example-3">Example<a class="anchor" aria-label="anchor" href="#example-3"></a>
+</h4>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">field1</span>, <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"dif"</span><span class="op">)</span>
 <span class="co">#&gt; Model fitted via Pseudolikelihood </span>
 <span class="co">#&gt; 2 interacting positions: (1,0) (0,1) </span>
-<span class="co">#&gt; family: dif</span></pre></div>
+<span class="co">#&gt; family: dif</span></code></pre></div>
 </div>
 </div>
-<div id="free" class="section level1">
-<h1 class="hasAnchor">
-<a href="#free" class="anchor"></a><code>'free'</code>
-</h1>
+<div class="section level2">
+<h2 id="free">
+<code>'free'</code><a class="anchor" aria-label="anchor" href="#free"></a>
+</h2>
 <p>Only the identifiability restriction <span class="math inline">\(\theta_{0,0,r} = 0\)</span> for all <span class="math inline">\(r \in \mathcal{R}\)</span>.</p>
-<div id="example-4" class="section level3">
-<h3 class="hasAnchor">
-<a href="#example-4" class="anchor"></a>Example</h3>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">field1</span>, <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span>
+<div class="section level4">
+<h4 id="example-4">Example<a class="anchor" aria-label="anchor" href="#example-4"></a>
+</h4>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">field1</span>, <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span>
 <span class="co">#&gt; Model fitted via Pseudolikelihood </span>
 <span class="co">#&gt; 2 interacting positions: (1,0) (0,1) </span>
-<span class="co">#&gt; family: free</span></pre></div>
+<span class="co">#&gt; family: free</span></code></pre></div>
 </div>
 </div>
   </div>
@@ -198,11 +194,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Victor Freguglia.</p>
+  <p></p>
+<p>Developed by Victor Freguglia.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -210,6 +208,8 @@
 
   
 
+
+  
 
   </body>
 </html>

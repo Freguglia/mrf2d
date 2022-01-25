@@ -1,72 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://freguglia.github.io/mrf2d//index.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/404.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/Z_potts.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/basis_functions.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/bold5000.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/articles/mrf2d-family.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/cpmrf2d.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/articles/mrf2d.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/data_examples.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/articles/three-dimensions-on-mrf2d.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/dplot.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/authors.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/fit_ghm.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/index.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/fit_pl.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/news/index.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/fit_sa.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/Z_potts.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/hmrfout.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/basis_functions.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/mrf2d-family.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/bold5000.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/mrf2d-package.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/cpmrf2d.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/mrfi-class.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/data_examples.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/mrfout.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/dplot.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/pl_mrf2d.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/fit_ghm.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/plot.mrfi.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/fit_icm.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/rmrf2d.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/fit_pl.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/rmrf2d_mc.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/fit_sa.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/smr_array.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/hmrfout.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//reference/smr_stat.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//articles/mrf2d-family.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/mrf2d-family.html</loc>
   </url>
   <url>
-    <loc>https://freguglia.github.io/mrf2d//articles/three-dimensions-on-mrf2d.html</loc>
+    <loc>https://freguglia.github.io/mrf2d/reference/mrf2d-package.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d/reference/mrfi-class.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d/reference/mrfi-operations.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d/reference/mrfi-subsetting.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d/reference/mrfi.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d/reference/mrfout.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d/reference/pl_mrf2d.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d/reference/plot.mrfi.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d/reference/rmrf2d.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d/reference/rmrf2d_mc.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d/reference/smr_array.html</loc>
+  </url>
+  <url>
+    <loc>https://freguglia.github.io/mrf2d/reference/smr_stat.html</loc>
   </url>
 </urlset>

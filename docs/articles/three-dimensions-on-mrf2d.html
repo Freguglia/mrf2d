@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,18 +40,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrf2d</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -74,8 +70,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Freguglia/mrf2d/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/Freguglia/mrf2d/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -89,95 +85,95 @@
 
       
 
-      </header><script src="three-dimensions-on-mrf2d_files/header-attrs-2.4/header-attrs.js"></script><div class="row">
+      </header><script src="three-dimensions-on-mrf2d_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Working with 3d lattices in mrf2d</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Freguglia/mrf2d/blob/master/vignettes/three-dimensions-on-mrf2d.Rmd"><code>vignettes/three-dimensions-on-mrf2d.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Freguglia/mrf2d/blob/HEAD/vignettes/three-dimensions-on-mrf2d.Rmd" class="external-link"><code>vignettes/three-dimensions-on-mrf2d.Rmd</code></a></small>
       <div class="hidden name"><code>three-dimensions-on-mrf2d.Rmd</code></div>
 
     </div>
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Freguglia/mrf2d">mrf2d</a></span><span class="op">)</span></pre></div>
-<div id="introduction" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h1>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Freguglia/mrf2d" class="external-link">mrf2d</a></span><span class="op">)</span></code></pre></div>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p>Although <code>mrf2d</code> provides tools for data analysis on 2-dimensional lattices, typically representing an image, some Markov Random Fields models are also used for data on 3-dimensional lattices. One of the advantages of the non-parametric model that powers <code>mrf2d</code> algorithms is that is can freely describe interactions on any set of two-dimensional relative positions and it allows data to be specified on incomplete lattices.</p>
 <p>These two features allow us to translate 3-dimensional problems to a 2-dimensional framework by properly reshaping the data and specifying interaction structures accordingly. This translation between 3d and 2d can be done without any loss in both directions, so the results of the analysis can be transformed again to the 3-dimensional case.</p>
 <p>This vignette presents an overview of how to adapt 3d problems to the <code>mrf2d</code> framework with examples. After a “translation” between 3d and 2d is done, every method on <code>mrf2d</code> should work without major problems as the examples will illustrate, but the results have be interpreted carefully to avoid inconsistencies when generalizing.</p>
 <p>It is important to note that most algorithms in <code>mrf2d</code> have their computational complexity proportional to the number of pixels, but adding more dimensions increases the number of pixels non-linearly, therefore, a performance drop may be noticeable depending on the size of the data being analyzed.</p>
 <hr>
 </div>
-<div id="reshaping-3-dimensional-problems-to-mrf2d" class="section level1">
-<h1 class="hasAnchor">
-<a href="#reshaping-3-dimensional-problems-to-mrf2d" class="anchor"></a>Reshaping 3-dimensional problems to mrf2d</h1>
-<div id="reshaping-random-fields" class="section level2">
-<h2 class="hasAnchor">
-<a href="#reshaping-random-fields" class="anchor"></a>Reshaping random fields</h2>
+<div class="section level2">
+<h2 id="reshaping-3-dimensional-problems-to-mrf2d">Reshaping 3-dimensional problems to mrf2d<a class="anchor" aria-label="anchor" href="#reshaping-3-dimensional-problems-to-mrf2d"></a>
+</h2>
+<div class="section level3">
+<h3 id="reshaping-random-fields">Reshaping random fields<a class="anchor" aria-label="anchor" href="#reshaping-random-fields"></a>
+</h3>
 <p>Our first challenge is to reshape a 3-dimensional array into a proper matrix to be ingested by <code>mrf2d</code> methods. We start by generating a 3d array that will be used as example data. For illustration purposes, we will consider an array of dimensions <span class="math inline">\((64, 64, 3)\)</span> with binary entries.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="va">dims</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">64</span>, <span class="fl">64</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="va">Z3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html">array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/prod.html">prod</a></span><span class="op">(</span><span class="va">dims</span><span class="op">)</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, dim <span class="op">=</span> <span class="va">dims</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Z3</span><span class="op">)</span>
-<span class="co">#&gt;  int [1:64, 1:64, 1:3] 0 1 0 0 1 0 0 0 1 1 ...</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">dims</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">64</span>, <span class="fl">64</span>, <span class="fl">3</span><span class="op">)</span>
+<span class="va">Z3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html" class="external-link">array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/prod.html" class="external-link">prod</a></span><span class="op">(</span><span class="va">dims</span><span class="op">)</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, dim <span class="op">=</span> <span class="va">dims</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">Z3</span><span class="op">)</span>
+<span class="co">#&gt;  int [1:64, 1:64, 1:3] 0 1 0 0 1 0 0 0 1 1 ...</span></code></pre></div>
 <p>Next, we need to reshape this 3-dimensional array into a 2-dimensional rectangular grid. To achieve that, we align each slice (third-dimension) of the array side by side in the form of a wide lattice. We use <code>NA</code> columns between to avoid interactions involving the first dimension reach points that were projected from different slices. The number of <code>NA</code> columns should be the maximum absolute value of the first dimension of the interacting positions being considered.</p>
 <p>For example, in a 3-dimensional nearest neighbor, the interacting relative positions are <span class="math inline">\((1, 0, 0), (0, 1, 0)\)</span> and <span class="math inline">\((0,0,1)\)</span>. The first dimension elements for this set of relative positions are 1, 0 and 0, respectively. Therefore, a single column of <code>NA</code> values is enough to “separate” slices when projected in two dimensions.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">gap</span> <span class="op">&lt;-</span> <span class="fl">1</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gap</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 
 <span class="va">Zflat</span> <span class="op">&lt;-</span> <span class="va">Z3</span><span class="op">[</span>,,<span class="fl">1</span><span class="op">]</span>
-<span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">Z3</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">{</span>
-  <span class="va">Zflat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">Zflat</span>, <span class="cn">NA</span><span class="op">)</span>
-  <span class="va">Zflat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">Zflat</span>, <span class="va">Z3</span><span class="op">[</span>,,<span class="va">i</span><span class="op">]</span><span class="op">)</span>
+<span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">Z3</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">{</span>
+  <span class="va">Zflat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">Zflat</span>, <span class="cn">NA</span><span class="op">)</span>
+  <span class="va">Zflat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">Zflat</span>, <span class="va">Z3</span><span class="op">[</span>,,<span class="va">i</span><span class="op">]</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Zflat</span><span class="op">)</span>
-<span class="co">#&gt;  int [1:194, 1:64] 0 1 0 0 1 0 0 0 1 1 ...</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">Zflat</span><span class="op">)</span>
+<span class="co">#&gt;  int [1:194, 1:64] 0 1 0 0 1 0 0 0 1 1 ...</span></code></pre></div>
 <p>Our array with dimensions <span class="math inline">\((64, 64, 3)\)</span> was sucessfully projected in a 2d lattice with dimensions <span class="math inline">\((194, 64)\)</span>. Here <span class="math inline">\(194\)</span> is the results of <span class="math inline">\(3 \times 64 = 192\)</span> points in the first dimension from aligning plus the <span class="math inline">\(2\)</span> separating columns. The resulting projection can be viewed with the <code><a href="../reference/dplot.html">dplot()</a></code> function. Slices of the three-dimensional array are viewed projected side-by-side.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/dplot.html">dplot</a></span><span class="op">(</span><span class="va">Zflat</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dplot.html">dplot</a></span><span class="op">(</span><span class="va">Zflat</span><span class="op">)</span></code></pre></div>
 <p><img src="three-dimensions-on-mrf2d_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>We can modify the color of <code>NA</code> values to highlight the columns introduced to separate slices. Here, we use the color blue.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="fu"><a href="../reference/dplot.html">dplot</a></span><span class="op">(</span><span class="va">Zflat</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"0"</span> <span class="op">=</span> <span class="st">"black"</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"gray95"</span><span class="op">)</span>, na.value <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
+<span class="fu"><a href="../reference/dplot.html">dplot</a></span><span class="op">(</span><span class="va">Zflat</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"0"</span> <span class="op">=</span> <span class="st">"black"</span>, <span class="st">"1"</span> <span class="op">=</span> <span class="st">"gray95"</span><span class="op">)</span>, na.value <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></code></pre></div>
 <p><img src="three-dimensions-on-mrf2d_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;"></p>
 </div>
-<div id="reshaping-interactions-mrfi-objects" class="section level2">
-<h2 class="hasAnchor">
-<a href="#reshaping-interactions-mrfi-objects" class="anchor"></a>Reshaping interactions (<code>mrfi</code> objects)</h2>
+<div class="section level3">
+<h3 id="reshaping-interactions-mrfi-objects">Reshaping interactions (<code>mrfi</code> objects)<a class="anchor" aria-label="anchor" href="#reshaping-interactions-mrfi-objects"></a>
+</h3>
 <p>The next step is to specify interacting structures in the form of <code>mrfi</code> objects that reflect our projection of three-dimensional data into 2d lattices. Because of the way we projected the array, it is straight forward to map the three-dimension interactions to the two-dimensional structure by applying the following transformation to relative positions. Let <span class="math inline">\(D_1\)</span> be the length of the first dimension of the array data and <span class="math inline">\(G\)</span> the number of <code>NA</code> columns added in the projection, then for a pixel position <span class="math inline">\((i_1,i_2)\)</span>, the position <span class="math inline">\((i_1 + k(D_1 + G), i_2)\)</span> maps the same position in the <span class="math inline">\(k\)</span>-th subsequent slice. Therefore, relative positions that involves the third dimension are equivalent to long-range interactions in the 2d representation and the relations are described by the following map: <span class="math display">\[\begin{equation}
   (r_1, r_2, r_3) \rightarrow (r_1 + r_3(D_1 + G), r_2)
 \end{equation}\]</span></p>
 <p>In our example where the interaction structure is given by <span class="math inline">\((1,0,0), (0,1,0), (0,0,1)\)</span>, the equivalent 2d representation would be <span class="math inline">\((1,0), (0,1), (65,0)\)</span> because our data have length <span class="math inline">\(D_1 = 64\)</span> in the first dimension.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">R3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span> <span class="op">+</span> <span class="fl">1</span><span class="op">*</span><span class="va">dims</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">+</span><span class="va">gap</span>, <span class="fl">0</span><span class="op">)</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">R3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span> <span class="op">+</span> <span class="fl">1</span><span class="op">*</span><span class="va">dims</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">+</span><span class="va">gap</span>, <span class="fl">0</span><span class="op">)</span>
 <span class="va">R3</span>
 <span class="co">#&gt; 3 interacting positions.</span>
 <span class="co">#&gt;   rx     ry</span>
 <span class="co">#&gt;    1      0</span>
 <span class="co">#&gt;    0      1</span>
-<span class="co">#&gt;    65      0</span></pre></div>
+<span class="co">#&gt;    65      0</span></code></pre></div>
 <p>We now have an alternative representation for three-dimensional lattices and three-dimensional relative positions as interaction structures that perfectly fits the framework required in <code>mrf2d</code>.</p>
 <hr>
 </div>
 </div>
-<div id="mrf2d-methods-with-reshaped-data" class="section level1">
-<h1 class="hasAnchor">
-<a href="#mrf2d-methods-with-reshaped-data" class="anchor"></a>mrf2d methods with reshaped data</h1>
+<div class="section level2">
+<h2 id="mrf2d-methods-with-reshaped-data">mrf2d methods with reshaped data<a class="anchor" aria-label="anchor" href="#mrf2d-methods-with-reshaped-data"></a>
+</h2>
 <p>Given this representation, one can run all method available in <code>mrf2d</code> the same way it would be done in 2d situations. We illustrate the usage of some methods next.</p>
-<div id="random-sampling" class="section level2">
-<h2 class="hasAnchor">
-<a href="#random-sampling" class="anchor"></a>Random sampling</h2>
+<div class="section level3">
+<h3 id="random-sampling">Random sampling<a class="anchor" aria-label="anchor" href="#random-sampling"></a>
+</h3>
 <p>We will consider a three-dimensional Ising model: Nearest-neighbor interaction structure as used in the previous example and stored in object <code>R3</code> and a parameter value of <span class="math inline">\(0.8\)</span> for different-valued pairs in any relative position, corresponding to the <code>"onepar"</code> family. We start by defining the potentials array:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="va">theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/smr_array.html">expand_array</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.8</span>, <span class="st">"onepar"</span>, mrfi <span class="op">=</span> <span class="va">R3</span>, <span class="fl">1</span><span class="op">)</span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/smr_array.html">expand_array</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.8</span>, <span class="st">"onepar"</span>, mrfi <span class="op">=</span> <span class="va">R3</span>, <span class="fl">1</span><span class="op">)</span>
 <span class="va">theta</span>
 <span class="co">#&gt; , , (1,0)</span>
 <span class="co">#&gt; </span>
@@ -195,31 +191,31 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt;      0    1</span>
 <span class="co">#&gt; 0  0.0 -0.8</span>
-<span class="co">#&gt; 1 -0.8  0.0</span></pre></div>
+<span class="co">#&gt; 1 -0.8  0.0</span></code></pre></div>
 <p>Then, we can sample the Ising model starting from a 2d array that corresponds to a projected 3d array. We will use the <code>Zflat</code> object from the previous example as an initial configuration with the <code><a href="../reference/rmrf2d.html">rmrf2d()</a></code> function. It is important to ensure <code>NA</code> columns are fixed prior to running the sampling algorithm to avoid introducing incorrect interactions.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
 <span class="va">Zflat_ising</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/rmrf2d.html">rmrf2d</a></span><span class="op">(</span><span class="va">Zflat</span>, <span class="va">R3</span>, <span class="va">theta</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dplot.html">dplot</a></span><span class="op">(</span><span class="va">Zflat_ising</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="../reference/dplot.html">dplot</a></span><span class="op">(</span><span class="va">Zflat_ising</span><span class="op">)</span></code></pre></div>
 <p><img src="three-dimensions-on-mrf2d_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>Note that each slice have similar patterns, which was caused by adding the <span class="math inline">\((0,0,1)\)</span> interaction making pixels in the same position of each slice have a high probability of being assigned the same value. And we can convert back to a 3-dimensional array.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="va">Z3_ising</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html">array</a></span><span class="op">(</span><span class="fl">0</span>, dim <span class="op">=</span> <span class="va">dims</span><span class="op">)</span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Z3_ising</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html" class="external-link">array</a></span><span class="op">(</span><span class="fl">0</span>, dim <span class="op">=</span> <span class="va">dims</span><span class="op">)</span>
 <span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">{</span>
   <span class="va">Z3_ising</span><span class="op">[</span>,,<span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">Zflat_ising</span><span class="op">[</span><span class="op">(</span><span class="op">(</span><span class="va">i</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="fl">64</span><span class="op">+</span><span class="va">gap</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">:</span><span class="op">(</span><span class="op">(</span><span class="va">i</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">*</span><span class="op">(</span><span class="fl">64</span><span class="op">+</span><span class="va">gap</span><span class="op">)</span> <span class="op">+</span> <span class="fl">64</span><span class="op">)</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">64</span><span class="op">]</span>
-<span class="op">}</span></pre></div>
+<span class="op">}</span></code></pre></div>
 <p>Plotting a single slice to verify that the reconstruction was done correctly.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="fu"><a href="../reference/dplot.html">dplot</a></span><span class="op">(</span><span class="va">Z3_ising</span><span class="op">[</span>,,<span class="fl">2</span><span class="op">]</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dplot.html">dplot</a></span><span class="op">(</span><span class="va">Z3_ising</span><span class="op">[</span>,,<span class="fl">2</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <p><img src="three-dimensions-on-mrf2d_files/figure-html/unnamed-chunk-9-1.png" width="288" style="display: block; margin: auto;"></p>
 </div>
-<div id="parameter-estimation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#parameter-estimation" class="anchor"></a>Parameter estimation</h2>
+<div class="section level3">
+<h3 id="parameter-estimation">Parameter estimation<a class="anchor" aria-label="anchor" href="#parameter-estimation"></a>
+</h3>
 <p>Estimating parameters can also be done seamlessly after transforming 3d problems to a <code>mrf2d</code> comprehensible one. We use the previously generated 3d Ising Model sample to illustrate the estimation via Pseudo-Likelihood (recall the parameter used in the simulation was <span class="math inline">\(-0.8\)</span>).</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="va">pl3d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">Zflat_ising</span>, <span class="va">R3</span>, family <span class="op">=</span> <span class="st">"onepar"</span><span class="op">)</span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pl3d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_pl.html">fit_pl</a></span><span class="op">(</span><span class="va">Zflat_ising</span>, <span class="va">R3</span>, family <span class="op">=</span> <span class="st">"onepar"</span><span class="op">)</span>
 <span class="va">pl3d</span><span class="op">$</span><span class="va">theta</span>
 <span class="co">#&gt; , , (1,0)</span>
 <span class="co">#&gt; </span>
@@ -237,31 +233,31 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt;            0          1</span>
 <span class="co">#&gt; 0  0.0000000 -0.8020076</span>
-<span class="co">#&gt; 1 -0.8020076  0.0000000</span></pre></div>
+<span class="co">#&gt; 1 -0.8020076  0.0000000</span></code></pre></div>
 </div>
-<div id="hidden-mrfs" class="section level2">
-<h2 class="hasAnchor">
-<a href="#hidden-mrfs" class="anchor"></a>Hidden MRFs</h2>
+<div class="section level3">
+<h3 id="hidden-mrfs">Hidden MRFs<a class="anchor" aria-label="anchor" href="#hidden-mrfs"></a>
+</h3>
 <p>Hidden Markov Random Fields on 3 dimensions can also be projected to 2 dimensions using the exact same strategy. Here we add a Gaussian noise to the Ising Model sample generated.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
-<span class="va">Yflat</span> <span class="op">&lt;-</span> <span class="va">Zflat_ising</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/prod.html">prod</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">Zflat</span><span class="op">)</span><span class="op">)</span>, sd <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span>
-<span class="fu"><a href="../reference/dplot.html">cplot</a></span><span class="op">(</span><span class="va">Yflat</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
+<span class="va">Yflat</span> <span class="op">&lt;-</span> <span class="va">Zflat_ising</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/prod.html" class="external-link">prod</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">Zflat</span><span class="op">)</span><span class="op">)</span>, sd <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dplot.html">cplot</a></span><span class="op">(</span><span class="va">Yflat</span><span class="op">)</span></code></pre></div>
 <p><img src="three-dimensions-on-mrf2d_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;"></p>
 <p>Again, by using the 2d projection of the 3d nearest-neighbor interaction structure <code>R3</code>, we can fit a Gaussian Hidden Markov Random Field model with the <code><a href="../reference/fit_ghm.html">fit_ghm()</a></code> function with the transformed data.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>
-<span class="va">denoising</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_ghm.html">fit_ghm</a></span><span class="op">(</span><span class="va">Yflat</span>, <span class="va">R3</span>, <span class="va">theta</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>
+<span class="va">denoising</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_ghm.html">fit_ghm</a></span><span class="op">(</span><span class="va">Yflat</span>, <span class="va">R3</span>, <span class="va">theta</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p>The recovered image for the underlying field will also be a 2d projected version of the array.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="fu"><a href="../reference/dplot.html">dplot</a></span><span class="op">(</span><span class="va">denoising</span><span class="op">$</span><span class="va">Z_pred</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/dplot.html">dplot</a></span><span class="op">(</span><span class="va">denoising</span><span class="op">$</span><span class="va">Z_pred</span><span class="op">)</span></code></pre></div>
 <p><img src="three-dimensions-on-mrf2d_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;"></p>
 <hr>
 </div>
 </div>
-<div id="caveats-of-2d-projections" class="section level1">
-<h1 class="hasAnchor">
-<a href="#caveats-of-2d-projections" class="anchor"></a>Caveats of 2d projections</h1>
+<div class="section level2">
+<h2 id="caveats-of-2d-projections">Caveats of 2d projections<a class="anchor" aria-label="anchor" href="#caveats-of-2d-projections"></a>
+</h2>
 <p>There are some not so obvious drawbacks in the presented approach to creating 2-dimensional versions of 3d Markov Random Field problems. The most important in our vision are:</p>
 <ul>
 <li><p>The interaction structure cannot be directly reused for multiple datasets if the analyzed have different sizes. For example: In our <span class="math inline">\(64 \times 64 \times 3\)</span> data, the nearest-neighbor interactions structure <span class="math inline">\((1,0,0), (0,1,0), (0,0,1)\)</span> was mapped to the 2d version <span class="math inline">\((1,0), (0,1), (65,0)\)</span>. If new data with dimensions <span class="math inline">\(100 \times 100 \times 3\)</span> was considered, the corresponding interacting structure would be <span class="math inline">\((1,0), (0,1), (101,0)\)</span>. This problem can be dealt with by considering an arbitrarily large number of <code>NA</code> columns between slices in the 2d projection, but a maximum size would be required known prior to starting the implementation.</p></li>
@@ -281,11 +277,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Victor Freguglia.</p>
+  <p></p>
+<p>Developed by Victor Freguglia.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -293,6 +291,8 @@
 
   
 
+
+  
 
   </body>
 </html>

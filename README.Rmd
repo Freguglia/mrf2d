@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   echo = FALSE
 )
 ```
-# mrf2d <a href='https://github.com/Freguglia/mrf2d'><img src='man/figures/logo.png' align="right" height="200" /></a>
+# mrf2d <a href='https://github.com/Freguglia/mrf2d'><img src='man/figures/logo.png' align="right" width="200" /></a>
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/Freguglia/mrf2d.svg?branch=master)](https://travis-ci.org/Freguglia/mrf2d)
@@ -36,7 +36,7 @@ plot(mrfi(max_norm = 2, norm_type = "m"))
 plot(mrfi(max_norm = 2, positions = list(c(3,3),c(4,4), c(-2,4))))
 ```
 
-A complete paper describing the details of the package and examples can be found at https://arxiv.org/abs/2006.00383.
+A complete paper describing the details of the package and examples is published in the Journal of Statistical Software and can be found [here](https://doi.org/10.18637/jss.v101.i08).
 
 ---
 

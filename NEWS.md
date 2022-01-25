@@ -1,3 +1,7 @@
+# mrf2d 1.0
+
+  * Adds references to the manuscript published in the Journal of Statistical Software.
+
 # mrf2d 0.6
 
   * Adds `symmetric` family for equality constraints of the potentials array.

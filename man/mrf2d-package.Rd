@@ -10,13 +10,13 @@
 two-dimensional lattices.
 
 To learn more about \code{mrf2d}, read the paper at:
-\url{https://arxiv.org/abs/2006.00383}
+\url{https://doi.org/10.18637/jss.v101.i08}
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/Freguglia/mrf2d}
-  \item \url{https://arxiv.org/abs/2006.00383}
+  \item \url{https://doi.org/10.18637/jss.v101.i08}
   \item Report bugs at \url{https://github.com/Freguglia/mrf2d/issues}
 }
 

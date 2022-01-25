@@ -56,7 +56,7 @@ NULL
 #' @seealso
 #'
 #' A paper with detailed description of the package can be found at
-#' \url{https://arxiv.org/abs/2006.00383}
+#' \url{https://doi.org/10.18637/jss.v101.i08}
 #'
 #' @docType data
 "bold5000"
