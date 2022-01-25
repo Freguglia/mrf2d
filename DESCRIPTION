@@ -37,5 +37,5 @@ Suggests:
     rmarkdown,
     glue
 VignetteBuilder: knitr
-URL: https://github.com/Freguglia/mrf2d, https://doi.org/10.18637/jss.v101.i08
+URL: https://github.com/Freguglia/mrf2d
 BugReports: https://github.com/Freguglia/mrf2d/issues

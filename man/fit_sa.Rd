@@ -119,7 +119,7 @@ fit_sa(Z_potts, mrfi(1), family = "oneeach", gamma_seq = seq(1, 0, length.out = 
 }
 \seealso{
 A paper with detailed description of the package can be found at
-\url{https://doi.org/10.18637/jss.v101.i08}
+\doi{10.18637/jss.v101.i08}.
 }
 \author{
 Victor Freguglia

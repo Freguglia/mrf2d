@@ -82,7 +82,7 @@
 #' @seealso
 #'
 #' A paper with detailed description of the package can be found at
-#' \url{https://doi.org/10.18637/jss.v101.i08}
+#' \doi{10.18637/jss.v101.i08}.
 #'
 #' @export
 fit_sa <- function(Z, mrfi, family = "onepar", gamma_seq, init = 0, cycles = 5,

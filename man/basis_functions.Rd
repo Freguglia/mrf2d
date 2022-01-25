@@ -38,7 +38,7 @@ polynomial_2d(c(3,3), dim(Z_potts))
 }
 \seealso{
 A paper with detailed description of the package can be found at
-\url{https://doi.org/10.18637/jss.v101.i08}
+\doi{10.18637/jss.v101.i08}.
 }
 \author{
 Victor Freguglia

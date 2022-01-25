@@ -9,14 +9,13 @@
 \code{mrf2d} contains tools for Markov Random Field models on
 two-dimensional lattices.
 
-To learn more about \code{mrf2d}, read the paper at:
-\url{https://doi.org/10.18637/jss.v101.i08}
+To learn more about \code{mrf2d}, read the paper at
+\doi{10.18637/jss.v101.i08}.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/Freguglia/mrf2d}
-  \item \url{https://doi.org/10.18637/jss.v101.i08}
   \item Report bugs at \url{https://github.com/Freguglia/mrf2d/issues}
 }
 

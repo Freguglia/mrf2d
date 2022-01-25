@@ -50,7 +50,7 @@
 #' \code{vignette("mrf2d-family", package = "mrf2d")}
 #'
 #' A paper with detailed description of the package can be found at
-#' \url{https://doi.org/10.18637/jss.v101.i08}
+#' \doi{10.18637/jss.v101.i08}.
 NULL
 
 mrf2d_families <- c("onepar", "oneeach", "absdif", "dif", "symmetric", "free")

@@ -19,7 +19,7 @@
 #' @seealso
 #'
 #' A paper with detailed description of the package can be found at
-#' \url{https://doi.org/10.18637/jss.v101.i08}
+#' \doi{10.18637/jss.v101.i08}.
 #'
 #' @export
 cp_mrf2d <- function(Z, mrfi, theta, pos){
