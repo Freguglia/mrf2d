@@ -1,8 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-mrf2d <a href='https://github.com/Freguglia/mrf2d'><img src='man/figures/logo.png' align="right" height="200" /></a>
-====================================================================================================================
+# mrf2d <a href='https://github.com/Freguglia/mrf2d'><img src='man/figures/logo.png' align="right" width="200" /></a>
 
 <!-- badges: start -->
 
@@ -34,13 +33,13 @@ models with different types of interaction.
 
 ![](man/figures/README-example_interacions-1.png)![](man/figures/README-example_interacions-2.png)![](man/figures/README-example_interacions-3.png)
 
-A complete paper describing the details of the package and examples can
-be found at <https://arxiv.org/abs/2006.00383>.
+A complete paper describing the details of the package and examples is
+published in the Journal of Statistical Software and can be found
+[here](https://doi.org/10.18637/jss.v101.i08).
 
-------------------------------------------------------------------------
+-----
 
-Installation
-------------
+## Installation
 
 You can install the stable version of `mrf2d` from
 [CRAN](https://CRAN.R-project.org) with:
@@ -57,10 +56,9 @@ page](https://github.com/Freguglia/mrf2d). It can be installed with the
 devtools::install_github("Freguglia/mrf2d")
 ```
 
-------------------------------------------------------------------------
-
-Usage
 -----
+
+## Usage
 
 `mrf2d` introduces a programming interface for the general Markov Random
 Field model in *Freguglia, Victor, Nancy L. Garcia, and Juliano L.
@@ -131,10 +129,9 @@ dplot(Z, legend = TRUE)
 
 <img src="man/figures/README-Z_example_plot-1.png" style="display: block; margin: auto;" />
 
-------------------------------------------------------------------------
+-----
 
-Contributing and Bug Reports
-----------------------------
+## Contributing and Bug Reports
 
 If you’re interested in contributing or found a bug or error, please
 file an [issue](https://github.com/Freguglia/mrf2d/issues).
