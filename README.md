@@ -8,7 +8,7 @@
 [![Travis build
 status](https://travis-ci.org/Freguglia/mrf2d.svg?branch=master)](https://travis-ci.org/Freguglia/mrf2d)
 [![Codecov test
-coverage](https://codecov.io/gh/Freguglia/mrf2d/branch/master/graph/badge.svg)](https://codecov.io/gh/Freguglia/mrf2d?branch=master)
+coverage](https://codecov.io/gh/Freguglia/mrf2d/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Freguglia/mrf2d?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/mrf2d)](https://cran.r-project.org/package=mrf2d)
 [![Lifecycle:
