@@ -174,7 +174,8 @@ some references.</p>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>A paper with detailed description of the package can be found at
-<a href="https://doi.org/10.18637/jss.v101.i08" class="external-link">https://doi.org/10.18637/jss.v101.i08</a></p></div>
+doi: <a href="https://doi.org/10.18637/jss.v101.i08" class="external-link">10.18637/jss.v101.i08</a>
+.</p></div>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -186,6 +187,7 @@ some references.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu">fit_sa</span><span class="op">(</span><span class="va">Z_potts</span>, <span class="fu"><a href="mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"oneeach"</span>, gamma_seq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, length.out <span class="op">=</span> <span class="fl">50</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Iteration: 1 Iteration: 2 Iteration: 3 Iteration: 4 Iteration: 5 Iteration: 6 Iteration: 7 Iteration: 8 Iteration: 9 Iteration: 10 Iteration: 11 Iteration: 12 Iteration: 13 Iteration: 14 Iteration: 15 Iteration: 16 Iteration: 17 Iteration: 18 Iteration: 19 Iteration: 20 Iteration: 21 Iteration: 22 Iteration: 23 Iteration: 24 Iteration: 25 Iteration: 26 Iteration: 27 Iteration: 28 Iteration: 29 Iteration: 30 Iteration: 31 Iteration: 32 Iteration: 33 Iteration: 34 Iteration: 35 Iteration: 36 Iteration: 37 Iteration: 38 Iteration: 39 Iteration: 40 Iteration: 41 Iteration: 42 Iteration: 43 Iteration: 44 Iteration: 45 Iteration: 46 Iteration: 47 Iteration: 48 Iteration: 49 Iteration: 50</span>
 <span class="r-in"><span class="co"># Estimated parameters</span></span>
 <span class="r-in"><span class="va">fit1</span><span class="op">$</span><span class="va">theta</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> , , (1,0)</span>
@@ -207,6 +209,7 @@ some references.</p>
 <span class="r-plt img"><img src="fit_sa-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">fit_sa</span><span class="op">(</span><span class="va">Z_potts</span>, <span class="fu"><a href="mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, family <span class="op">=</span> <span class="st">"oneeach"</span>, gamma_seq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, length.out <span class="op">=</span> <span class="fl">50</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Iteration: 1 Iteration: 2 Iteration: 3 Iteration: 4 Iteration: 5 Iteration: 6 Iteration: 7 Iteration: 8 Iteration: 9 Iteration: 10 Iteration: 11 Iteration: 12 Iteration: 13 Iteration: 14 Iteration: 15 Iteration: 16 Iteration: 17 Iteration: 18 Iteration: 19 Iteration: 20 Iteration: 21 Iteration: 22 Iteration: 23 Iteration: 24 Iteration: 25 Iteration: 26 Iteration: 27 Iteration: 28 Iteration: 29 Iteration: 30 Iteration: 31 Iteration: 32 Iteration: 33 Iteration: 34 Iteration: 35 Iteration: 36 Iteration: 37 Iteration: 38 Iteration: 39 Iteration: 40 Iteration: 41 Iteration: 42 Iteration: 43 Iteration: 44 Iteration: 45 Iteration: 46 Iteration: 47 Iteration: 48 Iteration: 49 Iteration: 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Model fitted via Stochastic Approximation </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 interacting positions: (1,0) (0,1) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> family: oneeach </span>

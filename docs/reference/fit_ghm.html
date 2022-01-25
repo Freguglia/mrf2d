@@ -168,7 +168,8 @@ in consecutive iterations is less than <code>max_dist</code>.</p>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>A paper with detailed description of the package can be found at
-<a href="https://doi.org/10.18637/jss.v101.i08" class="external-link">https://doi.org/10.18637/jss.v101.i08</a></p></div>
+doi: <a href="https://doi.org/10.18637/jss.v101.i08" class="external-link">10.18637/jss.v101.i08</a>
+.</p></div>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -189,6 +190,8 @@ in consecutive iterations is less than <code>max_dist</code>.</p>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">fixed</span> <span class="op">&lt;-</span> <span class="fu"><a href="basis_functions.html">polynomial_2d</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">Y</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit_ghm</span><span class="op">(</span><span class="va">Y</span>, mrfi <span class="op">=</span> <span class="fu"><a href="mrfi-class.html">mrfi</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, theta <span class="op">=</span> <span class="va">theta_potts</span>, fixed_fn <span class="op">=</span> <span class="va">fixed</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Fitting independent mixture to obtain initial parameters. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  EM iteration: 1 EM iteration: 2 EM iteration: 3 EM iteration: 4 EM iteration: 5 EM iteration: 6 Finished with 6 iterations. </span>
 <span class="r-in"><span class="va">fit</span><span class="op">$</span><span class="va">par</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             mu     sigma</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0 -0.001568028 0.4012135</span>
