@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/Freguglia/mrf2d/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Freguglia/mrf2d/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/Freguglia/mrf2d/actions/workflows/check-release.yaml/badge.svg)](https://github.com/Freguglia/mrf2d/actions/workflows/check-release.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/Freguglia/mrf2d/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Freguglia/mrf2d?branch=master)
 [![CRAN
