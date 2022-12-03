@@ -6,10 +6,10 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/Freguglia/mrf2d/actions/workflows/check-release.yaml/badge.svg)](https://github.com/Freguglia/mrf2d/actions/workflows/check-release.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/Freguglia/mrf2d/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Freguglia/mrf2d?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/mrf2d)](https://cran.r-project.org/package=mrf2d)
+[![Codecov test
+coverage](https://codecov.io/gh/Freguglia/mrf2d/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Freguglia/mrf2d?branch=main)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
