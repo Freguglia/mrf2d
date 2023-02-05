@@ -42,7 +42,7 @@ dplot <- function(Z, legend = FALSE) {
   df <- data.frame(x = as.vector(row(Z)),
                    y = as.vector(col(Z)),
                    value = as.vector(Z))
-  p <- ggplot(df, aes_string(x = "x", y = "y", fill = "factor(value)")) +
+  p <- ggplot(df, aes(x = .data$x, y = .data$y, fill = factor(.data$value))) +
     geom_raster() +
     scale_x_continuous(expand = c(0, 0)) +
     scale_y_continuous(expand = c(0, 0)) +
@@ -64,7 +64,7 @@ cplot <- function(Y, legend = TRUE) {
   df <- data.frame(x = as.vector(row(Y)),
                    y = as.vector(col(Y)),
                    value = as.vector(Y))
-  p <- ggplot(df, aes_string(x = "x", y = "y", fill = "value")) +
+  p <- ggplot(df, aes(x = .data$x, y = .data$y, fill = .data$value)) +
     geom_raster() +
     scale_x_continuous(expand = c(0, 0)) +
     scale_y_continuous(expand = c(0, 0)) +
