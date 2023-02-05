@@ -12,7 +12,7 @@
 #'
 #' @param Z A `matrix` object with integers only.
 #' @param Y A `matrix` object with continuous values.
-#' @param legend `logical` indicating whether a legend should be included or not.
+#' @param legend `logical` indicating whether a legend is included or not.
 #'
 #' @return a `ggplot` object.
 #
@@ -38,7 +38,7 @@
 #'
 #' @import ggplot2
 #' @export
-dplot <- function(Z, legend = FALSE){
+dplot <- function(Z, legend = FALSE) {
   df <- data.frame(x = as.vector(row(Z)),
                    y = as.vector(col(Z)),
                    value = as.vector(Z))
@@ -50,15 +50,17 @@ dplot <- function(Z, legend = FALSE){
     theme(axis.title.x = element_blank(),
           axis.title.y = element_blank(),
           legend.title = element_blank(),
-          legend.text = element_text(margin = margin(l=5)))
-  if(!legend) { p <- p + theme(legend.position = "none")}
+          legend.text = element_text(margin = margin(l = 5)))
+  if (!legend) {
+    p <- p + theme(legend.position = "none")
+  }
   return(p)
 }
 
 #' @rdname dplot
 #'
 #' @export
-cplot <- function(Y, legend = TRUE){
+cplot <- function(Y, legend = TRUE) {
   df <- data.frame(x = as.vector(row(Y)),
                    y = as.vector(col(Y)),
                    value = as.vector(Y))
@@ -70,7 +72,9 @@ cplot <- function(Y, legend = TRUE){
     theme(axis.title.x = element_blank(),
           axis.title.y = element_blank(),
           legend.title = element_blank(),
-          legend.text = element_text(margin = margin(l=5)))
-  if(!legend) { p <- p + theme(legend.position = "none")}
+          legend.text = element_text(margin = margin(l = 5)))
+  if (!legend) {
+    p <- p + theme(legend.position = "none")
+  }
   return(p)
 }
