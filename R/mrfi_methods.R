@@ -35,21 +35,25 @@
 #' @export
 plot.mrfi <- function(x, include_axis = FALSE,
                       include_opposite = TRUE,
-                      ...){
+                      ...) {
   df <- as.data.frame(x@Rmat)
   names(df) <- c("rx", "ry")
   df_center <- data.frame(rx = 0, ry = 0)
 
   max_norm <- max(5, max(df$rx), max(df$ry)) + 0.5
-  p <- ggplot(df, aes_string(x = "rx", y = "ry")) +
+  p <- ggplot(df, aes(x = .data$rx, y = .data$ry)) +
     geom_tile(fill = "gray", color = "black") +
     geom_tile(data = df_center, fill = "black") +
     theme_minimal()
-  if(include_opposite){p <- p +
-    geom_tile(data = data.frame(rx = -df$rx, ry = -df$ry),
-              linetype = "dashed", color = "gray55",
-              fill = "gray95")}
-  if(!include_axis) {p <- p + theme_void()}
+  if (include_opposite) {
+    p <- p +
+      geom_tile(data = data.frame(rx = -df$rx, ry = -df$ry),
+                linetype = "dashed", color = "gray55",
+                fill = "gray95")
+  }
+  if (!include_axis) {
+    p <- p + theme_void()
+  }
   p + lims(x = c(-max_norm, max_norm), y = c(-max_norm, max_norm))
 }
 
@@ -62,14 +66,14 @@ plot.mrfi <- function(x, include_axis = FALSE,
 #' positions (list of length-2 vectors).
 #'
 #' @export
-as.list.mrfi <- function(x, ...){
-  unname(split(x@Rmat, rep(1:nrow(x@Rmat), ncol(x@Rmat))))
+as.list.mrfi <- function(x, ...) {
+  unname(split(x@Rmat, rep(seq_len(nrow(x@Rmat)), ncol(x@Rmat))))
 }
 
 #' @rdname mrfi-class
 #' @exportMethod length
 setMethod("length", signature(x = "mrfi"),
-          definition = function(x){
+          definition = function(x) {
             nrow(x@Rmat)
           })
 
@@ -85,26 +89,26 @@ setMethod("length", signature(x = "mrfi"),
 #' a `numeric` representing an additional position to include or another `mrfi`
 #' object.
 setMethod("[[", signature = c("mrfi", "numeric", "missing"),
-          definition = function(x, i){
-            m <- x@Rmat[i,,drop = FALSE]
-            unname(split(m, rep(1:nrow(m), ncol(m))))
+          definition = function(x, i) {
+            m <- x@Rmat[i, , drop = FALSE]
+            unname(split(m, rep(seq_len(nrow(m)), ncol(m))))
           })
 
 #' @rdname mrfi-class
 setMethod("[", signature = c("mrfi", "numeric", "missing"),
-          definition = function(x, i){
-            m <- x@Rmat[i,,drop = FALSE]
+          definition = function(x, i) {
+            m <- x@Rmat[i, , drop = FALSE]
             new("mrfi", Rmat = m)
           })
 
-mrfi_union <- function(mrfi1, mrfi2){
+mrfi_union <- function(mrfi1, mrfi2) {
   return(mrfi(0, positions = union(as.list(mrfi1), as.list(mrfi2))))
 }
 
-mrfi_diff <- function(mrfi1, mrfi2){
+mrfi_diff <- function(mrfi1, mrfi2) {
   return(mrfi(0, positions =
                 setdiff(as.list(mrfi1),
-                        c(as.list(mrfi2), lapply(as.list(mrfi2), '*', -1L)))))
+                        c(as.list(mrfi2), lapply(as.list(mrfi2), "*", -1L)))))
 }
 
 #' @rdname mrfi-class
@@ -126,14 +130,14 @@ mrfi_diff <- function(mrfi1, mrfi2){
 #' @examples
 #' mrfi(1) + c(2,0)
 setMethod("+", signature = c("mrfi", "numeric"),
-          definition = function(e1, e2){
-            if(length(e2) != 2){
+          definition = function(e1, e2) {
+            if (length(e2) != 2) {
               stop("Right hand side must be a length 2 vector representing a relative position.")
-            } else if (any(as.integer(e2) != e2)){
+            } else if (any(as.integer(e2) != e2)) {
               stop("Right hand side must be a vector with two integer values.")
-            } else if(any(sapply(as.list(e1), function(pos){
-              all(pos == e2) | all(pos == (-e2))}
-              )) & length(e1) > 0){
+            } else if (any(sapply(as.list(e1), function(pos) {
+              all(pos == e2) | all(pos == (-e2))
+            })) & length(e1) > 0) {
                 return(e1)
             }
             result <- mrfi_union(e1, list(e2))
@@ -145,13 +149,13 @@ setMethod("+", signature = c("mrfi", "numeric"),
 #' @examples
 #' mrfi(1) - c(1,0)
 setMethod("-", signature = c("mrfi", "numeric"),
-          definition = function(e1, e2){
-            if(length(e2) != 2){
+          definition = function(e1, e2) {
+            if (length(e2) != 2) {
               stop("Right hand side must be a length 2 vector representing a relative position.")
-            } else if (any(as.integer(e2) != e2)){
+            } else if (any(as.integer(e2) != e2)) {
               stop("Right hand side must be a vector of two integers.")
             } else {
-              if(length(e1) == 0) return(e1)
+              if (length(e1) == 0) return(e1)
               e2 <- as.integer(e2)
               return(mrfi_diff(e1, list(e2, -e2)))
             }
@@ -162,8 +166,8 @@ setMethod("-", signature = c("mrfi", "numeric"),
 #' @examples
 #' mrfi(1) + mrfi(0, positions = list(c(2,0)))
 setMethod("+", signature = c("mrfi", "mrfi"),
-          definition = function(e1, e2){
-            return(mrfi_union(e1,e2))
+          definition = function(e1, e2) {
+            return(mrfi_union(e1, e2))
           })
 
 #' @rdname mrfi-class
@@ -171,15 +175,15 @@ setMethod("+", signature = c("mrfi", "mrfi"),
 #' @examples
 #' mrfi(2) - mrfi(1)
 setMethod("-", signature = c("mrfi", "mrfi"),
-          definition = function(e1, e2){
-            if(length(e1) == 0) return(e1)
-            return(mrfi_diff(e1,e2))
+          definition = function(e1, e2) {
+            if (length(e1) == 0) return(e1)
+            return(mrfi_diff(e1, e2))
           })
 
 
 #' @rdname mrfi-class
 #' @export
-mrfi_to_string <- function(mrfi){
+mrfi_to_string <- function(mrfi) {
   s <- sort(mrfi_to_char(mrfi))
   return(paste0("{", paste(s, collapse = ","), "}"))
 }
