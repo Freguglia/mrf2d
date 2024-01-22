@@ -36,7 +36,7 @@ arma::colvec conditional_probabilities_mrf(const IntegerMatrix &Z,
 
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix &Z,
+arma::colvec conditional_probabilities_mrf_sub(const IntegerMatrix &Z,
                                                 const LogicalMatrix &sub_mat,
                                                 const IntegerVector position,
                                                 const IntegerMatrix R,
@@ -44,7 +44,7 @@ NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix &Z,
                                                 const int N, const int M,
                                                 const int n_R, const int C){
 
-  NumericVector probs(C+1);
+  arma::colvec probs(C+1);
   double this_prob;
   int dx, dy;
   int x = position[0] -1; int y = position[1] -1;
@@ -77,7 +77,7 @@ arma::fcube all_cond_probs(const IntegerMatrix &Z,
   int n_R = theta.n_slices;
   arma::fcube result(N, M, C+1);
   IntegerVector position(2);
-  NumericVector cond_probs(C+1);
+  arma::colvec cond_probs(C+1);
 
   for(unsigned int i=0;i<N;i++){
     for(unsigned int j=0;j<M;j++){

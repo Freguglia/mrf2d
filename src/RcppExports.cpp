@@ -30,7 +30,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // conditional_probabilities_mrf_sub
-NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix& Z, const LogicalMatrix& sub_mat, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C);
+arma::colvec conditional_probabilities_mrf_sub(const IntegerMatrix& Z, const LogicalMatrix& sub_mat, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C);
 RcppExport SEXP _mrf2d_conditional_probabilities_mrf_sub(SEXP ZSEXP, SEXP sub_matSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
