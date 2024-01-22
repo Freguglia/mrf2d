@@ -8,14 +8,14 @@ using namespace Rcpp;
 // and MRF parameters.
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
-NumericVector conditional_probabilities_mrf(const IntegerMatrix &Z,
+arma::colvec conditional_probabilities_mrf(const IntegerMatrix &Z,
                                             const IntegerVector position,
                                             const IntegerMatrix R,
                                             const arma::fcube &theta,
                                             const int N, const int M,
                                             const int n_R, const int C){
 
-  NumericVector probs(C+1);
+  arma::colvec probs(C+1);
   double this_prob;
   int dx, dy;
   int x = position[0] -1; int y = position[1] -1;

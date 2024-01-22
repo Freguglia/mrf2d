@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // conditional_probabilities_mrf
-NumericVector conditional_probabilities_mrf(const IntegerMatrix& Z, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C);
+arma::colvec conditional_probabilities_mrf(const IntegerMatrix& Z, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C);
 RcppExport SEXP _mrf2d_conditional_probabilities_mrf(SEXP ZSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
