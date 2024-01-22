@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // conditional_probabilities_mrf
-arma::colvec conditional_probabilities_mrf(const IntegerMatrix& Z, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C);
+arma::vec conditional_probabilities_mrf(const IntegerMatrix& Z, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C);
 RcppExport SEXP _mrf2d_conditional_probabilities_mrf(SEXP ZSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -30,7 +30,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // conditional_probabilities_mrf_sub
-arma::colvec conditional_probabilities_mrf_sub(const IntegerMatrix& Z, const LogicalMatrix& sub_mat, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C);
+arma::vec conditional_probabilities_mrf_sub(const IntegerMatrix& Z, const LogicalMatrix& sub_mat, const IntegerVector position, const IntegerMatrix R, const arma::fcube& theta, const int N, const int M, const int n_R, const int C);
 RcppExport SEXP _mrf2d_conditional_probabilities_mrf_sub(SEXP ZSEXP, SEXP sub_matSEXP, SEXP positionSEXP, SEXP RSEXP, SEXP thetaSEXP, SEXP NSEXP, SEXP MSEXP, SEXP n_RSEXP, SEXP CSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

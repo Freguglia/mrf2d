@@ -19,7 +19,7 @@ IntegerMatrix gibbs_sampler_mrf2d(const IntegerMatrix &init_Z,
   int n_R = R.nrow();
   int num = N*M;
   IntegerVector position(2);
-  NumericVector cprobs(C+1);
+  arma::vec cprobs(C+1);
 
   for(int step = 0; step < n_steps; step++){
     order = sample(order, num, false);
@@ -27,7 +27,7 @@ IntegerMatrix gibbs_sampler_mrf2d(const IntegerMatrix &init_Z,
       x = (order[i] / M) + 1; y = (order[i] % M) + 1;
       position[0] = x; position[1] = y;
       cprobs = conditional_probabilities_mrf(Z, position, R, theta, N, M, n_R, C);
-      Z(x-1, y-1) = sample(values, 1, false, cprobs)[0];
+      Z(x-1, y-1) = sample(values, 1, false, wrap(cprobs))[0];
     }
   }
   return(Z);
@@ -50,7 +50,7 @@ IntegerMatrix gibbs_sampler_mrf2d_sub(const IntegerMatrix &init_Z,
   int n_R = R.nrow();
   int num = N*M;
   IntegerVector position(2);
-  NumericVector cprobs(C+1);
+  arma::vec cprobs(C+1);
 
   for(int step = 0; step < n_steps; step++){
     order = sample(order, num, false);
@@ -59,7 +59,7 @@ IntegerMatrix gibbs_sampler_mrf2d_sub(const IntegerMatrix &init_Z,
       if(sub_mat(x-1,y-1) & !fix_mat(x-1,y-1)){
         position[0] = x; position[1] = y;
         cprobs = conditional_probabilities_mrf_sub(Z, sub_mat, position, R, theta, N, M, n_R, C);
-        Z(x-1, y-1) = sample(values, 1, false, cprobs)[0];
+        Z(x-1, y-1) = sample(values, 1, false, wrap(cprobs))[0];
       }
     }
   }
