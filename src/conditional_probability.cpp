@@ -15,21 +15,22 @@ NumericVector conditional_probabilities_mrf(const IntegerMatrix &Z,
                                             const int N, const int M,
                                             const int n_R, const int C){
 
-  NumericVector log_pots(C+1);
-  double this_prob;
+  NumericVector log_pots(C+1, 0.0);
   int dx, dy;
   int x = position[0] -1; int y = position[1] -1;
 
-  for(int value = 0; value <= C; value++){
-    this_prob = 0.0;
-    for(int i = 0; i < n_R; i++){
-      dx = R(i,0); dy = R(i,1);
-      if(0 <= x+dx && x+dx < N && 0 <= y+dy && y+dy < M){
-        this_prob = this_prob + theta(value, Z(x+dx, y+dy), i);}
-      if(0 <= x-dx && x-dx < N && 0 <= y-dy && y-dy < M){
-        this_prob = this_prob + theta(Z(x-dx, y-dy), value, i);}
+  for(int i = 0; i < n_R; i++){
+    dx = R(i,0); dy = R(i,1);
+    if(0 <= x+dx && x+dx < N && 0 <= y+dy && y+dy < M){
+      int nb = Z(x+dx, y+dy);
+      for(int value = 0; value <= C; value++)
+        log_pots[value] += theta(value, nb, i);
     }
-    log_pots[value] = this_prob;
+    if(0 <= x-dx && x-dx < N && 0 <= y-dy && y-dy < M){
+      int nb = Z(x-dx, y-dy);
+      for(int value = 0; value <= C; value++)
+        log_pots[value] += theta(nb, value, i);
+    }
   }
   // log-sum-exp trick: subtract max before exponentiation to prevent overflow
   double max_lp = max(log_pots);
@@ -47,23 +48,24 @@ NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix &Z,
                                                 const int N, const int M,
                                                 const int n_R, const int C){
 
-  NumericVector log_pots(C+1);
-  double this_prob;
+  NumericVector log_pots(C+1, 0.0);
   int dx, dy;
   int x = position[0] -1; int y = position[1] -1;
 
-  for(int value = 0; value <= C; value++){
-    this_prob = 0.0;
-    for(int i = 0; i < n_R; i++){
-      dx = R(i,0); dy = R(i,1);
-      if(0 <= x+dx && x+dx < N && 0 <= y+dy && y+dy < M){
-        if(sub_mat(x+dx, y+dy)){
-          this_prob = this_prob + theta(value, Z(x+dx, y+dy), i);}}
-      if(0 <= x-dx && x-dx < N && 0 <= y-dy && y-dy < M){
-        if(sub_mat(x-dx, y-dy)){
-          this_prob = this_prob + theta(Z(x-dx, y-dy), value, i);}}
-    }
-    log_pots[value] = this_prob;
+  for(int i = 0; i < n_R; i++){
+    dx = R(i,0); dy = R(i,1);
+    if(0 <= x+dx && x+dx < N && 0 <= y+dy && y+dy < M){
+      if(sub_mat(x+dx, y+dy)){
+        int nb = Z(x+dx, y+dy);
+        for(int value = 0; value <= C; value++)
+          log_pots[value] += theta(value, nb, i);
+      }}
+    if(0 <= x-dx && x-dx < N && 0 <= y-dy && y-dy < M){
+      if(sub_mat(x-dx, y-dy)){
+        int nb = Z(x-dx, y-dy);
+        for(int value = 0; value <= C; value++)
+          log_pots[value] += theta(nb, value, i);
+      }}
   }
   // log-sum-exp trick: subtract max before exponentiation to prevent overflow
   double max_lp = max(log_pots);
