@@ -15,7 +15,7 @@ NumericVector conditional_probabilities_mrf(const IntegerMatrix &Z,
                                             const int N, const int M,
                                             const int n_R, const int C){
 
-  NumericVector probs(C+1);
+  NumericVector log_pots(C+1);
   double this_prob;
   int dx, dy;
   int x = position[0] -1; int y = position[1] -1;
@@ -29,8 +29,11 @@ NumericVector conditional_probabilities_mrf(const IntegerMatrix &Z,
       if(0 <= x-dx && x-dx < N && 0 <= y-dy && y-dy < M){
         this_prob = this_prob + theta(Z(x-dx, y-dy), value, i);}
     }
-    probs[value] = exp(this_prob);
+    log_pots[value] = this_prob;
   }
+  // log-sum-exp trick: subtract max before exponentiation to prevent overflow
+  double max_lp = max(log_pots);
+  NumericVector probs = exp(log_pots - max_lp);
   return(probs/sum(probs));
 }
 
@@ -44,7 +47,7 @@ NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix &Z,
                                                 const int N, const int M,
                                                 const int n_R, const int C){
 
-  NumericVector probs(C+1);
+  NumericVector log_pots(C+1);
   double this_prob;
   int dx, dy;
   int x = position[0] -1; int y = position[1] -1;
@@ -60,8 +63,11 @@ NumericVector conditional_probabilities_mrf_sub(const IntegerMatrix &Z,
         if(sub_mat(x-dx, y-dy)){
           this_prob = this_prob + theta(Z(x-dx, y-dy), value, i);}}
     }
-    probs[value] = exp(this_prob);
+    log_pots[value] = this_prob;
   }
+  // log-sum-exp trick: subtract max before exponentiation to prevent overflow
+  double max_lp = max(log_pots);
+  NumericVector probs = exp(log_pots - max_lp);
   return(probs/sum(probs));
 }
 
