@@ -33,12 +33,16 @@ import(ggplot2)
 importFrom(Rcpp,sourceCpp)
 importFrom(Rdpack,reprompt)
 importFrom(graphics,par)
-importFrom(methods,new)
-importFrom(methods,setClass)
-importFrom(methods,setMethod)
-importFrom(stats,lm)
-importFrom(stats,na.omit)
-importFrom(stats,optim)
-importFrom(stats,predict)
-importFrom(stats,sd)
+importFrom(methods,
+  new,
+  setClass,
+  setMethod
+)
+importFrom(stats,
+  lm,
+  na.omit,
+  optim,
+  predict,
+  sd
+)
 useDynLib(mrf2d)

@@ -23,5 +23,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Victor Freguglia \email{victorfreguglia@gmail.com} (\href{https://orcid.org/0000-0002-6189-4453}{ORCID})
 
+Authors:
+\itemize{
+  \item Victor Freguglia \email{victorfreguglia@gmail.com} (\href{https://orcid.org/0000-0002-6189-4453}{ORCID})
+}
+
 }
 \keyword{internal}
