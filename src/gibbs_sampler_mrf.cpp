@@ -14,7 +14,7 @@ IntegerMatrix gibbs_sampler_mrf2d(const IntegerMatrix &init_Z,
   int C = theta.n_rows - 1;
   IntegerMatrix Z(N,M); Z = Rcpp::clone(init_Z);
   IntegerVector values = seq_len(C+1) - 1;
-  IntegerVector order = seq_len(N*M);
+  IntegerVector order = seq_len(N*M) - 1;
   int x, y;
   int n_R = R.nrow();
   int num = N*M;
@@ -45,7 +45,7 @@ IntegerMatrix gibbs_sampler_mrf2d_sub(const IntegerMatrix &init_Z,
   int C = theta.n_rows - 1;
   IntegerMatrix Z(N,M); Z = Rcpp::clone(init_Z);
   IntegerVector values = seq_len(C+1) - 1;
-  IntegerVector order = seq_len(N*M);
+  IntegerVector order = seq_len(N*M) - 1;
   int x, y;
   int n_R = R.nrow();
   int num = N*M;
